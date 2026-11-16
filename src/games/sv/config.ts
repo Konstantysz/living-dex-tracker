@@ -1,0 +1,177 @@
+import type { GameConfig } from '../../core/types';
+
+// Pikachu in caps, Arceus and similar are excluded simply by not being listed below.
+
+const creams =
+  'vanilla-cream ruby-cream matcha-cream mint-cream lemon-cream salted-cream ruby-swirl caramel-swirl rainbow-swirl'.split(
+    ' ',
+  );
+const sweets = 'berry clover flower love ribbon star strawberry'.split(' ');
+const vivillon =
+  'icy-snow polar tundra continental garden elegant modern marine archipelago high-plains sandstorm river monsoon savanna sun ocean jungle fancy poke-ball'.split(
+    ' ',
+  );
+const colours = ['yellow', 'orange', 'blue', 'white'];
+const flabebeLine = Object.fromEntries(
+  ['flabebe', 'floette', 'florges'].map((s) => [s, colours.map((c) => `${s}-${c}`)]),
+);
+
+export const svConfig: GameConfig = {
+  id: 'sv',
+  name: 'Scarlet/Violet',
+  dexes: [
+    { pokeapiId: 31, prefix: '', name: 'Paldea' },
+    { pokeapiId: 32, prefix: 'K', name: 'Kitakami' },
+    { pokeapiId: 33, prefix: 'B', name: 'Blueberry' },
+  ],
+  baseFormOverrides: {
+    wooper: 'wooper-paldea',
+    tauros: 'tauros-paldea-combat-breed',
+    minior: 'minior-red',
+    alcremie: 'alcremie-vanilla-cream-berry-sweet',
+  },
+  forms: {
+    maushold: ['maushold-family-of-three'],
+    lycanroc: ['lycanroc-midnight', 'lycanroc-dusk'],
+    oricorio: ['oricorio-pom-pom', 'oricorio-pau', 'oricorio-sensu'],
+    squawkabilly: [
+      'squawkabilly-blue-plumage',
+      'squawkabilly-yellow-plumage',
+      'squawkabilly-white-plumage',
+    ],
+    basculin: ['basculin-blue-striped', 'basculin-white-striped'],
+    dudunsparce: ['dudunsparce-three-segment'],
+    deerling: ['deerling-summer', 'deerling-autumn', 'deerling-winter'],
+    sawsbuck: ['sawsbuck-summer', 'sawsbuck-autumn', 'sawsbuck-winter'],
+    toxtricity: ['toxtricity-low-key'],
+    tauros: ['tauros-paldea-blaze-breed', 'tauros-paldea-aqua-breed', 'tauros'],
+    wooper: ['wooper', 'wooper-female'],
+    sinistea: ['sinistea-antique'],
+    polteageist: ['polteageist-antique'],
+    shellos: ['shellos-east'],
+    gastrodon: ['gastrodon-east'],
+    tatsugiri: ['tatsugiri-droopy', 'tatsugiri-stretchy'],
+    gimmighoul: ['gimmighoul-roaming'],
+    vivillon: vivillon.map((x) => `vivillon-${x}`),
+    rotom: ['rotom-heat', 'rotom-wash', 'rotom-frost', 'rotom-fan', 'rotom-mow'],
+    ...flabebeLine,
+    ursaluna: ['ursaluna-bloodmoon'],
+    ogerpon: ['ogerpon-wellspring-mask', 'ogerpon-hearthflame-mask', 'ogerpon-cornerstone-mask'],
+    poltchageist: ['poltchageist-artisan'],
+    sinistcha: ['sinistcha-masterpiece'],
+    minior: 'orange yellow green blue indigo violet'.split(' ').map((c) => `minior-${c}`),
+    // the first combination (vanilla-cream-berry) is the base form
+    alcremie: creams.flatMap((c) => sweets.map((s) => `alcremie-${c}-${s}-sweet`)).slice(1),
+    // regional forms native to SV (Kitakami / Blueberry)
+    diglett: ['diglett-alola'],
+    dugtrio: ['dugtrio-alola'],
+    grimer: ['grimer-alola'],
+    muk: ['muk-alola'],
+    slowpoke: ['slowpoke-galar'],
+    slowbro: ['slowbro-galar'],
+    slowking: ['slowking-galar'],
+    geodude: ['geodude-alola'],
+    graveler: ['graveler-alola'],
+    golem: ['golem-alola'],
+    sandshrew: ['sandshrew-alola'],
+    sandslash: ['sandslash-alola'],
+    vulpix: ['vulpix-alola'],
+    ninetales: ['ninetales-alola'],
+  },
+  nativeRegional: [
+    'wooper',
+    'tauros',
+    'diglett-alola',
+    'dugtrio-alola',
+    'grimer-alola',
+    'muk-alola',
+    'slowpoke-galar',
+    'slowbro-galar',
+    'slowking-galar',
+    'geodude-alola',
+    'graveler-alola',
+    'golem-alola',
+    'sandshrew-alola',
+    'sandslash-alola',
+    'vulpix-alola',
+    'ninetales-alola',
+    'wooper-female',
+  ],
+  genderDifferences:
+    `houndoom kricketot kricketune combee buizel floatzel hypno pikachu raichu sudowoodo shinx luxio luxray starly staravia staraptor donphan gible gabite garchomp magikarp gyarados gulpin swalot numel camerupt meditite medicham croagunk toxicroak eevee girafarig pachirisu ursaring pyroar sneasel weavile murkrow cacturne scyther scizor heracross hippopotas hippowdon finneon lumineon snover abomasnow
+    quagsire politoed aipom ambipom piloswine mamoswine nuzleaf shiftry ludicolo gligar milotic
+    doduo dodrio rhyhorn rhydon rhyperior gloom vileplume venusaur meganium torchic combusken blaziken`.split(
+      /\s+/,
+    ),
+  femaleForms: {
+    oinkologne: 'oinkologne-female',
+    indeedee: 'indeedee-female',
+    meowstic: 'meowstic-female',
+    basculegion: 'basculegion-female',
+  },
+  homeRegional: {
+    raichu: ['raichu-alola'],
+    meowth: ['meowth-alola', 'meowth-galar'],
+    persian: ['persian-alola'],
+    lilligant: ['lilligant-hisui'],
+    sliggoo: ['sliggoo-hisui'],
+    goodra: ['goodra-hisui'],
+    voltorb: ['voltorb-hisui'],
+    electrode: ['electrode-hisui'],
+    growlithe: ['growlithe-hisui'],
+    arcanine: ['arcanine-hisui'],
+    zorua: ['zorua-hisui'],
+    zoroark: ['zoroark-hisui'],
+    sneasel: ['sneasel-hisui', 'sneasel-hisui-female'],
+    qwilfish: ['qwilfish-hisui'],
+    avalugg: ['avalugg-hisui'],
+    braviary: ['braviary-hisui'],
+    exeggutor: ['exeggutor-alola'],
+    weezing: ['weezing-galar'],
+    typhlosion: ['typhlosion-hisui'],
+    samurott: ['samurott-hisui'],
+    decidueye: ['decidueye-hisui'],
+  },
+  battleForms: {
+    mimikyu: ['mimikyu-busted'],
+    palafin: ['palafin-hero'],
+    eiscue: ['eiscue-noice'],
+    morpeko: ['morpeko-hangry'],
+    cramorant: ['cramorant-gulping', 'cramorant-gorging'],
+    minior: ['minior-red-meteor'],
+    terapagos: ['terapagos-terastal', 'terapagos-stellar'],
+  },
+  extras: [
+    ['articuno-galar', 'xreg'],
+    ['zapdos-galar', 'xreg'],
+    ['moltres-galar', 'xreg'],
+    ['meloetta-pirouette', 'xbat'],
+    ['zacian-crowned', 'xbat'],
+    ['zamazenta-crowned', 'xbat'],
+  ],
+  mergedLines: [
+    ['scatterbug', 'spewpa', 'vivillon'],
+    ['flabebe', 'floette', 'florges'],
+  ],
+  labelOverrides: {
+    'Paldea Combat Breed': 'Combat',
+    'Paldea Blaze Breed': 'Blaze',
+    'Paldea Aqua Breed': 'Aqua',
+    'Poke Ball': 'Poké Ball',
+    'Pom Pom': 'Pom-Pom',
+    'Family Of Three': 'Family of Three',
+    'Family Of Four': 'Family of Four',
+    'Three Segment': 'Three-Segment',
+    'Two Segment': 'Two-Segment',
+    'Blue Striped': 'Blue-Striped',
+    'White Striped': 'White-Striped',
+    'Red Striped': 'Red-Striped',
+    'Wellspring Mask': 'Wellspring',
+    'Hearthflame Mask': 'Hearthflame',
+    'Cornerstone Mask': 'Cornerstone',
+    'Red Meteor': 'Meteor',
+    'Full Belly': 'Full Belly',
+  },
+  formNames: { wooper: 'Johto', 'wooper-female': 'Johto', tauros: 'Kanto' },
+  toggleableForms: ['alcremie'],
+};
