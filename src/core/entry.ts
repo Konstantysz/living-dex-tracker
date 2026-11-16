@@ -1,0 +1,39 @@
+import type { DexConfig, DexEntry } from './types';
+
+export const entryLabel = (it: DexEntry) =>
+  it.name + (it.form ? ` (${it.form})` : '') + (it.g ? ` ${it.g}` : '');
+
+/** "Kitakami #12", "Paldea #145" or "nat. #7" for entries outside every dex. */
+export function numberText(it: DexEntry, dexes: DexConfig[]): string {
+  if (!it.n) return `nat. #${it.nat}`;
+  const dex =
+    dexes.find((d) => d.prefix && it.n!.startsWith(d.prefix)) ?? dexes.find((d) => !d.prefix);
+  const num = dex?.prefix ? it.n.slice(dex.prefix.length) : it.n;
+  return `${dex?.name ?? ''} #${num}`;
+}
+
+/** Search by name (with form) or exact number: "145", "#145", "K12", "b43". */
+export function matches(it: DexEntry, query: string): boolean {
+  const q = query.trim().toLowerCase();
+  if (!q) return false;
+  return (
+    entryLabel(it).toLowerCase().includes(q) || String(it.n).toLowerCase() === q.replace('#', '')
+  );
+}
+
+/** Text export: box by box, 5 rows of 6 entries. */
+export function layoutAsText(boxes: (DexEntry | null)[][]): string {
+  const lines: string[] = [];
+  boxes.forEach((b, i) => {
+    lines.push(`=== Box ${i + 1} ===`);
+    for (let r = 0; r < 5; r++)
+      lines.push(
+        b
+          .slice(r * 6, r * 6 + 6)
+          .map((it) => (it ? `${it.n ?? 'nat' + it.nat} ${entryLabel(it)}` : '—'))
+          .join(' | '),
+      );
+    lines.push('');
+  });
+  return lines.join('\n');
+}
