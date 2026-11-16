@@ -4,3 +4,4 @@ public/sprites
 src/games/*/generated
 scripts/cache
 package-lock.json
+docs/wiki
