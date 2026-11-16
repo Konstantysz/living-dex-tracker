@@ -1,0 +1,6 @@
+dist
+reference
+public/sprites
+src/games/*/generated
+scripts/cache
+package-lock.json

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paldea Living Dex — układ boxów</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1418; --panel:#182027; --panel2:#1f2a33; --line:#2b3843; --ink:#e8eef2; --mute:#8a9aa6;
+  --acc:#e8b84a; --caught:#2f6e4f; --caughtline:#55c08a;
+  --fem:#d86fa0; --form:#5aa0e0; --reg:#c79a5a; --bat:#b06be0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,sans-serif;font-size:14px}
+header{position:sticky;top:0;z-index:5;background:rgba(15,20,24,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:12px 20px}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.2px}
+h1 span{color:var(--acc)}
+.prog{display:flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--mute)}
+.bar{width:160px;height:8px;background:var(--panel2);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--caughtline);width:0}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:10px}
+label.t{display:flex;align-items:center;gap:6px;color:var(--mute);cursor:pointer;user-select:none}
+label.t input{accent-color:var(--acc)}
+input[type=search]{background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 10px;width:180px;font:inherit}
+button{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 10px;font:inherit;cursor:pointer}
+button:hover{border-color:var(--acc)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--mute);font-size:12px}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+main{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.box h2{margin:0;font-size:13px;font-weight:500;display:flex;justify-content:space-between;padding:8px 12px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.box h2 .r{font-family:"JetBrains Mono",monospace;color:var(--mute)}
+.box h2 .c{font-family:"JetBrains Mono",monospace;color:var(--caughtline)}
+.box.done h2{background:#1d3a2c}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:8px}
+.cell{position:relative;aspect-ratio:1;background:var(--panel2);border:1px solid transparent;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cell.empty{background:transparent;border:1px dashed #26323c;cursor:default}
+.cell img{width:118%;height:118%;object-fit:contain;image-rendering:pixelated;margin-top:-6%;pointer-events:none;filter:grayscale(.15)}
+.cell .no{position:absolute;left:3px;bottom:1px;font:600 9px "JetBrains Mono",monospace;color:var(--mute)}
+.cell .g{position:absolute;right:4px;top:1px;font-size:11px;font-weight:700}
+.cell .g.f{color:var(--fem)} .cell .g.m{color:#6fa8dc}
+.cell::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--kc,transparent)}
+.cell.k-fem{--kc:var(--fem)} .cell.k-form{--kc:var(--form)} .cell.k-reg,.cell.k-xreg,.cell.k-nreg{--kc:var(--reg)} .cell.k-alc{--kc:var(--form)} .cell.k-bat,.cell.k-xbat{--kc:var(--bat)}
+.cell.caught{background:var(--caught);border-color:var(--caughtline)}
+.cell.caught img{filter:none}
+.cell.caught .no{color:#cfe9da}
+.cell:not(.empty):hover{border-color:var(--acc)}
+.cell.hit{outline:2px solid var(--acc);outline-offset:1px}
+body.dimcaught .cell.caught img{opacity:.25}
+.tip{position:fixed;pointer-events:none;background:#0b0f12;border:1px solid var(--line);padding:6px 9px;border-radius:6px;font-size:12px;z-index:20;display:none;white-space:nowrap}
+.tip small{color:var(--mute);font-family:"JetBrains Mono",monospace}
+dialog{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;width:min(720px,92vw)}
+dialog textarea{width:100%;height:320px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:6px;font:12px "JetBrains Mono",monospace;padding:8px}
+dialog .row{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.stats{color:var(--mute);font-size:12px;font-family:"JetBrains Mono",monospace}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>Scarlet/Violet <span>Living Dex</span></h1>
+    <div class="prog"><div class="bar"><i id="barfill"></i></div><span id="progtxt"></span></div>
+    <span class="stats" id="stats"></span>
+  </div>
+  <div class="ctrls">
+    <label class="t"><input type="checkbox" id="optReg" checked> formy regionalne tylko z HOME</label>
+    <label class="t"><input type="checkbox" id="optAlc" checked> wszystkie Alcremie (63)</label>
+    <label class="t"><input type="checkbox" id="optBat"> formy bitewne</label>
+    <label class="t"><input type="checkbox" id="optExtra"> box: formy spoza Paldea dex</label>
+    <label class="t"><input type="checkbox" id="optNoSplit" checked> nie dziel małych grup (do 6 form) między boxy</label>
+    <label class="t"><input type="checkbox" id="optDim"> przyciemnij złapane</label>
+    <input type="search" id="q" placeholder="szukaj nazwy lub #nr">
+    <button id="btnText">Układ jako tekst</button>
+    <button id="btnBackup">Kopia postępu</button>
+  </div>
+  <div class="ctrls legend">
+    <span><b style="background:var(--fem)"></b>samica</span>
+    <span><b style="background:var(--form)"></b>forma</span>
+    <span><b style="background:var(--reg)"></b>regionalna</span><span>nr: 123 = Paldea, K = Kitakami, B = Blueberry</span>
+    <span><b style="background:var(--bat)"></b>bitewna</span>
+    <span>klik = złapany / odznacz</span>
+  </div>
+</header>
+<main id="boxes"></main>
+<div class="tip" id="tip"></div>
+
+<dialog id="dlgText">
+  <h3 style="margin-top:0">Układ boxów</h3>
+  <textarea id="txtLayout" readonly></textarea>
+  <div class="row"><button data-copy="txtLayout">Kopiuj</button><button data-close>Zamknij</button></div>
+</dialog>
+<dialog id="dlgBackup">
+  <h3 style="margin-top:0">Kopia postępu</h3>
+  <p class="stats">Postęp zapisuje się w tej przeglądarce. Skopiuj kod poniżej, żeby go przenieść; wklej kod i kliknij „Wczytaj”, żeby go odtworzyć.</p>
+  <textarea id="txtBackup"></textarea>
+  <div class="row"><button data-copy="txtBackup">Kopiuj</button><button id="btnLoad">Wczytaj</button><button data-close>Zamknij</button></div>
+</dialog>
+
+<script>
+const DATA=__DATA__;
+const SPR=__SPRITES__;
+const KEY='paldea-living-dex-v1'; const OKEY='sv-living-dex-opt-v2';
+let caught=new Set();
+try{const s=localStorage.getItem(KEY); if(s) caught=new Set(JSON.parse(s));}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify([...caught]))}catch(e){}}
+const $=id=>document.getElementById(id);
+const opt=()=>({alc:$('optAlc').checked,reg:$('optReg').checked,bat:$('optBat').checked,extra:$('optExtra').checked,noSplit:$('optNoSplit').checked});
+try{const o=JSON.parse(localStorage.getItem(OKEY)||'{}');for(const k in o){if($(k))$(k).checked=o[k]}}catch(e){}
+function saveOpt(){try{const o={};['optReg','optAlc','optBat','optExtra','optNoSplit','optDim'].forEach(k=>o[k]=$(k).checked);localStorage.setItem(OKEY,JSON.stringify(o))}catch(e){}}
+
+function keep(it,o){return it.k==='alc'?o.alc:it.k==='reg'?o.reg:it.k==='bat'?o.bat:it.k==='xreg'?o.extra&&true:it.k==='xbat'?o.extra&&o.bat:true}
+function layout(){
+  const o=opt(); const boxes=[]; let cur=[];
+  const flush=()=>{if(cur.length){while(cur.length<30)cur.push(null);boxes.push(cur);cur=[];}};
+  const groups=DATA.groups.map(g=>g.items.filter(it=>keep(it,o)));
+  if(o.extra){const ex=DATA.extra.filter(it=>keep(it,o)); if(ex.length){groups.push('BREAK'); ex.forEach(e=>groups.push([e]));}}
+  for(const g of groups){
+    if(g==='BREAK'){flush();continue}
+    if(o.noSplit&&g.length>1&&g.length<=6&&cur.length+g.length>30)flush();
+    for(const it of g){cur.push(it); if(cur.length===30){boxes.push(cur);cur=[];}}
+  }
+  flush(); return boxes;
+}
+const label=it=>it.name+(it.form?' ('+it.form+')':'')+(it.g?' '+it.g:'');
+const DEX={K:'Kitakami',B:'Blueberry'};
+const numTxt=it=>!it.n?'nat. #'+it.nat:(DEX[it.n[0]]?DEX[it.n[0]]+' #'+it.n.slice(1):'Paldea #'+it.n);
+let BOXES=[];
+function render(){
+  BOXES=layout(); const m=$('boxes'); m.innerHTML='';
+  document.body.classList.toggle('dimcaught',$('optDim').checked);
+  let blanks=0;
+  BOXES.forEach((b,i)=>{
+    const items=b.filter(Boolean); blanks+=30-items.length;
+    const nums=items.filter(x=>x.n).map(x=>x.n);
+    const range=nums.length?(nums[0]+' – '+nums[nums.length-1]):'dodatki';
+    const el=document.createElement('section'); el.className='box';
+    el.innerHTML=`<h2><span>Box ${i+1} <span class="r">${range}</span></span><span class="c"></span></h2><div class="grid"></div>`;
+    const grid=el.querySelector('.grid');
+    b.forEach(it=>{
+      const c=document.createElement('div');
+      if(!it){c.className='cell empty';grid.appendChild(c);return}
+      c.className='cell k-'+it.k; c.dataset.id=it.id;
+      const src=SPR[it.s];
+      c.innerHTML=(src?`<img src="${src}" alt="">`:`<span style="font-size:10px;text-align:center">${it.name}</span>`)+
+        `<span class="no">${it.n||it.nat}</span>`+(it.g?`<span class="g ${it.g==='♀'?'f':'m'}">${it.g}</span>`:'');
+      c._it=it; grid.appendChild(c);
+    });
+    m.appendChild(el);
+  });
+  $('stats').textContent=`${BOXES.length} boxów · ${BOXES.flat().filter(Boolean).length} slotów · ${blanks} pustych`;
+  refresh(); search();
+}
+function refresh(){
+  let tot=0,got=0;
+  document.querySelectorAll('.box').forEach(box=>{
+    let t=0,g=0;
+    box.querySelectorAll('.cell[data-id]').forEach(c=>{t++; const on=caught.has(c.dataset.id); c.classList.toggle('caught',on); if(on)g++;});
+    box.querySelector('.c').textContent=g+'/'+t; box.classList.toggle('done',t>0&&g===t); tot+=t; got+=g;
+  });
+  $('progtxt').textContent=`${got} / ${tot} (${tot?(100*got/tot).toFixed(1):0}%)`;
+  $('barfill').style.width=(tot?100*got/tot:0)+'%';
+}
+$('boxes').addEventListener('click',e=>{
+  const c=e.target.closest('.cell[data-id]'); if(!c)return;
+  const id=c.dataset.id; caught.has(id)?caught.delete(id):caught.add(id); save(); refresh();
+});
+const tip=$('tip');
+$('boxes').addEventListener('mousemove',e=>{
+  const c=e.target.closest('.cell[data-id]'); if(!c){tip.style.display='none';return}
+  const it=c._it; tip.innerHTML=`${label(it)}<br><small>${numTxt(it)}${it.n?' · nat. #'+it.nat:''}</small>`;
+  tip.style.display='block'; tip.style.left=Math.min(e.clientX+14,innerWidth-220)+'px'; tip.style.top=(e.clientY+14)+'px';
+});
+$('boxes').addEventListener('mouseleave',()=>tip.style.display='none');
+function search(){
+  const q=$('q').value.trim().toLowerCase(); let first=null;
+  document.querySelectorAll('.cell[data-id]').forEach(c=>{
+    const it=c._it; const hit=q&&(label(it).toLowerCase().includes(q)||String(it.n).toLowerCase()===q.replace('#',''));
+    c.classList.toggle('hit',!!hit); if(hit&&!first)first=c;
+  });
+  if(first)first.scrollIntoView({block:'center',behavior:'smooth'});
+}
+$('q').addEventListener('input',search);
+['optReg','optAlc','optBat','optExtra','optNoSplit','optDim'].forEach(k=>$(k).addEventListener('change',()=>{saveOpt();render()}));
+$('btnText').onclick=()=>{
+  const lines=[];
+  BOXES.forEach((b,i)=>{lines.push(`=== Box ${i+1} ===`);
+    for(let r=0;r<5;r++){lines.push(b.slice(r*6,r*6+6).map(it=>it?(it.n?it.n:'nat'+it.nat)+' '+label(it):'—').join(' | '))}
+    lines.push('');});
+  $('txtLayout').value=lines.join('\n'); $('dlgText').showModal();
+};
+$('btnBackup').onclick=()=>{$('txtBackup').value=btoa(unescape(encodeURIComponent(JSON.stringify([...caught])))); $('dlgBackup').showModal();};
+$('btnLoad').onclick=()=>{try{caught=new Set(JSON.parse(decodeURIComponent(escape(atob($('txtBackup').value.trim())))));save();refresh();$('dlgBackup').close()}catch(e){$('txtBackup').value='Nieprawidłowy kod.'}};
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('dialog').close());
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const t=$(b.dataset.copy);try{await navigator.clipboard.writeText(t.value);b.textContent='Skopiowano'}catch(e){t.select();b.textContent='Zaznaczono — Ctrl+C'}setTimeout(()=>b.textContent='Kopiuj',1500)});
+render();
+</script>
+</body>
+</html>
