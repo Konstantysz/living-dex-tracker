@@ -1,0 +1,33 @@
+.box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.box h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--panel2);
+  border-bottom: 1px solid var(--line);
+}
+.done h2 {
+  background: #1d3a2c;
+}
+.r {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--mute);
+}
+.c {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--caughtline);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  padding: 8px;
+}

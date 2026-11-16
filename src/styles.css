@@ -1,0 +1,82 @@
+:root {
+  --bg: #0f1418;
+  --panel: #182027;
+  --panel2: #1f2a33;
+  --line: #2b3843;
+  --ink: #e8eef2;
+  --mute: #8a9aa6;
+  --acc: #e8b84a;
+  --caught: #2f6e4f;
+  --caughtline: #55c08a;
+  --fem: #d86fa0;
+  --form: #5aa0e0;
+  --reg: #c79a5a;
+  --bat: #b06be0;
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 14px;
+}
+button,
+select {
+  background: var(--panel2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover,
+select:hover {
+  border-color: var(--acc);
+}
+input[type='search'] {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 6px 10px;
+  width: 180px;
+  font: inherit;
+}
+dialog {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  width: min(720px, 92vw);
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+dialog textarea {
+  width: 100%;
+  height: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font:
+    12px 'JetBrains Mono',
+    monospace;
+  padding: 8px;
+}
+.dialog-row {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.mono-mute {
+  color: var(--mute);
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+}

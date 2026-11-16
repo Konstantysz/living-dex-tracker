@@ -1,0 +1,102 @@
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  padding: 0;
+  background: var(--panel2);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  --kc: transparent;
+}
+.cell::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--kc);
+}
+.empty {
+  background: transparent;
+  border: 1px dashed #26323c;
+  cursor: default;
+}
+.cell img {
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  margin-top: -6%;
+  pointer-events: none;
+  filter: grayscale(0.15);
+}
+.fallback {
+  font-size: 10px;
+  text-align: center;
+}
+.no {
+  position: absolute;
+  left: 3px;
+  bottom: 1px;
+  font:
+    600 9px 'JetBrains Mono',
+    monospace;
+  color: var(--mute);
+}
+.g {
+  position: absolute;
+  right: 4px;
+  top: 1px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.f {
+  color: var(--fem);
+}
+.m {
+  color: #6fa8dc;
+}
+.k_fem {
+  --kc: var(--fem);
+}
+.k_form,
+.k_alc {
+  --kc: var(--form);
+}
+.k_reg,
+.k_xreg,
+.k_nreg {
+  --kc: var(--reg);
+}
+.k_bat,
+.k_xbat {
+  --kc: var(--bat);
+}
+.caught {
+  background: var(--caught);
+  border-color: var(--caughtline);
+}
+.caught img {
+  filter: none;
+}
+.caught .no {
+  color: #cfe9da;
+}
+.cell:not(.empty):hover,
+.cell:focus-visible {
+  border-color: var(--acc);
+  outline: none;
+}
+.hit {
+  outline: 2px solid var(--acc);
+  outline-offset: 1px;
+}
+:global(.dimcaught) .caught img {
+  opacity: 0.25;
+}
