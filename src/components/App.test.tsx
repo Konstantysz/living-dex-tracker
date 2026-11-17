@@ -1,8 +1,15 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, expect, test } from 'vitest';
+import { DEFAULT_OPTIONS, layoutBoxes } from '../core/layout';
 import { exportCode } from '../core/storage';
+import { findGame } from '../games';
 import { App } from './App';
+
+// Expected numbers come from the engine, so a data change does not break these tests.
+const boxes = layoutBoxes(findGame('sv').layout, DEFAULT_OPTIONS);
+const total = boxes.flat().filter(Boolean).length;
+const empty = boxes.length * 30 - total;
 
 beforeEach(() => {
   localStorage.clear();
@@ -13,8 +20,10 @@ const cell = (name: RegExp) => screen.getByRole('button', { name });
 
 test('renders default layout stats and progress', () => {
   render(<App />);
-  expect(screen.getByText(/30 boxów · 875 slotów · 25 pustych/)).toBeInTheDocument();
-  expect(screen.getByText(/0 \/ 875 \(0\.0%\)/)).toBeInTheDocument();
+  expect(
+    screen.getByText(`${boxes.length} boxów · ${total} slotów · ${empty} pustych`),
+  ).toBeInTheDocument();
+  expect(screen.getByText(`0 / ${total} (0.0%)`)).toBeInTheDocument();
 });
 
 test('click and keyboard toggle caught state and persist it', async () => {
@@ -24,7 +33,7 @@ test('click and keyboard toggle caught state and persist it', async () => {
   expect(sprig).toHaveAttribute('aria-pressed', 'false');
   await user.click(sprig);
   expect(sprig).toHaveAttribute('aria-pressed', 'true');
-  expect(screen.getByText(/1 \/ 875/)).toBeInTheDocument();
+  expect(screen.getByText(new RegExp(`^1 / ${total}`))).toBeInTheDocument();
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
   sprig.focus();
   await user.keyboard('{Enter}');
@@ -67,7 +76,7 @@ test('backup dialog imports a code and rejects invalid ones', async () => {
   await user.click(box);
   await user.paste(exportCode(new Set(['sprigatito', 'floragato'])));
   await user.click(screen.getByText('Wczytaj'));
-  expect(screen.getByText(/2 \/ 875/)).toBeInTheDocument();
+  expect(screen.getByText(new RegExp(`^2 / ${total}`))).toBeInTheDocument();
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {

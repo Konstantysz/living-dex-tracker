@@ -4,16 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-```bash
-npm run dev                     # Vite dev server
-npm run build                   # tsc -b && vite build
-npm test                        # vitest run (all tests, incl. scripts/ and src/)
-npx vitest run src/core/layout.test.ts          # one test file
-npx vitest run -t "Paldea-only"                 # one test by name
-npm run lint                    # eslint + prettier --check (both must pass)
-npm run format                  # prettier --write
-npm run data:build              # regenerate layout.json + download sprites (tsx)
-```
+Scripts are in `package.json`. Use `npm run check` (lint, typecheck, test) before you finish.
+`npm test` also runs the tests in `scripts/`. `npx vitest run -t "<name>"` runs one test.
 
 ## Architecture
 
@@ -21,11 +13,13 @@ Static React app (no backend) for a Pokémon Living Dex box planner. Three layer
 two are game-specific:
 
 1. **Game config** — `src/games/<id>/config.ts` exports a declarative `GameConfig` (type in
-   `src/core/types.ts`): dex list, forms, female forms, HOME regional forms, battle forms, extras,
+   `src/core/types.ts`): dex list, forms, female forms, forms moved to a DLC dex (`dlcForms`),
    merged evolution lines, label overrides. This is the only thing to write for a new game.
+   The app shows only what a player can store in the game's PC: HOME-only regional forms and
+   battle forms stay in the data but are hidden (`keep` in `src/core/layout.ts`).
 2. **Data generator** — `scripts/buildLayout.ts` is a pure function from a `GameConfig` and the
-   PokeAPI CSV tables to `{ groups, extra }`. It is a faithful port of
-   `reference/build_sv_layout_reference.py`.
+   PokeAPI CSV tables to `{ groups, extra, dlc }`. It started as a port of
+   `reference/build_sv_layout_reference.py`, which is now historical.
    `npm run data:build` runs it and writes `src/games/<id>/generated/layout.json` (committed) and
    downloads sprites to `public/sprites/pokemon/…` (committed). CSVs are pinned to `POKEAPI_SHA` in
    `scripts/pokeapi.ts` and cached in `scripts/cache/<sha>/` (committed) so builds work offline.
@@ -40,18 +34,22 @@ A new game needs: config → add to `configs.ts` → `data:build` → import its
 
 ## Things that need care
 
-- **`reference/` is the spec and must not be edited.** `sv-layout-golden.json` is the fixture:
-  `scripts/golden.test.ts` requires generator output (and the committed `layout.json`) to equal it
-  exactly. Entry `id`s are the "caught" keys and the backup-code payload, so they must not change.
-- If the reference looks wrong, record it in `NOTES.md` and ask; do not change data silently.
-  Do not guess Pokémon data — it comes from config + CSVs only.
-- Layout invariants are pinned by tests in `src/core/layout.test.ts`: defaults give 31 boxes /
-  917 slots / 13 empty, box 7 ends at `flabebe-orange`; Paldea-only gives 18 boxes (box 7 ends at
-  `floette-red`); groups of 2–6 are never split when `noSplit` is on.
+- **`reference/sv-layout-golden.json` is a snapshot of the generator output.**
+  `scripts/golden.test.ts` requires generator output (and the committed `layout.json`) to equal it,
+  so it catches unintended data changes. After an intended change in `config.ts`, run
+  `npm run golden:update` and review the diff; record the change in `NOTES.md`. Do not edit the
+  other files in `reference/`. Entry `id`s are the "caught" keys and the backup-code payload, so
+  they must not change.
+- Do not guess Pokémon data — it comes from config + CSVs only. Sources and rules for changing
+  forms: `docs/research/sources.md`. Dex numbers of a species:
+  `scripts/cache/<sha>/pokemon_dex_numbers.csv` (pokedex 31 Paldea, 32 Kitakami, 33 Blueberry).
+- Layout invariants are pinned by tests in `src/core/layout.test.ts` (box and slot counts, DLC
+  dexes start on a new box, DLC forms follow their dex number, groups of 2–6 are not split when
+  `noSplit` is on). Change the numbers there, nowhere else.
 - Backup code = base64 of UTF-8 JSON array of ids, identical to the prototype. For `sv`,
   `storage.ts` also reads the prototype's old localStorage keys as a fallback.
 - Updating PokeAPI data: change `POKEAPI_SHA`, delete the old `scripts/cache/<sha>/`, run
-  `data:build`, and check the golden test.
+  `golden:update`, and review the diff.
 - Component tests rely on `src/test-setup.ts`, which emulates `<dialog>.showModal()` for jsdom.
 - UI strings are in Polish. Routing is by hash (`#sv`); `base: './'` keeps it working under the
   GitHub Pages sub-path (deployed by `.github/workflows/deploy.yml` on push to `main`).
