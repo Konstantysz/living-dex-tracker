@@ -41,7 +41,9 @@ export function keep(it: DexEntry, o: LayoutOptions): boolean {
 }
 
 /** Dex prefix of an entry: "" for the main dex, "K", "B" for DLC dexes. */
-const dexOf = (it: DexEntry) => it.d ?? it.n?.match(/^[A-Z]/)?.[0] ?? '';
+const dexOf = (it: DexEntry) => (it.d ?? it.n)?.match(/^[A-Z]/)?.[0] ?? '';
+/** Number inside the dex ("K5" -> 5); Infinity when there is none. */
+const numOf = (it: DexEntry) => Number((it.d ?? it.n)?.match(/\d+/)?.[0] ?? Infinity);
 
 /**
  * Pure packing: slots run continuously; with `noSplit`, a group of 2..6 that does not fit in the
@@ -82,10 +84,15 @@ export function packBoxes(groups: DexEntry[][], { noSplit }: { noSplit: boolean 
  */
 export function layoutBoxes(layout: GameLayout, o: LayoutOptions): Box[] {
   const groups = layout.groups.map((g) => g.items.filter((it) => keep(it, o)));
-  for (const p of new Set(layout.dlc.map((it) => it.d))) {
-    const forms = layout.dlc.filter((it) => it.d === p && keep(it, o));
-    const last = groups.map((g) => g[0] && dexOf(g[0]) === p).lastIndexOf(true);
-    groups.splice(last + 1, 0, forms);
+  for (const d of new Set(layout.dlc.map((it) => it.d))) {
+    const forms = layout.dlc.filter((it) => it.d === d && keep(it, o));
+    const [first] = forms;
+    if (!first) continue;
+    // before the first group of that dex with a higher number, else at the end of the dex
+    const inDex = (g: DexEntry[]) => g[0] && dexOf(g[0]) === dexOf(first);
+    const next = groups.findIndex((g) => inDex(g) && numOf(g[0]!) > numOf(first));
+    const at = next >= 0 ? next : groups.map(inDex).lastIndexOf(true) + 1;
+    groups.splice(at, 0, forms);
   }
   return packBoxes(groups, { noSplit: o.noSplit });
 }

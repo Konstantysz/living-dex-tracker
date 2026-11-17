@@ -10,8 +10,8 @@ const stats = (boxes: ReturnType<typeof layoutBoxes>) => {
 };
 
 describe('packBoxes on SV data', () => {
-  test('defaults: 31 boxes, 874 slots, 56 empty', () => {
-    expect(stats(layoutBoxes(sv, DEFAULT_OPTIONS))).toEqual({ boxes: 31, slots: 874, empty: 56 });
+  test('defaults: 30 boxes, 875 slots, 25 empty', () => {
+    expect(stats(layoutBoxes(sv, DEFAULT_OPTIONS))).toEqual({ boxes: 30, slots: 875, empty: 25 });
   });
 
   test('DLC dexes start on a fresh box', () => {
@@ -23,16 +23,28 @@ describe('packBoxes on SV data', () => {
     }
   });
 
-  test('DLC-only forms sit at the end of the Kitakami boxes, not in Paldea', () => {
-    const boxes = layoutBoxes(sv, DEFAULT_OPTIONS);
-    const flat = boxes.flat().filter(Boolean);
-    const at = (id: string) => flat.findIndex((it) => it!.id === id);
-    const lastK = flat.map((it) => it!.n?.startsWith('K') && !it!.d).lastIndexOf(true);
-    for (const id of ['wooper', 'wooper-female', 'tauros', 'basculin-white-striped']) {
-      expect(at(id), id).toBe(
-        lastK + 1 + ['wooper', 'wooper-female', 'basculin-white-striped', 'tauros'].indexOf(id),
-      );
-    }
+  test('DLC-only forms follow their species number in the DLC dex', () => {
+    const flat = layoutBoxes(sv, DEFAULT_OPTIONS).flat().filter(Boolean);
+    const ids = flat.map((it) => it!.id);
+    // every entry of that DLC dex before the form has a lower number, every one after a higher one
+    const at = (id: string, p: string, num: number) => {
+      const i = ids.indexOf(id);
+      const moved = new Set(sv.dlc.map((x) => x.id));
+      const dex = flat.filter((it) => it!.n?.startsWith(p) && !moved.has(it!.id));
+      for (const it of dex) {
+        const n = Number(it!.n!.slice(1));
+        expect(ids.indexOf(it!.id) < i ? n < num : n > num, `${id} vs ${it!.id}`).toBe(true);
+      }
+    };
+    at('wooper', 'K', 5);
+    at('wooper-female', 'K', 5);
+    at('basculin-white-striped', 'K', 194);
+    at('tauros', 'B', 22);
+    at('diglett-alola', 'B', 66);
+    at('vulpix-alola', 'B', 157);
+    at('growlithe-hisui', 'K', 78);
+    at('arcanine-hisui', 'K', 79);
+    expect(ids.indexOf('wooper-female')).toBe(ids.indexOf('wooper') + 1);
     expect(flat.find((it) => it!.id === 'wooper-paldea')!.form).toBe('Paldea');
   });
 

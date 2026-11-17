@@ -2652,26 +2652,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/52.png"
-    },
-    {
-     "id": "meowth-alola",
-     "n": "141",
-     "nat": 52,
-     "name": "Meowth",
-     "form": "Alola",
-     "g": "",
-     "k": "reg",
-     "s": "sprites/pokemon/10107.png"
-    },
-    {
-     "id": "meowth-galar",
-     "n": "141",
-     "nat": 52,
-     "name": "Meowth",
-     "form": "Galar",
-     "g": "",
-     "k": "reg",
-     "s": "sprites/pokemon/10161.png"
     }
    ]
   },
@@ -2687,16 +2667,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/53.png"
-    },
-    {
-     "id": "persian-alola",
-     "n": "142",
-     "nat": 53,
-     "name": "Persian",
-     "form": "Alola",
-     "g": "",
-     "k": "reg",
-     "s": "sprites/pokemon/10108.png"
     }
    ]
   },
@@ -2897,16 +2867,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/50.png"
-    },
-    {
-     "id": "diglett-alola",
-     "n": "148",
-     "nat": 50,
-     "name": "Diglett",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10105.png"
     }
    ]
   },
@@ -2922,16 +2882,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/51.png"
-    },
-    {
-     "id": "dugtrio-alola",
-     "n": "149",
-     "nat": 51,
-     "name": "Dugtrio",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10106.png"
     }
    ]
   },
@@ -3777,16 +3727,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/88.png"
-    },
-    {
-     "id": "grimer-alola",
-     "n": "194",
-     "nat": 88,
-     "name": "Grimer",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10112.png"
     }
    ]
   },
@@ -3802,16 +3742,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/89.png"
-    },
-    {
-     "id": "muk-alola",
-     "n": "195",
-     "nat": 89,
-     "name": "Muk",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10113.png"
     }
    ]
   },
@@ -4122,16 +4052,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/58.png"
-    },
-    {
-     "id": "growlithe-hisui",
-     "n": "213",
-     "nat": 58,
-     "name": "Growlithe",
-     "form": "Hisui",
-     "g": "",
-     "k": "reg",
-     "s": "sprites/pokemon/10229.png"
     }
    ]
   },
@@ -4147,16 +4067,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/59.png"
-    },
-    {
-     "id": "arcanine-hisui",
-     "n": "214",
-     "nat": 59,
-     "name": "Arcanine",
-     "form": "Hisui",
-     "g": "",
-     "k": "reg",
-     "s": "sprites/pokemon/10230.png"
     }
    ]
   },
@@ -6087,16 +5997,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/79.png"
-    },
-    {
-     "id": "slowpoke-galar",
-     "n": "324",
-     "nat": 79,
-     "name": "Slowpoke",
-     "form": "Galar",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10164.png"
     }
    ]
   },
@@ -6112,16 +6012,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/80.png"
-    },
-    {
-     "id": "slowbro-galar",
-     "n": "325",
-     "nat": 80,
-     "name": "Slowbro",
-     "form": "Galar",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10165.png"
     }
    ]
   },
@@ -6137,16 +6027,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/199.png"
-    },
-    {
-     "id": "slowking-galar",
-     "n": "326",
-     "nat": 199,
-     "name": "Slowking",
-     "form": "Galar",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10172.png"
     }
    ]
   },
@@ -6242,16 +6122,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/211.png"
-    },
-    {
-     "id": "qwilfish-hisui",
-     "n": "331",
-     "nat": 211,
-     "name": "Qwilfish",
-     "form": "Hisui",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10234.png"
     }
    ]
   },
@@ -7228,20 +7098,10 @@
      "n": "391",
      "nat": 999,
      "name": "Gimmighoul",
-     "form": "Chest",
+     "form": "",
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/999.png"
-    },
-    {
-     "id": "gimmighoul-roaming",
-     "n": "391",
-     "nat": 999,
-     "name": "Gimmighoul",
-     "form": "Roaming",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/10263.png"
     }
    ]
   },
@@ -7762,16 +7622,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/37.png"
-    },
-    {
-     "id": "vulpix-alola",
-     "n": "K37",
-     "nat": 37,
-     "name": "Vulpix",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10103.png"
     }
    ]
   },
@@ -7787,16 +7637,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/38.png"
-    },
-    {
-     "id": "ninetales-alola",
-     "n": "K38",
-     "nat": 38,
-     "name": "Ninetales",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10104.png"
     }
    ]
   },
@@ -8172,16 +8012,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/74.png"
-    },
-    {
-     "id": "geodude-alola",
-     "n": "K80",
-     "nat": 74,
-     "name": "Geodude",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10109.png"
     }
    ]
   },
@@ -8197,16 +8027,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/75.png"
-    },
-    {
-     "id": "graveler-alola",
-     "n": "K81",
-     "nat": 75,
-     "name": "Graveler",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10110.png"
     }
    ]
   },
@@ -8222,16 +8042,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/76.png"
-    },
-    {
-     "id": "golem-alola",
-     "n": "K82",
-     "nat": 76,
-     "name": "Golem",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10111.png"
     }
    ]
   },
@@ -8477,16 +8287,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/27.png"
-    },
-    {
-     "id": "sandshrew-alola",
-     "n": "K116",
-     "nat": 27,
-     "name": "Sandshrew",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10101.png"
     }
    ]
   },
@@ -8502,16 +8302,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/28.png"
-    },
-    {
-     "id": "sandslash-alola",
-     "n": "K117",
-     "nat": 28,
-     "name": "Sandslash",
-     "form": "Alola",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/10102.png"
     }
    ]
   },
@@ -12553,7 +12343,7 @@
    "g": "♂",
    "k": "nreg",
    "s": "sprites/pokemon/194.png",
-   "d": "K"
+   "d": "K5"
   },
   {
    "id": "wooper-female",
@@ -12564,7 +12354,7 @@
    "g": "♀",
    "k": "nreg",
    "s": "sprites/pokemon/female/194.png",
-   "d": "K"
+   "d": "K5"
   },
   {
    "id": "basculin-white-striped",
@@ -12575,7 +12365,73 @@
    "g": "",
    "k": "form",
    "s": "sprites/pokemon/10247.png",
-   "d": "K"
+   "d": "K194"
+  },
+  {
+   "id": "diglett-alola",
+   "n": "148",
+   "nat": 50,
+   "name": "Diglett",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10105.png",
+   "d": "B66"
+  },
+  {
+   "id": "dugtrio-alola",
+   "n": "149",
+   "nat": 51,
+   "name": "Dugtrio",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10106.png",
+   "d": "B67"
+  },
+  {
+   "id": "grimer-alola",
+   "n": "194",
+   "nat": 88,
+   "name": "Grimer",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10112.png",
+   "d": "B68"
+  },
+  {
+   "id": "muk-alola",
+   "n": "195",
+   "nat": 89,
+   "name": "Muk",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10113.png",
+   "d": "B69"
+  },
+  {
+   "id": "growlithe-hisui",
+   "n": "213",
+   "nat": 58,
+   "name": "Growlithe",
+   "form": "Hisui",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10229.png",
+   "d": "K78"
+  },
+  {
+   "id": "arcanine-hisui",
+   "n": "214",
+   "nat": 59,
+   "name": "Arcanine",
+   "form": "Hisui",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10230.png",
+   "d": "K79"
   },
   {
    "id": "tauros",
@@ -12586,7 +12442,128 @@
    "g": "",
    "k": "nreg",
    "s": "sprites/pokemon/128.png",
-   "d": "K"
+   "d": "B22"
+  },
+  {
+   "id": "slowpoke-galar",
+   "n": "324",
+   "nat": 79,
+   "name": "Slowpoke",
+   "form": "Galar",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10164.png",
+   "d": "B75"
+  },
+  {
+   "id": "slowbro-galar",
+   "n": "325",
+   "nat": 80,
+   "name": "Slowbro",
+   "form": "Galar",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10165.png",
+   "d": "B76"
+  },
+  {
+   "id": "slowking-galar",
+   "n": "326",
+   "nat": 199,
+   "name": "Slowking",
+   "form": "Galar",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10172.png",
+   "d": "B77"
+  },
+  {
+   "id": "qwilfish-hisui",
+   "n": "331",
+   "nat": 211,
+   "name": "Qwilfish",
+   "form": "Hisui",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10234.png",
+   "d": "B146"
+  },
+  {
+   "id": "vulpix-alola",
+   "n": "K37",
+   "nat": 37,
+   "name": "Vulpix",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10103.png",
+   "d": "B157"
+  },
+  {
+   "id": "ninetales-alola",
+   "n": "K38",
+   "nat": 38,
+   "name": "Ninetales",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10104.png",
+   "d": "B158"
+  },
+  {
+   "id": "geodude-alola",
+   "n": "K80",
+   "nat": 74,
+   "name": "Geodude",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10109.png",
+   "d": "B96"
+  },
+  {
+   "id": "graveler-alola",
+   "n": "K81",
+   "nat": 75,
+   "name": "Graveler",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10110.png",
+   "d": "B97"
+  },
+  {
+   "id": "golem-alola",
+   "n": "K82",
+   "nat": 76,
+   "name": "Golem",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10111.png",
+   "d": "B98"
+  },
+  {
+   "id": "sandshrew-alola",
+   "n": "K116",
+   "nat": 27,
+   "name": "Sandshrew",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10101.png",
+   "d": "B155"
+  },
+  {
+   "id": "sandslash-alola",
+   "n": "K117",
+   "nat": 28,
+   "name": "Sandslash",
+   "form": "Alola",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/10102.png",
+   "d": "B156"
   }
  ]
 }

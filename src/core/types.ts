@@ -19,7 +19,10 @@ export interface DexEntry {
   k: Kind;
   /** Sprite path relative to the site root, e.g. "sprites/pokemon/906.png". */
   s: string;
-  /** Dex prefix ("K", "B") of the DLC box this form is moved to. Only set on `GameLayout.dlc`. */
+  /**
+   * Only on `GameLayout.dlc`: the DLC dex this form is moved to, as its prefix plus the species'
+   * number in that dex ("K5"), or just the prefix ("K") when the species is not in it.
+   */
   d?: string;
 }
 

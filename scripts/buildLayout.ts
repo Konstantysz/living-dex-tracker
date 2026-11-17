@@ -129,8 +129,17 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
       const fi = get(forms, g[0]!.id, 'form').form_identifier as string;
       g[0]!.form = fi ? (cfg.labelOverrides[dashTitle(fi)] ?? dashTitle(fi)) : '';
     }
-    const keepIn = g.filter((i) => !cfg.dlcForms[i.id]);
-    moved.push(...g.filter((i) => cfg.dlcForms[i.id]));
+    // a form already sits in its own dex when the species' group is there
+    const away = (i: Work) => cfg.dlcForms[i.id] !== undefined && cfg.dlcForms[i.id] !== prefix;
+    const keepIn = g.filter((i) => !away(i));
+    for (const i of g.filter(away)) {
+      const p = cfg.dlcForms[i.id]!;
+      const dex = cfg.dexes.find((d) => d.prefix === p);
+      const row = t.pokemon_dex_numbers.find(
+        (r) => r.pokedex_id === String(dex?.pokeapiId) && r.species_id === sid,
+      );
+      moved.push(Object.assign(i, { d: p + (row ? String(row.pokedex_number) : '') }));
+    }
     groups.push({ sp: ident, items: keepIn });
   }
 
@@ -160,7 +169,7 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   return {
     groups: groups.map((g) => ({ sp: g.sp, items: g.items.map(strip) })),
     extra: extra.map(strip),
-    dlc: moved.map((w) => ({ ...strip(w), d: cfg.dlcForms[w.id]! })),
+    dlc: moved.map(strip),
     sprites: [...sprites].sort(),
   };
 }

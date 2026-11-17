@@ -51,7 +51,6 @@ export const svConfig: GameConfig = {
     shellos: ['shellos-east'],
     gastrodon: ['gastrodon-east'],
     tatsugiri: ['tatsugiri-droopy', 'tatsugiri-stretchy'],
-    gimmighoul: ['gimmighoul-roaming'],
     vivillon: vivillon.filter((x) => x !== 'poke-ball').map((x) => `vivillon-${x}`),
     rotom: ['rotom-heat', 'rotom-wash', 'rotom-frost', 'rotom-fan', 'rotom-mow'],
     ...flabebeLine,
@@ -76,6 +75,9 @@ export const svConfig: GameConfig = {
     sandslash: ['sandslash-alola'],
     vulpix: ['vulpix-alola'],
     ninetales: ['ninetales-alola'],
+    // Hisuian Growlithe is a gift in Kitakami (Perrin); Arcanine evolves from it (Fire Stone)
+    growlithe: ['growlithe-hisui'],
+    arcanine: ['arcanine-hisui'],
     // native in Blueberry (Serebii blueberrypokedex)
     exeggutor: ['exeggutor-alola'],
     qwilfish: ['qwilfish-hisui'],
@@ -99,6 +101,8 @@ export const svConfig: GameConfig = {
     'ninetales-alola',
     'exeggutor-alola',
     'qwilfish-hisui',
+    'growlithe-hisui',
+    'arcanine-hisui',
     'wooper-female',
   ],
   genderDifferences:
@@ -115,15 +119,11 @@ export const svConfig: GameConfig = {
   },
   homeRegional: {
     raichu: ['raichu-alola'],
-    meowth: ['meowth-alola', 'meowth-galar'],
-    persian: ['persian-alola'],
     lilligant: ['lilligant-hisui'],
     sliggoo: ['sliggoo-hisui'],
     goodra: ['goodra-hisui'],
     voltorb: ['voltorb-hisui'],
     electrode: ['electrode-hisui'],
-    growlithe: ['growlithe-hisui'],
-    arcanine: ['arcanine-hisui'],
     zorua: ['zorua-hisui'],
     zoroark: ['zoroark-hisui'],
     sneasel: ['sneasel-hisui', 'sneasel-hisui-female'],
@@ -176,13 +176,25 @@ export const svConfig: GameConfig = {
   },
   formNames: { wooper: 'Johto', 'wooper-female': 'Johto', tauros: 'Kanto' },
   toggleableForms: ['alcremie'],
-  // Forms obtainable only in a DLC (Serebii): Johto Wooper and white-striped Basculin in Kitakami,
-  // Kanto Tauros by breeding in Kitakami. Shown at the end of the Kitakami boxes.
+  // Forms obtainable only in one DLC (Serebii, owner): shown at the species' number in that dex.
+  // Kitakami: Johto Wooper, white-striped Basculin, Hisuian Growlithe and Arcanine. Blueberry: Kanto Tauros and every Alolan,
+  // Galarian and Hisuian form (Terarium), also when the species itself is in Paldea or Kitakami.
   dlcForms: {
     wooper: 'K',
     'wooper-female': 'K',
     'basculin-white-striped': 'K',
-    tauros: 'K',
+    'growlithe-hisui': 'K',
+    'arcanine-hisui': 'K',
+    ...Object.fromEntries(
+      [
+        'tauros',
+        ...'diglett dugtrio grimer muk geodude graveler golem sandshrew sandslash vulpix ninetales exeggutor'
+          .split(' ')
+          .map((s) => `${s}-alola`),
+        ...'slowpoke slowbro slowking'.split(' ').map((s) => `${s}-galar`),
+        'qwilfish-hisui',
+      ].map((id) => [id, 'B']),
+    ),
   },
   // Vivillon is locked to Fancy in SV; other patterns need a Pokémon GO postcard (Serebii). No Poké Ball.
   goForms: [

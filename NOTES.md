@@ -29,9 +29,21 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   Fancy stays kind `form`.
 - **Ogerpon.** Only the Teal Mask Ogerpon can be caught (Serebii). The three other mask forms are
   form changes through a held mask, so they are removed from the config and from the fixture.
-- **DLC-only forms.** Johto Wooper (and female), white-striped Basculin and Kanto Tauros leave
-  their species group and go to the new top-level `dlc` list, with `d: "K"`. The app puts them at
-  the end of the Kitakami boxes. The golden file has a new `dlc` key. Serebii lists Johto Wooper
+- **DLC-only forms.** The Alolan, Galarian and Hisuian forms Serebii lists in the Blueberry dex
+  (Diglett to Golem, Sandshrew, Vulpix, Slowpoke line, Qwilfish) also move to `dlc` with `B<n>`
+  when the species group is in Paldea or Kitakami (Exeggutor already sits in Blueberry).
+  Johto Wooper (and female), white-striped Basculin and Kanto Tauros leave
+  their species group and go to the new top-level `dlc` list. `d` is the DLC prefix plus the
+  species number in that dex (`K5` for Wooper, `K194` for Basculin, `B22` for Tauros). The app
+  puts each form before the first entry of that dex with a higher number. The golden file has a new `dlc` key. Serebii lists Johto Wooper
   as a trade in Cascarrafa, but the owner says it is caught in Kitakami, so it is treated as DLC.
+- **Round-2 research** (`docs/research/`, plus the owner's own sources). Hisuian Growlithe and
+  Arcanine are obtainable in Kitakami (gift, evolution) and have numbers K78 and K79, so they moved
+  to `dlc`. Galarian Meowth is a gift in the base game, but it is left out at the owner's request
+  (Perrserker is in no SV dex). Alolan Meowth (League Club trade) and Alolan Persian are also left
+  out for now: Meowth has no Blueberry number. They wait for a section of obtainable Pokémon that
+  are in no dex (a GitHub issue is planned). Roaming Gimmighoul is not obtainable in SV (Pokémon GO transfer) and is removed.
+  The research agent said Tatsugiri forms differ by dex; the owner showed that all three spawn at
+  Casseroya Lake, so Tatsugiri stays in Paldea.
 - **Hidden kinds.** `reg`, `bat`, `xreg` and `xbat` entries stay in the data but the app never shows
   them (they cannot be stored in the PC of the game).

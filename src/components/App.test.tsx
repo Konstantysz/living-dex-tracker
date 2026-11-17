@@ -13,8 +13,8 @@ const cell = (name: RegExp) => screen.getByRole('button', { name });
 
 test('renders default layout stats and progress', () => {
   render(<App />);
-  expect(screen.getByText(/31 boxów · 874 slotów · 56 pustych/)).toBeInTheDocument();
-  expect(screen.getByText(/0 \/ 874 \(0\.0%\)/)).toBeInTheDocument();
+  expect(screen.getByText(/30 boxów · 875 slotów · 25 pustych/)).toBeInTheDocument();
+  expect(screen.getByText(/0 \/ 875 \(0\.0%\)/)).toBeInTheDocument();
 });
 
 test('click and keyboard toggle caught state and persist it', async () => {
@@ -24,7 +24,7 @@ test('click and keyboard toggle caught state and persist it', async () => {
   expect(sprig).toHaveAttribute('aria-pressed', 'false');
   await user.click(sprig);
   expect(sprig).toHaveAttribute('aria-pressed', 'true');
-  expect(screen.getByText(/1 \/ 874/)).toBeInTheDocument();
+  expect(screen.getByText(/1 \/ 875/)).toBeInTheDocument();
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
   sprig.focus();
   await user.keyboard('{Enter}');
@@ -67,7 +67,7 @@ test('backup dialog imports a code and rejects invalid ones', async () => {
   await user.click(box);
   await user.paste(exportCode(new Set(['sprigatito', 'floragato'])));
   await user.click(screen.getByText('Wczytaj'));
-  expect(screen.getByText(/2 \/ 874/)).toBeInTheDocument();
+  expect(screen.getByText(/2 \/ 875/)).toBeInTheDocument();
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {
