@@ -6,8 +6,8 @@ import { buildLayout } from './buildLayout';
 import { loadTables } from './pokeapi';
 
 const read = (p: string) => JSON.parse(readFileSync(join(import.meta.dirname, '..', p), 'utf8'));
-const { groups, extra } = buildLayout(svConfig, await loadTables());
-const built = { groups, extra };
+const { groups, extra, dlc } = buildLayout(svConfig, await loadTables());
+const built = { groups, extra, dlc };
 
 test('generator output equals reference golden', () => {
   expect(built).toEqual(read('reference/sv-layout-golden.json'));

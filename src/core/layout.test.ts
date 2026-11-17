@@ -8,17 +8,36 @@ const stats = (boxes: ReturnType<typeof layoutBoxes>) => {
   const slots = boxes.flat().filter(Boolean).length;
   return { boxes: boxes.length, slots, empty: boxes.length * 30 - slots };
 };
-const lastId = (box: (DexEntry | null)[]) => box.filter(Boolean).at(-1)!.id;
 
 describe('packBoxes on SV data', () => {
-  test('defaults: 31 boxes, 917 slots, 13 empty, box 7 ends at flabebe-orange', () => {
-    const boxes = layoutBoxes(sv, DEFAULT_OPTIONS);
-    expect(stats(boxes)).toEqual({ boxes: 31, slots: 917, empty: 13 });
-    expect(lastId(boxes[6]!)).toBe('flabebe-orange');
+  test('defaults: 31 boxes, 874 slots, 56 empty', () => {
+    expect(stats(layoutBoxes(sv, DEFAULT_OPTIONS))).toEqual({ boxes: 31, slots: 874, empty: 56 });
   });
 
-  test('groups of 2..6 are never split across boxes', () => {
+  test('DLC dexes start on a fresh box', () => {
     const boxes = layoutBoxes(sv, DEFAULT_OPTIONS);
+    for (const p of ['K', 'B']) {
+      const i = boxes.findIndex((b) => b[0]?.n?.startsWith(p));
+      expect(i).toBeGreaterThan(0);
+      expect(boxes[i - 1]!.some((it) => it?.n?.startsWith(p))).toBe(false);
+    }
+  });
+
+  test('DLC-only forms sit at the end of the Kitakami boxes, not in Paldea', () => {
+    const boxes = layoutBoxes(sv, DEFAULT_OPTIONS);
+    const flat = boxes.flat().filter(Boolean);
+    const at = (id: string) => flat.findIndex((it) => it!.id === id);
+    const lastK = flat.map((it) => it!.n?.startsWith('K') && !it!.d).lastIndexOf(true);
+    for (const id of ['wooper', 'wooper-female', 'tauros', 'basculin-white-striped']) {
+      expect(at(id), id).toBe(
+        lastK + 1 + ['wooper', 'wooper-female', 'basculin-white-striped', 'tauros'].indexOf(id),
+      );
+    }
+    expect(flat.find((it) => it!.id === 'wooper-paldea')!.form).toBe('Paldea');
+  });
+
+  test('groups of 2..6 are never split across boxes with noSplit', () => {
+    const boxes = layoutBoxes(sv, { ...DEFAULT_OPTIONS, noSplit: true });
     const boxOf = new Map<string, number>();
     boxes.forEach((b, i) => b.forEach((it) => it && boxOf.set(it.id, i)));
     for (const g of sv.groups) {
@@ -28,41 +47,28 @@ describe('packBoxes on SV data', () => {
     }
   });
 
-  test('Paldea-only dex: 18 boxes, box 7 ends at floette-red', () => {
-    const dlcForms = new Set([
-      'wooper',
-      'wooper-female',
-      'tauros',
-      'diglett-alola',
-      'dugtrio-alola',
-      'slowpoke-galar',
-      'slowbro-galar',
-      'slowking-galar',
-    ]);
-    const paldea: GameLayout = {
-      extra: [],
-      groups: sv.groups
-        .filter((g) => !/^[KB]/.test(g.items[0]!.n!))
-        .map((g) => ({ ...g, items: g.items.filter((it) => !dlcForms.has(it.id)) })),
-    };
-    const boxes = layoutBoxes(paldea, DEFAULT_OPTIONS);
-    expect(boxes).toHaveLength(18);
-    expect(lastId(boxes[6]!)).toBe('floette-red');
+  test('HOME-only, battle and out-of-dex forms are never shown', () => {
+    const kinds = new Set(
+      layoutBoxes(sv, DEFAULT_OPTIONS)
+        .flat()
+        .map((it) => it?.k),
+    );
+    for (const k of ['reg', 'bat', 'xreg', 'xbat'] as const) expect(kinds.has(k)).toBe(false);
   });
 
-  test('extra box always starts a new box and shows nat numbers', () => {
-    const boxes = layoutBoxes(sv, { ...DEFAULT_OPTIONS, extra: true });
-    const last = boxes.at(-1)!;
-    expect(last[0]!.n).toBeNull();
-    expect(boxes.at(-2)!.every((it) => it?.n !== null || it === null)).toBe(true);
+  test('go toggle adds the Vivillon patterns except Fancy and Poké Ball', () => {
+    const count = (go: boolean) => stats(layoutBoxes(sv, { ...DEFAULT_OPTIONS, go })).slots;
+    expect(count(true) - count(false)).toBe(18);
+    const ids = layoutBoxes(sv, DEFAULT_OPTIONS)
+      .flat()
+      .map((it) => it?.id);
+    expect(ids).toContain('vivillon-fancy');
+    expect(ids).not.toContain('vivillon-poke-ball');
   });
 
-  test('toggles change the layout', () => {
-    const count = (o: Partial<typeof DEFAULT_OPTIONS>) =>
-      stats(layoutBoxes(sv, { ...DEFAULT_OPTIONS, ...o })).slots;
-    expect(count({ alc: false })).toBe(917 - 62);
-    expect(count({ reg: false })).toBeLessThan(917);
-    expect(count({ bat: true })).toBeGreaterThan(917);
+  test('alc toggle hides the 62 extra Alcremie forms', () => {
+    const count = (alc: boolean) => stats(layoutBoxes(sv, { ...DEFAULT_OPTIONS, alc })).slots;
+    expect(count(true) - count(false)).toBe(62);
   });
 });
 

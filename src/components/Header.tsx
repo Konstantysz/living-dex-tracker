@@ -1,4 +1,3 @@
-import type { AppOptions } from '../core/storage';
 import type { DexConfig } from '../core/types';
 import { registry } from '../games';
 import { Legend } from './Legend';
@@ -7,26 +6,16 @@ import s from './Header.module.css';
 interface Props {
   gameId: string;
   dexes: DexConfig[];
-  options: AppOptions;
-  onOption: (k: keyof AppOptions, v: boolean) => void;
   query: string;
   onQuery: (q: string) => void;
   got: number;
   total: number;
   stats: { boxes: number; slots: number; empty: number };
   onGame: (id: string) => void;
+  onShowSettings: () => void;
   onShowText: () => void;
   onShowBackup: () => void;
 }
-
-const TOGGLES: [keyof AppOptions, string][] = [
-  ['reg', 'formy regionalne tylko z HOME'],
-  ['alc', 'wszystkie Alcremie (63)'],
-  ['bat', 'formy bitewne'],
-  ['extra', 'box: formy spoza dexu'],
-  ['noSplit', 'nie dziel małych grup (do 6 form) między boxy'],
-  ['dim', 'przyciemnij złapane'],
-];
 
 export function Header(p: Props) {
   const pct = p.total ? (100 * p.got) / p.total : 0;
@@ -57,16 +46,7 @@ export function Header(p: Props) {
         </span>
       </div>
       <div className={s.ctrls}>
-        {TOGGLES.map(([k, text]) => (
-          <label key={k} className={s.toggle}>
-            <input
-              type="checkbox"
-              checked={p.options[k]}
-              onChange={(e) => p.onOption(k, e.target.checked)}
-            />{' '}
-            {text}
-          </label>
-        ))}
+        <button onClick={p.onShowSettings}>Ustawienia</button>
         <input
           type="search"
           placeholder="szukaj nazwy lub #nr"

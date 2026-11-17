@@ -34,20 +34,20 @@ describe('per-game persistence', () => {
     saveCaught('other', new Set(['y']));
     expect(loadCaught('sv')).toEqual(new Set(['x']));
     expect(loadCaught('other')).toEqual(new Set(['y']));
-    saveOptions('sv', { ...loadOptions('sv'), bat: true });
-    expect(loadOptions('sv').bat).toBe(true);
-    expect(loadOptions('other').bat).toBe(false);
+    saveOptions('sv', { ...loadOptions('sv'), dim: true });
+    expect(loadOptions('sv').dim).toBe(true);
+    expect(loadOptions('other').dim).toBe(false);
   });
 
   test('migrates prototype keys for sv only', () => {
     localStorage.setItem('paldea-living-dex-v1', JSON.stringify(['a']));
     localStorage.setItem(
       'sv-living-dex-opt-v2',
-      JSON.stringify({ optBat: true, optNoSplit: false }),
+      JSON.stringify({ optBat: true, optNoSplit: true }),
     );
     expect(loadCaught('sv')).toEqual(new Set(['a']));
     expect(loadCaught('other').size).toBe(0);
-    expect(loadOptions('sv')).toMatchObject({ bat: true, noSplit: false, reg: true });
+    expect(loadOptions('sv')).toMatchObject({ noSplit: true, alc: true });
   });
 
   test('works when localStorage throws', () => {
@@ -57,7 +57,7 @@ describe('per-game persistence', () => {
     };
     try {
       expect(loadCaught('sv').size).toBe(0);
-      expect(loadOptions('sv').reg).toBe(true);
+      expect(loadOptions('sv').alc).toBe(true);
     } finally {
       Storage.prototype.getItem = orig;
     }

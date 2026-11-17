@@ -1,5 +1,6 @@
 /** Entry kind: drives the colour stripe and the toggle filters. */
-export type Kind = 'base' | 'fem' | 'form' | 'nreg' | 'reg' | 'bat' | 'alc' | 'xreg' | 'xbat';
+export type Kind =
+  'base' | 'fem' | 'form' | 'nreg' | 'reg' | 'bat' | 'alc' | 'go' | 'xreg' | 'xbat';
 
 export type Gender = '' | '♂' | '♀';
 
@@ -18,6 +19,8 @@ export interface DexEntry {
   k: Kind;
   /** Sprite path relative to the site root, e.g. "sprites/pokemon/906.png". */
   s: string;
+  /** Dex prefix ("K", "B") of the DLC box this form is moved to. Only set on `GameLayout.dlc`. */
+  d?: string;
 }
 
 /** A species (or merged evolution line) with all its entries in target order. */
@@ -30,6 +33,8 @@ export interface SpeciesGroup {
 export interface GameLayout {
   groups: SpeciesGroup[];
   extra: DexEntry[];
+  /** Forms obtainable only in a DLC, taken out of their species group (see `dlcForms`). */
+  dlc: DexEntry[];
 }
 
 export interface DexConfig {
@@ -69,4 +74,8 @@ export interface GameConfig {
   formNames: Record<string, string>;
   /** Species whose non-base forms are toggleable as a set (kind "alc"); label drops "-sweet". */
   toggleableForms: string[];
+  /** Entry ids obtainable only through a link with another app (Vivillon + Pokémon GO): kind "go". */
+  goForms: string[];
+  /** Form id -> dex prefix: forms obtainable only in that DLC; shown at the end of its boxes. */
+  dlcForms: Record<string, string>;
 }

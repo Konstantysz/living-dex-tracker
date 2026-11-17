@@ -580,7 +580,7 @@
      "name": "Vivillon",
      "form": "Meadow",
      "g": "",
-     "k": "base",
+     "k": "go",
      "s": "sprites/pokemon/666.png"
     },
     {
@@ -590,7 +590,7 @@
      "name": "Vivillon",
      "form": "Icy Snow",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-icy-snow.png"
     },
     {
@@ -600,7 +600,7 @@
      "name": "Vivillon",
      "form": "Polar",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-polar.png"
     },
     {
@@ -610,7 +610,7 @@
      "name": "Vivillon",
      "form": "Tundra",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-tundra.png"
     },
     {
@@ -620,7 +620,7 @@
      "name": "Vivillon",
      "form": "Continental",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-continental.png"
     },
     {
@@ -630,7 +630,7 @@
      "name": "Vivillon",
      "form": "Garden",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-garden.png"
     },
     {
@@ -640,7 +640,7 @@
      "name": "Vivillon",
      "form": "Elegant",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-elegant.png"
     },
     {
@@ -650,7 +650,7 @@
      "name": "Vivillon",
      "form": "Modern",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-modern.png"
     },
     {
@@ -660,7 +660,7 @@
      "name": "Vivillon",
      "form": "Marine",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-marine.png"
     },
     {
@@ -670,7 +670,7 @@
      "name": "Vivillon",
      "form": "Archipelago",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-archipelago.png"
     },
     {
@@ -680,7 +680,7 @@
      "name": "Vivillon",
      "form": "High Plains",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-high-plains.png"
     },
     {
@@ -690,7 +690,7 @@
      "name": "Vivillon",
      "form": "Sandstorm",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-sandstorm.png"
     },
     {
@@ -700,7 +700,7 @@
      "name": "Vivillon",
      "form": "River",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-river.png"
     },
     {
@@ -710,7 +710,7 @@
      "name": "Vivillon",
      "form": "Monsoon",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-monsoon.png"
     },
     {
@@ -720,7 +720,7 @@
      "name": "Vivillon",
      "form": "Savanna",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-savanna.png"
     },
     {
@@ -730,7 +730,7 @@
      "name": "Vivillon",
      "form": "Sun",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-sun.png"
     },
     {
@@ -740,7 +740,7 @@
      "name": "Vivillon",
      "form": "Ocean",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-ocean.png"
     },
     {
@@ -750,7 +750,7 @@
      "name": "Vivillon",
      "form": "Jungle",
      "g": "",
-     "k": "form",
+     "k": "go",
      "s": "sprites/pokemon/666-jungle.png"
     },
     {
@@ -762,16 +762,6 @@
      "g": "",
      "k": "form",
      "s": "sprites/pokemon/666-fancy.png"
-    },
-    {
-     "id": "vivillon-poke-ball",
-     "n": "37",
-     "nat": 666,
-     "name": "Vivillon",
-     "form": "Poké Ball",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/666-poke-ball.png"
     }
    ]
   },
@@ -1042,26 +1032,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/10253.png"
-    },
-    {
-     "id": "wooper",
-     "n": "53",
-     "nat": 194,
-     "name": "Wooper",
-     "form": "Johto",
-     "g": "♂",
-     "k": "nreg",
-     "s": "sprites/pokemon/194.png"
-    },
-    {
-     "id": "wooper-female",
-     "n": "53",
-     "nat": 194,
-     "name": "Wooper",
-     "form": "Johto",
-     "g": "♀",
-     "k": "nreg",
-     "s": "sprites/pokemon/female/194.png"
     }
    ]
   },
@@ -2617,16 +2587,6 @@
      "g": "",
      "k": "form",
      "s": "sprites/pokemon/10016.png"
-    },
-    {
-     "id": "basculin-white-striped",
-     "n": "138",
-     "nat": 550,
-     "name": "Basculin",
-     "form": "White-Striped",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/10247.png"
     }
    ]
   },
@@ -4362,16 +4322,6 @@
      "g": "",
      "k": "form",
      "s": "sprites/pokemon/10252.png"
-    },
-    {
-     "id": "tauros",
-     "n": "223",
-     "nat": 128,
-     "name": "Tauros",
-     "form": "Kanto",
-     "g": "",
-     "k": "nreg",
-     "s": "sprites/pokemon/128.png"
     }
    ]
   },
@@ -6300,7 +6250,7 @@
      "name": "Qwilfish",
      "form": "Hisui",
      "g": "",
-     "k": "reg",
+     "k": "nreg",
      "s": "sprites/pokemon/10234.png"
     }
    ]
@@ -9172,36 +9122,6 @@
      "g": "",
      "k": "base",
      "s": "sprites/pokemon/1017.png"
-    },
-    {
-     "id": "ogerpon-wellspring-mask",
-     "n": "K200",
-     "nat": 1017,
-     "name": "Ogerpon",
-     "form": "Wellspring",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/10273.png"
-    },
-    {
-     "id": "ogerpon-hearthflame-mask",
-     "n": "K200",
-     "nat": 1017,
-     "name": "Ogerpon",
-     "form": "Hearthflame",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/10274.png"
-    },
-    {
-     "id": "ogerpon-cornerstone-mask",
-     "n": "K200",
-     "nat": 1017,
-     "name": "Ogerpon",
-     "form": "Cornerstone",
-     "g": "",
-     "k": "form",
-     "s": "sprites/pokemon/10275.png"
     }
    ]
   },
@@ -9290,7 +9210,7 @@
      "name": "Exeggutor",
      "form": "Alola",
      "g": "",
-     "k": "reg",
+     "k": "nreg",
      "s": "sprites/pokemon/10114.png"
     }
    ]
@@ -12621,6 +12541,52 @@
    "g": "",
    "k": "xbat",
    "s": "sprites/pokemon/10189.png"
+  }
+ ],
+ "dlc": [
+  {
+   "id": "wooper",
+   "n": "53",
+   "nat": 194,
+   "name": "Wooper",
+   "form": "Johto",
+   "g": "♂",
+   "k": "nreg",
+   "s": "sprites/pokemon/194.png",
+   "d": "K"
+  },
+  {
+   "id": "wooper-female",
+   "n": "53",
+   "nat": 194,
+   "name": "Wooper",
+   "form": "Johto",
+   "g": "♀",
+   "k": "nreg",
+   "s": "sprites/pokemon/female/194.png",
+   "d": "K"
+  },
+  {
+   "id": "basculin-white-striped",
+   "n": "138",
+   "nat": 550,
+   "name": "Basculin",
+   "form": "White-Striped",
+   "g": "",
+   "k": "form",
+   "s": "sprites/pokemon/10247.png",
+   "d": "K"
+  },
+  {
+   "id": "tauros",
+   "n": "223",
+   "nat": 128,
+   "name": "Tauros",
+   "form": "Kanto",
+   "g": "",
+   "k": "nreg",
+   "s": "sprites/pokemon/128.png",
+   "d": "K"
   }
  ]
 }

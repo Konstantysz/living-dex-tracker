@@ -52,11 +52,10 @@ export const svConfig: GameConfig = {
     gastrodon: ['gastrodon-east'],
     tatsugiri: ['tatsugiri-droopy', 'tatsugiri-stretchy'],
     gimmighoul: ['gimmighoul-roaming'],
-    vivillon: vivillon.map((x) => `vivillon-${x}`),
+    vivillon: vivillon.filter((x) => x !== 'poke-ball').map((x) => `vivillon-${x}`),
     rotom: ['rotom-heat', 'rotom-wash', 'rotom-frost', 'rotom-fan', 'rotom-mow'],
     ...flabebeLine,
     ursaluna: ['ursaluna-bloodmoon'],
-    ogerpon: ['ogerpon-wellspring-mask', 'ogerpon-hearthflame-mask', 'ogerpon-cornerstone-mask'],
     poltchageist: ['poltchageist-artisan'],
     sinistcha: ['sinistcha-masterpiece'],
     minior: 'orange yellow green blue indigo violet'.split(' ').map((c) => `minior-${c}`),
@@ -77,6 +76,9 @@ export const svConfig: GameConfig = {
     sandslash: ['sandslash-alola'],
     vulpix: ['vulpix-alola'],
     ninetales: ['ninetales-alola'],
+    // native in Blueberry (Serebii blueberrypokedex)
+    exeggutor: ['exeggutor-alola'],
+    qwilfish: ['qwilfish-hisui'],
   },
   nativeRegional: [
     'wooper',
@@ -95,6 +97,8 @@ export const svConfig: GameConfig = {
     'sandslash-alola',
     'vulpix-alola',
     'ninetales-alola',
+    'exeggutor-alola',
+    'qwilfish-hisui',
     'wooper-female',
   ],
   genderDifferences:
@@ -123,10 +127,8 @@ export const svConfig: GameConfig = {
     zorua: ['zorua-hisui'],
     zoroark: ['zoroark-hisui'],
     sneasel: ['sneasel-hisui', 'sneasel-hisui-female'],
-    qwilfish: ['qwilfish-hisui'],
     avalugg: ['avalugg-hisui'],
     braviary: ['braviary-hisui'],
-    exeggutor: ['exeggutor-alola'],
     weezing: ['weezing-galar'],
     typhlosion: ['typhlosion-hisui'],
     samurott: ['samurott-hisui'],
@@ -174,4 +176,17 @@ export const svConfig: GameConfig = {
   },
   formNames: { wooper: 'Johto', 'wooper-female': 'Johto', tauros: 'Kanto' },
   toggleableForms: ['alcremie'],
+  // Forms obtainable only in a DLC (Serebii): Johto Wooper and white-striped Basculin in Kitakami,
+  // Kanto Tauros by breeding in Kitakami. Shown at the end of the Kitakami boxes.
+  dlcForms: {
+    wooper: 'K',
+    'wooper-female': 'K',
+    'basculin-white-striped': 'K',
+    tauros: 'K',
+  },
+  // Vivillon is locked to Fancy in SV; other patterns need a Pokémon GO postcard (Serebii). No Poké Ball.
+  goForms: [
+    'vivillon-meadow',
+    ...vivillon.filter((x) => x !== 'fancy' && x !== 'poke-ball').map((x) => `vivillon-${x}`),
+  ],
 };

@@ -102,6 +102,7 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   const native = new Set(cfg.nativeRegional);
   const female = new Set(cfg.genderDifferences);
   let groups: (Omit<SpeciesGroup, 'items'> & { items: Work[] })[] = [];
+  const moved: Work[] = [];
   for (const { prefix, num, sid } of order) {
     const ident = get(sp, sid, 'species').identifier as string;
     const tag = prefix + String(num);
@@ -128,7 +129,9 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
       const fi = get(forms, g[0]!.id, 'form').form_identifier as string;
       g[0]!.form = fi ? (cfg.labelOverrides[dashTitle(fi)] ?? dashTitle(fi)) : '';
     }
-    groups.push({ sp: ident, items: g });
+    const keepIn = g.filter((i) => !cfg.dlcForms[i.id]);
+    moved.push(...g.filter((i) => cfg.dlcForms[i.id]));
+    groups.push({ sp: ident, items: keepIn });
   }
 
   for (const line of cfg.mergedLines) {
@@ -140,10 +143,12 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
     groups = [...groups.slice(0, first), merged, ...groups.slice(first + idx.length)];
   }
 
+  for (const i of moved) if (cfg.formNames[i.id]) i.form = cfg.formNames[i.id]!;
   for (const g of groups)
     for (const i of g.items) {
       if (cfg.formNames[i.id]) i.form = cfg.formNames[i.id]!;
       if (cfg.toggleableForms.some((s) => i.id.startsWith(s))) i.k = i.k === 'base' ? i.k : 'alc';
+      if (cfg.goForms.includes(i.id)) i.k = 'go';
     }
 
   const strip = (w: Work): DexEntry => {
@@ -155,6 +160,7 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   return {
     groups: groups.map((g) => ({ sp: g.sp, items: g.items.map(strip) })),
     extra: extra.map(strip),
+    dlc: moved.map((w) => ({ ...strip(w), d: cfg.dlcForms[w.id]! })),
     sprites: [...sprites].sort(),
   };
 }

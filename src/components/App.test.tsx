@@ -13,8 +13,8 @@ const cell = (name: RegExp) => screen.getByRole('button', { name });
 
 test('renders default layout stats and progress', () => {
   render(<App />);
-  expect(screen.getByText(/31 boxów · 917 slotów · 13 pustych/)).toBeInTheDocument();
-  expect(screen.getByText(/0 \/ 917 \(0\.0%\)/)).toBeInTheDocument();
+  expect(screen.getByText(/31 boxów · 874 slotów · 56 pustych/)).toBeInTheDocument();
+  expect(screen.getByText(/0 \/ 874 \(0\.0%\)/)).toBeInTheDocument();
 });
 
 test('click and keyboard toggle caught state and persist it', async () => {
@@ -24,7 +24,7 @@ test('click and keyboard toggle caught state and persist it', async () => {
   expect(sprig).toHaveAttribute('aria-pressed', 'false');
   await user.click(sprig);
   expect(sprig).toHaveAttribute('aria-pressed', 'true');
-  expect(screen.getByText(/1 \/ 917/)).toBeInTheDocument();
+  expect(screen.getByText(/1 \/ 874/)).toBeInTheDocument();
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
   sprig.focus();
   await user.keyboard('{Enter}');
@@ -36,10 +36,13 @@ test('click and keyboard toggle caught state and persist it', async () => {
 test('toggles recompute the layout live', async () => {
   const user = userEvent.setup();
   render(<App />);
-  await user.click(screen.getByLabelText(/formy bitewne/));
-  expect(screen.queryByText(/31 boxów · 917/)).not.toBeInTheDocument();
+  await user.click(screen.getByText('Ustawienia'));
+  await user.click(screen.getByLabelText(/nie dziel małych grup/));
   await user.click(screen.getByLabelText(/wszystkie Alcremie/));
-  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({ bat: true, alc: false });
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({
+    noSplit: true,
+    alc: false,
+  });
 });
 
 test('search highlights matches by name and number', async () => {
@@ -64,7 +67,7 @@ test('backup dialog imports a code and rejects invalid ones', async () => {
   await user.click(box);
   await user.paste(exportCode(new Set(['sprigatito', 'floragato'])));
   await user.click(screen.getByText('Wczytaj'));
-  expect(screen.getByText(/2 \/ 917/)).toBeInTheDocument();
+  expect(screen.getByText(/2 \/ 874/)).toBeInTheDocument();
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {

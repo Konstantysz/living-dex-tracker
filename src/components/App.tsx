@@ -7,6 +7,7 @@ import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
 import { Header } from './Header';
 import { LayoutTextDialog } from './LayoutTextDialog';
+import { SettingsDialog } from './SettingsDialog';
 
 const hashId = () => location.hash.replace(/^#/, '');
 
@@ -35,7 +36,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   const [caught, setCaught] = useState(() => loadCaught(config.id));
   const [options, setOptions] = useState(() => loadOptions(config.id));
   const [query, setQuery] = useState('');
-  const [dialog, setDialog] = useState<'text' | 'backup' | null>(null);
+  const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | null>(null);
 
   const boxes = useMemo(() => layoutBoxes(layout, options), [layout, options]);
   const entries = useMemo(
@@ -84,14 +85,13 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       <Header
         gameId={config.id}
         dexes={config.dexes}
-        options={options}
-        onOption={setOption}
         query={query}
         onQuery={setQuery}
         got={got}
         total={total}
         stats={stats}
         onGame={onGame}
+        onShowSettings={() => setDialog('settings')}
         onShowText={() => setDialog('text')}
         onShowBackup={() => setDialog('backup')}
       />
@@ -103,6 +103,9 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         dexes={config.dexes}
         onToggle={toggle}
       />
+      {dialog === 'settings' && (
+        <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
+      )}
       {dialog === 'text' && <LayoutTextDialog boxes={boxes} onClose={() => setDialog(null)} />}
       {dialog === 'backup' && (
         <BackupDialog

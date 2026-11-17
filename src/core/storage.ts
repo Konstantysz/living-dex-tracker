@@ -12,10 +12,7 @@ const LEGACY: Record<string, { caught: string; opts: string }> = {
   sv: { caught: 'paldea-living-dex-v1', opts: 'sv-living-dex-opt-v2' },
 };
 const LEGACY_OPT_NAMES: Record<string, keyof AppOptions> = {
-  optReg: 'reg',
   optAlc: 'alc',
-  optBat: 'bat',
-  optExtra: 'extra',
   optNoSplit: 'noSplit',
   optDim: 'dim',
 };

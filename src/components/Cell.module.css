@@ -66,6 +66,7 @@
   --kc: var(--fem);
 }
 .k_form,
+.k_go,
 .k_alc {
   --kc: var(--form);
 }
