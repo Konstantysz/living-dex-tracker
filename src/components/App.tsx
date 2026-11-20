@@ -49,6 +49,11 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   );
 
   useEffect(() => {
+    // Selects the game's PC box theme (src/games/<id>/theme.css).
+    document.documentElement.dataset.theme = config.id;
+  }, [config.id]);
+
+  useEffect(() => {
     document.body.classList.toggle('dimcaught', options.dim);
   }, [options.dim]);
 

@@ -1,82 +1,185 @@
+/* Hallmark · shape: app screen · genre: playful · theme: brand (per game; sv sampled from the user's PC box screenshots, 2026-11-20) · redesign: full
+ * paper: #22bcc6 wallpaper (sv) · accent: #e4cb19 cursor (sv) · display: Barlow Semi Condensed · body: Barlow Semi Condensed
+ * nav: kept (header bar) · signature: the 6×5 PC box, slots as tiles on the wallpaper, the yellow cursor tile · states: caught, missing, hover/focus cursor, search hit, done box, empty slot, broken sprite
+ * axes: mid/grotesk-sans/chromatic-yellow · posture: workbench · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R3 V4 · weakest: R, the face is a free stand-in chosen by eye, the game's own face is not available */
+
+/* Shared scale and the fallback palette. Each game overrides the colours in src/games/<id>/theme.css. */
 :root {
-  --bg: #0f1418;
-  --panel: #182027;
-  --panel2: #1f2a33;
-  --line: #2b3843;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --dur-micro: 120ms;
+  --radius: 6px;
+  --radius-tile: 4px;
+
+  --font-body: 'Barlow Semi Condensed', ui-sans-serif, system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, monospace;
+
+  --wall: #0f1418;
+  --wall-2: #0f1418;
+  --bar: #182027;
   --ink: #e8eef2;
   --mute: #8a9aa6;
-  --acc: #e8b84a;
-  --caught: #2f6e4f;
-  --caughtline: #55c08a;
+  --pill: #1f2a33;
+  --pill-ink: #e8eef2;
+  --chip: #0b0f12;
+  --chip-ink: #e8eef2;
+  --tile: #1f2a33;
+  --tile-caught: #2f6e4f;
+  --caught-line: #55c08a;
+  --cursor: #e8b84a;
+  --cursor-ink: #10151a;
+  --head: #e8b84a;
+  --head-ink: #10151a;
+  --tip: #e8eef2;
+  --tip-ink: #10151a;
+  --tip-mute: #4b5964;
+  --focus: #e8b84a;
+  --focus-wall: #e8eef2;
+  --progress: #55c08a;
+  --panel: #182027;
+  --panel-2: #0f1418;
+  --scrim: rgb(0 0 0 / 0.6);
+  --error: #ff9a8a;
   --fem: #d86fa0;
+  --male: #6fa8dc;
   --form: #5aa0e0;
   --reg: #c79a5a;
   --bat: #b06be0;
   color-scheme: dark;
 }
-* {
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+html,
+body {
+  overflow-x: clip;
 }
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--wall), var(--wall-2)) fixed var(--wall);
   color: var(--ink);
-  font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 14px;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
 }
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  min-width: 0;
+  text-wrap: balance;
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
 button,
 select {
-  background: var(--panel2);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  border-radius: 6px;
-  padding: 6px 10px;
+  min-height: 40px;
+  padding: 0 var(--space-md);
+  background: var(--pill);
+  color: var(--pill-ink);
+  border: 0;
+  border-radius: var(--radius);
   font: inherit;
+  font-weight: 500;
   cursor: pointer;
+  transition:
+    background-color var(--dur-micro),
+    color var(--dur-micro);
 }
 button:hover,
 select:hover {
-  border-color: var(--acc);
+  background: var(--cursor);
+  color: var(--cursor-ink);
+}
+button:active {
+  transform: scale(0.97);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+select option {
+  background: var(--bar);
+  color: var(--ink);
 }
 input[type='search'] {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  border-radius: 6px;
-  padding: 6px 10px;
-  width: 180px;
+  min-height: 40px;
+  padding: 0 var(--space-sm);
+  background: var(--chip);
+  color: var(--chip-ink);
+  border: 0;
+  border-radius: var(--radius);
   font: inherit;
 }
+input[type='search']::placeholder {
+  color: var(--mute);
+}
+
 dialog {
-  background: var(--panel);
+  width: min(720px, calc(100% - 32px));
+  padding: 0 var(--space-md) var(--space-md);
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
   color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  width: min(720px, 92vw);
+  border: 0;
+  border-radius: var(--radius);
 }
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--scrim);
+}
+dialog h3 {
+  margin: 0 calc(-1 * var(--space-md)) var(--space-md);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--head);
+  color: var(--head-ink);
+  font-size: var(--text-lg);
+  font-weight: 600;
 }
 dialog textarea {
   width: 100%;
   height: 320px;
-  background: var(--bg);
-  color: var(--ink);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  font:
-    12px 'JetBrains Mono',
-    monospace;
-  padding: 8px;
+  padding: var(--space-xs);
+  background: var(--chip);
+  color: var(--chip-ink);
+  border: 0;
+  border-radius: var(--radius);
+  font: var(--text-xs) var(--font-code);
+}
+dialog [role='alert'] {
+  color: var(--error);
 }
 .dialog-row {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
   justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: var(--space-sm);
 }
 .mono-mute {
   color: var(--mute);
-  font-size: 12px;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--text-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

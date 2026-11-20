@@ -23,9 +23,17 @@ export function Tooltip({ container, entries, dexes }: Props) {
     const leave = () => setTip(null);
     el.addEventListener('mousemove', move);
     el.addEventListener('mouseleave', leave);
+    // On touch there is no mouseleave: the tip stays after a tap until the page scrolls.
+    window.addEventListener('scroll', leave, { passive: true });
+    const outside = (e: PointerEvent) => {
+      if (!el.contains(e.target as Node)) leave();
+    };
+    document.addEventListener('pointerdown', outside);
     return () => {
+      document.removeEventListener('pointerdown', outside);
       el.removeEventListener('mousemove', move);
       el.removeEventListener('mouseleave', leave);
+      window.removeEventListener('scroll', leave);
     };
   }, [container, entries]);
   if (!tip) return null;

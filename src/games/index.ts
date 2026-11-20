@@ -1,6 +1,7 @@
 import type { GameConfig, GameLayout } from '../core/types';
 import { games as configs } from './configs';
 import svLayout from './sv/generated/layout.json';
+import './sv/theme.css';
 
 export interface Game {
   config: GameConfig;

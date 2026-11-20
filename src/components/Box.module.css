@@ -1,33 +1,45 @@
+/* Hallmark · component styles of the app screen; the full stamp is in src/styles.css */
 .box {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  overflow: hidden;
+  min-width: 0;
+  padding: var(--space-xs);
+  background: color-mix(in oklab, var(--tile) 22%, transparent);
+  border-radius: var(--radius);
 }
 .box h2 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 500;
+  margin: 0 0 var(--space-xs);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
-  background: var(--panel2);
-  border-bottom: 1px solid var(--line);
-}
-.done h2 {
-  background: #1d3a2c;
+  gap: var(--space-xs);
+  min-height: 36px;
+  padding: 0 var(--space-xs) 0 var(--space-sm);
+  background: var(--pill);
+  color: var(--pill-ink);
+  border-radius: var(--radius);
+  font-size: var(--text-md);
+  font-weight: 600;
 }
 .r {
-  font-family: 'JetBrains Mono', monospace;
+  margin-left: var(--space-xs);
   color: var(--mute);
+  font-weight: 500;
 }
 .c {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--caughtline);
+  padding: 0 var(--space-xs);
+  background: var(--chip);
+  color: var(--chip-ink);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+}
+.done h2 {
+  background: var(--head);
+  color: var(--head-ink);
+}
+.done .r {
+  color: var(--head-ink);
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-  padding: 8px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-2xs);
 }
