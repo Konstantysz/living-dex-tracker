@@ -1,0 +1,33 @@
+/* Scarlet/Violet PC box. Colours sampled from screenshots of the in-game box screen (2026-11-20).
+ * Derived values (not on screen as-is): --mute, --caught-line, --tip-mute, the strip colours. */
+:root[data-theme='sv'] {
+  --wall: #22bcc6;
+  --wall-2: #1aa6c7;
+  --bar: #1a5050;
+  --ink: #e0ffff;
+  --mute: #9cc9c6;
+  --pill: #1e847f;
+  --pill-ink: #e0ffff;
+  --chip: #1e394a;
+  --chip-ink: #e0ffff;
+  --tile: #1b807e;
+  --tile-caught: #1b807e;
+  --caught-line: #e0ffff;
+  --cursor: #e4cb19;
+  --cursor-ink: #1e394a;
+  --head: #ffcc01;
+  --head-ink: #333331;
+  --tip: #ecfafa;
+  --tip-ink: #1e394a;
+  --tip-mute: #3d6073;
+  --focus: #ffcc01;
+  --focus-wall: #1e394a;
+  --progress: #ffcc01;
+  --panel: #1d786f;
+  --panel-2: #134550;
+  --fem: #ffc6ca;
+  --male: #c4dbff;
+  --form: #9fd8ff;
+  --reg: #ffb35c;
+  --bat: #d8b4ff;
+}

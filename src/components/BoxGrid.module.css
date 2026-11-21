@@ -1,6 +1,14 @@
 .grid {
-  padding: 20px;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding: var(--space-md);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-md);
+}
+@media (max-width: 40rem) {
+  .grid {
+    padding: var(--space-xs);
+    gap: var(--space-sm);
+  }
 }

@@ -2,61 +2,111 @@
   position: sticky;
   top: 0;
   z-index: 5;
-  background: rgba(15, 20, 24, 0.94);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--line);
-  padding: 12px 20px;
+  padding: var(--space-xs) var(--space-md) var(--space-sm);
+  background: var(--bar);
+  color: var(--ink);
 }
 .top {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 22px;
+  gap: var(--space-xs) var(--space-md);
 }
+/* The title sits like the game's active tab: underlined in the cursor colour. */
 .top h1 {
-  font-size: 18px;
   margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-.top h1 span {
-  color: var(--acc);
+  padding-bottom: 2px;
+  border-bottom: 3px solid var(--cursor);
+  font-size: var(--text-lg);
+  font-weight: 600;
 }
 .prog {
+  flex: 1 1 220px;
+  max-width: 420px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: var(--mute);
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
 }
 .bar {
-  width: 160px;
-  height: 8px;
-  background: var(--panel2);
-  border-radius: 4px;
+  flex: 1;
+  height: 10px;
+  background: var(--chip);
+  border-radius: 999px;
   overflow: hidden;
 }
 .bar i {
   display: block;
   height: 100%;
-  background: var(--caughtline);
+  background: var(--progress);
 }
 .ctrls {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: var(--space-xs);
   align-items: center;
-  margin-top: 10px;
+  margin-top: var(--space-xs);
+}
+.ctrls input[type='search'] {
+  flex: 1 1 200px;
+  max-width: 320px;
 }
 .toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: var(--mute);
+  gap: var(--space-xs);
+  min-height: 44px;
+  color: var(--ink);
   cursor: pointer;
   user-select: none;
 }
 .toggle input {
-  accent-color: var(--acc);
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cursor);
+}
+/* Fold button: phone only. */
+.more {
+  display: none;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-left: auto;
+  padding: 0 var(--space-sm);
+}
+.more svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: transform var(--dur-micro);
+}
+.open .more svg {
+  transform: rotate(180deg);
+}
+@media (max-width: 40rem) {
+  .header {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  .top h1 {
+    font-size: var(--text-md);
+  }
+  .more {
+    display: inline-flex;
+  }
+  .header:not(.open) .fold {
+    display: none;
+  }
+  .prog {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .ctrls input[type='search'] {
+    flex-basis: 100%;
+    max-width: none;
+    order: -1;
+  }
+  .ctrls button {
+    flex: 1 1 auto;
+  }
 }

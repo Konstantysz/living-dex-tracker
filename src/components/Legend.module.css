@@ -1,16 +1,26 @@
 .legend {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  margin-top: var(--space-xs);
   color: var(--mute);
-  font-size: 12px;
-  margin-top: 10px;
+  font-size: var(--text-sm);
+}
+.legend summary {
+  width: fit-content;
+  cursor: pointer;
+}
+.legend summary:hover {
+  color: var(--ink);
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  margin-top: var(--space-2xs);
 }
 .legend b {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 4px;
+  margin-right: var(--space-2xs);
+  vertical-align: middle;
   border-radius: 2px;
-  margin-right: 4px;
-  vertical-align: -1px;
 }

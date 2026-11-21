@@ -30,7 +30,7 @@ two are game-specific:
 `src/games/configs.ts` (configs only) is deliberately separate from `src/games/index.ts` (registry
 that imports the generated JSON) so scripts can import configs without loading generated data.
 A new game needs: config → add to `configs.ts` → `data:build` → import its `layout.json` in
-`index.ts` → golden test (see README "Jak dodać nową grę" steps).
+`index.ts` → `theme.css` with the PC box colours (imported in `index.ts`) → golden test (see README "Jak dodać nową grę" steps).
 
 ## Things that need care
 

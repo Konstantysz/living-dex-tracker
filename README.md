@@ -52,6 +52,9 @@ golden test.
    and downloads the sprites. Read the "missing sprite" warnings, if any.
 4. **Register the layout.** Import the JSON in `src/games/index.ts` and add it to `layouts`.
    The game now shows in the header selector and at `#<id>`.
+   **Theme.** Create `src/games/<id>/theme.css` with one `:root[data-theme='<id>']` block that
+   overrides the colour tokens in `src/styles.css` with values sampled from the game's PC box
+   screen, and import it in `src/games/index.ts`. Without it, the game uses the fallback palette.
 5. **Test.** Add a reference layout file and a golden test like `scripts/golden.test.ts`.
    Add `packBoxes` expectations (box count, slot count, empty slots) for the default options.
 

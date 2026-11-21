@@ -1,15 +1,17 @@
+/* The game's light name pill over the cursor. */
 .tip {
   position: fixed;
-  pointer-events: none;
-  background: #0b0f12;
-  border: 1px solid var(--line);
-  padding: 6px 9px;
-  border-radius: 6px;
-  font-size: 12px;
   z-index: 20;
+  pointer-events: none;
+  padding: var(--space-2xs) var(--space-sm);
+  background: var(--tip);
+  color: var(--tip-ink);
+  border-radius: 12px;
+  font-size: var(--text-sm);
+  font-weight: 500;
   white-space: nowrap;
 }
 .tip small {
-  color: var(--mute);
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--tip-mute);
+  font-size: var(--text-xs);
 }

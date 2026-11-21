@@ -5,3 +5,4 @@ src/games/*/generated
 scripts/cache
 package-lock.json
 docs/wiki
+.hallmark

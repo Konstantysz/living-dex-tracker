@@ -17,7 +17,7 @@ export function Dialog({
   }, []);
   return (
     <dialog ref={ref} onClose={onClose} aria-label={title}>
-      <h3 style={{ marginTop: 0 }}>{title}</h3>
+      <h3>{title}</h3>
       {children}
     </dialog>
   );
