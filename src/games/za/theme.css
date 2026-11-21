@@ -1,0 +1,33 @@
+/* Legends: Z-A PC box. Colours sampled from screenshots of the in-game box screen (2026-11-21).
+ * Derived values (not on screen as-is): --mute, --caught-line, --tip-*, --pill, --chip, the strip colours. */
+:root[data-theme='za'] {
+  --wall: #4f6178;
+  --wall-2: #3e4c59;
+  --bar: #34485c;
+  --ink: #f4f8fb;
+  --mute: #b9c6d3;
+  --pill: #4f7f95;
+  --pill-ink: #ffffff;
+  --chip: #2d3f55;
+  --chip-ink: #f4f8fb;
+  --tile: #5e6b82;
+  --tile-caught: #5e6b82;
+  --caught-line: #e8f2f8;
+  --cursor: #d0e185;
+  --cursor-ink: #2d3f55;
+  --head: #6ca6be;
+  --head-ink: #ffffff;
+  --tip: #eef4f8;
+  --tip-ink: #2d3f55;
+  --tip-mute: #55697e;
+  --focus: #d0e185;
+  --focus-wall: #2d3f55;
+  --progress: #d0e185;
+  --panel: #51697f;
+  --panel-2: #3a4d63;
+  --fem: #ffc6ca;
+  --male: #c4dbff;
+  --form: #9fd8ff;
+  --reg: #ffb35c;
+  --bat: #d8b4ff;
+}

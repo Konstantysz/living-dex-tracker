@@ -1,0 +1,6426 @@
+{
+ "groups": [
+  {
+   "sp": "chikorita",
+   "items": [
+    {
+     "id": "chikorita",
+     "n": "1",
+     "nat": 152,
+     "name": "Chikorita",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/152.png"
+    }
+   ]
+  },
+  {
+   "sp": "bayleef",
+   "items": [
+    {
+     "id": "bayleef",
+     "n": "2",
+     "nat": 153,
+     "name": "Bayleef",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/153.png"
+    }
+   ]
+  },
+  {
+   "sp": "meganium",
+   "items": [
+    {
+     "id": "meganium",
+     "n": "3",
+     "nat": 154,
+     "name": "Meganium",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/154.png"
+    },
+    {
+     "id": "meganium-female",
+     "n": "3",
+     "nat": 154,
+     "name": "Meganium",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/154.png"
+    }
+   ]
+  },
+  {
+   "sp": "tepig",
+   "items": [
+    {
+     "id": "tepig",
+     "n": "4",
+     "nat": 498,
+     "name": "Tepig",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/498.png"
+    }
+   ]
+  },
+  {
+   "sp": "pignite",
+   "items": [
+    {
+     "id": "pignite",
+     "n": "5",
+     "nat": 499,
+     "name": "Pignite",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/499.png"
+    }
+   ]
+  },
+  {
+   "sp": "emboar",
+   "items": [
+    {
+     "id": "emboar",
+     "n": "6",
+     "nat": 500,
+     "name": "Emboar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/500.png"
+    }
+   ]
+  },
+  {
+   "sp": "totodile",
+   "items": [
+    {
+     "id": "totodile",
+     "n": "7",
+     "nat": 158,
+     "name": "Totodile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/158.png"
+    }
+   ]
+  },
+  {
+   "sp": "croconaw",
+   "items": [
+    {
+     "id": "croconaw",
+     "n": "8",
+     "nat": 159,
+     "name": "Croconaw",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/159.png"
+    }
+   ]
+  },
+  {
+   "sp": "feraligatr",
+   "items": [
+    {
+     "id": "feraligatr",
+     "n": "9",
+     "nat": 160,
+     "name": "Feraligatr",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/160.png"
+    }
+   ]
+  },
+  {
+   "sp": "fletchling",
+   "items": [
+    {
+     "id": "fletchling",
+     "n": "10",
+     "nat": 661,
+     "name": "Fletchling",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/661.png"
+    }
+   ]
+  },
+  {
+   "sp": "fletchinder",
+   "items": [
+    {
+     "id": "fletchinder",
+     "n": "11",
+     "nat": 662,
+     "name": "Fletchinder",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/662.png"
+    }
+   ]
+  },
+  {
+   "sp": "talonflame",
+   "items": [
+    {
+     "id": "talonflame",
+     "n": "12",
+     "nat": 663,
+     "name": "Talonflame",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/663.png"
+    }
+   ]
+  },
+  {
+   "sp": "bunnelby",
+   "items": [
+    {
+     "id": "bunnelby",
+     "n": "13",
+     "nat": 659,
+     "name": "Bunnelby",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/659.png"
+    }
+   ]
+  },
+  {
+   "sp": "diggersby",
+   "items": [
+    {
+     "id": "diggersby",
+     "n": "14",
+     "nat": 660,
+     "name": "Diggersby",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/660.png"
+    }
+   ]
+  },
+  {
+   "sp": "scatterbug+spewpa+vivillon",
+   "items": [
+    {
+     "id": "scatterbug-icy-snow",
+     "n": "15",
+     "nat": 664,
+     "name": "Scatterbug",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/664.png"
+    },
+    {
+     "id": "spewpa-icy-snow",
+     "n": "16",
+     "nat": 665,
+     "name": "Spewpa",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/665.png"
+    },
+    {
+     "id": "vivillon-fancy",
+     "n": "17",
+     "nat": 666,
+     "name": "Vivillon",
+     "form": "Fancy",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/666-fancy.png"
+    },
+    {
+     "id": "vivillon-garden",
+     "n": "17",
+     "nat": 666,
+     "name": "Vivillon",
+     "form": "Garden",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/666-garden.png"
+    },
+    {
+     "id": "vivillon-tundra",
+     "n": "17",
+     "nat": 666,
+     "name": "Vivillon",
+     "form": "Tundra",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/666-tundra.png"
+    }
+   ]
+  },
+  {
+   "sp": "weedle",
+   "items": [
+    {
+     "id": "weedle",
+     "n": "18",
+     "nat": 13,
+     "name": "Weedle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/13.png"
+    }
+   ]
+  },
+  {
+   "sp": "kakuna",
+   "items": [
+    {
+     "id": "kakuna",
+     "n": "19",
+     "nat": 14,
+     "name": "Kakuna",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/14.png"
+    }
+   ]
+  },
+  {
+   "sp": "beedrill",
+   "items": [
+    {
+     "id": "beedrill",
+     "n": "20",
+     "nat": 15,
+     "name": "Beedrill",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/15.png"
+    }
+   ]
+  },
+  {
+   "sp": "pidgey",
+   "items": [
+    {
+     "id": "pidgey",
+     "n": "21",
+     "nat": 16,
+     "name": "Pidgey",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/16.png"
+    }
+   ]
+  },
+  {
+   "sp": "pidgeotto",
+   "items": [
+    {
+     "id": "pidgeotto",
+     "n": "22",
+     "nat": 17,
+     "name": "Pidgeotto",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/17.png"
+    }
+   ]
+  },
+  {
+   "sp": "pidgeot",
+   "items": [
+    {
+     "id": "pidgeot",
+     "n": "23",
+     "nat": 18,
+     "name": "Pidgeot",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/18.png"
+    }
+   ]
+  },
+  {
+   "sp": "mareep",
+   "items": [
+    {
+     "id": "mareep",
+     "n": "24",
+     "nat": 179,
+     "name": "Mareep",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/179.png"
+    }
+   ]
+  },
+  {
+   "sp": "flaaffy",
+   "items": [
+    {
+     "id": "flaaffy",
+     "n": "25",
+     "nat": 180,
+     "name": "Flaaffy",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/180.png"
+    }
+   ]
+  },
+  {
+   "sp": "ampharos",
+   "items": [
+    {
+     "id": "ampharos",
+     "n": "26",
+     "nat": 181,
+     "name": "Ampharos",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/181.png"
+    }
+   ]
+  },
+  {
+   "sp": "patrat",
+   "items": [
+    {
+     "id": "patrat",
+     "n": "27",
+     "nat": 504,
+     "name": "Patrat",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/504.png"
+    }
+   ]
+  },
+  {
+   "sp": "watchog",
+   "items": [
+    {
+     "id": "watchog",
+     "n": "28",
+     "nat": 505,
+     "name": "Watchog",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/505.png"
+    }
+   ]
+  },
+  {
+   "sp": "budew",
+   "items": [
+    {
+     "id": "budew",
+     "n": "29",
+     "nat": 406,
+     "name": "Budew",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/406.png"
+    }
+   ]
+  },
+  {
+   "sp": "roselia",
+   "items": [
+    {
+     "id": "roselia",
+     "n": "30",
+     "nat": 315,
+     "name": "Roselia",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/315.png"
+    },
+    {
+     "id": "roselia-female",
+     "n": "30",
+     "nat": 315,
+     "name": "Roselia",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/315.png"
+    }
+   ]
+  },
+  {
+   "sp": "roserade",
+   "items": [
+    {
+     "id": "roserade",
+     "n": "31",
+     "nat": 407,
+     "name": "Roserade",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/407.png"
+    },
+    {
+     "id": "roserade-female",
+     "n": "31",
+     "nat": 407,
+     "name": "Roserade",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/407.png"
+    }
+   ]
+  },
+  {
+   "sp": "magikarp",
+   "items": [
+    {
+     "id": "magikarp",
+     "n": "32",
+     "nat": 129,
+     "name": "Magikarp",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/129.png"
+    },
+    {
+     "id": "magikarp-female",
+     "n": "32",
+     "nat": 129,
+     "name": "Magikarp",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/129.png"
+    }
+   ]
+  },
+  {
+   "sp": "gyarados",
+   "items": [
+    {
+     "id": "gyarados",
+     "n": "33",
+     "nat": 130,
+     "name": "Gyarados",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/130.png"
+    },
+    {
+     "id": "gyarados-female",
+     "n": "33",
+     "nat": 130,
+     "name": "Gyarados",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/130.png"
+    }
+   ]
+  },
+  {
+   "sp": "binacle",
+   "items": [
+    {
+     "id": "binacle",
+     "n": "34",
+     "nat": 688,
+     "name": "Binacle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/688.png"
+    }
+   ]
+  },
+  {
+   "sp": "barbaracle",
+   "items": [
+    {
+     "id": "barbaracle",
+     "n": "35",
+     "nat": 689,
+     "name": "Barbaracle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/689.png"
+    }
+   ]
+  },
+  {
+   "sp": "staryu",
+   "items": [
+    {
+     "id": "staryu",
+     "n": "36",
+     "nat": 120,
+     "name": "Staryu",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/120.png"
+    }
+   ]
+  },
+  {
+   "sp": "starmie",
+   "items": [
+    {
+     "id": "starmie",
+     "n": "37",
+     "nat": 121,
+     "name": "Starmie",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/121.png"
+    }
+   ]
+  },
+  {
+   "sp": "flabebe+floette+florges",
+   "items": [
+    {
+     "id": "flabebe-red",
+     "n": "38",
+     "nat": 669,
+     "name": "Flabébé",
+     "form": "Red",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/669.png"
+    },
+    {
+     "id": "flabebe-yellow",
+     "n": "38",
+     "nat": 669,
+     "name": "Flabébé",
+     "form": "Yellow",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/669-yellow.png"
+    },
+    {
+     "id": "flabebe-orange",
+     "n": "38",
+     "nat": 669,
+     "name": "Flabébé",
+     "form": "Orange",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/669-orange.png"
+    },
+    {
+     "id": "flabebe-blue",
+     "n": "38",
+     "nat": 669,
+     "name": "Flabébé",
+     "form": "Blue",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/669-blue.png"
+    },
+    {
+     "id": "flabebe-white",
+     "n": "38",
+     "nat": 669,
+     "name": "Flabébé",
+     "form": "White",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/669-white.png"
+    },
+    {
+     "id": "floette-red",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "Red",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/670.png"
+    },
+    {
+     "id": "floette-yellow",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "Yellow",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/670-yellow.png"
+    },
+    {
+     "id": "floette-orange",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "Orange",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/670-orange.png"
+    },
+    {
+     "id": "floette-blue",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "Blue",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/670-blue.png"
+    },
+    {
+     "id": "floette-white",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "White",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/670-white.png"
+    },
+    {
+     "id": "floette-eternal",
+     "n": "39",
+     "nat": 670,
+     "name": "Floette",
+     "form": "Eternal",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10061.png"
+    },
+    {
+     "id": "florges-red",
+     "n": "40",
+     "nat": 671,
+     "name": "Florges",
+     "form": "Red",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/671.png"
+    },
+    {
+     "id": "florges-yellow",
+     "n": "40",
+     "nat": 671,
+     "name": "Florges",
+     "form": "Yellow",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/671-yellow.png"
+    },
+    {
+     "id": "florges-orange",
+     "n": "40",
+     "nat": 671,
+     "name": "Florges",
+     "form": "Orange",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/671-orange.png"
+    },
+    {
+     "id": "florges-blue",
+     "n": "40",
+     "nat": 671,
+     "name": "Florges",
+     "form": "Blue",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/671-blue.png"
+    },
+    {
+     "id": "florges-white",
+     "n": "40",
+     "nat": 671,
+     "name": "Florges",
+     "form": "White",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/671-white.png"
+    }
+   ]
+  },
+  {
+   "sp": "skiddo",
+   "items": [
+    {
+     "id": "skiddo",
+     "n": "41",
+     "nat": 672,
+     "name": "Skiddo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/672.png"
+    }
+   ]
+  },
+  {
+   "sp": "gogoat",
+   "items": [
+    {
+     "id": "gogoat",
+     "n": "42",
+     "nat": 673,
+     "name": "Gogoat",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/673.png"
+    }
+   ]
+  },
+  {
+   "sp": "espurr",
+   "items": [
+    {
+     "id": "espurr",
+     "n": "43",
+     "nat": 677,
+     "name": "Espurr",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/677.png"
+    }
+   ]
+  },
+  {
+   "sp": "meowstic",
+   "items": [
+    {
+     "id": "meowstic-male",
+     "n": "44",
+     "nat": 678,
+     "name": "Meowstic",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/678.png"
+    },
+    {
+     "id": "meowstic-female",
+     "n": "44",
+     "nat": 678,
+     "name": "Meowstic",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/10025.png"
+    }
+   ]
+  },
+  {
+   "sp": "litleo",
+   "items": [
+    {
+     "id": "litleo",
+     "n": "45",
+     "nat": 667,
+     "name": "Litleo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/667.png"
+    }
+   ]
+  },
+  {
+   "sp": "pyroar",
+   "items": [
+    {
+     "id": "pyroar-male",
+     "n": "46",
+     "nat": 668,
+     "name": "Pyroar",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/668.png"
+    },
+    {
+     "id": "pyroar-male-female",
+     "n": "46",
+     "nat": 668,
+     "name": "Pyroar",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/668.png"
+    }
+   ]
+  },
+  {
+   "sp": "pancham",
+   "items": [
+    {
+     "id": "pancham",
+     "n": "47",
+     "nat": 674,
+     "name": "Pancham",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/674.png"
+    }
+   ]
+  },
+  {
+   "sp": "pangoro",
+   "items": [
+    {
+     "id": "pangoro",
+     "n": "48",
+     "nat": 675,
+     "name": "Pangoro",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/675.png"
+    }
+   ]
+  },
+  {
+   "sp": "trubbish",
+   "items": [
+    {
+     "id": "trubbish",
+     "n": "49",
+     "nat": 568,
+     "name": "Trubbish",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/568.png"
+    }
+   ]
+  },
+  {
+   "sp": "garbodor",
+   "items": [
+    {
+     "id": "garbodor",
+     "n": "50",
+     "nat": 569,
+     "name": "Garbodor",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/569.png"
+    }
+   ]
+  },
+  {
+   "sp": "dedenne",
+   "items": [
+    {
+     "id": "dedenne",
+     "n": "51",
+     "nat": 702,
+     "name": "Dedenne",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/702.png"
+    }
+   ]
+  },
+  {
+   "sp": "pichu",
+   "items": [
+    {
+     "id": "pichu",
+     "n": "52",
+     "nat": 172,
+     "name": "Pichu",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/172.png"
+    }
+   ]
+  },
+  {
+   "sp": "pikachu",
+   "items": [
+    {
+     "id": "pikachu",
+     "n": "53",
+     "nat": 25,
+     "name": "Pikachu",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/25.png"
+    },
+    {
+     "id": "pikachu-female",
+     "n": "53",
+     "nat": 25,
+     "name": "Pikachu",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/25.png"
+    }
+   ]
+  },
+  {
+   "sp": "raichu",
+   "items": [
+    {
+     "id": "raichu",
+     "n": "54",
+     "nat": 26,
+     "name": "Raichu",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/26.png"
+    },
+    {
+     "id": "raichu-female",
+     "n": "54",
+     "nat": 26,
+     "name": "Raichu",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/26.png"
+    },
+    {
+     "id": "raichu-alola",
+     "n": "54",
+     "nat": 26,
+     "name": "Raichu",
+     "form": "Alola",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10100.png"
+    }
+   ]
+  },
+  {
+   "sp": "cleffa",
+   "items": [
+    {
+     "id": "cleffa",
+     "n": "55",
+     "nat": 173,
+     "name": "Cleffa",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/173.png"
+    }
+   ]
+  },
+  {
+   "sp": "clefairy",
+   "items": [
+    {
+     "id": "clefairy",
+     "n": "56",
+     "nat": 35,
+     "name": "Clefairy",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/35.png"
+    }
+   ]
+  },
+  {
+   "sp": "clefable",
+   "items": [
+    {
+     "id": "clefable",
+     "n": "57",
+     "nat": 36,
+     "name": "Clefable",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/36.png"
+    }
+   ]
+  },
+  {
+   "sp": "spinarak",
+   "items": [
+    {
+     "id": "spinarak",
+     "n": "58",
+     "nat": 167,
+     "name": "Spinarak",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/167.png"
+    }
+   ]
+  },
+  {
+   "sp": "ariados",
+   "items": [
+    {
+     "id": "ariados",
+     "n": "59",
+     "nat": 168,
+     "name": "Ariados",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/168.png"
+    }
+   ]
+  },
+  {
+   "sp": "ekans",
+   "items": [
+    {
+     "id": "ekans",
+     "n": "60",
+     "nat": 23,
+     "name": "Ekans",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/23.png"
+    }
+   ]
+  },
+  {
+   "sp": "arbok",
+   "items": [
+    {
+     "id": "arbok",
+     "n": "61",
+     "nat": 24,
+     "name": "Arbok",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/24.png"
+    }
+   ]
+  },
+  {
+   "sp": "abra",
+   "items": [
+    {
+     "id": "abra",
+     "n": "62",
+     "nat": 63,
+     "name": "Abra",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/63.png"
+    }
+   ]
+  },
+  {
+   "sp": "kadabra",
+   "items": [
+    {
+     "id": "kadabra",
+     "n": "63",
+     "nat": 64,
+     "name": "Kadabra",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/64.png"
+    },
+    {
+     "id": "kadabra-female",
+     "n": "63",
+     "nat": 64,
+     "name": "Kadabra",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/64.png"
+    }
+   ]
+  },
+  {
+   "sp": "alakazam",
+   "items": [
+    {
+     "id": "alakazam",
+     "n": "64",
+     "nat": 65,
+     "name": "Alakazam",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/65.png"
+    },
+    {
+     "id": "alakazam-female",
+     "n": "64",
+     "nat": 65,
+     "name": "Alakazam",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/65.png"
+    }
+   ]
+  },
+  {
+   "sp": "gastly",
+   "items": [
+    {
+     "id": "gastly",
+     "n": "65",
+     "nat": 92,
+     "name": "Gastly",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/92.png"
+    }
+   ]
+  },
+  {
+   "sp": "haunter",
+   "items": [
+    {
+     "id": "haunter",
+     "n": "66",
+     "nat": 93,
+     "name": "Haunter",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/93.png"
+    }
+   ]
+  },
+  {
+   "sp": "gengar",
+   "items": [
+    {
+     "id": "gengar",
+     "n": "67",
+     "nat": 94,
+     "name": "Gengar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/94.png"
+    }
+   ]
+  },
+  {
+   "sp": "venipede",
+   "items": [
+    {
+     "id": "venipede",
+     "n": "68",
+     "nat": 543,
+     "name": "Venipede",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/543.png"
+    }
+   ]
+  },
+  {
+   "sp": "whirlipede",
+   "items": [
+    {
+     "id": "whirlipede",
+     "n": "69",
+     "nat": 544,
+     "name": "Whirlipede",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/544.png"
+    }
+   ]
+  },
+  {
+   "sp": "scolipede",
+   "items": [
+    {
+     "id": "scolipede",
+     "n": "70",
+     "nat": 545,
+     "name": "Scolipede",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/545.png"
+    }
+   ]
+  },
+  {
+   "sp": "honedge",
+   "items": [
+    {
+     "id": "honedge",
+     "n": "71",
+     "nat": 679,
+     "name": "Honedge",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/679.png"
+    }
+   ]
+  },
+  {
+   "sp": "doublade",
+   "items": [
+    {
+     "id": "doublade",
+     "n": "72",
+     "nat": 680,
+     "name": "Doublade",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/680.png"
+    }
+   ]
+  },
+  {
+   "sp": "aegislash",
+   "items": [
+    {
+     "id": "aegislash-shield",
+     "n": "73",
+     "nat": 681,
+     "name": "Aegislash",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/681.png"
+    }
+   ]
+  },
+  {
+   "sp": "bellsprout",
+   "items": [
+    {
+     "id": "bellsprout",
+     "n": "74",
+     "nat": 69,
+     "name": "Bellsprout",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/69.png"
+    }
+   ]
+  },
+  {
+   "sp": "weepinbell",
+   "items": [
+    {
+     "id": "weepinbell",
+     "n": "75",
+     "nat": 70,
+     "name": "Weepinbell",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/70.png"
+    }
+   ]
+  },
+  {
+   "sp": "victreebel",
+   "items": [
+    {
+     "id": "victreebel",
+     "n": "76",
+     "nat": 71,
+     "name": "Victreebel",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/71.png"
+    }
+   ]
+  },
+  {
+   "sp": "pansage",
+   "items": [
+    {
+     "id": "pansage",
+     "n": "77",
+     "nat": 511,
+     "name": "Pansage",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/511.png"
+    }
+   ]
+  },
+  {
+   "sp": "simisage",
+   "items": [
+    {
+     "id": "simisage",
+     "n": "78",
+     "nat": 512,
+     "name": "Simisage",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/512.png"
+    }
+   ]
+  },
+  {
+   "sp": "pansear",
+   "items": [
+    {
+     "id": "pansear",
+     "n": "79",
+     "nat": 513,
+     "name": "Pansear",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/513.png"
+    }
+   ]
+  },
+  {
+   "sp": "simisear",
+   "items": [
+    {
+     "id": "simisear",
+     "n": "80",
+     "nat": 514,
+     "name": "Simisear",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/514.png"
+    }
+   ]
+  },
+  {
+   "sp": "panpour",
+   "items": [
+    {
+     "id": "panpour",
+     "n": "81",
+     "nat": 515,
+     "name": "Panpour",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/515.png"
+    }
+   ]
+  },
+  {
+   "sp": "simipour",
+   "items": [
+    {
+     "id": "simipour",
+     "n": "82",
+     "nat": 516,
+     "name": "Simipour",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/516.png"
+    }
+   ]
+  },
+  {
+   "sp": "meditite",
+   "items": [
+    {
+     "id": "meditite",
+     "n": "83",
+     "nat": 307,
+     "name": "Meditite",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/307.png"
+    },
+    {
+     "id": "meditite-female",
+     "n": "83",
+     "nat": 307,
+     "name": "Meditite",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/307.png"
+    }
+   ]
+  },
+  {
+   "sp": "medicham",
+   "items": [
+    {
+     "id": "medicham",
+     "n": "84",
+     "nat": 308,
+     "name": "Medicham",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/308.png"
+    },
+    {
+     "id": "medicham-female",
+     "n": "84",
+     "nat": 308,
+     "name": "Medicham",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/308.png"
+    }
+   ]
+  },
+  {
+   "sp": "electrike",
+   "items": [
+    {
+     "id": "electrike",
+     "n": "85",
+     "nat": 309,
+     "name": "Electrike",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/309.png"
+    }
+   ]
+  },
+  {
+   "sp": "manectric",
+   "items": [
+    {
+     "id": "manectric",
+     "n": "86",
+     "nat": 310,
+     "name": "Manectric",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/310.png"
+    }
+   ]
+  },
+  {
+   "sp": "ralts",
+   "items": [
+    {
+     "id": "ralts",
+     "n": "87",
+     "nat": 280,
+     "name": "Ralts",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/280.png"
+    }
+   ]
+  },
+  {
+   "sp": "kirlia",
+   "items": [
+    {
+     "id": "kirlia",
+     "n": "88",
+     "nat": 281,
+     "name": "Kirlia",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/281.png"
+    }
+   ]
+  },
+  {
+   "sp": "gardevoir",
+   "items": [
+    {
+     "id": "gardevoir",
+     "n": "89",
+     "nat": 282,
+     "name": "Gardevoir",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/282.png"
+    }
+   ]
+  },
+  {
+   "sp": "gallade",
+   "items": [
+    {
+     "id": "gallade",
+     "n": "90",
+     "nat": 475,
+     "name": "Gallade",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/475.png"
+    }
+   ]
+  },
+  {
+   "sp": "houndour",
+   "items": [
+    {
+     "id": "houndour",
+     "n": "91",
+     "nat": 228,
+     "name": "Houndour",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/228.png"
+    }
+   ]
+  },
+  {
+   "sp": "houndoom",
+   "items": [
+    {
+     "id": "houndoom",
+     "n": "92",
+     "nat": 229,
+     "name": "Houndoom",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/229.png"
+    },
+    {
+     "id": "houndoom-female",
+     "n": "92",
+     "nat": 229,
+     "name": "Houndoom",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/229.png"
+    }
+   ]
+  },
+  {
+   "sp": "swablu",
+   "items": [
+    {
+     "id": "swablu",
+     "n": "93",
+     "nat": 333,
+     "name": "Swablu",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/333.png"
+    }
+   ]
+  },
+  {
+   "sp": "altaria",
+   "items": [
+    {
+     "id": "altaria",
+     "n": "94",
+     "nat": 334,
+     "name": "Altaria",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/334.png"
+    }
+   ]
+  },
+  {
+   "sp": "audino",
+   "items": [
+    {
+     "id": "audino",
+     "n": "95",
+     "nat": 531,
+     "name": "Audino",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/531.png"
+    }
+   ]
+  },
+  {
+   "sp": "spritzee",
+   "items": [
+    {
+     "id": "spritzee",
+     "n": "96",
+     "nat": 682,
+     "name": "Spritzee",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/682.png"
+    }
+   ]
+  },
+  {
+   "sp": "aromatisse",
+   "items": [
+    {
+     "id": "aromatisse",
+     "n": "97",
+     "nat": 683,
+     "name": "Aromatisse",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/683.png"
+    }
+   ]
+  },
+  {
+   "sp": "swirlix",
+   "items": [
+    {
+     "id": "swirlix",
+     "n": "98",
+     "nat": 684,
+     "name": "Swirlix",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/684.png"
+    }
+   ]
+  },
+  {
+   "sp": "slurpuff",
+   "items": [
+    {
+     "id": "slurpuff",
+     "n": "99",
+     "nat": 685,
+     "name": "Slurpuff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/685.png"
+    }
+   ]
+  },
+  {
+   "sp": "eevee",
+   "items": [
+    {
+     "id": "eevee",
+     "n": "100",
+     "nat": 133,
+     "name": "Eevee",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/133.png"
+    },
+    {
+     "id": "eevee-female",
+     "n": "100",
+     "nat": 133,
+     "name": "Eevee",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/133.png"
+    }
+   ]
+  },
+  {
+   "sp": "vaporeon",
+   "items": [
+    {
+     "id": "vaporeon",
+     "n": "101",
+     "nat": 134,
+     "name": "Vaporeon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/134.png"
+    }
+   ]
+  },
+  {
+   "sp": "jolteon",
+   "items": [
+    {
+     "id": "jolteon",
+     "n": "102",
+     "nat": 135,
+     "name": "Jolteon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/135.png"
+    }
+   ]
+  },
+  {
+   "sp": "flareon",
+   "items": [
+    {
+     "id": "flareon",
+     "n": "103",
+     "nat": 136,
+     "name": "Flareon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/136.png"
+    }
+   ]
+  },
+  {
+   "sp": "espeon",
+   "items": [
+    {
+     "id": "espeon",
+     "n": "104",
+     "nat": 196,
+     "name": "Espeon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/196.png"
+    }
+   ]
+  },
+  {
+   "sp": "umbreon",
+   "items": [
+    {
+     "id": "umbreon",
+     "n": "105",
+     "nat": 197,
+     "name": "Umbreon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/197.png"
+    }
+   ]
+  },
+  {
+   "sp": "leafeon",
+   "items": [
+    {
+     "id": "leafeon",
+     "n": "106",
+     "nat": 470,
+     "name": "Leafeon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/470.png"
+    }
+   ]
+  },
+  {
+   "sp": "glaceon",
+   "items": [
+    {
+     "id": "glaceon",
+     "n": "107",
+     "nat": 471,
+     "name": "Glaceon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/471.png"
+    }
+   ]
+  },
+  {
+   "sp": "sylveon",
+   "items": [
+    {
+     "id": "sylveon",
+     "n": "108",
+     "nat": 700,
+     "name": "Sylveon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/700.png"
+    }
+   ]
+  },
+  {
+   "sp": "buneary",
+   "items": [
+    {
+     "id": "buneary",
+     "n": "109",
+     "nat": 427,
+     "name": "Buneary",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/427.png"
+    }
+   ]
+  },
+  {
+   "sp": "lopunny",
+   "items": [
+    {
+     "id": "lopunny",
+     "n": "110",
+     "nat": 428,
+     "name": "Lopunny",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/428.png"
+    }
+   ]
+  },
+  {
+   "sp": "shuppet",
+   "items": [
+    {
+     "id": "shuppet",
+     "n": "111",
+     "nat": 353,
+     "name": "Shuppet",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/353.png"
+    }
+   ]
+  },
+  {
+   "sp": "banette",
+   "items": [
+    {
+     "id": "banette",
+     "n": "112",
+     "nat": 354,
+     "name": "Banette",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/354.png"
+    }
+   ]
+  },
+  {
+   "sp": "vanillite",
+   "items": [
+    {
+     "id": "vanillite",
+     "n": "113",
+     "nat": 582,
+     "name": "Vanillite",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/582.png"
+    }
+   ]
+  },
+  {
+   "sp": "vanillish",
+   "items": [
+    {
+     "id": "vanillish",
+     "n": "114",
+     "nat": 583,
+     "name": "Vanillish",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/583.png"
+    }
+   ]
+  },
+  {
+   "sp": "vanilluxe",
+   "items": [
+    {
+     "id": "vanilluxe",
+     "n": "115",
+     "nat": 584,
+     "name": "Vanilluxe",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/584.png"
+    }
+   ]
+  },
+  {
+   "sp": "numel",
+   "items": [
+    {
+     "id": "numel",
+     "n": "116",
+     "nat": 322,
+     "name": "Numel",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/322.png"
+    },
+    {
+     "id": "numel-female",
+     "n": "116",
+     "nat": 322,
+     "name": "Numel",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/322.png"
+    }
+   ]
+  },
+  {
+   "sp": "camerupt",
+   "items": [
+    {
+     "id": "camerupt",
+     "n": "117",
+     "nat": 323,
+     "name": "Camerupt",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/323.png"
+    },
+    {
+     "id": "camerupt-female",
+     "n": "117",
+     "nat": 323,
+     "name": "Camerupt",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/323.png"
+    }
+   ]
+  },
+  {
+   "sp": "hippopotas",
+   "items": [
+    {
+     "id": "hippopotas",
+     "n": "118",
+     "nat": 449,
+     "name": "Hippopotas",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/449.png"
+    },
+    {
+     "id": "hippopotas-female",
+     "n": "118",
+     "nat": 449,
+     "name": "Hippopotas",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/449.png"
+    }
+   ]
+  },
+  {
+   "sp": "hippowdon",
+   "items": [
+    {
+     "id": "hippowdon",
+     "n": "119",
+     "nat": 450,
+     "name": "Hippowdon",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/450.png"
+    },
+    {
+     "id": "hippowdon-female",
+     "n": "119",
+     "nat": 450,
+     "name": "Hippowdon",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/450.png"
+    }
+   ]
+  },
+  {
+   "sp": "drilbur",
+   "items": [
+    {
+     "id": "drilbur",
+     "n": "120",
+     "nat": 529,
+     "name": "Drilbur",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/529.png"
+    }
+   ]
+  },
+  {
+   "sp": "excadrill",
+   "items": [
+    {
+     "id": "excadrill",
+     "n": "121",
+     "nat": 530,
+     "name": "Excadrill",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/530.png"
+    }
+   ]
+  },
+  {
+   "sp": "sandile",
+   "items": [
+    {
+     "id": "sandile",
+     "n": "122",
+     "nat": 551,
+     "name": "Sandile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/551.png"
+    }
+   ]
+  },
+  {
+   "sp": "krokorok",
+   "items": [
+    {
+     "id": "krokorok",
+     "n": "123",
+     "nat": 552,
+     "name": "Krokorok",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/552.png"
+    }
+   ]
+  },
+  {
+   "sp": "krookodile",
+   "items": [
+    {
+     "id": "krookodile",
+     "n": "124",
+     "nat": 553,
+     "name": "Krookodile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/553.png"
+    }
+   ]
+  },
+  {
+   "sp": "machop",
+   "items": [
+    {
+     "id": "machop",
+     "n": "125",
+     "nat": 66,
+     "name": "Machop",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/66.png"
+    }
+   ]
+  },
+  {
+   "sp": "machoke",
+   "items": [
+    {
+     "id": "machoke",
+     "n": "126",
+     "nat": 67,
+     "name": "Machoke",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/67.png"
+    }
+   ]
+  },
+  {
+   "sp": "machamp",
+   "items": [
+    {
+     "id": "machamp",
+     "n": "127",
+     "nat": 68,
+     "name": "Machamp",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/68.png"
+    }
+   ]
+  },
+  {
+   "sp": "gible",
+   "items": [
+    {
+     "id": "gible",
+     "n": "128",
+     "nat": 443,
+     "name": "Gible",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/443.png"
+    },
+    {
+     "id": "gible-female",
+     "n": "128",
+     "nat": 443,
+     "name": "Gible",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/443.png"
+    }
+   ]
+  },
+  {
+   "sp": "gabite",
+   "items": [
+    {
+     "id": "gabite",
+     "n": "129",
+     "nat": 444,
+     "name": "Gabite",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/444.png"
+    },
+    {
+     "id": "gabite-female",
+     "n": "129",
+     "nat": 444,
+     "name": "Gabite",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/444.png"
+    }
+   ]
+  },
+  {
+   "sp": "garchomp",
+   "items": [
+    {
+     "id": "garchomp",
+     "n": "130",
+     "nat": 445,
+     "name": "Garchomp",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/445.png"
+    },
+    {
+     "id": "garchomp-female",
+     "n": "130",
+     "nat": 445,
+     "name": "Garchomp",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/445.png"
+    }
+   ]
+  },
+  {
+   "sp": "carbink",
+   "items": [
+    {
+     "id": "carbink",
+     "n": "131",
+     "nat": 703,
+     "name": "Carbink",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/703.png"
+    }
+   ]
+  },
+  {
+   "sp": "sableye",
+   "items": [
+    {
+     "id": "sableye",
+     "n": "132",
+     "nat": 302,
+     "name": "Sableye",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/302.png"
+    }
+   ]
+  },
+  {
+   "sp": "mawile",
+   "items": [
+    {
+     "id": "mawile",
+     "n": "133",
+     "nat": 303,
+     "name": "Mawile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/303.png"
+    }
+   ]
+  },
+  {
+   "sp": "absol",
+   "items": [
+    {
+     "id": "absol",
+     "n": "134",
+     "nat": 359,
+     "name": "Absol",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/359.png"
+    }
+   ]
+  },
+  {
+   "sp": "riolu",
+   "items": [
+    {
+     "id": "riolu",
+     "n": "135",
+     "nat": 447,
+     "name": "Riolu",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/447.png"
+    }
+   ]
+  },
+  {
+   "sp": "lucario",
+   "items": [
+    {
+     "id": "lucario",
+     "n": "136",
+     "nat": 448,
+     "name": "Lucario",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/448.png"
+    }
+   ]
+  },
+  {
+   "sp": "slowpoke",
+   "items": [
+    {
+     "id": "slowpoke",
+     "n": "137",
+     "nat": 79,
+     "name": "Slowpoke",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/79.png"
+    },
+    {
+     "id": "slowpoke-galar",
+     "n": "137",
+     "nat": 79,
+     "name": "Slowpoke",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10164.png"
+    }
+   ]
+  },
+  {
+   "sp": "slowbro",
+   "items": [
+    {
+     "id": "slowbro",
+     "n": "138",
+     "nat": 80,
+     "name": "Slowbro",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/80.png"
+    },
+    {
+     "id": "slowbro-galar",
+     "n": "138",
+     "nat": 80,
+     "name": "Slowbro",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10165.png"
+    }
+   ]
+  },
+  {
+   "sp": "slowking",
+   "items": [
+    {
+     "id": "slowking",
+     "n": "139",
+     "nat": 199,
+     "name": "Slowking",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/199.png"
+    },
+    {
+     "id": "slowking-galar",
+     "n": "139",
+     "nat": 199,
+     "name": "Slowking",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10172.png"
+    }
+   ]
+  },
+  {
+   "sp": "carvanha",
+   "items": [
+    {
+     "id": "carvanha",
+     "n": "140",
+     "nat": 318,
+     "name": "Carvanha",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/318.png"
+    }
+   ]
+  },
+  {
+   "sp": "sharpedo",
+   "items": [
+    {
+     "id": "sharpedo",
+     "n": "141",
+     "nat": 319,
+     "name": "Sharpedo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/319.png"
+    }
+   ]
+  },
+  {
+   "sp": "tynamo",
+   "items": [
+    {
+     "id": "tynamo",
+     "n": "142",
+     "nat": 602,
+     "name": "Tynamo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/602.png"
+    }
+   ]
+  },
+  {
+   "sp": "eelektrik",
+   "items": [
+    {
+     "id": "eelektrik",
+     "n": "143",
+     "nat": 603,
+     "name": "Eelektrik",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/603.png"
+    }
+   ]
+  },
+  {
+   "sp": "eelektross",
+   "items": [
+    {
+     "id": "eelektross",
+     "n": "144",
+     "nat": 604,
+     "name": "Eelektross",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/604.png"
+    }
+   ]
+  },
+  {
+   "sp": "dratini",
+   "items": [
+    {
+     "id": "dratini",
+     "n": "145",
+     "nat": 147,
+     "name": "Dratini",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/147.png"
+    }
+   ]
+  },
+  {
+   "sp": "dragonair",
+   "items": [
+    {
+     "id": "dragonair",
+     "n": "146",
+     "nat": 148,
+     "name": "Dragonair",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/148.png"
+    }
+   ]
+  },
+  {
+   "sp": "dragonite",
+   "items": [
+    {
+     "id": "dragonite",
+     "n": "147",
+     "nat": 149,
+     "name": "Dragonite",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/149.png"
+    }
+   ]
+  },
+  {
+   "sp": "bulbasaur",
+   "items": [
+    {
+     "id": "bulbasaur",
+     "n": "148",
+     "nat": 1,
+     "name": "Bulbasaur",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/1.png"
+    }
+   ]
+  },
+  {
+   "sp": "ivysaur",
+   "items": [
+    {
+     "id": "ivysaur",
+     "n": "149",
+     "nat": 2,
+     "name": "Ivysaur",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/2.png"
+    }
+   ]
+  },
+  {
+   "sp": "venusaur",
+   "items": [
+    {
+     "id": "venusaur",
+     "n": "150",
+     "nat": 3,
+     "name": "Venusaur",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/3.png"
+    },
+    {
+     "id": "venusaur-female",
+     "n": "150",
+     "nat": 3,
+     "name": "Venusaur",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/3.png"
+    }
+   ]
+  },
+  {
+   "sp": "charmander",
+   "items": [
+    {
+     "id": "charmander",
+     "n": "151",
+     "nat": 4,
+     "name": "Charmander",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/4.png"
+    }
+   ]
+  },
+  {
+   "sp": "charmeleon",
+   "items": [
+    {
+     "id": "charmeleon",
+     "n": "152",
+     "nat": 5,
+     "name": "Charmeleon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/5.png"
+    }
+   ]
+  },
+  {
+   "sp": "charizard",
+   "items": [
+    {
+     "id": "charizard",
+     "n": "153",
+     "nat": 6,
+     "name": "Charizard",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/6.png"
+    }
+   ]
+  },
+  {
+   "sp": "squirtle",
+   "items": [
+    {
+     "id": "squirtle",
+     "n": "154",
+     "nat": 7,
+     "name": "Squirtle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/7.png"
+    }
+   ]
+  },
+  {
+   "sp": "wartortle",
+   "items": [
+    {
+     "id": "wartortle",
+     "n": "155",
+     "nat": 8,
+     "name": "Wartortle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/8.png"
+    }
+   ]
+  },
+  {
+   "sp": "blastoise",
+   "items": [
+    {
+     "id": "blastoise",
+     "n": "156",
+     "nat": 9,
+     "name": "Blastoise",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/9.png"
+    }
+   ]
+  },
+  {
+   "sp": "stunfisk",
+   "items": [
+    {
+     "id": "stunfisk",
+     "n": "157",
+     "nat": 618,
+     "name": "Stunfisk",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/618.png"
+    },
+    {
+     "id": "stunfisk-galar",
+     "n": "157",
+     "nat": 618,
+     "name": "Stunfisk",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10180.png"
+    }
+   ]
+  },
+  {
+   "sp": "furfrou",
+   "items": [
+    {
+     "id": "furfrou-natural",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Natural",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/676.png"
+    },
+    {
+     "id": "furfrou-heart",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Heart",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-heart.png"
+    },
+    {
+     "id": "furfrou-star",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Star",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-star.png"
+    },
+    {
+     "id": "furfrou-diamond",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Diamond",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-diamond.png"
+    },
+    {
+     "id": "furfrou-debutante",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Debutante",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-debutante.png"
+    },
+    {
+     "id": "furfrou-matron",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Matron",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-matron.png"
+    },
+    {
+     "id": "furfrou-dandy",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Dandy",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-dandy.png"
+    },
+    {
+     "id": "furfrou-la-reine",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "La Reine",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-la-reine.png"
+    },
+    {
+     "id": "furfrou-kabuki",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Kabuki",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-kabuki.png"
+    },
+    {
+     "id": "furfrou-pharaoh",
+     "n": "158",
+     "nat": 676,
+     "name": "Furfrou",
+     "form": "Pharaoh",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/676-pharaoh.png"
+    }
+   ]
+  },
+  {
+   "sp": "inkay",
+   "items": [
+    {
+     "id": "inkay",
+     "n": "159",
+     "nat": 686,
+     "name": "Inkay",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/686.png"
+    }
+   ]
+  },
+  {
+   "sp": "malamar",
+   "items": [
+    {
+     "id": "malamar",
+     "n": "160",
+     "nat": 687,
+     "name": "Malamar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/687.png"
+    }
+   ]
+  },
+  {
+   "sp": "skrelp",
+   "items": [
+    {
+     "id": "skrelp",
+     "n": "161",
+     "nat": 690,
+     "name": "Skrelp",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/690.png"
+    }
+   ]
+  },
+  {
+   "sp": "dragalge",
+   "items": [
+    {
+     "id": "dragalge",
+     "n": "162",
+     "nat": 691,
+     "name": "Dragalge",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/691.png"
+    }
+   ]
+  },
+  {
+   "sp": "clauncher",
+   "items": [
+    {
+     "id": "clauncher",
+     "n": "163",
+     "nat": 692,
+     "name": "Clauncher",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/692.png"
+    }
+   ]
+  },
+  {
+   "sp": "clawitzer",
+   "items": [
+    {
+     "id": "clawitzer",
+     "n": "164",
+     "nat": 693,
+     "name": "Clawitzer",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/693.png"
+    }
+   ]
+  },
+  {
+   "sp": "goomy",
+   "items": [
+    {
+     "id": "goomy",
+     "n": "165",
+     "nat": 704,
+     "name": "Goomy",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/704.png"
+    }
+   ]
+  },
+  {
+   "sp": "sliggoo",
+   "items": [
+    {
+     "id": "sliggoo",
+     "n": "166",
+     "nat": 705,
+     "name": "Sliggoo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/705.png"
+    },
+    {
+     "id": "sliggoo-hisui",
+     "n": "166",
+     "nat": 705,
+     "name": "Sliggoo",
+     "form": "Hisui",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10241.png"
+    }
+   ]
+  },
+  {
+   "sp": "goodra",
+   "items": [
+    {
+     "id": "goodra",
+     "n": "167",
+     "nat": 706,
+     "name": "Goodra",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/706.png"
+    },
+    {
+     "id": "goodra-hisui",
+     "n": "167",
+     "nat": 706,
+     "name": "Goodra",
+     "form": "Hisui",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10242.png"
+    }
+   ]
+  },
+  {
+   "sp": "delibird",
+   "items": [
+    {
+     "id": "delibird",
+     "n": "168",
+     "nat": 225,
+     "name": "Delibird",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/225.png"
+    }
+   ]
+  },
+  {
+   "sp": "snorunt",
+   "items": [
+    {
+     "id": "snorunt",
+     "n": "169",
+     "nat": 361,
+     "name": "Snorunt",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/361.png"
+    }
+   ]
+  },
+  {
+   "sp": "glalie",
+   "items": [
+    {
+     "id": "glalie",
+     "n": "170",
+     "nat": 362,
+     "name": "Glalie",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/362.png"
+    }
+   ]
+  },
+  {
+   "sp": "froslass",
+   "items": [
+    {
+     "id": "froslass",
+     "n": "171",
+     "nat": 478,
+     "name": "Froslass",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/478.png"
+    }
+   ]
+  },
+  {
+   "sp": "snover",
+   "items": [
+    {
+     "id": "snover",
+     "n": "172",
+     "nat": 459,
+     "name": "Snover",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/459.png"
+    },
+    {
+     "id": "snover-female",
+     "n": "172",
+     "nat": 459,
+     "name": "Snover",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/459.png"
+    }
+   ]
+  },
+  {
+   "sp": "abomasnow",
+   "items": [
+    {
+     "id": "abomasnow",
+     "n": "173",
+     "nat": 460,
+     "name": "Abomasnow",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/460.png"
+    },
+    {
+     "id": "abomasnow-female",
+     "n": "173",
+     "nat": 460,
+     "name": "Abomasnow",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/460.png"
+    }
+   ]
+  },
+  {
+   "sp": "bergmite",
+   "items": [
+    {
+     "id": "bergmite",
+     "n": "174",
+     "nat": 712,
+     "name": "Bergmite",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/712.png"
+    }
+   ]
+  },
+  {
+   "sp": "avalugg",
+   "items": [
+    {
+     "id": "avalugg",
+     "n": "175",
+     "nat": 713,
+     "name": "Avalugg",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/713.png"
+    },
+    {
+     "id": "avalugg-hisui",
+     "n": "175",
+     "nat": 713,
+     "name": "Avalugg",
+     "form": "Hisui",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10243.png"
+    }
+   ]
+  },
+  {
+   "sp": "scyther",
+   "items": [
+    {
+     "id": "scyther",
+     "n": "176",
+     "nat": 123,
+     "name": "Scyther",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/123.png"
+    },
+    {
+     "id": "scyther-female",
+     "n": "176",
+     "nat": 123,
+     "name": "Scyther",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/123.png"
+    }
+   ]
+  },
+  {
+   "sp": "scizor",
+   "items": [
+    {
+     "id": "scizor",
+     "n": "177",
+     "nat": 212,
+     "name": "Scizor",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/212.png"
+    },
+    {
+     "id": "scizor-female",
+     "n": "177",
+     "nat": 212,
+     "name": "Scizor",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/212.png"
+    }
+   ]
+  },
+  {
+   "sp": "pinsir",
+   "items": [
+    {
+     "id": "pinsir",
+     "n": "178",
+     "nat": 127,
+     "name": "Pinsir",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/127.png"
+    }
+   ]
+  },
+  {
+   "sp": "heracross",
+   "items": [
+    {
+     "id": "heracross",
+     "n": "179",
+     "nat": 214,
+     "name": "Heracross",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/214.png"
+    },
+    {
+     "id": "heracross-female",
+     "n": "179",
+     "nat": 214,
+     "name": "Heracross",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/214.png"
+    }
+   ]
+  },
+  {
+   "sp": "emolga",
+   "items": [
+    {
+     "id": "emolga",
+     "n": "180",
+     "nat": 587,
+     "name": "Emolga",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/587.png"
+    }
+   ]
+  },
+  {
+   "sp": "hawlucha",
+   "items": [
+    {
+     "id": "hawlucha",
+     "n": "181",
+     "nat": 701,
+     "name": "Hawlucha",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/701.png"
+    }
+   ]
+  },
+  {
+   "sp": "phantump",
+   "items": [
+    {
+     "id": "phantump",
+     "n": "182",
+     "nat": 708,
+     "name": "Phantump",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/708.png"
+    }
+   ]
+  },
+  {
+   "sp": "trevenant",
+   "items": [
+    {
+     "id": "trevenant",
+     "n": "183",
+     "nat": 709,
+     "name": "Trevenant",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/709.png"
+    }
+   ]
+  },
+  {
+   "sp": "scraggy",
+   "items": [
+    {
+     "id": "scraggy",
+     "n": "184",
+     "nat": 559,
+     "name": "Scraggy",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/559.png"
+    }
+   ]
+  },
+  {
+   "sp": "scrafty",
+   "items": [
+    {
+     "id": "scrafty",
+     "n": "185",
+     "nat": 560,
+     "name": "Scrafty",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/560.png"
+    }
+   ]
+  },
+  {
+   "sp": "noibat",
+   "items": [
+    {
+     "id": "noibat",
+     "n": "186",
+     "nat": 714,
+     "name": "Noibat",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/714.png"
+    }
+   ]
+  },
+  {
+   "sp": "noivern",
+   "items": [
+    {
+     "id": "noivern",
+     "n": "187",
+     "nat": 715,
+     "name": "Noivern",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/715.png"
+    }
+   ]
+  },
+  {
+   "sp": "klefki",
+   "items": [
+    {
+     "id": "klefki",
+     "n": "188",
+     "nat": 707,
+     "name": "Klefki",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/707.png"
+    }
+   ]
+  },
+  {
+   "sp": "litwick",
+   "items": [
+    {
+     "id": "litwick",
+     "n": "189",
+     "nat": 607,
+     "name": "Litwick",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/607.png"
+    }
+   ]
+  },
+  {
+   "sp": "lampent",
+   "items": [
+    {
+     "id": "lampent",
+     "n": "190",
+     "nat": 608,
+     "name": "Lampent",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/608.png"
+    }
+   ]
+  },
+  {
+   "sp": "chandelure",
+   "items": [
+    {
+     "id": "chandelure",
+     "n": "191",
+     "nat": 609,
+     "name": "Chandelure",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/609.png"
+    }
+   ]
+  },
+  {
+   "sp": "aerodactyl",
+   "items": [
+    {
+     "id": "aerodactyl",
+     "n": "192",
+     "nat": 142,
+     "name": "Aerodactyl",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/142.png"
+    }
+   ]
+  },
+  {
+   "sp": "tyrunt",
+   "items": [
+    {
+     "id": "tyrunt",
+     "n": "193",
+     "nat": 696,
+     "name": "Tyrunt",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/696.png"
+    }
+   ]
+  },
+  {
+   "sp": "tyrantrum",
+   "items": [
+    {
+     "id": "tyrantrum",
+     "n": "194",
+     "nat": 697,
+     "name": "Tyrantrum",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/697.png"
+    }
+   ]
+  },
+  {
+   "sp": "amaura",
+   "items": [
+    {
+     "id": "amaura",
+     "n": "195",
+     "nat": 698,
+     "name": "Amaura",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/698.png"
+    }
+   ]
+  },
+  {
+   "sp": "aurorus",
+   "items": [
+    {
+     "id": "aurorus",
+     "n": "196",
+     "nat": 699,
+     "name": "Aurorus",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/699.png"
+    }
+   ]
+  },
+  {
+   "sp": "onix",
+   "items": [
+    {
+     "id": "onix",
+     "n": "197",
+     "nat": 95,
+     "name": "Onix",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/95.png"
+    }
+   ]
+  },
+  {
+   "sp": "steelix",
+   "items": [
+    {
+     "id": "steelix",
+     "n": "198",
+     "nat": 208,
+     "name": "Steelix",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/208.png"
+    },
+    {
+     "id": "steelix-female",
+     "n": "198",
+     "nat": 208,
+     "name": "Steelix",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/208.png"
+    }
+   ]
+  },
+  {
+   "sp": "aron",
+   "items": [
+    {
+     "id": "aron",
+     "n": "199",
+     "nat": 304,
+     "name": "Aron",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/304.png"
+    }
+   ]
+  },
+  {
+   "sp": "lairon",
+   "items": [
+    {
+     "id": "lairon",
+     "n": "200",
+     "nat": 305,
+     "name": "Lairon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/305.png"
+    }
+   ]
+  },
+  {
+   "sp": "aggron",
+   "items": [
+    {
+     "id": "aggron",
+     "n": "201",
+     "nat": 306,
+     "name": "Aggron",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/306.png"
+    }
+   ]
+  },
+  {
+   "sp": "helioptile",
+   "items": [
+    {
+     "id": "helioptile",
+     "n": "202",
+     "nat": 694,
+     "name": "Helioptile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/694.png"
+    }
+   ]
+  },
+  {
+   "sp": "heliolisk",
+   "items": [
+    {
+     "id": "heliolisk",
+     "n": "203",
+     "nat": 695,
+     "name": "Heliolisk",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/695.png"
+    }
+   ]
+  },
+  {
+   "sp": "pumpkaboo",
+   "items": [
+    {
+     "id": "pumpkaboo-average",
+     "n": "204",
+     "nat": 710,
+     "name": "Pumpkaboo",
+     "form": "Average",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/710.png"
+    },
+    {
+     "id": "pumpkaboo-small",
+     "n": "204",
+     "nat": 710,
+     "name": "Pumpkaboo",
+     "form": "Small",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10027.png"
+    },
+    {
+     "id": "pumpkaboo-large",
+     "n": "204",
+     "nat": 710,
+     "name": "Pumpkaboo",
+     "form": "Large",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10028.png"
+    },
+    {
+     "id": "pumpkaboo-super",
+     "n": "204",
+     "nat": 710,
+     "name": "Pumpkaboo",
+     "form": "Super",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10029.png"
+    }
+   ]
+  },
+  {
+   "sp": "gourgeist",
+   "items": [
+    {
+     "id": "gourgeist-average",
+     "n": "205",
+     "nat": 711,
+     "name": "Gourgeist",
+     "form": "Average",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/711.png"
+    },
+    {
+     "id": "gourgeist-small",
+     "n": "205",
+     "nat": 711,
+     "name": "Gourgeist",
+     "form": "Small",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10030.png"
+    },
+    {
+     "id": "gourgeist-large",
+     "n": "205",
+     "nat": 711,
+     "name": "Gourgeist",
+     "form": "Large",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10031.png"
+    },
+    {
+     "id": "gourgeist-super",
+     "n": "205",
+     "nat": 711,
+     "name": "Gourgeist",
+     "form": "Super",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10032.png"
+    }
+   ]
+  },
+  {
+   "sp": "larvitar",
+   "items": [
+    {
+     "id": "larvitar",
+     "n": "206",
+     "nat": 246,
+     "name": "Larvitar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/246.png"
+    }
+   ]
+  },
+  {
+   "sp": "pupitar",
+   "items": [
+    {
+     "id": "pupitar",
+     "n": "207",
+     "nat": 247,
+     "name": "Pupitar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/247.png"
+    }
+   ]
+  },
+  {
+   "sp": "tyranitar",
+   "items": [
+    {
+     "id": "tyranitar",
+     "n": "208",
+     "nat": 248,
+     "name": "Tyranitar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/248.png"
+    }
+   ]
+  },
+  {
+   "sp": "froakie",
+   "items": [
+    {
+     "id": "froakie",
+     "n": "209",
+     "nat": 656,
+     "name": "Froakie",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/656.png"
+    }
+   ]
+  },
+  {
+   "sp": "frogadier",
+   "items": [
+    {
+     "id": "frogadier",
+     "n": "210",
+     "nat": 657,
+     "name": "Frogadier",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/657.png"
+    }
+   ]
+  },
+  {
+   "sp": "greninja",
+   "items": [
+    {
+     "id": "greninja",
+     "n": "211",
+     "nat": 658,
+     "name": "Greninja",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/658.png"
+    }
+   ]
+  },
+  {
+   "sp": "falinks",
+   "items": [
+    {
+     "id": "falinks",
+     "n": "212",
+     "nat": 870,
+     "name": "Falinks",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/870.png"
+    }
+   ]
+  },
+  {
+   "sp": "chespin",
+   "items": [
+    {
+     "id": "chespin",
+     "n": "213",
+     "nat": 650,
+     "name": "Chespin",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/650.png"
+    }
+   ]
+  },
+  {
+   "sp": "quilladin",
+   "items": [
+    {
+     "id": "quilladin",
+     "n": "214",
+     "nat": 651,
+     "name": "Quilladin",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/651.png"
+    }
+   ]
+  },
+  {
+   "sp": "chesnaught",
+   "items": [
+    {
+     "id": "chesnaught",
+     "n": "215",
+     "nat": 652,
+     "name": "Chesnaught",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/652.png"
+    }
+   ]
+  },
+  {
+   "sp": "skarmory",
+   "items": [
+    {
+     "id": "skarmory",
+     "n": "216",
+     "nat": 227,
+     "name": "Skarmory",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/227.png"
+    }
+   ]
+  },
+  {
+   "sp": "fennekin",
+   "items": [
+    {
+     "id": "fennekin",
+     "n": "217",
+     "nat": 653,
+     "name": "Fennekin",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/653.png"
+    }
+   ]
+  },
+  {
+   "sp": "braixen",
+   "items": [
+    {
+     "id": "braixen",
+     "n": "218",
+     "nat": 654,
+     "name": "Braixen",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/654.png"
+    }
+   ]
+  },
+  {
+   "sp": "delphox",
+   "items": [
+    {
+     "id": "delphox",
+     "n": "219",
+     "nat": 655,
+     "name": "Delphox",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/655.png"
+    }
+   ]
+  },
+  {
+   "sp": "bagon",
+   "items": [
+    {
+     "id": "bagon",
+     "n": "220",
+     "nat": 371,
+     "name": "Bagon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/371.png"
+    }
+   ]
+  },
+  {
+   "sp": "shelgon",
+   "items": [
+    {
+     "id": "shelgon",
+     "n": "221",
+     "nat": 372,
+     "name": "Shelgon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/372.png"
+    }
+   ]
+  },
+  {
+   "sp": "salamence",
+   "items": [
+    {
+     "id": "salamence",
+     "n": "222",
+     "nat": 373,
+     "name": "Salamence",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/373.png"
+    }
+   ]
+  },
+  {
+   "sp": "kangaskhan",
+   "items": [
+    {
+     "id": "kangaskhan",
+     "n": "223",
+     "nat": 115,
+     "name": "Kangaskhan",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/115.png"
+    }
+   ]
+  },
+  {
+   "sp": "drampa",
+   "items": [
+    {
+     "id": "drampa",
+     "n": "224",
+     "nat": 780,
+     "name": "Drampa",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/780.png"
+    }
+   ]
+  },
+  {
+   "sp": "beldum",
+   "items": [
+    {
+     "id": "beldum",
+     "n": "225",
+     "nat": 374,
+     "name": "Beldum",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/374.png"
+    }
+   ]
+  },
+  {
+   "sp": "metang",
+   "items": [
+    {
+     "id": "metang",
+     "n": "226",
+     "nat": 375,
+     "name": "Metang",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/375.png"
+    }
+   ]
+  },
+  {
+   "sp": "metagross",
+   "items": [
+    {
+     "id": "metagross",
+     "n": "227",
+     "nat": 376,
+     "name": "Metagross",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/376.png"
+    }
+   ]
+  },
+  {
+   "sp": "xerneas",
+   "items": [
+    {
+     "id": "xerneas-neutral",
+     "n": "228",
+     "nat": 716,
+     "name": "Xerneas",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/716.png"
+    }
+   ]
+  },
+  {
+   "sp": "yveltal",
+   "items": [
+    {
+     "id": "yveltal",
+     "n": "229",
+     "nat": 717,
+     "name": "Yveltal",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/717.png"
+    }
+   ]
+  },
+  {
+   "sp": "zygarde",
+   "items": [
+    {
+     "id": "zygarde-50",
+     "n": "230",
+     "nat": 718,
+     "name": "Zygarde",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/718.png"
+    }
+   ]
+  },
+  {
+   "sp": "diancie",
+   "items": [
+    {
+     "id": "diancie",
+     "n": "231",
+     "nat": 719,
+     "name": "Diancie",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/719.png"
+    }
+   ]
+  },
+  {
+   "sp": "mewtwo",
+   "items": [
+    {
+     "id": "mewtwo",
+     "n": "232",
+     "nat": 150,
+     "name": "Mewtwo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/150.png"
+    }
+   ]
+  },
+  {
+   "sp": "mankey",
+   "items": [
+    {
+     "id": "mankey",
+     "n": "H1",
+     "nat": 56,
+     "name": "Mankey",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/56.png"
+    }
+   ]
+  },
+  {
+   "sp": "primeape",
+   "items": [
+    {
+     "id": "primeape",
+     "n": "H2",
+     "nat": 57,
+     "name": "Primeape",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/57.png"
+    }
+   ]
+  },
+  {
+   "sp": "annihilape",
+   "items": [
+    {
+     "id": "annihilape",
+     "n": "H3",
+     "nat": 979,
+     "name": "Annihilape",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/979.png"
+    }
+   ]
+  },
+  {
+   "sp": "meowth",
+   "items": [
+    {
+     "id": "meowth",
+     "n": "H4",
+     "nat": 52,
+     "name": "Meowth",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/52.png"
+    },
+    {
+     "id": "meowth-alola",
+     "n": "H4",
+     "nat": 52,
+     "name": "Meowth",
+     "form": "Alola",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10107.png"
+    },
+    {
+     "id": "meowth-galar",
+     "n": "H4",
+     "nat": 52,
+     "name": "Meowth",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10161.png"
+    }
+   ]
+  },
+  {
+   "sp": "persian",
+   "items": [
+    {
+     "id": "persian",
+     "n": "H5",
+     "nat": 53,
+     "name": "Persian",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/53.png"
+    },
+    {
+     "id": "persian-alola",
+     "n": "H5",
+     "nat": 53,
+     "name": "Persian",
+     "form": "Alola",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10108.png"
+    }
+   ]
+  },
+  {
+   "sp": "perrserker",
+   "items": [
+    {
+     "id": "perrserker",
+     "n": "H6",
+     "nat": 863,
+     "name": "Perrserker",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/863.png"
+    }
+   ]
+  },
+  {
+   "sp": "farfetchd",
+   "items": [
+    {
+     "id": "farfetchd",
+     "n": "H7",
+     "nat": 83,
+     "name": "Farfetch’d",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/83.png"
+    },
+    {
+     "id": "farfetchd-galar",
+     "n": "H7",
+     "nat": 83,
+     "name": "Farfetch’d",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10166.png"
+    }
+   ]
+  },
+  {
+   "sp": "sirfetchd",
+   "items": [
+    {
+     "id": "sirfetchd",
+     "n": "H8",
+     "nat": 865,
+     "name": "Sirfetch’d",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/865.png"
+    }
+   ]
+  },
+  {
+   "sp": "cubone",
+   "items": [
+    {
+     "id": "cubone",
+     "n": "H9",
+     "nat": 104,
+     "name": "Cubone",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/104.png"
+    }
+   ]
+  },
+  {
+   "sp": "marowak",
+   "items": [
+    {
+     "id": "marowak",
+     "n": "H10",
+     "nat": 105,
+     "name": "Marowak",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/105.png"
+    },
+    {
+     "id": "marowak-alola",
+     "n": "H10",
+     "nat": 105,
+     "name": "Marowak",
+     "form": "Alola",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10115.png"
+    }
+   ]
+  },
+  {
+   "sp": "porygon",
+   "items": [
+    {
+     "id": "porygon",
+     "n": "H11",
+     "nat": 137,
+     "name": "Porygon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/137.png"
+    }
+   ]
+  },
+  {
+   "sp": "porygon2",
+   "items": [
+    {
+     "id": "porygon2",
+     "n": "H12",
+     "nat": 233,
+     "name": "Porygon2",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/233.png"
+    }
+   ]
+  },
+  {
+   "sp": "porygon-z",
+   "items": [
+    {
+     "id": "porygon-z",
+     "n": "H13",
+     "nat": 474,
+     "name": "Porygon-Z",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/474.png"
+    }
+   ]
+  },
+  {
+   "sp": "capsakid",
+   "items": [
+    {
+     "id": "capsakid",
+     "n": "H14",
+     "nat": 951,
+     "name": "Capsakid",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/951.png"
+    }
+   ]
+  },
+  {
+   "sp": "scovillain",
+   "items": [
+    {
+     "id": "scovillain",
+     "n": "H15",
+     "nat": 952,
+     "name": "Scovillain",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/952.png"
+    }
+   ]
+  },
+  {
+   "sp": "tinkatink",
+   "items": [
+    {
+     "id": "tinkatink",
+     "n": "H16",
+     "nat": 957,
+     "name": "Tinkatink",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/957.png"
+    }
+   ]
+  },
+  {
+   "sp": "tinkatuff",
+   "items": [
+    {
+     "id": "tinkatuff",
+     "n": "H17",
+     "nat": 958,
+     "name": "Tinkatuff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/958.png"
+    }
+   ]
+  },
+  {
+   "sp": "tinkaton",
+   "items": [
+    {
+     "id": "tinkaton",
+     "n": "H18",
+     "nat": 959,
+     "name": "Tinkaton",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/959.png"
+    }
+   ]
+  },
+  {
+   "sp": "cyclizar",
+   "items": [
+    {
+     "id": "cyclizar",
+     "n": "H19",
+     "nat": 967,
+     "name": "Cyclizar",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/967.png"
+    }
+   ]
+  },
+  {
+   "sp": "glimmet",
+   "items": [
+    {
+     "id": "glimmet",
+     "n": "H20",
+     "nat": 969,
+     "name": "Glimmet",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/969.png"
+    }
+   ]
+  },
+  {
+   "sp": "glimmora",
+   "items": [
+    {
+     "id": "glimmora",
+     "n": "H21",
+     "nat": 970,
+     "name": "Glimmora",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/970.png"
+    }
+   ]
+  },
+  {
+   "sp": "rotom",
+   "items": [
+    {
+     "id": "rotom",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/479.png"
+    },
+    {
+     "id": "rotom-heat",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "Heat",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10008.png"
+    },
+    {
+     "id": "rotom-wash",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "Wash",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10009.png"
+    },
+    {
+     "id": "rotom-frost",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "Frost",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10010.png"
+    },
+    {
+     "id": "rotom-fan",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "Fan",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10011.png"
+    },
+    {
+     "id": "rotom-mow",
+     "n": "H22",
+     "nat": 479,
+     "name": "Rotom",
+     "form": "Mow",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10012.png"
+    }
+   ]
+  },
+  {
+   "sp": "greavard",
+   "items": [
+    {
+     "id": "greavard",
+     "n": "H23",
+     "nat": 971,
+     "name": "Greavard",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/971.png"
+    }
+   ]
+  },
+  {
+   "sp": "houndstone",
+   "items": [
+    {
+     "id": "houndstone",
+     "n": "H24",
+     "nat": 972,
+     "name": "Houndstone",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/972.png"
+    }
+   ]
+  },
+  {
+   "sp": "sandygast",
+   "items": [
+    {
+     "id": "sandygast",
+     "n": "H25",
+     "nat": 769,
+     "name": "Sandygast",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/769.png"
+    }
+   ]
+  },
+  {
+   "sp": "palossand",
+   "items": [
+    {
+     "id": "palossand",
+     "n": "H26",
+     "nat": 770,
+     "name": "Palossand",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/770.png"
+    }
+   ]
+  },
+  {
+   "sp": "kecleon",
+   "items": [
+    {
+     "id": "kecleon",
+     "n": "H27",
+     "nat": 352,
+     "name": "Kecleon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/352.png"
+    }
+   ]
+  },
+  {
+   "sp": "flamigo",
+   "items": [
+    {
+     "id": "flamigo",
+     "n": "H28",
+     "nat": 973,
+     "name": "Flamigo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/973.png"
+    }
+   ]
+  },
+  {
+   "sp": "cryogonal",
+   "items": [
+    {
+     "id": "cryogonal",
+     "n": "H29",
+     "nat": 615,
+     "name": "Cryogonal",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/615.png"
+    }
+   ]
+  },
+  {
+   "sp": "dondozo",
+   "items": [
+    {
+     "id": "dondozo",
+     "n": "H30",
+     "nat": 977,
+     "name": "Dondozo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/977.png"
+    }
+   ]
+  },
+  {
+   "sp": "tatsugiri",
+   "items": [
+    {
+     "id": "tatsugiri-curly",
+     "n": "H31",
+     "nat": 978,
+     "name": "Tatsugiri",
+     "form": "Curly",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/978.png"
+    },
+    {
+     "id": "tatsugiri-droopy",
+     "n": "H31",
+     "nat": 978,
+     "name": "Tatsugiri",
+     "form": "Droopy",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10258.png"
+    },
+    {
+     "id": "tatsugiri-stretchy",
+     "n": "H31",
+     "nat": 978,
+     "name": "Tatsugiri",
+     "form": "Stretchy",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10259.png"
+    }
+   ]
+  },
+  {
+   "sp": "frigibax",
+   "items": [
+    {
+     "id": "frigibax",
+     "n": "H32",
+     "nat": 996,
+     "name": "Frigibax",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/996.png"
+    }
+   ]
+  },
+  {
+   "sp": "arctibax",
+   "items": [
+    {
+     "id": "arctibax",
+     "n": "H33",
+     "nat": 997,
+     "name": "Arctibax",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/997.png"
+    }
+   ]
+  },
+  {
+   "sp": "baxcalibur",
+   "items": [
+    {
+     "id": "baxcalibur",
+     "n": "H34",
+     "nat": 998,
+     "name": "Baxcalibur",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/998.png"
+    }
+   ]
+  },
+  {
+   "sp": "gimmighoul",
+   "items": [
+    {
+     "id": "gimmighoul-chest",
+     "n": "H35",
+     "nat": 999,
+     "name": "Gimmighoul",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/999.png"
+    }
+   ]
+  },
+  {
+   "sp": "gholdengo",
+   "items": [
+    {
+     "id": "gholdengo",
+     "n": "H36",
+     "nat": 1000,
+     "name": "Gholdengo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/1000.png"
+    }
+   ]
+  },
+  {
+   "sp": "qwilfish",
+   "items": [
+    {
+     "id": "qwilfish",
+     "n": "H37",
+     "nat": 211,
+     "name": "Qwilfish",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/211.png"
+    },
+    {
+     "id": "qwilfish-hisui",
+     "n": "H37",
+     "nat": 211,
+     "name": "Qwilfish",
+     "form": "Hisui",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10234.png"
+    }
+   ]
+  },
+  {
+   "sp": "overqwil",
+   "items": [
+    {
+     "id": "overqwil",
+     "n": "H38",
+     "nat": 904,
+     "name": "Overqwil",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/904.png"
+    }
+   ]
+  },
+  {
+   "sp": "treecko",
+   "items": [
+    {
+     "id": "treecko",
+     "n": "H39",
+     "nat": 252,
+     "name": "Treecko",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/252.png"
+    }
+   ]
+  },
+  {
+   "sp": "grovyle",
+   "items": [
+    {
+     "id": "grovyle",
+     "n": "H40",
+     "nat": 253,
+     "name": "Grovyle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/253.png"
+    }
+   ]
+  },
+  {
+   "sp": "sceptile",
+   "items": [
+    {
+     "id": "sceptile",
+     "n": "H41",
+     "nat": 254,
+     "name": "Sceptile",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/254.png"
+    }
+   ]
+  },
+  {
+   "sp": "torchic",
+   "items": [
+    {
+     "id": "torchic",
+     "n": "H42",
+     "nat": 255,
+     "name": "Torchic",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/255.png"
+    },
+    {
+     "id": "torchic-female",
+     "n": "H42",
+     "nat": 255,
+     "name": "Torchic",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/255.png"
+    }
+   ]
+  },
+  {
+   "sp": "combusken",
+   "items": [
+    {
+     "id": "combusken",
+     "n": "H43",
+     "nat": 256,
+     "name": "Combusken",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/256.png"
+    },
+    {
+     "id": "combusken-female",
+     "n": "H43",
+     "nat": 256,
+     "name": "Combusken",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/256.png"
+    }
+   ]
+  },
+  {
+   "sp": "blaziken",
+   "items": [
+    {
+     "id": "blaziken",
+     "n": "H44",
+     "nat": 257,
+     "name": "Blaziken",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/257.png"
+    },
+    {
+     "id": "blaziken-female",
+     "n": "H44",
+     "nat": 257,
+     "name": "Blaziken",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/257.png"
+    }
+   ]
+  },
+  {
+   "sp": "mudkip",
+   "items": [
+    {
+     "id": "mudkip",
+     "n": "H45",
+     "nat": 258,
+     "name": "Mudkip",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/258.png"
+    }
+   ]
+  },
+  {
+   "sp": "marshtomp",
+   "items": [
+    {
+     "id": "marshtomp",
+     "n": "H46",
+     "nat": 259,
+     "name": "Marshtomp",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/259.png"
+    }
+   ]
+  },
+  {
+   "sp": "swampert",
+   "items": [
+    {
+     "id": "swampert",
+     "n": "H47",
+     "nat": 260,
+     "name": "Swampert",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/260.png"
+    }
+   ]
+  },
+  {
+   "sp": "feebas",
+   "items": [
+    {
+     "id": "feebas",
+     "n": "H48",
+     "nat": 349,
+     "name": "Feebas",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/349.png"
+    }
+   ]
+  },
+  {
+   "sp": "milotic",
+   "items": [
+    {
+     "id": "milotic",
+     "n": "H49",
+     "nat": 350,
+     "name": "Milotic",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/350.png"
+    },
+    {
+     "id": "milotic-female",
+     "n": "H49",
+     "nat": 350,
+     "name": "Milotic",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/350.png"
+    }
+   ]
+  },
+  {
+   "sp": "chingling",
+   "items": [
+    {
+     "id": "chingling",
+     "n": "H50",
+     "nat": 433,
+     "name": "Chingling",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/433.png"
+    }
+   ]
+  },
+  {
+   "sp": "chimecho",
+   "items": [
+    {
+     "id": "chimecho",
+     "n": "H51",
+     "nat": 358,
+     "name": "Chimecho",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/358.png"
+    }
+   ]
+  },
+  {
+   "sp": "indeedee",
+   "items": [
+    {
+     "id": "indeedee-male",
+     "n": "H52",
+     "nat": 876,
+     "name": "Indeedee",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/876.png"
+    },
+    {
+     "id": "indeedee-female",
+     "n": "H52",
+     "nat": 876,
+     "name": "Indeedee",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/10186.png"
+    }
+   ]
+  },
+  {
+   "sp": "purrloin",
+   "items": [
+    {
+     "id": "purrloin",
+     "n": "H53",
+     "nat": 509,
+     "name": "Purrloin",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/509.png"
+    }
+   ]
+  },
+  {
+   "sp": "liepard",
+   "items": [
+    {
+     "id": "liepard",
+     "n": "H54",
+     "nat": 510,
+     "name": "Liepard",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/510.png"
+    }
+   ]
+  },
+  {
+   "sp": "munna",
+   "items": [
+    {
+     "id": "munna",
+     "n": "H55",
+     "nat": 517,
+     "name": "Munna",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/517.png"
+    }
+   ]
+  },
+  {
+   "sp": "musharna",
+   "items": [
+    {
+     "id": "musharna",
+     "n": "H56",
+     "nat": 518,
+     "name": "Musharna",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/518.png"
+    }
+   ]
+  },
+  {
+   "sp": "throh",
+   "items": [
+    {
+     "id": "throh",
+     "n": "H57",
+     "nat": 538,
+     "name": "Throh",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/538.png"
+    }
+   ]
+  },
+  {
+   "sp": "sawk",
+   "items": [
+    {
+     "id": "sawk",
+     "n": "H58",
+     "nat": 539,
+     "name": "Sawk",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/539.png"
+    }
+   ]
+  },
+  {
+   "sp": "yamask",
+   "items": [
+    {
+     "id": "yamask",
+     "n": "H59",
+     "nat": 562,
+     "name": "Yamask",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/562.png"
+    },
+    {
+     "id": "yamask-galar",
+     "n": "H59",
+     "nat": 562,
+     "name": "Yamask",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10179.png"
+    }
+   ]
+  },
+  {
+   "sp": "cofagrigus",
+   "items": [
+    {
+     "id": "cofagrigus",
+     "n": "H60",
+     "nat": 563,
+     "name": "Cofagrigus",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/563.png"
+    }
+   ]
+  },
+  {
+   "sp": "runerigus",
+   "items": [
+    {
+     "id": "runerigus",
+     "n": "H61",
+     "nat": 867,
+     "name": "Runerigus",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/867.png"
+    }
+   ]
+  },
+  {
+   "sp": "wimpod",
+   "items": [
+    {
+     "id": "wimpod",
+     "n": "H62",
+     "nat": 767,
+     "name": "Wimpod",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/767.png"
+    }
+   ]
+  },
+  {
+   "sp": "golisopod",
+   "items": [
+    {
+     "id": "golisopod",
+     "n": "H63",
+     "nat": 768,
+     "name": "Golisopod",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/768.png"
+    }
+   ]
+  },
+  {
+   "sp": "nickit",
+   "items": [
+    {
+     "id": "nickit",
+     "n": "H64",
+     "nat": 827,
+     "name": "Nickit",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/827.png"
+    }
+   ]
+  },
+  {
+   "sp": "thievul",
+   "items": [
+    {
+     "id": "thievul",
+     "n": "H65",
+     "nat": 828,
+     "name": "Thievul",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/828.png"
+    }
+   ]
+  },
+  {
+   "sp": "clobbopus",
+   "items": [
+    {
+     "id": "clobbopus",
+     "n": "H66",
+     "nat": 852,
+     "name": "Clobbopus",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/852.png"
+    }
+   ]
+  },
+  {
+   "sp": "grapploct",
+   "items": [
+    {
+     "id": "grapploct",
+     "n": "H67",
+     "nat": 853,
+     "name": "Grapploct",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/853.png"
+    }
+   ]
+  },
+  {
+   "sp": "mimikyu",
+   "items": [
+    {
+     "id": "mimikyu-disguised",
+     "n": "H68",
+     "nat": 778,
+     "name": "Mimikyu",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/778.png"
+    }
+   ]
+  },
+  {
+   "sp": "kleavor",
+   "items": [
+    {
+     "id": "kleavor",
+     "n": "H69",
+     "nat": 900,
+     "name": "Kleavor",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/900.png"
+    }
+   ]
+  },
+  {
+   "sp": "morpeko",
+   "items": [
+    {
+     "id": "morpeko-full-belly",
+     "n": "H70",
+     "nat": 877,
+     "name": "Morpeko",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/877.png"
+    }
+   ]
+  },
+  {
+   "sp": "golett",
+   "items": [
+    {
+     "id": "golett",
+     "n": "H71",
+     "nat": 622,
+     "name": "Golett",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/622.png"
+    }
+   ]
+  },
+  {
+   "sp": "golurk",
+   "items": [
+    {
+     "id": "golurk",
+     "n": "H72",
+     "nat": 623,
+     "name": "Golurk",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/623.png"
+    }
+   ]
+  },
+  {
+   "sp": "rookidee",
+   "items": [
+    {
+     "id": "rookidee",
+     "n": "H73",
+     "nat": 821,
+     "name": "Rookidee",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/821.png"
+    }
+   ]
+  },
+  {
+   "sp": "corvisquire",
+   "items": [
+    {
+     "id": "corvisquire",
+     "n": "H74",
+     "nat": 822,
+     "name": "Corvisquire",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/822.png"
+    }
+   ]
+  },
+  {
+   "sp": "corviknight",
+   "items": [
+    {
+     "id": "corviknight",
+     "n": "H75",
+     "nat": 823,
+     "name": "Corviknight",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/823.png"
+    }
+   ]
+  },
+  {
+   "sp": "igglybuff",
+   "items": [
+    {
+     "id": "igglybuff",
+     "n": "H76",
+     "nat": 174,
+     "name": "Igglybuff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/174.png"
+    }
+   ]
+  },
+  {
+   "sp": "jigglypuff",
+   "items": [
+    {
+     "id": "jigglypuff",
+     "n": "H77",
+     "nat": 39,
+     "name": "Jigglypuff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/39.png"
+    }
+   ]
+  },
+  {
+   "sp": "wigglytuff",
+   "items": [
+    {
+     "id": "wigglytuff",
+     "n": "H78",
+     "nat": 40,
+     "name": "Wigglytuff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/40.png"
+    }
+   ]
+  },
+  {
+   "sp": "fidough",
+   "items": [
+    {
+     "id": "fidough",
+     "n": "H79",
+     "nat": 926,
+     "name": "Fidough",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/926.png"
+    }
+   ]
+  },
+  {
+   "sp": "dachsbun",
+   "items": [
+    {
+     "id": "dachsbun",
+     "n": "H80",
+     "nat": 927,
+     "name": "Dachsbun",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/927.png"
+    }
+   ]
+  },
+  {
+   "sp": "starly",
+   "items": [
+    {
+     "id": "starly",
+     "n": "H81",
+     "nat": 396,
+     "name": "Starly",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/396.png"
+    },
+    {
+     "id": "starly-female",
+     "n": "H81",
+     "nat": 396,
+     "name": "Starly",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/396.png"
+    }
+   ]
+  },
+  {
+   "sp": "staravia",
+   "items": [
+    {
+     "id": "staravia",
+     "n": "H82",
+     "nat": 397,
+     "name": "Staravia",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/397.png"
+    },
+    {
+     "id": "staravia-female",
+     "n": "H82",
+     "nat": 397,
+     "name": "Staravia",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/397.png"
+    }
+   ]
+  },
+  {
+   "sp": "staraptor",
+   "items": [
+    {
+     "id": "staraptor",
+     "n": "H83",
+     "nat": 398,
+     "name": "Staraptor",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/398.png"
+    },
+    {
+     "id": "staraptor-female",
+     "n": "H83",
+     "nat": 398,
+     "name": "Staraptor",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/398.png"
+    }
+   ]
+  },
+  {
+   "sp": "spoink",
+   "items": [
+    {
+     "id": "spoink",
+     "n": "H84",
+     "nat": 325,
+     "name": "Spoink",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/325.png"
+    }
+   ]
+  },
+  {
+   "sp": "grumpig",
+   "items": [
+    {
+     "id": "grumpig",
+     "n": "H85",
+     "nat": 326,
+     "name": "Grumpig",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/326.png"
+    }
+   ]
+  },
+  {
+   "sp": "squawkabilly",
+   "items": [
+    {
+     "id": "squawkabilly-green-plumage",
+     "n": "H86",
+     "nat": 931,
+     "name": "Squawkabilly",
+     "form": "Green Plumage",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/931.png"
+    },
+    {
+     "id": "squawkabilly-blue-plumage",
+     "n": "H86",
+     "nat": 931,
+     "name": "Squawkabilly",
+     "form": "Blue Plumage",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10260.png"
+    },
+    {
+     "id": "squawkabilly-yellow-plumage",
+     "n": "H86",
+     "nat": 931,
+     "name": "Squawkabilly",
+     "form": "Yellow Plumage",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10261.png"
+    },
+    {
+     "id": "squawkabilly-white-plumage",
+     "n": "H86",
+     "nat": 931,
+     "name": "Squawkabilly",
+     "form": "White Plumage",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10262.png"
+    }
+   ]
+  },
+  {
+   "sp": "crabrawler",
+   "items": [
+    {
+     "id": "crabrawler",
+     "n": "H87",
+     "nat": 739,
+     "name": "Crabrawler",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/739.png"
+    }
+   ]
+  },
+  {
+   "sp": "crabominable",
+   "items": [
+    {
+     "id": "crabominable",
+     "n": "H88",
+     "nat": 740,
+     "name": "Crabominable",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/740.png"
+    }
+   ]
+  },
+  {
+   "sp": "nacli",
+   "items": [
+    {
+     "id": "nacli",
+     "n": "H89",
+     "nat": 932,
+     "name": "Nacli",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/932.png"
+    }
+   ]
+  },
+  {
+   "sp": "naclstack",
+   "items": [
+    {
+     "id": "naclstack",
+     "n": "H90",
+     "nat": 933,
+     "name": "Naclstack",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/933.png"
+    }
+   ]
+  },
+  {
+   "sp": "garganacl",
+   "items": [
+    {
+     "id": "garganacl",
+     "n": "H91",
+     "nat": 934,
+     "name": "Garganacl",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/934.png"
+    }
+   ]
+  },
+  {
+   "sp": "gulpin",
+   "items": [
+    {
+     "id": "gulpin",
+     "n": "H92",
+     "nat": 316,
+     "name": "Gulpin",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/316.png"
+    },
+    {
+     "id": "gulpin-female",
+     "n": "H92",
+     "nat": 316,
+     "name": "Gulpin",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/316.png"
+    }
+   ]
+  },
+  {
+   "sp": "swalot",
+   "items": [
+    {
+     "id": "swalot",
+     "n": "H93",
+     "nat": 317,
+     "name": "Swalot",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/317.png"
+    },
+    {
+     "id": "swalot-female",
+     "n": "H93",
+     "nat": 317,
+     "name": "Swalot",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/317.png"
+    }
+   ]
+  },
+  {
+   "sp": "zubat",
+   "items": [
+    {
+     "id": "zubat",
+     "n": "H94",
+     "nat": 41,
+     "name": "Zubat",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/41.png"
+    },
+    {
+     "id": "zubat-female",
+     "n": "H94",
+     "nat": 41,
+     "name": "Zubat",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/41.png"
+    }
+   ]
+  },
+  {
+   "sp": "golbat",
+   "items": [
+    {
+     "id": "golbat",
+     "n": "H95",
+     "nat": 42,
+     "name": "Golbat",
+     "form": "",
+     "g": "♂",
+     "k": "base",
+     "s": "sprites/pokemon/42.png"
+    },
+    {
+     "id": "golbat-female",
+     "n": "H95",
+     "nat": 42,
+     "name": "Golbat",
+     "form": "",
+     "g": "♀",
+     "k": "fem",
+     "s": "sprites/pokemon/female/42.png"
+    }
+   ]
+  },
+  {
+   "sp": "crobat",
+   "items": [
+    {
+     "id": "crobat",
+     "n": "H96",
+     "nat": 169,
+     "name": "Crobat",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/169.png"
+    }
+   ]
+  },
+  {
+   "sp": "charcadet",
+   "items": [
+    {
+     "id": "charcadet",
+     "n": "H97",
+     "nat": 935,
+     "name": "Charcadet",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/935.png"
+    }
+   ]
+  },
+  {
+   "sp": "armarouge",
+   "items": [
+    {
+     "id": "armarouge",
+     "n": "H98",
+     "nat": 936,
+     "name": "Armarouge",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/936.png"
+    }
+   ]
+  },
+  {
+   "sp": "ceruledge",
+   "items": [
+    {
+     "id": "ceruledge",
+     "n": "H99",
+     "nat": 937,
+     "name": "Ceruledge",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/937.png"
+    }
+   ]
+  },
+  {
+   "sp": "maschiff",
+   "items": [
+    {
+     "id": "maschiff",
+     "n": "H100",
+     "nat": 942,
+     "name": "Maschiff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/942.png"
+    }
+   ]
+  },
+  {
+   "sp": "mabosstiff",
+   "items": [
+    {
+     "id": "mabosstiff",
+     "n": "H101",
+     "nat": 943,
+     "name": "Mabosstiff",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/943.png"
+    }
+   ]
+  },
+  {
+   "sp": "toxel",
+   "items": [
+    {
+     "id": "toxel",
+     "n": "H102",
+     "nat": 848,
+     "name": "Toxel",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/848.png"
+    }
+   ]
+  },
+  {
+   "sp": "toxtricity",
+   "items": [
+    {
+     "id": "toxtricity-amped",
+     "n": "H103",
+     "nat": 849,
+     "name": "Toxtricity",
+     "form": "Amped",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/849.png"
+    },
+    {
+     "id": "toxtricity-low-key",
+     "n": "H103",
+     "nat": 849,
+     "name": "Toxtricity",
+     "form": "Low Key",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10184.png"
+    }
+   ]
+  },
+  {
+   "sp": "shroodle",
+   "items": [
+    {
+     "id": "shroodle",
+     "n": "H104",
+     "nat": 944,
+     "name": "Shroodle",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/944.png"
+    }
+   ]
+  },
+  {
+   "sp": "grafaiai",
+   "items": [
+    {
+     "id": "grafaiai",
+     "n": "H105",
+     "nat": 945,
+     "name": "Grafaiai",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/945.png"
+    }
+   ]
+  },
+  {
+   "sp": "zangoose",
+   "items": [
+    {
+     "id": "zangoose",
+     "n": "H106",
+     "nat": 335,
+     "name": "Zangoose",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/335.png"
+    }
+   ]
+  },
+  {
+   "sp": "seviper",
+   "items": [
+    {
+     "id": "seviper",
+     "n": "H107",
+     "nat": 336,
+     "name": "Seviper",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/336.png"
+    }
+   ]
+  },
+  {
+   "sp": "mime-jr",
+   "items": [
+    {
+     "id": "mime-jr",
+     "n": "H108",
+     "nat": 439,
+     "name": "Mime Jr.",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/439.png"
+    }
+   ]
+  },
+  {
+   "sp": "mr-mime",
+   "items": [
+    {
+     "id": "mr-mime",
+     "n": "H109",
+     "nat": 122,
+     "name": "Mr. Mime",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/122.png"
+    },
+    {
+     "id": "mr-mime-galar",
+     "n": "H109",
+     "nat": 122,
+     "name": "Mr. Mime",
+     "form": "Galar",
+     "g": "",
+     "k": "form",
+     "s": "sprites/pokemon/10168.png"
+    }
+   ]
+  },
+  {
+   "sp": "mr-rime",
+   "items": [
+    {
+     "id": "mr-rime",
+     "n": "H110",
+     "nat": 866,
+     "name": "Mr. Rime",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/866.png"
+    }
+   ]
+  },
+  {
+   "sp": "foongus",
+   "items": [
+    {
+     "id": "foongus",
+     "n": "H111",
+     "nat": 590,
+     "name": "Foongus",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/590.png"
+    }
+   ]
+  },
+  {
+   "sp": "amoonguss",
+   "items": [
+    {
+     "id": "amoonguss",
+     "n": "H112",
+     "nat": 591,
+     "name": "Amoonguss",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/591.png"
+    }
+   ]
+  },
+  {
+   "sp": "heatran",
+   "items": [
+    {
+     "id": "heatran",
+     "n": "H113",
+     "nat": 485,
+     "name": "Heatran",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/485.png"
+    }
+   ]
+  },
+  {
+   "sp": "volcanion",
+   "items": [
+    {
+     "id": "volcanion",
+     "n": "H114",
+     "nat": 721,
+     "name": "Volcanion",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/721.png"
+    }
+   ]
+  },
+  {
+   "sp": "cobalion",
+   "items": [
+    {
+     "id": "cobalion",
+     "n": "H115",
+     "nat": 638,
+     "name": "Cobalion",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/638.png"
+    }
+   ]
+  },
+  {
+   "sp": "terrakion",
+   "items": [
+    {
+     "id": "terrakion",
+     "n": "H116",
+     "nat": 639,
+     "name": "Terrakion",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/639.png"
+    }
+   ]
+  },
+  {
+   "sp": "virizion",
+   "items": [
+    {
+     "id": "virizion",
+     "n": "H117",
+     "nat": 640,
+     "name": "Virizion",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/640.png"
+    }
+   ]
+  },
+  {
+   "sp": "keldeo",
+   "items": [
+    {
+     "id": "keldeo-ordinary",
+     "n": "H118",
+     "nat": 647,
+     "name": "Keldeo",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/647.png"
+    }
+   ]
+  },
+  {
+   "sp": "meloetta",
+   "items": [
+    {
+     "id": "meloetta-aria",
+     "n": "H119",
+     "nat": 648,
+     "name": "Meloetta",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/648.png"
+    }
+   ]
+  },
+  {
+   "sp": "genesect",
+   "items": [
+    {
+     "id": "genesect",
+     "n": "H120",
+     "nat": 649,
+     "name": "Genesect",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/649.png"
+    }
+   ]
+  },
+  {
+   "sp": "hoopa",
+   "items": [
+    {
+     "id": "hoopa",
+     "n": "H121",
+     "nat": 720,
+     "name": "Hoopa",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/720.png"
+    }
+   ]
+  },
+  {
+   "sp": "marshadow",
+   "items": [
+    {
+     "id": "marshadow",
+     "n": "H122",
+     "nat": 802,
+     "name": "Marshadow",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/802.png"
+    }
+   ]
+  },
+  {
+   "sp": "meltan",
+   "items": [
+    {
+     "id": "meltan",
+     "n": "H123",
+     "nat": 808,
+     "name": "Meltan",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/808.png"
+    }
+   ]
+  },
+  {
+   "sp": "melmetal",
+   "items": [
+    {
+     "id": "melmetal",
+     "n": "H124",
+     "nat": 809,
+     "name": "Melmetal",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/809.png"
+    }
+   ]
+  },
+  {
+   "sp": "darkrai",
+   "items": [
+    {
+     "id": "darkrai",
+     "n": "H125",
+     "nat": 491,
+     "name": "Darkrai",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/491.png"
+    }
+   ]
+  },
+  {
+   "sp": "latias",
+   "items": [
+    {
+     "id": "latias",
+     "n": "H126",
+     "nat": 380,
+     "name": "Latias",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/380.png"
+    }
+   ]
+  },
+  {
+   "sp": "latios",
+   "items": [
+    {
+     "id": "latios",
+     "n": "H127",
+     "nat": 381,
+     "name": "Latios",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/381.png"
+    }
+   ]
+  },
+  {
+   "sp": "kyogre",
+   "items": [
+    {
+     "id": "kyogre",
+     "n": "H128",
+     "nat": 382,
+     "name": "Kyogre",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/382.png"
+    }
+   ]
+  },
+  {
+   "sp": "groudon",
+   "items": [
+    {
+     "id": "groudon",
+     "n": "H129",
+     "nat": 383,
+     "name": "Groudon",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/383.png"
+    }
+   ]
+  },
+  {
+   "sp": "rayquaza",
+   "items": [
+    {
+     "id": "rayquaza",
+     "n": "H130",
+     "nat": 384,
+     "name": "Rayquaza",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/384.png"
+    }
+   ]
+  },
+  {
+   "sp": "magearna",
+   "items": [
+    {
+     "id": "magearna",
+     "n": "H131",
+     "nat": 801,
+     "name": "Magearna",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/801.png"
+    }
+   ]
+  },
+  {
+   "sp": "zeraora",
+   "items": [
+    {
+     "id": "zeraora",
+     "n": "H132",
+     "nat": 807,
+     "name": "Zeraora",
+     "form": "",
+     "g": "",
+     "k": "base",
+     "s": "sprites/pokemon/807.png"
+    }
+   ]
+  }
+ ],
+ "extra": [],
+ "dlc": []
+}
