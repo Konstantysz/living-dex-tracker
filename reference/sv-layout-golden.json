@@ -2149,6 +2149,7 @@
    "sp": "misdreavus",
    "items": [
     {
+     "v": "V",
      "id": "misdreavus",
      "n": "114",
      "nat": 200,
@@ -2164,6 +2165,7 @@
    "sp": "mismagius",
    "items": [
     {
+     "v": "V",
      "id": "mismagius",
      "n": "115",
      "nat": 429,
@@ -2594,6 +2596,7 @@
    "sp": "gulpin",
    "items": [
     {
+     "v": "V",
      "id": "gulpin",
      "n": "139",
      "nat": 316,
@@ -2604,6 +2607,7 @@
      "s": "sprites/pokemon/316.png"
     },
     {
+     "v": "V",
      "id": "gulpin-female",
      "n": "139",
      "nat": 316,
@@ -2619,6 +2623,7 @@
    "sp": "swalot",
    "items": [
     {
+     "v": "V",
      "id": "swalot",
      "n": "140",
      "nat": 317,
@@ -2629,6 +2634,7 @@
      "s": "sprites/pokemon/317.png"
     },
     {
+     "v": "V",
      "id": "swalot-female",
      "n": "140",
      "nat": 317,
@@ -2674,6 +2680,7 @@
    "sp": "drifloon",
    "items": [
     {
+     "v": "S",
      "id": "drifloon",
      "n": "143",
      "nat": 425,
@@ -2689,6 +2696,7 @@
    "sp": "drifblim",
    "items": [
     {
+     "v": "S",
      "id": "drifblim",
      "n": "144",
      "nat": 426,
@@ -3169,6 +3177,7 @@
    "sp": "armarouge",
    "items": [
     {
+     "v": "S",
      "id": "armarouge",
      "n": "166",
      "nat": 936,
@@ -3184,6 +3193,7 @@
    "sp": "ceruledge",
    "items": [
     {
+     "v": "V",
      "id": "ceruledge",
      "n": "167",
      "nat": 937,
@@ -4279,6 +4289,7 @@
    "sp": "stunky",
    "items": [
     {
+     "v": "S",
      "id": "stunky",
      "n": "226",
      "nat": 434,
@@ -4294,6 +4305,7 @@
    "sp": "skuntank",
    "items": [
     {
+     "v": "S",
      "id": "skuntank",
      "n": "227",
      "nat": 435,
@@ -5199,6 +5211,7 @@
    "sp": "bagon",
    "items": [
     {
+     "v": "V",
      "id": "bagon",
      "n": "276",
      "nat": 371,
@@ -5214,6 +5227,7 @@
    "sp": "shelgon",
    "items": [
     {
+     "v": "V",
      "id": "shelgon",
      "n": "277",
      "nat": 372,
@@ -5229,6 +5243,7 @@
    "sp": "salamence",
    "items": [
     {
+     "v": "V",
      "id": "salamence",
      "n": "278",
      "nat": 373,
@@ -5644,6 +5659,7 @@
    "sp": "dreepy",
    "items": [
     {
+     "v": "V",
      "id": "dreepy",
      "n": "305",
      "nat": 885,
@@ -5659,6 +5675,7 @@
    "sp": "drakloak",
    "items": [
     {
+     "v": "V",
      "id": "drakloak",
      "n": "306",
      "nat": 886,
@@ -5674,6 +5691,7 @@
    "sp": "dragapult",
    "items": [
     {
+     "v": "V",
      "id": "dragapult",
      "n": "307",
      "nat": 887,
@@ -5814,6 +5832,7 @@
    "sp": "oranguru",
    "items": [
     {
+     "v": "S",
      "id": "oranguru",
      "n": "313",
      "nat": 765,
@@ -5829,6 +5848,7 @@
    "sp": "passimian",
    "items": [
     {
+     "v": "V",
      "id": "passimian",
      "n": "314",
      "nat": 766,
@@ -5859,6 +5879,7 @@
    "sp": "larvitar",
    "items": [
     {
+     "v": "S",
      "id": "larvitar",
      "n": "316",
      "nat": 246,
@@ -5874,6 +5895,7 @@
    "sp": "pupitar",
    "items": [
     {
+     "v": "S",
      "id": "pupitar",
      "n": "317",
      "nat": 247,
@@ -5889,6 +5911,7 @@
    "sp": "tyranitar",
    "items": [
     {
+     "v": "S",
      "id": "tyranitar",
      "n": "318",
      "nat": 248,
@@ -5904,6 +5927,7 @@
    "sp": "stonjourner",
    "items": [
     {
+     "v": "S",
      "id": "stonjourner",
      "n": "319",
      "nat": 874,
@@ -5919,6 +5943,7 @@
    "sp": "eiscue",
    "items": [
     {
+     "v": "V",
      "id": "eiscue-ice",
      "n": "320",
      "nat": 875,
@@ -5929,6 +5954,7 @@
      "s": "sprites/pokemon/875.png"
     },
     {
+     "v": "V",
      "id": "eiscue-noice",
      "n": "320",
      "nat": 875,
@@ -6224,6 +6250,7 @@
    "sp": "skrelp",
    "items": [
     {
+     "v": "S",
      "id": "skrelp",
      "n": "337",
      "nat": 690,
@@ -6239,6 +6266,7 @@
    "sp": "dragalge",
    "items": [
     {
+     "v": "S",
      "id": "dragalge",
      "n": "338",
      "nat": 691,
@@ -6254,6 +6282,7 @@
    "sp": "clauncher",
    "items": [
     {
+     "v": "V",
      "id": "clauncher",
      "n": "339",
      "nat": 692,
@@ -6269,6 +6298,7 @@
    "sp": "clawitzer",
    "items": [
     {
+     "v": "V",
      "id": "clawitzer",
      "n": "340",
      "nat": 693,
@@ -6759,6 +6789,7 @@
    "sp": "deino",
    "items": [
     {
+     "v": "S",
      "id": "deino",
      "n": "370",
      "nat": 633,
@@ -6774,6 +6805,7 @@
    "sp": "zweilous",
    "items": [
     {
+     "v": "S",
      "id": "zweilous",
      "n": "371",
      "nat": 634,
@@ -6789,6 +6821,7 @@
    "sp": "hydreigon",
    "items": [
     {
+     "v": "S",
      "id": "hydreigon",
      "n": "372",
      "nat": 635,
@@ -6869,6 +6902,7 @@
    "sp": "great-tusk",
    "items": [
     {
+     "v": "S",
      "id": "great-tusk",
      "n": "376",
      "nat": 984,
@@ -6884,6 +6918,7 @@
    "sp": "scream-tail",
    "items": [
     {
+     "v": "S",
      "id": "scream-tail",
      "n": "377",
      "nat": 985,
@@ -6899,6 +6934,7 @@
    "sp": "brute-bonnet",
    "items": [
     {
+     "v": "S",
      "id": "brute-bonnet",
      "n": "378",
      "nat": 986,
@@ -6914,6 +6950,7 @@
    "sp": "flutter-mane",
    "items": [
     {
+     "v": "S",
      "id": "flutter-mane",
      "n": "379",
      "nat": 987,
@@ -6929,6 +6966,7 @@
    "sp": "slither-wing",
    "items": [
     {
+     "v": "S",
      "id": "slither-wing",
      "n": "380",
      "nat": 988,
@@ -6944,6 +6982,7 @@
    "sp": "sandy-shocks",
    "items": [
     {
+     "v": "S",
      "id": "sandy-shocks",
      "n": "381",
      "nat": 989,
@@ -6959,6 +6998,7 @@
    "sp": "iron-treads",
    "items": [
     {
+     "v": "V",
      "id": "iron-treads",
      "n": "382",
      "nat": 990,
@@ -6974,6 +7014,7 @@
    "sp": "iron-bundle",
    "items": [
     {
+     "v": "V",
      "id": "iron-bundle",
      "n": "383",
      "nat": 991,
@@ -6989,6 +7030,7 @@
    "sp": "iron-hands",
    "items": [
     {
+     "v": "V",
      "id": "iron-hands",
      "n": "384",
      "nat": 992,
@@ -7004,6 +7046,7 @@
    "sp": "iron-jugulis",
    "items": [
     {
+     "v": "V",
      "id": "iron-jugulis",
      "n": "385",
      "nat": 993,
@@ -7019,6 +7062,7 @@
    "sp": "iron-moth",
    "items": [
     {
+     "v": "V",
      "id": "iron-moth",
      "n": "386",
      "nat": 994,
@@ -7034,6 +7078,7 @@
    "sp": "iron-thorns",
    "items": [
     {
+     "v": "V",
      "id": "iron-thorns",
      "n": "387",
      "nat": 995,
@@ -7184,6 +7229,7 @@
    "sp": "roaring-moon",
    "items": [
     {
+     "v": "S",
      "id": "roaring-moon",
      "n": "397",
      "nat": 1005,
@@ -7199,6 +7245,7 @@
    "sp": "iron-valiant",
    "items": [
     {
+     "v": "V",
      "id": "iron-valiant",
      "n": "398",
      "nat": 1006,
@@ -7214,6 +7261,7 @@
    "sp": "koraidon",
    "items": [
     {
+     "v": "S",
      "id": "koraidon-apex-build",
      "n": "399",
      "nat": 1007,
@@ -7229,6 +7277,7 @@
    "sp": "miraidon",
    "items": [
     {
+     "v": "V",
      "id": "miraidon-ultimate-mode",
      "n": "400",
      "nat": 1008,
@@ -7614,6 +7663,7 @@
    "sp": "vulpix",
    "items": [
     {
+     "v": "S",
      "id": "vulpix",
      "n": "K37",
      "nat": 37,
@@ -7629,6 +7679,7 @@
    "sp": "ninetales",
    "items": [
     {
+     "v": "S",
      "id": "ninetales",
      "n": "K38",
      "nat": 38,
@@ -7744,6 +7795,7 @@
    "sp": "aipom",
    "items": [
     {
+     "v": "V",
      "id": "aipom",
      "n": "K47",
      "nat": 190,
@@ -7754,6 +7806,7 @@
      "s": "sprites/pokemon/190.png"
     },
     {
+     "v": "V",
      "id": "aipom-female",
      "n": "K47",
      "nat": 190,
@@ -7769,6 +7822,7 @@
    "sp": "ambipom",
    "items": [
     {
+     "v": "V",
      "id": "ambipom",
      "n": "K48",
      "nat": 424,
@@ -7779,6 +7833,7 @@
      "s": "sprites/pokemon/424.png"
     },
     {
+     "v": "V",
      "id": "ambipom-female",
      "n": "K48",
      "nat": 424,
@@ -8094,6 +8149,7 @@
    "sp": "morpeko",
    "items": [
     {
+     "v": "V",
      "id": "morpeko-full-belly",
      "n": "K95",
      "nat": 877,
@@ -8104,6 +8160,7 @@
      "s": "sprites/pokemon/877.png"
     },
     {
+     "v": "V",
      "id": "morpeko-hangry",
      "n": "K95",
      "nat": 877,
@@ -8279,6 +8336,7 @@
    "sp": "sandshrew",
    "items": [
     {
+     "v": "V",
      "id": "sandshrew",
      "n": "K116",
      "nat": 27,
@@ -8294,6 +8352,7 @@
    "sp": "sandslash",
    "items": [
     {
+     "v": "V",
      "id": "sandslash",
      "n": "K117",
      "nat": 28,
@@ -8309,6 +8368,7 @@
    "sp": "gligar",
    "items": [
     {
+     "v": "S",
      "id": "gligar",
      "n": "K121",
      "nat": 207,
@@ -8319,6 +8379,7 @@
      "s": "sprites/pokemon/207.png"
     },
     {
+     "v": "S",
      "id": "gligar-female",
      "n": "K121",
      "nat": 207,
@@ -8334,6 +8395,7 @@
    "sp": "gliscor",
    "items": [
     {
+     "v": "S",
      "id": "gliscor",
      "n": "K122",
      "nat": 472,
@@ -8774,6 +8836,7 @@
    "sp": "cramorant",
    "items": [
     {
+     "v": "S",
      "id": "cramorant",
      "n": "K185",
      "nat": 845,
@@ -8784,6 +8847,7 @@
      "s": "sprites/pokemon/845.png"
     },
     {
+     "v": "S",
      "id": "cramorant-gulping",
      "n": "K185",
      "nat": 845,
@@ -8794,6 +8858,7 @@
      "s": "sprites/pokemon/10182.png"
     },
     {
+     "v": "S",
      "id": "cramorant-gorging",
      "n": "K185",
      "nat": 845,
@@ -10479,6 +10544,7 @@
    "sp": "cranidos",
    "items": [
     {
+     "v": "S",
      "id": "cranidos",
      "n": "B107",
      "nat": 408,
@@ -10494,6 +10560,7 @@
    "sp": "rampardos",
    "items": [
     {
+     "v": "S",
      "id": "rampardos",
      "n": "B108",
      "nat": 409,
@@ -10509,6 +10576,7 @@
    "sp": "shieldon",
    "items": [
     {
+     "v": "V",
      "id": "shieldon",
      "n": "B109",
      "nat": 410,
@@ -10524,6 +10592,7 @@
    "sp": "bastiodon",
    "items": [
     {
+     "v": "V",
      "id": "bastiodon",
      "n": "B110",
      "nat": 411,
@@ -12134,6 +12203,7 @@
    "sp": "gouging-fire",
    "items": [
     {
+     "v": "S",
      "id": "gouging-fire",
      "n": "B236",
      "nat": 1020,
@@ -12149,6 +12219,7 @@
    "sp": "raging-bolt",
    "items": [
     {
+     "v": "S",
      "id": "raging-bolt",
      "n": "B237",
      "nat": 1021,
@@ -12164,6 +12235,7 @@
    "sp": "iron-crown",
    "items": [
     {
+     "v": "V",
      "id": "iron-crown",
      "n": "B238",
      "nat": 1023,
@@ -12179,6 +12251,7 @@
    "sp": "iron-boulder",
    "items": [
     {
+     "v": "V",
      "id": "iron-boulder",
      "n": "B239",
      "nat": 1022,
@@ -12229,6 +12302,7 @@
    "sp": "walking-wake",
    "items": [
     {
+     "v": "S",
      "id": "walking-wake",
      "n": "B241",
      "nat": 1009,
@@ -12244,6 +12318,7 @@
    "sp": "iron-leaves",
    "items": [
     {
+     "v": "V",
      "id": "iron-leaves",
      "n": "B242",
      "nat": 1010,

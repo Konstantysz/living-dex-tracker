@@ -31,6 +31,11 @@ export const Cell = memo(function Cell({ entry: it, caught, hit, onToggle }: Pro
         <img src={spriteUrl(it.s)} alt="" onError={() => setBroken(true)} />
       )}
       <span className={s.no}>{it.n ?? it.nat}</span>
+      {it.v && (
+        <span className={s.ver} style={{ background: `var(--ver-${it.v})` }} aria-hidden="true">
+          {it.v}
+        </span>
+      )}
       {it.g && <span className={`${s.g} ${it.g === '♀' ? s.f : s.m}`}>{it.g}</span>}
     </button>
   );

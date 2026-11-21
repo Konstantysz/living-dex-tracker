@@ -1,7 +1,12 @@
-import type { DexConfig } from '../core/types';
+import type { DexConfig, GameConfig } from '../core/types';
 import s from './Legend.module.css';
 
-export function Legend({ dexes }: { dexes: DexConfig[] }) {
+interface Props {
+  dexes: DexConfig[];
+  exclusives: GameConfig['exclusives'];
+}
+
+export function Legend({ dexes, exclusives }: Props) {
   const dot = (c: string) => <b style={{ background: `var(--${c})` }} />;
   return (
     <details className={s.legend} open={!window.matchMedia?.('(max-width: 40rem)').matches}>
@@ -11,6 +16,12 @@ export function Legend({ dexes }: { dexes: DexConfig[] }) {
         <span>{dot('form')}forma</span>
         <span>{dot('reg')}regionalna</span>
         <span>{dot('bat')}bitewna</span>
+        {Object.entries(exclusives).map(([k, v]) => (
+          <span key={k}>
+            {dot(`ver-${k}`)}
+            {k} = tylko {v.name}
+          </span>
+        ))}
         <span>
           nr:{' '}
           {dexes.map((d) => (d.prefix ? `${d.prefix} = ${d.name}` : `123 = ${d.name}`)).join(', ')}

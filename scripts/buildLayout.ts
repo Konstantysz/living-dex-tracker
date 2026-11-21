@@ -86,7 +86,10 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
       label = fi.replace('-sweet', '').split('-').map(title).join(' ');
     sprites.add(path);
     const g: Gender = fem || fi === 'female' ? '♀' : fi === 'male' ? '♂' : '';
+    const ident = get(sp, sid, 'species').identifier as string;
+    const v = Object.keys(cfg.exclusives).find((k) => cfg.exclusives[k]!.species.includes(ident));
     return {
+      ...(v && cfg.dlcForms[slug] === undefined ? { v } : {}),
       id: slug,
       fs: fslug,
       n: num,

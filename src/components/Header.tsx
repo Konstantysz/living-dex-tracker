@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { DexConfig } from '../core/types';
+import type { DexConfig, GameConfig } from '../core/types';
 import { registry } from '../games';
 import { Legend } from './Legend';
 import s from './Header.module.css';
@@ -7,6 +7,7 @@ import s from './Header.module.css';
 interface Props {
   gameId: string;
   dexes: DexConfig[];
+  exclusives: GameConfig['exclusives'];
   query: string;
   onQuery: (q: string) => void;
   got: number;
@@ -83,7 +84,7 @@ export function Header(p: Props) {
         </button>
       </div>
       <div className={s.fold}>
-        <Legend dexes={p.dexes} />
+        <Legend dexes={p.dexes} exclusives={p.exclusives} />
       </div>
     </header>
   );
