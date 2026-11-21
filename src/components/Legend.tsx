@@ -4,7 +4,7 @@ import s from './Legend.module.css';
 export function Legend({ dexes }: { dexes: DexConfig[] }) {
   const dot = (c: string) => <b style={{ background: `var(--${c})` }} />;
   return (
-    <details className={s.legend}>
+    <details className={s.legend} open={!window.matchMedia?.('(max-width: 40rem)').matches}>
       <summary>Legenda</summary>
       <div className={s.items}>
         <span>{dot('fem')}samica</span>
