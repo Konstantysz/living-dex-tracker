@@ -47,3 +47,6 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   Casseroya Lake, so Tatsugiri stays in Paldea.
 - **Hidden kinds.** `reg`, `bat`, `xreg` and `xbat` entries stay in the data but the app never shows
   them (they cannot be stored in the PC of the game).
+- **Version exclusives.** Entries of species exclusive to Scarlet or Violet get `v: 'S' | 'V'`
+  (Serebii exclusives page, 2026-11-21). Tauros is on both lists, so it has no mark. DLC forms
+  have no mark. This only adds the `v` key; no id or order changes.

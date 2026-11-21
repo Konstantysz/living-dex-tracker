@@ -90,6 +90,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       <Header
         gameId={config.id}
         dexes={config.dexes}
+        exclusives={config.exclusives}
         query={query}
         onQuery={setQuery}
         got={got}

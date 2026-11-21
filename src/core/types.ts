@@ -24,6 +24,8 @@ export interface DexEntry {
    * number in that dex ("K5"), or just the prefix ("K") when the species is not in it.
    */
   d?: string;
+  /** Key of `GameConfig.exclusives` when the species is exclusive to one game of the pair. */
+  v?: string;
 }
 
 /** A species (or merged evolution line) with all its entries in target order. */
@@ -81,4 +83,6 @@ export interface GameConfig {
   goForms: string[];
   /** Form id -> dex prefix: forms obtainable only in that DLC; shown at the end of its boxes. */
   dlcForms: Record<string, string>;
+  /** Version key (one letter, shown on the tile) -> game name and the species exclusive to it. */
+  exclusives: Record<string, { name: string; species: string[] }>;
 }
