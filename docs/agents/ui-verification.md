@@ -12,11 +12,12 @@ Read this before you check a UI change in the Claude desktop browser pane.
 
 `preview_start` with the name `dev` serves the main checkout, not your worktree. In a worktree:
 
-1. Run `npx vite --port <free port>` from the worktree root, with `run_in_background`.
-2. Open `http://localhost:<port>/#sv` with `preview_start` and `url`.
-3. Stop the server when you finish.
+1. Run `npx vite --port <free port> --strictPort` from the worktree root, with `run_in_background`.
+2. Open `http://localhost:<port>` with `preview_start` and `url` (the origin only). Then
+   `navigate` to the game hash.
+3. Stop the server with `TaskStop` when you finish.
 
-Each port has its own localStorage. A wrong click changes only the test data of that port.
+Each port has its own localStorage, so this server does not touch the data of the main checkout.
 
 ## Measure first, then look
 
