@@ -41,7 +41,7 @@ export function keep(it: DexEntry, o: LayoutOptions): boolean {
 }
 
 /** Dex prefix of an entry: "" for the main dex, "K", "B" for DLC dexes. */
-const dexOf = (it: DexEntry) => (it.d ?? it.n)?.match(/^[A-Z]/)?.[0] ?? '';
+export const dexOf = (it: DexEntry) => (it.d ?? it.n)?.match(/^[A-Z]/)?.[0] ?? '';
 /** Number inside the dex ("K5" -> 5); Infinity when there is none. */
 const numOf = (it: DexEntry) => Number((it.d ?? it.n)?.match(/\d+/)?.[0] ?? Infinity);
 
