@@ -93,6 +93,32 @@ test('a toggle can be undone from the toast', async () => {
   expect(screen.queryByText('Cofnij')).not.toBeInTheDocument();
 });
 
+test('"only missing" hides caught entries but keeps their slots, search and undo', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(cell(/^Sprigatito, 1$/));
+  await user.click(screen.getByText('Ustawienia'));
+  const option = screen.getByLabelText('pokaż tylko brakujące');
+  expect(option).not.toBeChecked();
+  await user.click(option);
+  await user.click(screen.getByText('Zamknij'));
+  const box1 = document.querySelector('section [class*="grid"]')!;
+  expect(screen.queryByRole('button', { name: /^Sprigatito, 1$/ })).not.toBeInTheDocument();
+  expect(box1.children).toHaveLength(30);
+  expect(screen.getByText('Box 1')).toBeInTheDocument();
+
+  // A tap on a missing entry hides it, and undo brings it back.
+  await user.click(cell(/^Floragato, 2$/));
+  expect(screen.queryByRole('button', { name: /^Floragato, 2$/ })).not.toBeInTheDocument();
+  await user.click(screen.getByText('Cofnij'));
+  expect(cell(/^Floragato, 2$/)).toHaveAttribute('aria-pressed', 'false');
+
+  // Search still finds a caught entry.
+  await user.type(screen.getByLabelText('Szukaj'), 'Sprigatito');
+  expect(cell(/^Sprigatito, 1$/)).toHaveAttribute('aria-pressed', 'true');
+  expect(box1.children).toHaveLength(30);
+});
+
 test('an import asks first, and the toast can undo it', async () => {
   const user = userEvent.setup();
   render(<App />);

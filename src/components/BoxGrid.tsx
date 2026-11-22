@@ -11,16 +11,25 @@ interface Props {
   hits: Set<string>;
   entries: Map<string, DexEntry>;
   dexes: DexConfig[];
+  onlyMissing: boolean;
   onToggle: (id: string) => void;
 }
 
-export function BoxGrid({ boxes, caught, hits, entries, dexes, onToggle }: Props) {
+export function BoxGrid({ boxes, caught, hits, entries, dexes, onlyMissing, onToggle }: Props) {
   const ref = useRef<HTMLElement>(null);
   return (
     <>
       <main className={s.grid} ref={ref}>
         {boxes.map((box, i) => (
-          <Box key={i} index={i} box={box} caught={caught} hits={hits} onToggle={onToggle} />
+          <Box
+            key={i}
+            index={i}
+            box={box}
+            caught={caught}
+            hits={hits}
+            onlyMissing={onlyMissing}
+            onToggle={onToggle}
+          />
         ))}
       </main>
       <Tooltip container={ref} entries={entries} dexes={dexes} />
