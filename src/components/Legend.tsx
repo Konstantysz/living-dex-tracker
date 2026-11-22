@@ -26,7 +26,14 @@ export function Legend({ dexes, exclusives }: Props) {
           nr:{' '}
           {dexes.map((d) => (d.prefix ? `${d.prefix} = ${d.name}` : `123 = ${d.name}`)).join(', ')}
         </span>
-        <span>klik = złapany / odznacz</span>
+        {/* CSS shows the gestures of the current device only. */}
+        <span className={s.mouse}>
+          klik = złapany / odznacz · „i” w rogu lub prawy klik = szczegóły
+        </span>
+        <span className={s.touch}>
+          dotyk = złapany / odznacz · „Tryb: szczegóły” lub przytrzymaj = szczegóły
+        </span>
+        <span className={s.mouse}>klawisz i lub Shift+Enter = szczegóły</span>
       </div>
     </details>
   );

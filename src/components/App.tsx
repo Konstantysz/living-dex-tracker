@@ -5,6 +5,7 @@ import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } fro
 import { findGame, type Game } from '../games';
 import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
+import { DetailsDialog } from './DetailsDialog';
 import { GuideDialog } from './GuideDialog';
 import { Header } from './Header';
 import { LayoutTextDialog } from './LayoutTextDialog';
@@ -46,6 +47,9 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   const [options, setOptions] = useState(() => loadOptions(config.id));
   const [query, setQuery] = useState('');
   const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | 'guide' | null>(null);
+  // Id of the entry in the details dialog. Details mode (phone): a tap opens it, not a toggle.
+  const [details, setDetails] = useState<string | null>(null);
+  const [detailsMode, setDetailsMode] = useState(false);
 
   const boxes = useMemo(() => layoutBoxes(layout, options), [layout, options]);
   const entries = useMemo(
@@ -120,6 +124,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     saveOptions(config.id, next);
   };
 
+  const detailsEntry = details ? entries.get(details) : undefined;
   const collectibles = config.collectibles ?? [];
   const total = entries.size;
   const got = [...entries.keys()].filter((id) => caught.has(id)).length;
@@ -141,6 +146,8 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onShowText={() => setDialog('text')}
         onShowBackup={() => setDialog('backup')}
         onShowGuide={collectibles.length ? () => setDialog('guide') : undefined}
+        detailsMode={detailsMode}
+        onDetailsMode={setDetailsMode}
       />
       <BoxGrid
         boxes={boxes}
@@ -148,8 +155,12 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         hits={hits}
         entries={entries}
         dexes={config.dexes}
-        onToggle={toggle}
+        onToggle={detailsMode ? setDetails : toggle}
+        onDetails={setDetails}
       />
+      {detailsEntry && (
+        <DetailsDialog entry={detailsEntry} config={config} onClose={() => setDetails(null)} />
+      )}
       {dialog === 'settings' && (
         <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
       )}

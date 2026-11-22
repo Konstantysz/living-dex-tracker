@@ -65,6 +65,12 @@
   height: 20px;
   accent-color: var(--cursor);
 }
+/* Details mode: touch screens only. A mouse has the "i" button and the right click. */
+@media not (pointer: coarse) {
+  .touch {
+    display: none;
+  }
+}
 /* Fold button: phone only. */
 .more {
   display: none;
