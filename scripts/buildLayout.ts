@@ -67,8 +67,8 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   };
 
   const sprites = new Set<string>();
-  /** Ids and species identifiers of the built entries, to find unknown `exclusives` items. */
-  const entryNames = new Set<string>();
+  /** `exclusives` items that marked at least one entry. Any other item is a typo or marks nothing. */
+  const marked = new Set<string>();
   type Work = DexEntry & { fs: string };
   const entry = (slug: string, num: string | null, kind: Kind): Work => {
     const fem = slug.endsWith('-female') && !forms.has(slug);
@@ -89,11 +89,10 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
     sprites.add(path);
     const g: Gender = fem || fi === 'female' ? '♀' : fi === 'male' ? '♂' : '';
     const ident = get(sp, sid, 'species').identifier as string;
-    entryNames.add(slug).add(ident);
-    const v = Object.keys(cfg.exclusives).find((k) => {
-      const list = cfg.exclusives[k]!.species;
-      return list.includes(slug) || (list.includes(ident) && cfg.dlcForms[slug] === undefined);
-    });
+    // a species name ("vulpix") is also the id of the base entry: the species rule wins
+    const marks = (s: string) => (s === ident ? cfg.dlcForms[slug] === undefined : s === slug);
+    const v = Object.keys(cfg.exclusives).find((k) => cfg.exclusives[k]!.species.some(marks));
+    for (const s of v ? cfg.exclusives[v]!.species.filter(marks) : []) marked.add(s);
     return {
       ...(v ? { v } : {}),
       id: slug,
@@ -177,8 +176,8 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   const extra = cfg.extras.map(([s, k]) => entry(s, null, k));
   const unknown = Object.values(cfg.exclusives)
     .flatMap((e) => e.species)
-    .filter((s) => !entryNames.has(s));
-  if (unknown.length) throw new Error(`Unknown exclusives: ${unknown.join(', ')}`);
+    .filter((s) => !marked.has(s));
+  if (unknown.length) throw new Error(`Exclusives that mark no entry: ${unknown.join(', ')}`);
   return {
     groups: groups.map((g) => ({ sp: g.sp, items: g.items.map(strip) })),
     extra: extra.map(strip),

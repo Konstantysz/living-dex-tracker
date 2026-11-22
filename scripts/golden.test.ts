@@ -14,15 +14,21 @@ const tables = await loadTables();
 const { groups, extra, dlc } = buildLayout(svConfig, tables);
 const built = { groups, extra, dlc };
 
-test('an exclusives item that names no entry or species fails the build', () => {
+test('an exclusives item that marks no entry fails the build', () => {
   const exclusives = { S: { name: 'Scarlet', species: ['vulpix-alola', 'vulpix-alolan'] } };
   expect(() => buildLayout({ ...svConfig, exclusives }, tables)).toThrow(
-    'Unknown exclusives: vulpix-alolan',
+    'Exclusives that mark no entry: vulpix-alolan',
+  );
+  // a species name skips DLC forms, so it marks nothing when all its entries are DLC forms
+  const dlcForms = { ...svConfig.dlcForms, vulpix: 'K' };
+  const species = { S: { name: 'Scarlet', species: ['vulpix'] } };
+  expect(() => buildLayout({ ...svConfig, dlcForms, exclusives: species }, tables)).toThrow(
+    'Exclusives that mark no entry: vulpix',
   );
 });
 
-// A version exclusive has no areas in the other version. This caught Kanto Vulpix marked 'S'
-// (Serebii lists it in Kitakami in both versions; only Alolan Vulpix is exclusive).
+// A version exclusive has no areas in the other version. A species name in `exclusives` marks the
+// wrong form when only one form is exclusive.
 test.each(games.filter((g) => existsSync(path(`src/games/${g.id}/generated/locations.json`))))(
   '$id: version exclusives have no areas in the other version',
   (config) => {
