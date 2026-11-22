@@ -3,6 +3,7 @@ reference
 public/sprites
 src/games/*/generated
 scripts/cache
+scripts/fixtures
 package-lock.json
 docs/wiki
 .hallmark
