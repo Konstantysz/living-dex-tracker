@@ -4,10 +4,17 @@ import { existsSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { inPc } from '../src/core/layout';
-import type { EntryLocation, Locations } from '../src/core/locations';
+import type { AreasByVersion } from '../src/core/locations';
 import type { DexEntry, GameLayout } from '../src/core/types';
 import svLayout from '../src/games/sv/generated/layout.json';
-import { matchEntries, parseDexList, parseSpeciesPage, type MatchEntry } from './serebii';
+import {
+  buildLocations,
+  formatLocations,
+  matchEntries,
+  parseDexList,
+  parseSpeciesPage,
+  type MatchEntry,
+} from './serebii';
 
 const SITE = 'https://www.serebii.net';
 const SOURCE = `${SITE}/pokedex-sv/`;
@@ -48,7 +55,7 @@ for (const list of DEX_LISTS) {
 
 const byNat = new Map<number, DexEntry[]>();
 for (const e of entries) byNat.set(e.nat, [...(byNat.get(e.nat) ?? []), e]);
-const out: Record<string, EntryLocation> = {};
+const out: { id: string; page: string; areas?: AreasByVersion }[] = [];
 const errors: string[] = [];
 const notes: string[] = [];
 let done = 0;
@@ -62,8 +69,7 @@ for (const [nat, species] of byNat) {
     const lines = parseSpeciesPage(await readPage(`${SOURCE}${slug}/`, `${slug}.html`));
     const match: MatchEntry[] = species.map((e) => ({ id: e.id, form: e.form, dlc: e.d?.[0] }));
     const { areas, unmatched } = matchEntries(lines, match);
-    for (const e of species)
-      out[e.id] = areas[e.id] ? { page: slug, areas: areas[e.id] } : { page: slug };
+    for (const e of species) out.push({ id: e.id, page: slug, areas: areas[e.id] });
     for (const u of unmatched) notes.push(`${slug}: no entry for line ${u}`);
   } catch (err) {
     errors.push(`${slug}: ${(err as Error).message}`);
@@ -75,19 +81,19 @@ if (errors.length) {
   console.error(`Parse errors, locations.json is not written:\n  ${errors.join('\n  ')}`);
   process.exit(1);
 }
-const withoutData = Object.entries(out).filter(([, v]) => !v.areas);
-if (withoutData.length === Object.keys(out).length) throw new Error('no entry has locations');
-
-const data: Locations = {
-  source: SOURCE,
-  scraped: new Date(Math.min(...mtimes)).toISOString().slice(0, 10),
-  entries: out,
-};
-await writeFile(OUT, JSON.stringify(data, null, 1) + '\n');
+// Layout order, not species order
+const order = new Map(entries.map((e, i) => [e.id, i]));
+out.sort((a, b) => order.get(a.id)! - order.get(b.id)!);
+const data = buildLocations(out, SOURCE, new Date(Math.min(...mtimes)).toISOString().slice(0, 10));
+const withoutData = Object.entries(data.entries).filter(([, v]) => !v.areas);
+if (withoutData.length === out.length) throw new Error('no entry has locations');
+const missing = Object.values(data.entries)
+  .flatMap((e) => (Array.isArray(e.areas) ? e.areas : Object.values(e.areas ?? {}).flat()))
+  .filter((s) => s && !(s in data.areas));
+if (missing.length) throw new Error(`area slugs not in the Area table: ${missing.join(' ')}`);
+await writeFile(OUT, formatLocations(data));
 for (const n of notes) console.log(`  ${n}`);
 console.log(
   `Entries without data (${withoutData.length}): ${withoutData.map(([id]) => id).join(' ')}`,
 );
-console.log(
-  `sv: ${Object.keys(out).length - withoutData.length}/${Object.keys(out).length} entries with locations`,
-);
+console.log(`sv: ${out.length - withoutData.length}/${out.length} entries with locations`);

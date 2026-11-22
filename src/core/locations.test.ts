@@ -6,8 +6,9 @@ const b = { name: 'Asado Desert', slug: 'asadodesert' };
 const locs: Locations = {
   source: 'https://www.serebii.net/pokedex-sv/',
   scraped: '2026-11-22',
+  areas: { applehills: a.name, asadodesert: b.name },
   entries: {
-    pikachu: { page: 'pikachu', areas: { S: [a, b], V: [a] } },
+    pikachu: { page: 'pikachu', areas: { S: ['applehills', 'asadodesert'], V: ['applehills'] } },
     sprigatito: { page: 'sprigatito' },
   },
 };
@@ -25,6 +26,12 @@ test('areasFor returns null, not an empty list, when there is no data', () => {
   expect(areasFor(locs, 'sprigatito', 'S')).toBeNull();
   expect(areasFor(locs, 'missing', null)).toBeNull();
   expect(
-    areasFor({ ...locs, entries: { x: { page: 'x', areas: { S: [a] } } } }, 'x', 'V'),
+    areasFor({ ...locs, entries: { x: { page: 'x', areas: { S: ['applehills'] } } } }, 'x', 'V'),
   ).toBeNull();
+});
+
+test('areasFor reads a shared list for every version', () => {
+  const shared = { ...locs, entries: { x: { page: 'x', areas: ['applehills'] } } };
+  expect(areasFor(shared, 'x', 'S')).toEqual([a]);
+  expect(areasFor(shared, 'x', null)).toEqual([a]);
 });

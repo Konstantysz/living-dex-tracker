@@ -45,6 +45,19 @@ test.each(games.filter((g) => existsSync(path(`src/games/${g.id}/generated/locat
   },
 );
 
+test.each(games.filter((g) => existsSync(path(`src/games/${g.id}/generated/locations.json`))))(
+  '$id: every area slug of an entry is in the Area table',
+  (config) => {
+    const locations: Locations = read(`src/games/${config.id}/generated/locations.json`);
+    const missing = Object.entries(locations.entries).flatMap(([id, e]) =>
+      (Array.isArray(e.areas) ? e.areas : Object.values(e.areas ?? {}).flat())
+        .filter((s) => s && !(s in locations.areas))
+        .map((s) => `${id}: ${s}`),
+    );
+    expect(missing).toEqual([]);
+  },
+);
+
 test('generator output equals reference golden', () => {
   expect(built).toEqual(read('reference/sv-layout-golden.json'));
 });
