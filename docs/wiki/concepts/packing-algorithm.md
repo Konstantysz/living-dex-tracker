@@ -33,6 +33,12 @@ by the [toggles](options-and-filters.md), then calls it.
 
 (source: `src/core/layout.test.ts`)
 
+> **Unverified:** the rows "box 7 last entry" and "Paldea dex only" come from an older version of
+> this page. The current `layout.test.ts` does not check them.
+
+> **Unverified:** the older version of this page had 31 boxes and 917 slots for the full SV data.
+> This change did not check the cause of the difference.
+
 ## Related
 
 - [Layout rules](layout-rules.md) define the groups that are packed.

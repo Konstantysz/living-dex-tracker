@@ -46,7 +46,7 @@ also carries collectibles.
   `dim`.
 - The app ignores the removed options `alc` and `noSplit` (and `optAlc`, `optNoSplit`). When the
   saved options have `alc: false`, `hidAlcremie()` returns true. The app then shows a notice once
-  and saves the options again without the old key.
+  and saves the options again without the old key. (source: `src/core/storage.ts`)
 - Every access is wrapped in `try/catch`. The app works in memory when storage is blocked.
 
 ## Related

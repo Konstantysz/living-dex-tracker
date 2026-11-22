@@ -83,8 +83,9 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
 
   // One-step undo: the set before the last change, shown in a toast for 5 s.
   // A toast without `prev` is a notice with no undo button.
+  // The Alcremie notice shows only in a game that has Alcremie forms (kind `alc`).
   const [undo, setUndo] = useState<{ text: string; prev?: Set<string> } | null>(() =>
-    hidAlcremie(config.id)
+    hidAlcremie(config.id) && layout.groups.some((g) => g.items.some((it) => it.k === 'alc'))
       ? {
           text: 'Usunięto opcję ukrywania Alcremie. Boxy pokazują teraz wszystkie 63 formy Alcremie.',
         }

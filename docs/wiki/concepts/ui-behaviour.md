@@ -43,7 +43,8 @@ caught set from before the last change (one step). An import shows "Wczytano kop
 Cofnij". (source: `src/components/App.tsx`)
 
 The same toast shows a notice without "Cofnij" once, when the saved options still have the removed
-`alc: false`. The notice says that the boxes now show all 63 Alcremie forms.
+`alc: false`. The notice says that the boxes now show all 63 Alcremie forms. A game without
+Alcremie forms (Z-A) shows no notice. (source: `src/components/App.tsx`)
 
 ## Dialogs
 

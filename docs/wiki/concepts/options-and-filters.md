@@ -29,6 +29,7 @@ Notes:
 - Issue #20 removed the toggles `alc` (all 63 Alcremie) and `noSplit` (do not split species of 2
   to 6 entries). All 63 Alcremie always show. Packing always lets a species flow across boxes.
   The app ignores the old saved keys. See [Backup code and storage](backup-and-storage.md).
+  (source: `src/core/layout.ts`, `src/core/layout.test.ts`)
 
 ## Related
 

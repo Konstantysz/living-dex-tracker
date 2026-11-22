@@ -63,6 +63,13 @@ test('old saved alc: false shows a notice once', () => {
   expect(screen.queryByRole('status')).not.toBeInTheDocument();
 });
 
+test('a game without Alcremie forms shows no Alcremie notice', () => {
+  location.hash = '#za';
+  localStorage.setItem('ldt:za:opts', JSON.stringify({ alc: false }));
+  render(<App />);
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+
 test('search highlights matches by name and number', async () => {
   const user = userEvent.setup();
   render(<App />);
