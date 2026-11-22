@@ -19,6 +19,8 @@ interface Props {
   onShowBackup: () => void;
   /** Absent when the game has nothing in the guide yet. */
   onShowGuide?: () => void;
+  detailsMode: boolean;
+  onDetailsMode: (on: boolean) => void;
 }
 
 export function Header(p: Props) {
@@ -83,6 +85,14 @@ export function Header(p: Props) {
           value={p.query}
           onChange={(e) => p.onQuery(e.target.value)}
         />
+        <label className={`${s.toggle} ${s.touch}`}>
+          <input
+            type="checkbox"
+            checked={p.detailsMode}
+            onChange={(e) => p.onDetailsMode(e.target.checked)}
+          />
+          Tryb: szczegóły
+        </label>
         <button className={s.fold} onClick={p.onShowText}>
           Układ jako tekst
         </button>

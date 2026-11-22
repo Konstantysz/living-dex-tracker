@@ -221,6 +221,8 @@ export const svConfig: GameConfig = {
         iron-leaves iron-boulder iron-crown`.split(/\s+/),
     },
   },
+  // Checked with greattusk, sprigatito, mr.mime (2026-11-22).
+  serebii: 'https://www.serebii.net/pokedex-sv/{name}/',
   // Section ids are the Serebii image names (stakes/<id><n>.jpg). Areas and order:
   // https://www.serebii.net/scarletviolet/stakes.shtml (2026-11-22). Serebii gives no per-stake text.
   collectibles: [

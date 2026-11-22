@@ -16,6 +16,16 @@
   gap: var(--space-2xs) var(--space-sm);
   margin-top: var(--space-2xs);
 }
+@media not (hover: hover) {
+  .mouse {
+    display: none;
+  }
+}
+@media not (pointer: coarse) {
+  .touch {
+    display: none;
+  }
+}
 .legend b {
   display: inline-block;
   width: 12px;

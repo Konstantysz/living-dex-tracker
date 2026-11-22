@@ -32,3 +32,6 @@ Pages touched: entities/living-dex-tracker.md, entities/github-pages-deployment.
 
 ## [2026-11-22] ingest | Issue #20: remove the alc and noSplit options
 Pages touched: concepts/options-and-filters.md, concepts/packing-algorithm.md, concepts/layout-rules.md, concepts/backup-and-storage.md, concepts/ui-behaviour.md. Notes: source is the change for issue #20. The packing table now uses the numbers from src/core/layout.test.ts.
+
+## [2026-11-22] ingest | Details dialog (#10)
+Pages touched: concepts/ui-behaviour.md. Notes: source is the #10 change. The page now describes the details gesture per device and the details dialog.
