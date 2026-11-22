@@ -1,7 +1,7 @@
 ---
 title: Location data
 type: concept
-sources: [docs/adr/0001-serebii-as-source-of-location-data.md, scripts/serebii.ts, scripts/data-locations.ts, src/core/locations.ts, src/components/DetailsDialog.tsx, scripts/golden.test.ts, .gitattributes, README.md, conversation:2026-11-22]
+sources: [docs/adr/0001-serebii-as-source-of-location-data.md, scripts/serebii.ts, scripts/data-locations.ts, src/core/locations.ts, src/components/DetailsDialog.tsx, src/components/AreaList.tsx, scripts/golden.test.ts, .gitattributes, README.md, conversation:2026-11-22]
 updated: 2026-11-22
 ---
 
@@ -75,9 +75,23 @@ that changed. (source: `scripts/serebii.ts`)
 The file is about 88 KB on disk. It was about 458 KB before #35. GitHub marks it as generated, so a
 pull request collapses its diff. (source: `.gitattributes`, `conversation:2026-11-22`)
 
-Planned change (source: `conversation:2026-11-22`):
+The file also has `regions`: area slug to Pokéarth region (`paldea`, `kitakami` or `terarium`). The
+scraper reads the region from each Pokéarth link. `pokearthUrl` builds the link
+`https://www.serebii.net/pokearth/<region>/<slug>.shtml`. The slug alone cannot give the region.
+(source: `src/core/locations.ts`, `scripts/serebii.ts`, `conversation:2026-11-22`)
 
-- #36: a change summary after each scrape, to paste into the pull request.
+## Areas tab (#14)
+
+The "Obszary" tab of the Guide lists the Areas for the "Moja wersja" setting. (source: `src/components/AreaList.tsx`)
+
+- `missingByArea` counts the entries that the player has not caught in each Area. It sorts by that
+  count, then by name. (source: `src/core/locations.ts`)
+- An Area with missing entries opens to a list. A tap on an entry opens its details dialog. It does
+  not toggle caught.
+- An Area with no missing entries is one line, "kompletne".
+- Each Area links to its Pokéarth page.
+- `crowdedArea` finds the Area of an entry with the most missing entries. The details dialog shows
+  a tip when this count is `MANY_MISSING` (10) or more.
 
 ## Checks
 

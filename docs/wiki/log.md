@@ -41,3 +41,6 @@ Pages touched: concepts/location-data.md (new), entities/sv-game-config.md, enti
 
 ## [2026-11-22] ingest | Normalized Location data (#35)
 Pages touched: concepts/location-data.md. Notes: source is the #35 change. The page now describes the Area table, the shared list or per-version object, and the new slug check.
+
+## [2026-11-22] ingest | Areas tab (#14)
+Pages touched: concepts/location-data.md, concepts/ui-behaviour.md. Notes: source is the #14 change. The pages now describe the "Obszary" tab, the `regions` field, the Pokéarth link and the details tip.

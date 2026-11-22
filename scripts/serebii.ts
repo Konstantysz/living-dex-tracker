@@ -20,7 +20,7 @@ const IGNORED_ROWS = new Set(['fooevo', 'fooblack', 'fooza', 'foozamd']);
 /** Line prefixes of a later slice (fixed encounters, Titans, Tera Raid stars). */
 const IGNORED_LABELS = new Set(['Fixed', 'Titan', 'Tera Raid Battles']);
 // slugs can hold an apostrophe: "reveler'sroad", "oni'smaw"
-const AREA_LINK = /<a href="\/pokearth\/[a-z0-9]+\/([a-z0-9']+)\.shtml">([^<]+)<\/a>/g;
+const AREA_LINK = /<a href="\/pokearth\/([a-z0-9]+)\/([a-z0-9']+)\.shtml">([^<]+)<\/a>/g;
 
 const ENTITIES: Record<string, string> = { amp: '&', quot: '"', apos: "'", eacute: 'é' };
 
@@ -81,9 +81,10 @@ export function parseSpeciesPage(html: string): LocationLine[] {
       }
       const prefix = t.match(/^([^:]+):/)?.[1]?.trim() ?? null;
       if (prefix && IGNORED_LABELS.has(prefix)) continue;
-      const areas = [...part.matchAll(AREA_LINK)].map(([, slug, name]) => ({
+      const areas = [...part.matchAll(AREA_LINK)].map(([, region, slug, name]) => ({
         name: decode(name!).trim(),
         slug: slug!,
+        region: region!,
       }));
       // every Pokéarth link must match, else a changed link format drops areas without a word
       if (areas.length !== part.split('/pokearth/').length - 1) {
@@ -175,6 +176,7 @@ export function buildLocations(
   scraped: string,
 ): Locations {
   const names = new Map<string, string>();
+  const regions = new Map<string, string>();
   const versions = new Set(entries.flatMap((e) => Object.keys(e.areas ?? {})));
   const out: Locations['entries'] = {};
   for (const e of entries) {
@@ -186,6 +188,10 @@ export function buildLocations(
         if (seen !== undefined && seen !== a.name)
           throw new Error(`area "${a.slug}" has two names: "${seen}" and "${a.name}"`);
         names.set(a.slug, a.name);
+        const region = regions.get(a.slug);
+        if (!a.region || (region !== undefined && region !== a.region))
+          throw new Error(`area "${a.slug}" has region "${a.region}", before "${region}"`);
+        regions.set(a.slug, a.region);
         return a.slug;
       });
     }
@@ -201,6 +207,7 @@ export function buildLocations(
     source,
     scraped,
     areas: Object.fromEntries([...names].sort(([a], [b]) => (a < b ? -1 : 1))),
+    regions: Object.fromEntries([...regions].sort(([a], [b]) => (a < b ? -1 : 1))),
     entries: out,
   };
 }
@@ -215,7 +222,7 @@ export function formatLocations(l: Locations): string {
     '\n }';
   return (
     `{\n "source": ${JSON.stringify(l.source)},\n "scraped": ${JSON.stringify(l.scraped)},\n` +
-    ` "areas": ${block(l.areas)},\n "entries": ${block(l.entries)}\n}\n`
+    ` "areas": ${block(l.areas)},\n "regions": ${block(l.regions)},\n "entries": ${block(l.entries)}\n}\n`
   );
 }
 
@@ -281,6 +288,7 @@ export function isLocations(x: unknown): x is Locations {
   const l = x as Locations | null;
   return (
     typeof l?.areas === 'object' &&
+    typeof l?.regions === 'object' &&
     typeof l?.entries === 'object' &&
     Object.values(l.entries ?? {}).every((e) => typeof e?.page === 'string')
   );

@@ -34,8 +34,13 @@ describe('parseSpeciesPage', () => {
     expect(lines[0]!.areas[0]).toEqual({
       name: 'East Province Area One',
       slug: 'eastprovinceareaone',
+      region: 'paldea',
     });
-    expect(lines[2]!.areas[0]).toEqual({ name: 'Apple Hills', slug: 'applehills' });
+    expect(lines[2]!.areas[0]).toEqual({
+      name: 'Apple Hills',
+      slug: 'applehills',
+      region: 'kitakami',
+    });
   });
 
   test('reads the form label before the areas', () => {
@@ -66,14 +71,14 @@ describe('parseSpeciesPage', () => {
         dex: '',
         label: 'Kantonian Form',
         note: null,
-        areas: [{ name: 'Apple Hills', slug: 'applehills' }],
+        areas: [{ name: 'Apple Hills', slug: 'applehills', region: 'kitakami' }],
       },
       {
         version: 'S',
         dex: '',
         label: 'Kantonian Form',
         note: 'White-Striped Form',
-        areas: [{ name: 'Timeless Woods', slug: 'timelesswoods' }],
+        areas: [{ name: 'Timeless Woods', slug: 'timelesswoods', region: 'kitakami' }],
       },
     ]);
   });
@@ -96,7 +101,7 @@ describe('parseSpeciesPage', () => {
     const road = `<a href="/pokearth/kitakami/reveler'sroad.shtml">Reveler's Road</a>`;
     const empty = '<a href="/pokearth/terarium/chargestonecavern.shtml"> ';
     expect(parseSpeciesPage(cell(`${empty}${road}`))[0]!.areas).toEqual([
-      { name: "Reveler's Road", slug: "reveler'sroad" },
+      { name: "Reveler's Road", slug: "reveler'sroad", region: 'kitakami' },
     ]);
   });
 });
@@ -160,8 +165,8 @@ test('parseDexList maps national numbers to page slugs', () => {
 });
 
 describe('buildLocations', () => {
-  const A = { name: 'Apple Hills', slug: 'applehills' };
-  const B = { name: 'Asado Desert', slug: 'asadodesert' };
+  const A = { name: 'Apple Hills', slug: 'applehills', region: 'kitakami' };
+  const B = { name: 'Asado Desert', slug: 'asadodesert', region: 'paldea' };
   const input: { id: string; page: string; areas?: AreasByVersion }[] = [
     { id: 'shared', page: 'shared', areas: { S: [A], V: [A] } },
     { id: 'differs', page: 'differs', areas: { S: [A, B], V: [B] } },
@@ -187,7 +192,9 @@ describe('buildLocations', () => {
         const lists = Object.entries(e.areas ?? {})
           .filter(([k]) => v === null || k === v)
           .flatMap(([, l]) => l ?? []);
-        const want = [...new Map(lists.map((a) => [a.slug, a])).values()];
+        const want = [
+          ...new Map(lists.map((a) => [a.slug, { slug: a.slug, name: a.name }])).values(),
+        ];
         expect(areasFor(locs, e.id, v) ?? []).toEqual(want);
       }
   });
@@ -214,7 +221,7 @@ describe('buildLocations', () => {
             Object.entries(e.areas ?? {})
               .filter(([k]) => v === null || k === v)
               .flatMap(([, l]) => l ?? [])
-              .map((a) => [a.slug, a]),
+              .map((a) => [a.slug, { slug: a.slug, name: a.name }]),
           ).values(),
         ];
         expect(areasFor(built, e.id, v) ?? []).toEqual(want);
@@ -236,6 +243,24 @@ describe('buildLocations', () => {
         'd',
       ),
     ).toThrow(/two names/);
+    expect(() =>
+      buildLocations(
+        [{ id: 'x', page: 'x', areas: { S: [A, { ...A, region: 'paldea' }] } }],
+        's',
+        'd',
+      ),
+    ).toThrow(/region/);
+    expect(() =>
+      buildLocations(
+        [{ id: 'x', page: 'x', areas: { S: [{ ...A, region: undefined }] } }],
+        's',
+        'd',
+      ),
+    ).toThrow(/region/);
+    expect(buildLocations(input, 's', 'd').regions).toEqual({
+      applehills: 'kitakami',
+      asadodesert: 'paldea',
+    });
     expect(formatLocations(buildLocations(input, 'src/', 'd'))).toBe(
       formatLocations(buildLocations(input, 'src/', 'd')),
     );
@@ -248,6 +273,7 @@ describe('diffLocations', () => {
     source: 's',
     scraped: 'd',
     areas: { a: 'A', b: 'B' },
+    regions: {},
     entries: {
       x: { page: 'x' },
       y: { page: 'y', areas: ['a'] },
