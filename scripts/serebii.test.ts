@@ -190,6 +190,42 @@ describe('buildLocations', () => {
       }
   });
 
+  test('round-trips the fixture species', () => {
+    const species = {
+      pikachu: [{ id: 'pikachu', form: '' }],
+      floragato: [{ id: 'floragato', form: '' }],
+      tauros: [
+        { id: 'tauros-paldea-combat-breed', form: 'Combat' },
+        { id: 'tauros-paldea-blaze-breed', form: 'Blaze' },
+        { id: 'tauros-paldea-aqua-breed', form: 'Aqua' },
+      ],
+    };
+    const matched = Object.entries(species).flatMap(([page, entries]) => {
+      const { areas } = matchEntries(parseSpeciesPage(fixture(page)), entries);
+      return entries.map((e) => ({ id: e.id, page, areas: areas[e.id] }));
+    });
+    const built = buildLocations(matched, 's', 'd');
+    for (const e of matched)
+      for (const v of ['S', 'V', null]) {
+        const want = [
+          ...new Map(
+            Object.entries(e.areas ?? {})
+              .filter(([k]) => v === null || k === v)
+              .flatMap(([, l]) => l ?? [])
+              .map((a) => [a.slug, a]),
+          ).values(),
+        ];
+        expect(areasFor(built, e.id, v) ?? []).toEqual(want);
+      }
+  });
+
+  test('formatLocations writes one entry per line', () => {
+    const lines = formatLocations(locs).split('\n');
+    expect(lines.filter((l) => l.startsWith('  "differs":'))).toHaveLength(1);
+    expect(lines.at(-1)).toBe('');
+    expect(lines.at(-2)).toBe('}');
+  });
+
   test('throws on one slug with two names and gives the same output twice', () => {
     expect(() =>
       buildLocations(

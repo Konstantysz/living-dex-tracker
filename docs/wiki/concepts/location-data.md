@@ -64,18 +64,26 @@ The details dialog shows the Areas for the "Moja wersja" setting, or for both ve
 "Źródło: Serebii", the scrape date and a link to the species page. An entry without data shows
 "Brak danych — sprawdź na Serebii." (source: `src/components/DetailsDialog.tsx`)
 
-The file is about 458 KB on disk. With gzip it is about 15 KB. GitHub marks it as generated, so a
+The file has a normalized format (#35). `areas` is one Area table: slug to name, sorted by slug. An
+entry holds `page` and `areas`. `areas` is one list of slugs when all versions are equal. Otherwise it
+is an object with a list per version. An entry without data has no `areas` key. (source: `src/core/locations.ts`)
+
+`buildLocations` in `scripts/serebii.ts` writes this shape. It stops when one slug has two names.
+`formatLocations` writes one entry per line, so a new scrape changes only the lines of the entries
+that changed. (source: `scripts/serebii.ts`)
+
+The file is about 88 KB on disk. It was about 458 KB before #35. GitHub marks it as generated, so a
 pull request collapses its diff. (source: `.gitattributes`, `conversation:2026-11-22`)
 
-Planned changes (source: `conversation:2026-11-22`):
+Planned change (source: `conversation:2026-11-22`):
 
-- #35: a normalized format with one Area table and short slug lists per entry.
 - #36: a change summary after each scrape, to paste into the pull request.
 
 ## Checks
 
-A data test reads `layout.json` and `locations.json` of each game that has location data. A
-version exclusive must have no Areas in the other version. On the data before the Alolan fix
+A data test reads `layout.json` and `locations.json` of each game that has location data. Every
+area slug of an entry must be a key of the Area table. A version exclusive must have no Areas in the
+other version. On the data before the Alolan fix
 (#33), this test fails for Vulpix, Sandshrew and Sandslash. See [SV game config](../entities/sv-game-config.md).
 (source: `scripts/golden.test.ts`)
 

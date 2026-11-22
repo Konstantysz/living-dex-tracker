@@ -11,7 +11,7 @@ export type AreasByVersion = Partial<Record<string, Area[]>>;
 export interface EntryLocation {
   /** Slug of the Serebii species page. */
   page: string;
-  /** One list = the same areas in all versions; an object = area slugs per version key. */
+  /** One list: the same areas in all versions. An object: area slugs per version key. */
   areas?: string[] | Partial<Record<string, string[]>>;
 }
 

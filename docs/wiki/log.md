@@ -38,3 +38,6 @@ Pages touched: concepts/ui-behaviour.md. Notes: source is the #10 change. The pa
 
 ## [2026-11-22] ingest | Locations (#31), Alolan exclusives (#33), generated files (#37), exclusives checks (#38)
 Pages touched: concepts/location-data.md (new), entities/sv-game-config.md, entities/generator-and-pokeapi.md, entities/living-dex-tracker.md, concepts/ui-behaviour.md, concepts/architecture.md, index.md. Notes: sources are the merged changes and the review session. The location page describes the current locations.json format. #35 changes that format.
+
+## [2026-11-22] ingest | Normalized Location data (#35)
+Pages touched: concepts/location-data.md. Notes: source is the #35 change. The page now describes the Area table, the shared list or per-version object, and the new slug check.
