@@ -1,4 +1,4 @@
-import type { AppOptions } from '../core/storage';
+import { gameVersion, type AppOptions } from '../core/storage';
 import type { GameConfig } from '../core/types';
 import { Dialog } from './Dialog';
 import s from './Header.module.css';
@@ -27,7 +27,10 @@ export function SettingsDialog({
       {versions.length > 0 && (
         <label className={s.toggle} style={{ marginBottom: 8 }}>
           Moja wersja:{' '}
-          <select value={options.version} onChange={(e) => onOption('version', e.target.value)}>
+          <select
+            value={gameVersion(exclusives, options) ?? ''}
+            onChange={(e) => onOption('version', e.target.value)}
+          >
             {versions.map(([k, { name }]) => (
               <option key={k} value={k}>
                 {name}

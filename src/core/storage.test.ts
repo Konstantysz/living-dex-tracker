@@ -41,12 +41,12 @@ describe('per-game persistence', () => {
     expect(loadOptions('other').dim).toBe(false);
   });
 
-  test('game version defaults to both and drops unknown keys', () => {
-    const sv = findGame('sv').config;
+  test('game version defaults to both and rejects unknown keys and wrong types', () => {
+    const sv = findGame('sv').config.exclusives;
     expect(gameVersion(sv, loadOptions('sv'))).toBeNull();
     saveOptions('sv', { ...loadOptions('sv'), version: 'V' });
     expect(gameVersion(sv, loadOptions('sv'))).toBe('V');
-    expect(gameVersion(findGame('za').config, loadOptions('sv'))).toBeNull();
+    expect(gameVersion(findGame('za').config.exclusives, loadOptions('sv'))).toBeNull();
     localStorage.setItem('ldt:sv:opts', JSON.stringify({ version: true, dim: 'x' }));
     expect(loadOptions('sv')).toMatchObject({ version: '', dim: false });
   });

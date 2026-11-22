@@ -11,8 +11,8 @@ export interface AppOptions extends LayoutOptions {
 export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false, version: '' };
 
 /** The game version of the player (a key of `exclusives`), or null for both versions. */
-export const gameVersion = (config: GameConfig, o: AppOptions): string | null =>
-  Object.hasOwn(config.exclusives, o.version) ? o.version : null;
+export const gameVersion = (exclusives: GameConfig['exclusives'], o: AppOptions): string | null =>
+  Object.hasOwn(exclusives, o.version) ? o.version : null;
 
 // Keys written by the single-file prototype. Read-only fallback, SV only.
 const LEGACY: Record<string, { caught: string; opts: string }> = {
