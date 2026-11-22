@@ -85,4 +85,27 @@ export interface GameConfig {
   dlcForms: Record<string, string>;
   /** Version key (one letter, shown on the tile) -> game name and the species exclusive to it. */
   exclusives: Record<string, { name: string; species: string[] }>;
+  /** Collectible sets shown in the Guide (e.g. SV ruin stakes). */
+  collectibles?: CollectibleSet[];
+}
+
+/**
+ * A checklist of in-game collectibles, split into sections (e.g. one per shrine). Ids
+ * `<set>:<section>-<n>` (n from 1, see `collectibleId`) live in the caught set (ADR 0002).
+ */
+export interface CollectibleSet {
+  /** Id prefix, e.g. "stake". */
+  id: string;
+  /** Title in the Guide, e.g. "Słupki ruin". */
+  name: string;
+  /** Label of one collectible, e.g. "Słupek" → "Słupek 3". */
+  unitLabel: string;
+  /** One sentence for the player. */
+  intro: string;
+  /** Page the data comes from. */
+  source: { name: string; url: string };
+  /** Links per collectible. `{section}` and `{n}` in `url` are filled in. */
+  links: { label: string; url: string }[];
+  /** `name` and `area` are in-game names, which exist only in English. */
+  sections: { id: string; name: string; area: string; count: number }[];
 }

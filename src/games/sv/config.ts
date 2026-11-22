@@ -221,4 +221,43 @@ export const svConfig: GameConfig = {
         iron-leaves iron-boulder iron-crown`.split(/\s+/),
     },
   },
+  // Section ids are the Serebii image names (stakes/<id><n>.jpg). Areas and order:
+  // https://www.serebii.net/scarletviolet/stakes.shtml (2026-11-22). Serebii gives no per-stake text.
+  collectibles: [
+    {
+      id: 'stake',
+      name: 'Słupki ruin',
+      unitLabel: 'Słupek',
+      intro: '8 słupków jednej świątyni otwiera drogę do jej legendarnego Pokémona.',
+      source: { name: 'Serebii', url: 'https://www.serebii.net/scarletviolet/stakes.shtml' },
+      links: [
+        { label: 'zdjęcie', url: 'https://www.serebii.net/scarletviolet/stakes/{section}{n}.jpg' },
+        {
+          label: 'mapka',
+          url: 'https://www.serebii.net/scarletviolet/stakes/map/{section}{n}.jpg',
+        },
+      ],
+      sections: [
+        { id: 'ting-lu', name: 'Ting-Lu', area: 'Casseroya Lake & Surrounding Area', count: 8 },
+        {
+          id: 'chien-pao',
+          name: 'Chien-Pao',
+          area: 'West Province Area One, Two & Three & Surrounding Area',
+          count: 8,
+        },
+        {
+          id: 'wo-chien',
+          name: 'Wo-Chien',
+          area: 'South Province Area 1, 3, 5 & Surrounding Area',
+          count: 8,
+        },
+        {
+          id: 'chi-yu',
+          name: 'Chi-Yu',
+          area: 'North Province Area 1, 2 & Surrounding Area',
+          count: 8,
+        },
+      ],
+    },
+  ],
 };

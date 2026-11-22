@@ -3,10 +3,12 @@ import { useEffect, useRef, type ReactNode } from 'react';
 /** Native <dialog> opened as modal while mounted. Escape/backdrop close via onClose. */
 export function Dialog({
   title,
+  className,
   onClose,
   children,
 }: {
   title: string;
+  className?: string;
   onClose: () => void;
   children: ReactNode;
 }) {
@@ -16,7 +18,7 @@ export function Dialog({
     if (d && !d.open) d.showModal?.();
   }, []);
   return (
-    <dialog ref={ref} onClose={onClose} aria-label={title}>
+    <dialog ref={ref} className={className} onClose={onClose} aria-label={title}>
       <h3>{title}</h3>
       {children}
     </dialog>
