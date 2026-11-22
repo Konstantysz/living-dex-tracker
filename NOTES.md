@@ -50,3 +50,8 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
 - **Version exclusives.** Entries of species exclusive to Scarlet or Violet get `v: 'S' | 'V'`
   (Serebii exclusives page, 2026-11-21). Tauros is on both lists, so it has no mark. DLC forms
   have no mark. This only adds the `v` key; no id or order changes.
+- **Alolan exclusives.** The Serebii exclusives page shows the Alolan forms of Vulpix, Ninetales,
+  Sandshrew and Sandslash (icons `037-a` etc., Ice type), not the Kanto forms. The Kanto forms are
+  in Kitakami in both games. So `exclusives` can now name an entry id: `vulpix-alola` and
+  `ninetales-alola` get `v: 'S'`, `sandshrew-alola` and `sandslash-alola` get `v: 'V'`, and the
+  Kanto forms lose their mark. No id or order changes.
