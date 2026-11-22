@@ -76,7 +76,42 @@ test('backup dialog imports a code and rejects invalid ones', async () => {
   await user.click(box);
   await user.paste(exportCode(new Set(['sprigatito', 'floragato'])));
   await user.click(screen.getByText('Wczytaj'));
+  expect(screen.getByText(new RegExp(`^0 / ${total}`))).toBeInTheDocument();
+  await user.click(screen.getByText('Tak, zastąp'));
   expect(screen.getByText(new RegExp(`^2 / ${total}`))).toBeInTheDocument();
+});
+
+test('a toggle can be undone from the toast', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const sprig = cell(/^Sprigatito, 1$/);
+  await user.click(sprig);
+  expect(screen.getByRole('status')).toHaveTextContent('Złapano Sprigatito');
+  await user.click(screen.getByText('Cofnij'));
+  expect(sprig).toHaveAttribute('aria-pressed', 'false');
+  expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual([]);
+  expect(screen.queryByText('Cofnij')).not.toBeInTheDocument();
+});
+
+test('an import asks first, and the toast can undo it', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(cell(/^Sprigatito, 1$/));
+  await user.click(screen.getByText('Kopia postępu'));
+  const box = screen.getByLabelText('Kod kopii');
+  await user.clear(box);
+  await user.click(box);
+  await user.paste(exportCode(new Set(['fuecoco', 'crocalor', 'quaxly'])));
+  await user.click(screen.getByText('Wczytaj'));
+  expect(screen.getByText(/Złapane w kodzie: 3\. Obecnie: 1\./)).toBeInTheDocument();
+  await user.click(screen.getByText('Anuluj'));
+  expect(screen.queryByText(/Złapane w kodzie/)).not.toBeInTheDocument();
+  await user.click(screen.getByText('Wczytaj'));
+  await user.click(screen.getByText('Tak, zastąp'));
+  expect(screen.getByText(new RegExp(`^3 / ${total}`))).toBeInTheDocument();
+  await user.click(screen.getByText('Cofnij'));
+  expect(screen.getByText(new RegExp(`^1 / ${total}`))).toBeInTheDocument();
+  expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {

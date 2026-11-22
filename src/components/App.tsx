@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { matches } from '../core/entry';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { entryLabel, matches } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
 import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } from '../core/storage';
 import { findGame, type Game } from '../games';
@@ -65,15 +65,40 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       ?.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
   }, [hits, entries]);
 
-  const toggle = useCallback(
-    (id: string) =>
-      setCaught((prev) => {
-        const next = new Set(prev);
-        if (!next.delete(id)) next.add(id);
-        saveCaught(config.id, next);
-        return next;
-      }),
+  // One-step undo: the set before the last change, shown in a toast for 5 s.
+  const [undo, setUndo] = useState<{ text: string; prev: Set<string> } | null>(null);
+  // A ref keeps `toggle` stable across toggles, so memoized cells do not re-render.
+  const caughtRef = useRef(caught);
+  const replace = useCallback(
+    (next: Set<string>) => {
+      caughtRef.current = next;
+      setCaught(next);
+      saveCaught(config.id, next);
+    },
     [config.id],
+  );
+  const commit = useCallback(
+    (next: Set<string>, text: string) => {
+      setUndo({ text, prev: caughtRef.current });
+      replace(next);
+    },
+    [replace],
+  );
+  useEffect(() => {
+    if (!undo) return;
+    const t = setTimeout(() => setUndo(null), 5000);
+    return () => clearTimeout(t);
+  }, [undo]);
+
+  const toggle = useCallback(
+    (id: string) => {
+      const next = new Set(caughtRef.current);
+      const added = !next.delete(id);
+      if (added) next.add(id);
+      const it = entries.get(id);
+      commit(next, `${added ? 'Złapano' : 'Odznaczono'} ${it ? entryLabel(it) : id}`);
+    },
+    [commit, entries],
   );
   const setOption = (k: keyof AppOptions, v: boolean) => {
     const next = { ...options, [k]: v };
@@ -116,12 +141,22 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       {dialog === 'backup' && (
         <BackupDialog
           caught={caught}
-          onLoad={(c) => {
-            setCaught(c);
-            saveCaught(config.id, c);
-          }}
+          onLoad={(c) => commit(c, 'Wczytano kopię postępu')}
           onClose={() => setDialog(null)}
         />
+      )}
+      {undo && (
+        <div className="toast" role="status">
+          <span>{undo.text}</span>
+          <button
+            onClick={() => {
+              replace(undo.prev);
+              setUndo(null);
+            }}
+          >
+            Cofnij
+          </button>
+        </div>
       )}
     </>
   );
