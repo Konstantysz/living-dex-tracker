@@ -87,6 +87,8 @@ export interface GameConfig {
   exclusives: Record<string, { name: string; species: string[] }>;
   /** Collectible sets shown in the Guide (e.g. SV ruin stakes). */
   collectibles?: CollectibleSet[];
+  /** Serebii species page for the details dialog. `{name}` = species name, lower case, no spaces. */
+  serebii?: string;
 }
 
 /**

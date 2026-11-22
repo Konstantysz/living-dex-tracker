@@ -42,11 +42,88 @@ test('click and keyboard toggle caught state and persist it', async () => {
   expect(sprig).toHaveAttribute('aria-pressed', 'true');
 });
 
+const details = () => screen.queryByRole('dialog');
+
+test('the "i" button, a right click and the keyboard open details without a toggle', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const sprig = cell(/^Sprigatito, 1$/);
+  await user.click(sprig);
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  expect(details()).not.toBeInTheDocument();
+
+  await user.click(within(sprig).getByText('i'));
+  const d = screen.getByRole('dialog', { name: 'Sprigatito' });
+  expect(d).toHaveTextContent('Paldea #1 · nat. #906');
+  expect(d).toHaveTextContent('podstawowa');
+  expect(d).not.toHaveTextContent('Ekskluzyw');
+  expect(within(d).getByRole('link', { name: 'Serebii' })).toHaveAttribute(
+    'href',
+    'https://www.serebii.net/pokedex-sv/sprigatito/',
+  );
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  await user.click(within(d).getByText('Zamknij'));
+  expect(details()).not.toBeInTheDocument();
+
+  const gestures = [
+    () => user.pointer({ keys: '[MouseRight]', target: sprig }),
+    () => user.keyboard('i'),
+    () => user.keyboard('{Shift>}{Enter}{/Shift}'),
+  ];
+  for (const gesture of gestures) {
+    sprig.focus();
+    await gesture();
+    expect(details()).toBeInTheDocument();
+    expect(sprig).toHaveAttribute('aria-pressed', 'true');
+    await user.click(within(details()!).getByText('Zamknij'));
+  }
+});
+
+test('details show the version exclusive mark', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const it = boxes.flat().find((x) => x?.v === 'S')!;
+  await user.pointer({
+    keys: '[MouseRight]',
+    target: document.querySelector(`[data-id="${it.id}"]`)!,
+  });
+  expect(screen.getByRole('dialog')).toHaveTextContent('Ekskluzywtylko Scarlet');
+});
+
+test('the Serebii link drops accents and spaces', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const it = boxes.flat().find((x) => x?.name === 'Flabébé')!;
+  await user.pointer({
+    keys: '[MouseRight]',
+    target: document.querySelector(`[data-id="${it.id}"]`)!,
+  });
+  expect(screen.getByRole('link', { name: 'Serebii' })).toHaveAttribute(
+    'href',
+    'https://www.serebii.net/pokedex-sv/flabebe/',
+  );
+});
+
+test('in details mode a tap opens details and does not toggle', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByLabelText('Tryb: szczegóły'));
+  const sprig = cell(/^Sprigatito, 1$/);
+  await user.click(sprig);
+  expect(screen.getByRole('dialog', { name: 'Sprigatito' })).toBeInTheDocument();
+  expect(sprig).toHaveAttribute('aria-pressed', 'false');
+  await user.click(screen.getByText('Zamknij'));
+  await user.click(screen.getByLabelText('Tryb: szczegóły'));
+  await user.click(sprig);
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  expect(details()).not.toBeInTheDocument();
+});
+
 test('toggles recompute the layout live', async () => {
   const user = userEvent.setup();
   render(<App />);
   await user.click(screen.getByText('Ustawienia'));
-  expect(screen.getAllByRole('checkbox')).toHaveLength(2);
+  expect(within(screen.getByRole('dialog')).getAllByRole('checkbox')).toHaveLength(2);
   await user.click(screen.getByLabelText(/wszystkie wzory Vivillon/));
   expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toEqual({
     go: true,
