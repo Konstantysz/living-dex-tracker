@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, test } from 'vitest';
+import { findGame } from '../games';
 import {
   exportCode,
+  gameVersion,
   importCode,
   loadCaught,
   loadOptions,
@@ -37,6 +39,16 @@ describe('per-game persistence', () => {
     saveOptions('sv', { ...loadOptions('sv'), dim: true });
     expect(loadOptions('sv').dim).toBe(true);
     expect(loadOptions('other').dim).toBe(false);
+  });
+
+  test('game version defaults to both and rejects unknown keys and wrong types', () => {
+    const sv = findGame('sv').config.exclusives;
+    expect(gameVersion(sv, loadOptions('sv'))).toBeNull();
+    saveOptions('sv', { ...loadOptions('sv'), version: 'V' });
+    expect(gameVersion(sv, loadOptions('sv'))).toBe('V');
+    expect(gameVersion(findGame('za').config.exclusives, loadOptions('sv'))).toBeNull();
+    localStorage.setItem('ldt:sv:opts', JSON.stringify({ version: true, dim: 'x' }));
+    expect(loadOptions('sv')).toMatchObject({ version: '', dim: false });
   });
 
   test('migrates prototype keys for sv only', () => {
