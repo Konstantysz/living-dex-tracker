@@ -34,8 +34,13 @@ describe('parseSpeciesPage', () => {
     expect(lines[0]!.areas[0]).toEqual({
       name: 'East Province Area One',
       slug: 'eastprovinceareaone',
+      region: 'paldea',
     });
-    expect(lines[2]!.areas[0]).toEqual({ name: 'Apple Hills', slug: 'applehills' });
+    expect(lines[2]!.areas[0]).toEqual({
+      name: 'Apple Hills',
+      slug: 'applehills',
+      region: 'kitakami',
+    });
   });
 
   test('reads the form label before the areas', () => {
@@ -66,14 +71,14 @@ describe('parseSpeciesPage', () => {
         dex: '',
         label: 'Kantonian Form',
         note: null,
-        areas: [{ name: 'Apple Hills', slug: 'applehills' }],
+        areas: [{ name: 'Apple Hills', slug: 'applehills', region: 'kitakami' }],
       },
       {
         version: 'S',
         dex: '',
         label: 'Kantonian Form',
         note: 'White-Striped Form',
-        areas: [{ name: 'Timeless Woods', slug: 'timelesswoods' }],
+        areas: [{ name: 'Timeless Woods', slug: 'timelesswoods', region: 'kitakami' }],
       },
     ]);
   });
@@ -96,7 +101,7 @@ describe('parseSpeciesPage', () => {
     const road = `<a href="/pokearth/kitakami/reveler'sroad.shtml">Reveler's Road</a>`;
     const empty = '<a href="/pokearth/terarium/chargestonecavern.shtml"> ';
     expect(parseSpeciesPage(cell(`${empty}${road}`))[0]!.areas).toEqual([
-      { name: "Reveler's Road", slug: "reveler'sroad" },
+      { name: "Reveler's Road", slug: "reveler'sroad", region: 'kitakami' },
     ]);
   });
 });
@@ -214,7 +219,7 @@ describe('buildLocations', () => {
             Object.entries(e.areas ?? {})
               .filter(([k]) => v === null || k === v)
               .flatMap(([, l]) => l ?? [])
-              .map((a) => [a.slug, a]),
+              .map((a) => [a.slug, { slug: a.slug, name: a.name }]),
           ).values(),
         ];
         expect(areasFor(built, e.id, v) ?? []).toEqual(want);
@@ -248,6 +253,7 @@ describe('diffLocations', () => {
     source: 's',
     scraped: 'd',
     areas: { a: 'A', b: 'B' },
+    regions: {},
     entries: {
       x: { page: 'x' },
       y: { page: 'y', areas: ['a'] },

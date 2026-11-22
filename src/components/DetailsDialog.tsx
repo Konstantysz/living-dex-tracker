@@ -1,5 +1,5 @@
 import { entryLabel, numberText } from '../core/entry';
-import { areasFor, type Locations } from '../core/locations';
+import { areasFor, type AreaProgress, type Locations } from '../core/locations';
 import type { DexEntry, GameConfig, Kind } from '../core/types';
 import { Dialog } from './Dialog';
 
@@ -30,8 +30,11 @@ export function DetailsDialog({
   config,
   locations,
   version,
+  crowded,
   onClose,
 }: {
+  /** Area of this entry where many entries are missing (`crowdedArea`). */
+  crowded?: AreaProgress;
   entry: DexEntry;
   config: GameConfig;
   locations?: Locations;
@@ -86,7 +89,12 @@ export function DetailsDialog({
           </p>
         </section>
       )}
-      {/* Later issues add the tips here. */}
+      {crowded && (
+        <p className="tip">
+          Tu brakuje Ci wielu wpisów: {crowded.area.name} ({crowded.missing.length}). Złap je przy
+          okazji.
+        </p>
+      )}
       <div className="dialog-row">
         {config.serebii && (
           <a

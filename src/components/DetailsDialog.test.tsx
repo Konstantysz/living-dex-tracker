@@ -20,6 +20,7 @@ const locations: Locations = {
   source: 'https://www.serebii.net/pokedex-sv/',
   scraped: '2026-11-22',
   areas: { applehills: 'Apple Hills', asadodesert: 'Asado Desert' },
+  regions: { applehills: 'kitakami', asadodesert: 'paldea' },
   entries: {
     a: { page: 'a', areas: { S: ['asadodesert'], V: ['applehills'] } },
     b: { page: 'b' },
@@ -52,6 +53,20 @@ test('details show the areas of both versions when no version is set', () => {
   show('a', null);
   expect(screen.getByText('Apple Hills')).toBeInTheDocument();
   expect(screen.getByText('Asado Desert')).toBeInTheDocument();
+});
+
+test('details show the tip when the area has many missing entries', () => {
+  const crowded = { area: { slug: 'applehills', name: 'Apple Hills' }, missing: [entry('a')] };
+  render(
+    <DetailsDialog
+      entry={entry('a')}
+      config={config}
+      version="V"
+      crowded={crowded}
+      onClose={() => {}}
+    />,
+  );
+  expect(screen.getByText(/Tu brakuje Ci wielu wpisów: Apple Hills \(1\)/)).toBeInTheDocument();
 });
 
 test('an entry without data shows "Brak danych", not an empty list', () => {

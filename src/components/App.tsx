@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { badgeProgress, badgeToast, gameBadges, newlyEarned } from '../core/badges';
 import { entryLabel, matches, setIds } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
+import { crowdedArea, missingByArea } from '../core/locations';
 import {
   gameVersion,
   hidAlcremie,
@@ -169,6 +170,11 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     saveOptions(config.id, next);
   };
 
+  const version = gameVersion(config.exclusives, options);
+  const progress = useMemo(
+    () => (game.locations ? missingByArea(game.locations, entries.values(), caught, version) : []),
+    [game.locations, entries, caught, version],
+  );
   const detailsEntry = details ? entries.get(details) : undefined;
   const collectibles = config.collectibles ?? [];
   const total = entries.size;
@@ -210,7 +216,8 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
           entry={detailsEntry}
           config={config}
           locations={game.locations}
-          version={gameVersion(config.exclusives, options)}
+          version={version}
+          crowded={crowdedArea(progress, detailsEntry.id)}
           onClose={() => setDetails(null)}
         />
       )}
@@ -226,6 +233,9 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         <GuideDialog
           sets={collectibles}
           badges={badges}
+          locations={game.locations}
+          progress={progress}
+          onDetails={setDetails}
           visible={visible}
           tab={dialog === 'badges' ? 'badges' : 'collectibles'}
           caught={caught}

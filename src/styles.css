@@ -236,6 +236,14 @@ dialog h4 {
 .guide a {
   color: var(--ink);
 }
+.areas,
+.areas ul {
+  margin: 0;
+  padding-left: var(--space-md);
+}
+.areas summary {
+  cursor: pointer;
+}
 /* Phone: the Guide fills the screen. */
 @media (max-width: 600px) {
   dialog.guide {

@@ -230,6 +230,22 @@ test('an import asks first, and the toast can undo it', async () => {
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
 });
 
+test('the areas tab opens details on a tap and does not toggle caught', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Poradnik'));
+  await user.click(screen.getByRole('button', { name: 'Obszary' }));
+  const area = within(document.querySelector<HTMLElement>('.areas details')!);
+  await user.click(area.getByText(/brakuje:/));
+  expect(area.getByRole('link', { name: 'Pokéarth' })).toHaveAttribute(
+    'href',
+    expect.stringMatching(/^https:\/\/www\.serebii\.net\/pokearth\/[a-z]+\/[a-z']+\.shtml$/),
+  );
+  await user.click(area.getAllByRole('button')[0]!);
+  expect(document.querySelector('dialog.details')).toBeInTheDocument();
+  expect(localStorage.getItem('ldt:sv:caught')).toBeNull();
+});
+
 test('the guide tracks collectibles in the caught set without counting them', async () => {
   const user = userEvent.setup();
   render(<App />);
