@@ -54,6 +54,13 @@ A new game needs: config → add to `configs.ts` → `data:build` → import its
 - UI strings are in Polish. Routing is by hash (`#sv`); `base: './'` keeps it working under the
   GitHub Pages sub-path (deployed by `.github/workflows/deploy.yml` on push to `main`).
 
+## Workflow
+
+- Before the first change, run `git fetch --prune`. If the current branch shows `[gone]`, start
+  from an up-to-date `main`.
+- Before a PR, run the `code-review` skill against `main`. The reviewer uses `CODING_STANDARDS.md`.
+- To check UI in the browser pane, see `docs/agents/ui-verification.md`.
+
 ## Wiki
 
 `docs/wiki/` is an LLM-maintained project wiki with its own schema in `docs/wiki/CLAUDE.md`.

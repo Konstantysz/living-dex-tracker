@@ -1,29 +1,34 @@
 ---
 title: Options and filters
 type: concept
-sources: [src/core/layout.ts, src/core/storage.ts, reference/sv-artifact-template.html]
-updated: 2026-11-16
+sources: [src/core/layout.ts, src/core/storage.ts, src/components/SettingsDialog.tsx]
+updated: 2026-11-22
 ---
 
 # Options and filters
 
-Six toggles. They are saved per game and change the layout live.
+The player sets four toggles in "Ustawienia". The app saves them per game and changes the layout
+live.
 
-| Option    | Meaning                                   | Default | Filters kind          |
-| --------- | ----------------------------------------- | ------- | --------------------- |
-| `reg`     | regional forms only through HOME          | on      | `reg`                 |
-| `alc`     | all Alcremie (63)                         | on      | `alc`                 |
-| `bat`     | battle forms                              | off     | `bat`, with `extra` also `xbat` |
-| `extra`   | box with forms outside every dex          | off     | `xreg`, `xbat`        |
-| `noSplit` | do not split small groups (≤ 6)           | on      | packing only          |
-| `dim`     | dim caught sprites                        | off     | display only          |
+| Option    | Meaning                                                  | Default | Effect                |
+| --------- | -------------------------------------------------------- | ------- | --------------------- |
+| `alc`     | all Alcremie (63)                                        | on      | shows kind `alc`      |
+| `go`      | all Vivillon patterns (need Pokémon GO)                  | off     | shows kind `go`       |
+| `noSplit` | do not split small species blocks (2 to 6 entries)       | off     | packing only          |
+| `dim`     | dim caught sprites                                       | off     | look only             |
 
 Notes:
 
-- `xbat` entries need both `extra` and `bat`.
-- `nreg` (regional forms native to SV) and all other kinds are always shown.
+- `keep()` in `src/core/layout.ts` never shows kinds `reg`, `bat`, `xreg` and `xbat`. The game PC
+  cannot store HOME-only regional forms and battle forms. The data stays in `layout.json`.
+- All other kinds (for example `nreg`, `fem`, `form`) always show.
 - `dim` is stored with the options but is not part of `LayoutOptions`. It toggles the body class
   `dimcaught`.
+- The prototype had toggles for `reg`, `bat` and `extra`. The app removed them when it limited the
+  dex to what the PC can store.
+
+> **Planned:** issue #20 removes `alc` and `noSplit`. Then all Alcremie always show and packing
+> always splits. (source: `conversation:2026-11-22`)
 
 ## Related
 

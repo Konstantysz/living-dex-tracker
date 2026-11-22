@@ -1,8 +1,8 @@
 ---
 title: Project decisions and acceptance status
 type: analysis
-sources: [conversation:2026-11-16, README.md, NOTES.md]
-updated: 2026-11-16
+sources: [conversation:2026-11-16, conversation:2026-11-22, README.md, NOTES.md, docs/adr]
+updated: 2026-11-22
 ---
 
 # Project decisions and acceptance status
@@ -20,7 +20,22 @@ updated: 2026-11-16
 - **Commits in small steps. No push without a request.** The first push came with the Pages
   request.
 
+## Later decisions (2026-11-22)
+
+Formal decisions now live as ADRs in `docs/adr/`. Domain terms live in `GLOSSARY.md`.
+
+- ADR 0001: Serebii is the source of location data, through a build-time scraper.
+- ADR 0002: collectibles (e.g. ruin stakes) share the caught set. See
+  [Backup code and storage](../concepts/backup-and-storage.md).
+- ADR 0003: the area map is our own SVG path data, not a copied picture.
+- In-game names (places, shrines, Pokémon) stay in English in the UI. (source: `GLOSSARY.md`)
+- Badges work like trophies or achievements: title, info, image, `is_hidden`. The split into base
+  game and DLC is automatic. (source: issue #12)
+
 ## Acceptance criteria (from the task brief)
+
+These are the criteria of the first version (2026-11-16). Later commits limited the dex to the
+forms the PC can store, so the box and slot numbers in rows 2 and 3 are historical.
 
 | # | Criterion                                                    | Status                         |
 | - | ------------------------------------------------------------ | ------------------------------ |
