@@ -1,3 +1,5 @@
 * text=auto eol=lf
 # Append-only log: a merge keeps the entries from both sides.
 docs/wiki/log.md merge=union
+# Generated game data: GitHub collapses it in PR diffs and leaves it out of the language stats.
+src/games/*/generated/** linguist-generated
