@@ -131,6 +131,25 @@ test('toggles recompute the layout live', async () => {
   });
 });
 
+test('game version is stored and keeps exclusives of the other version visible', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  const select = screen.getByLabelText(/Moja wersja/);
+  expect(select).toHaveValue('');
+  await user.selectOptions(select, 'Scarlet');
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({ version: 'S' });
+  expect(document.querySelector('[data-id="misdreavus"]')).toHaveTextContent('V');
+});
+
+test('game without versions does not show the version setting', async () => {
+  location.hash = '#za';
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  expect(screen.queryByLabelText(/Moja wersja/)).not.toBeInTheDocument();
+});
+
 test('search highlights matches by name and number', async () => {
   const user = userEvent.setup();
   render(<App />);

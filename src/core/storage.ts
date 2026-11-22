@@ -1,11 +1,18 @@
 import { DEFAULT_OPTIONS, type LayoutOptions } from './layout';
+import type { GameConfig } from './types';
 
 export interface AppOptions extends LayoutOptions {
   /** Dim caught sprites. */
   dim: boolean;
+  /** Game version of the player: a key of `GameConfig.exclusives`, '' for both. Read it with `gameVersion`. */
+  version: string;
 }
 
-export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false };
+export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false, version: '' };
+
+/** The game version of the player (a key of `exclusives`), or null for both versions. */
+export const gameVersion = (exclusives: GameConfig['exclusives'], o: AppOptions): string | null =>
+  Object.hasOwn(exclusives, o.version) ? o.version : null;
 
 // Keys written by the single-file prototype. Read-only fallback, SV only.
 const LEGACY: Record<string, { caught: string; opts: string }> = {
@@ -54,7 +61,7 @@ export function loadOptions(gameId: string): AppOptions {
     if (!src || typeof src !== 'object') return;
     for (const [k, v] of Object.entries(src)) {
       const name = names(k);
-      if (name && typeof v === 'boolean') out[name] = v;
+      if (name && typeof v === typeof out[name]) Object.assign(out, { [name]: v });
     }
   };
   const current = read(optsKey(gameId));

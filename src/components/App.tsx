@@ -118,7 +118,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     },
     [commit],
   );
-  const setOption = (k: keyof AppOptions, v: boolean) => {
+  const setOption = <K extends keyof AppOptions>(k: K, v: AppOptions[K]) => {
     const next = { ...options, [k]: v };
     setOptions(next);
     saveOptions(config.id, next);
@@ -162,7 +162,12 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         <DetailsDialog entry={detailsEntry} config={config} onClose={() => setDetails(null)} />
       )}
       {dialog === 'settings' && (
-        <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
+        <SettingsDialog
+          options={options}
+          exclusives={config.exclusives}
+          onOption={setOption}
+          onClose={() => setDialog(null)}
+        />
       )}
       {dialog === 'guide' && (
         <GuideDialog
