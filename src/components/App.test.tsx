@@ -48,7 +48,11 @@ test('toggles recompute the layout live', async () => {
   await user.click(screen.getByText('Ustawienia'));
   expect(screen.getAllByRole('checkbox')).toHaveLength(2);
   await user.click(screen.getByLabelText(/wszystkie wzory Vivillon/));
-  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toEqual({ go: true, dim: false });
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toEqual({
+    go: true,
+    dim: false,
+    version: '',
+  });
   const goTotal = layoutBoxes(findGame('sv').layout, { go: true }).flat().filter(Boolean).length;
   expect(screen.getByText(new RegExp(`^0 / ${goTotal}`))).toBeInTheDocument();
 });
@@ -68,6 +72,25 @@ test('a game without Alcremie forms shows no Alcremie notice', () => {
   localStorage.setItem('ldt:za:opts', JSON.stringify({ alc: false }));
   render(<App />);
   expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+
+test('game version is stored and keeps exclusives of the other version visible', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  const select = screen.getByLabelText(/Moja wersja/);
+  expect(select).toHaveValue('');
+  await user.selectOptions(select, 'Scarlet');
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({ version: 'S' });
+  expect(document.querySelector('[data-id="misdreavus"]')).toHaveTextContent('V');
+});
+
+test('game without versions does not show the version setting', async () => {
+  location.hash = '#za';
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  expect(screen.queryByLabelText(/Moja wersja/)).not.toBeInTheDocument();
 });
 
 test('search highlights matches by name and number', async () => {

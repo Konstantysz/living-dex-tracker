@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, test } from 'vitest';
+import { findGame } from '../games';
 import {
   exportCode,
+  gameVersion,
   hidAlcremie,
   importCode,
   loadCaught,
@@ -40,6 +42,16 @@ describe('per-game persistence', () => {
     expect(loadOptions('other').dim).toBe(false);
   });
 
+  test('game version defaults to both and rejects unknown keys and wrong types', () => {
+    const sv = findGame('sv').config.exclusives;
+    expect(gameVersion(sv, loadOptions('sv'))).toBeNull();
+    saveOptions('sv', { ...loadOptions('sv'), version: 'V' });
+    expect(gameVersion(sv, loadOptions('sv'))).toBe('V');
+    expect(gameVersion(findGame('za').config.exclusives, loadOptions('sv'))).toBeNull();
+    localStorage.setItem('ldt:sv:opts', JSON.stringify({ version: true, dim: 'x' }));
+    expect(loadOptions('sv')).toMatchObject({ version: '', dim: false });
+  });
+
   test('migrates prototype keys for sv only', () => {
     localStorage.setItem('paldea-living-dex-v1', JSON.stringify(['a']));
     localStorage.setItem(
@@ -48,12 +60,12 @@ describe('per-game persistence', () => {
     );
     expect(loadCaught('sv')).toEqual(new Set(['a']));
     expect(loadCaught('other').size).toBe(0);
-    expect(loadOptions('sv')).toEqual({ go: false, dim: true });
+    expect(loadOptions('sv')).toEqual({ go: false, dim: true, version: '' });
   });
 
   test('ignores the removed alc and noSplit options', () => {
     localStorage.setItem('ldt:sv:opts', JSON.stringify({ alc: false, noSplit: true, go: true }));
-    expect(loadOptions('sv')).toEqual({ go: true, dim: false });
+    expect(loadOptions('sv')).toEqual({ go: true, dim: false, version: '' });
     expect(hidAlcremie('sv')).toBe(true);
     saveOptions('sv', loadOptions('sv'));
     expect(hidAlcremie('sv')).toBe(false);
@@ -72,7 +84,7 @@ describe('per-game persistence', () => {
     };
     try {
       expect(loadCaught('sv').size).toBe(0);
-      expect(loadOptions('sv')).toEqual({ go: false, dim: false });
+      expect(loadOptions('sv')).toEqual({ go: false, dim: false, version: '' });
       expect(hidAlcremie('sv')).toBe(false);
     } finally {
       Storage.prototype.getItem = orig;
