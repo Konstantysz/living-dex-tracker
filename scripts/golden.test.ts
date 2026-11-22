@@ -1,13 +1,43 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { expect, test } from 'vitest';
+import { areasFor, type Locations } from '../src/core/locations';
+import type { GameLayout } from '../src/core/types';
+import { games } from '../src/games/configs';
 import { svConfig } from '../src/games/sv/config';
 import { buildLayout } from './buildLayout';
 import { loadTables } from './pokeapi';
 
-const read = (p: string) => JSON.parse(readFileSync(join(import.meta.dirname, '..', p), 'utf8'));
-const { groups, extra, dlc } = buildLayout(svConfig, await loadTables());
+const path = (p: string) => join(import.meta.dirname, '..', p);
+const read = (p: string) => JSON.parse(readFileSync(path(p), 'utf8'));
+const tables = await loadTables();
+const { groups, extra, dlc } = buildLayout(svConfig, tables);
 const built = { groups, extra, dlc };
+
+test('an exclusives item that names no entry or species fails the build', () => {
+  const exclusives = { S: { name: 'Scarlet', species: ['vulpix-alola', 'vulpix-alolan'] } };
+  expect(() => buildLayout({ ...svConfig, exclusives }, tables)).toThrow(
+    'Unknown exclusives: vulpix-alolan',
+  );
+});
+
+// A version exclusive has no areas in the other version. This caught Kanto Vulpix marked 'S'
+// (Serebii lists it in Kitakami in both versions; only Alolan Vulpix is exclusive).
+test.each(games.filter((g) => existsSync(path(`src/games/${g.id}/generated/locations.json`))))(
+  '$id: version exclusives have no areas in the other version',
+  (config) => {
+    const layout: GameLayout = read(`src/games/${config.id}/generated/layout.json`);
+    const locations: Locations = read(`src/games/${config.id}/generated/locations.json`);
+    const wrong = [...layout.groups.flatMap((g) => g.items), ...layout.extra, ...layout.dlc]
+      .filter((e) => e.v)
+      .flatMap((e) =>
+        Object.keys(config.exclusives)
+          .filter((other) => other !== e.v && areasFor(locations, e.id, other))
+          .map((other) => `${e.id} (${e.v}) has ${other} areas`),
+      );
+    expect(wrong).toEqual([]);
+  },
+);
 
 test('generator output equals reference golden', () => {
   expect(built).toEqual(read('reference/sv-layout-golden.json'));

@@ -67,6 +67,8 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
   };
 
   const sprites = new Set<string>();
+  /** Ids and species identifiers of the built entries, to find unknown `exclusives` items. */
+  const entryNames = new Set<string>();
   type Work = DexEntry & { fs: string };
   const entry = (slug: string, num: string | null, kind: Kind): Work => {
     const fem = slug.endsWith('-female') && !forms.has(slug);
@@ -87,6 +89,7 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
     sprites.add(path);
     const g: Gender = fem || fi === 'female' ? '♀' : fi === 'male' ? '♂' : '';
     const ident = get(sp, sid, 'species').identifier as string;
+    entryNames.add(slug).add(ident);
     const v = Object.keys(cfg.exclusives).find((k) => {
       const list = cfg.exclusives[k]!.species;
       return list.includes(slug) || (list.includes(ident) && cfg.dlcForms[slug] === undefined);
@@ -172,6 +175,10 @@ export function buildLayout(cfg: GameConfig, t: Tables): GameLayout & { sprites:
     return rest;
   };
   const extra = cfg.extras.map(([s, k]) => entry(s, null, k));
+  const unknown = Object.values(cfg.exclusives)
+    .flatMap((e) => e.species)
+    .filter((s) => !entryNames.has(s));
+  if (unknown.length) throw new Error(`Unknown exclusives: ${unknown.join(', ')}`);
   return {
     groups: groups.map((g) => ({ sp: g.sp, items: g.items.map(strip) })),
     extra: extra.map(strip),
