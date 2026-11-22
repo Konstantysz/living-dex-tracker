@@ -7,6 +7,7 @@ const TOGGLES: [keyof AppOptions, string][] = [
   ['go', 'wszystkie wzory Vivillon (wymaga Pokémon GO)'],
   ['noSplit', 'nie dziel małych grup (do 6 form) między boxy'],
   ['dim', 'przyciemnij złapane'],
+  ['onlyMissing', 'pokaż tylko brakujące'],
 ];
 
 export function SettingsDialog({

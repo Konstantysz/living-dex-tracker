@@ -8,10 +8,11 @@ interface Props {
   box: BoxData;
   caught: Set<string>;
   hits: Set<string>;
+  onlyMissing: boolean;
   onToggle: (id: string) => void;
 }
 
-export const Box = memo(function Box({ index, box, caught, hits, onToggle }: Props) {
+export const Box = memo(function Box({ index, box, caught, hits, onlyMissing, onToggle }: Props) {
   const items = box.filter((x) => x !== null);
   const nums = items.flatMap((x) => (x.n ? [x.n] : []));
   const range = nums.length ? `${nums[0]} – ${nums[nums.length - 1]}` : 'dodatki';
@@ -27,15 +28,21 @@ export const Box = memo(function Box({ index, box, caught, hits, onToggle }: Pro
         </span>
       </h2>
       <div className={s.grid}>
-        {box.map((it, i) => (
-          <Cell
-            key={it ? it.id : `empty-${i}`}
-            entry={it}
-            caught={!!it && caught.has(it.id)}
-            hit={!!it && hits.has(it.id)}
-            onToggle={onToggle}
-          />
-        ))}
+        {box.map((it, i) => {
+          const isCaught = !!it && caught.has(it.id);
+          const hit = !!it && hits.has(it.id);
+          // "Only missing": a caught slot becomes an empty tile, so the slot position stays.
+          // A search hit stays visible, so search finds caught entries too.
+          return (
+            <Cell
+              key={it ? it.id : `empty-${i}`}
+              entry={onlyMissing && isCaught && !hit ? null : it}
+              caught={isCaught}
+              hit={hit}
+              onToggle={onToggle}
+            />
+          );
+        })}
       </div>
     </section>
   );

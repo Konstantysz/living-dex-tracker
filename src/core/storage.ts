@@ -3,9 +3,15 @@ import { DEFAULT_OPTIONS, type LayoutOptions } from './layout';
 export interface AppOptions extends LayoutOptions {
   /** Dim caught sprites. */
   dim: boolean;
+  /** Show only entries that are not caught. Caught slots stay as empty tiles. */
+  onlyMissing: boolean;
 }
 
-export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false };
+export const DEFAULT_APP_OPTIONS: AppOptions = {
+  ...DEFAULT_OPTIONS,
+  dim: false,
+  onlyMissing: false,
+};
 
 // Keys written by the single-file prototype. Read-only fallback, SV only.
 const LEGACY: Record<string, { caught: string; opts: string }> = {

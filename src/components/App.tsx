@@ -148,6 +148,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         hits={hits}
         entries={entries}
         dexes={config.dexes}
+        onlyMissing={options.onlyMissing}
         onToggle={toggle}
       />
       {dialog === 'settings' && (
