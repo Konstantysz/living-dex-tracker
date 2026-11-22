@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Append-only log: a merge keeps the entries from both sides.
+docs/wiki/log.md merge=union
