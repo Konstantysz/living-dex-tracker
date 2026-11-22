@@ -3,6 +3,7 @@ import { badgeProgress, badgeToast, gameBadges, newlyEarned } from '../core/badg
 import { entryLabel, matches, setIds } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
 import {
+  gameVersion,
   hidAlcremie,
   loadCaught,
   loadOptions,
@@ -205,7 +206,13 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onDetails={setDetails}
       />
       {detailsEntry && (
-        <DetailsDialog entry={detailsEntry} config={config} onClose={() => setDetails(null)} />
+        <DetailsDialog
+          entry={detailsEntry}
+          config={config}
+          locations={game.locations}
+          version={gameVersion(config.exclusives, options)}
+          onClose={() => setDetails(null)}
+        />
       )}
       {dialog === 'settings' && (
         <SettingsDialog

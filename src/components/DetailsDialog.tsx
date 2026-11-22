@@ -1,4 +1,5 @@
 import { entryLabel, numberText } from '../core/entry';
+import { areasFor, type Locations } from '../core/locations';
 import type { DexEntry, GameConfig, Kind } from '../core/types';
 import { Dialog } from './Dialog';
 
@@ -27,13 +28,20 @@ const serebiiName = (name: string) =>
 export function DetailsDialog({
   entry: it,
   config,
+  locations,
+  version,
   onClose,
 }: {
   entry: DexEntry;
   config: GameConfig;
+  locations?: Locations;
+  /** Game version of the player (`gameVersion`), null for both. */
+  version: string | null;
   onClose: () => void;
 }) {
   const ver = it.v && config.exclusives[it.v];
+  const areas = locations && areasFor(locations, it.id, version);
+  const page = locations?.entries[it.id]?.page;
   return (
     <Dialog title={entryLabel(it)} className="details" onClose={onClose}>
       <dl>
@@ -51,7 +59,34 @@ export function DetailsDialog({
           </>
         )}
       </dl>
-      {/* Later issues add the locations (#11) and the tips here. */}
+      {locations && (
+        <section className="locations">
+          <h4>
+            Miejsca złapania
+            {version && config.exclusives[version] ? ` (${config.exclusives[version].name})` : ''}
+          </h4>
+          {areas ? (
+            <ul>
+              {areas.map((a) => (
+                <li key={a.slug}>{a.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>Brak danych — sprawdź na Serebii.</p>
+          )}
+          <p className="source">
+            <a
+              href={page ? `${locations.source}${page}/` : locations.source}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Źródło: Serebii
+            </a>
+            , {locations.scraped}
+          </p>
+        </section>
+      )}
+      {/* Later issues add the tips here. */}
       <div className="dialog-row">
         {config.serebii && (
           <a

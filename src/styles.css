@@ -188,6 +188,17 @@ dialog.details dd {
 dialog.details .dialog-row {
   align-items: center;
 }
+dialog.details .locations ul {
+  margin: 0;
+  padding-left: var(--space-md);
+}
+dialog.details .locations p {
+  margin: var(--space-2xs) 0 0;
+}
+dialog.details .locations .source {
+  color: var(--mute);
+  font-size: var(--text-xs);
+}
 dialog h4 {
   margin: 0 0 var(--space-xs);
   font-size: var(--text-md);
