@@ -2,7 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { badgeProgress, badgeToast, gameBadges, newlyEarned } from '../core/badges';
 import { entryLabel, matches, setIds } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
-import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } from '../core/storage';
+import {
+  hidAlcremie,
+  loadCaught,
+  loadOptions,
+  saveCaught,
+  saveOptions,
+  type AppOptions,
+} from '../core/storage';
 import { findGame, type Game } from '../games';
 import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
@@ -88,11 +95,25 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     [badges, caught, visible],
   );
 
-  // One-step undo: the set before the last change, shown in a toast for 5 s. `badge` is the
-  // line for badges that the change earned (only for taps).
-  const [undo, setUndo] = useState<{ text: string; badge?: string; prev: Set<string> } | null>(
-    null,
+  // One-step undo: the set before the last change, shown in a toast for 5 s.
+  // A toast without `prev` is a notice with no undo button.
+  // `badge` is the line for badges that the change earned (only for taps).
+  // The Alcremie notice shows only in a game that has Alcremie forms (kind `alc`).
+  const [undo, setUndo] = useState<{
+    text: string;
+    badge?: string;
+    prev?: Set<string>;
+  } | null>(() =>
+    hidAlcremie(config.id) && layout.groups.some((g) => g.items.some((it) => it.k === 'alc'))
+      ? {
+          text: 'Usunięto opcję ukrywania Alcremie. Boxy pokazują teraz wszystkie 63 formy Alcremie.',
+        }
+      : null,
   );
+  useEffect(() => {
+    // Drops the old `alc` key, so the notice above shows only once.
+    if (hidAlcremie(config.id)) saveOptions(config.id, options);
+  }, [config.id, options]);
   // A ref keeps `toggle` stable across toggles, so memoized cells do not re-render.
   const caughtRef = useRef(caught);
   const replace = useCallback(
@@ -137,7 +158,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     },
     [tap],
   );
-  const setOption = (k: keyof AppOptions, v: boolean) => {
+  const setOption = <K extends keyof AppOptions>(k: K, v: AppOptions[K]) => {
     const next = { ...options, [k]: v };
     setOptions(next);
     saveOptions(config.id, next);
@@ -176,7 +197,12 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onToggle={toggle}
       />
       {dialog === 'settings' && (
-        <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
+        <SettingsDialog
+          options={options}
+          exclusives={config.exclusives}
+          onOption={setOption}
+          onClose={() => setDialog(null)}
+        />
       )}
       {(dialog === 'guide' || dialog === 'badges') && (
         <GuideDialog
@@ -209,14 +235,16 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
               </>
             )}
           </span>
-          <button
-            onClick={() => {
-              replace(undo.prev);
-              setUndo(null);
-            }}
-          >
-            Cofnij
-          </button>
+          {undo.prev && (
+            <button
+              onClick={() => {
+                replace(undo.prev!);
+                setUndo(null);
+              }}
+            >
+              Cofnij
+            </button>
+          )}
         </div>
       )}
     </>

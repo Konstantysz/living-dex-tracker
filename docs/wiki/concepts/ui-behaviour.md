@@ -42,6 +42,10 @@ Each toggle shows a toast for 5 s, for example "Złapano Sprigatito · Cofnij". 
 caught set from before the last change (one step). An import shows "Wczytano kopię postępu ·
 Cofnij". (source: `src/components/App.tsx`)
 
+The same toast shows a notice without "Cofnij" once, when the saved options still have the removed
+`alc: false`. The notice says that the boxes now show all 63 Alcremie forms. A game without
+Alcremie forms (Z-A) shows no notice. (source: `src/components/App.tsx`)
+
 ## Dialogs
 
 - **Settings:** the toggles. See [Options and filters](options-and-filters.md).

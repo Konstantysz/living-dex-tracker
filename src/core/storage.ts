@@ -1,21 +1,24 @@
 import { DEFAULT_OPTIONS, type LayoutOptions } from './layout';
+import type { GameConfig } from './types';
 
 export interface AppOptions extends LayoutOptions {
   /** Dim caught sprites. */
   dim: boolean;
+  /** Game version of the player: a key of `GameConfig.exclusives`, '' for both. Read it with `gameVersion`. */
+  version: string;
 }
 
-export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false };
+export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false, version: '' };
+
+/** The game version of the player (a key of `exclusives`), or null for both versions. */
+export const gameVersion = (exclusives: GameConfig['exclusives'], o: AppOptions): string | null =>
+  Object.hasOwn(exclusives, o.version) ? o.version : null;
 
 // Keys written by the single-file prototype. Read-only fallback, SV only.
 const LEGACY: Record<string, { caught: string; opts: string }> = {
   sv: { caught: 'paldea-living-dex-v1', opts: 'sv-living-dex-opt-v2' },
 };
-const LEGACY_OPT_NAMES: Record<string, keyof AppOptions> = {
-  optAlc: 'alc',
-  optNoSplit: 'noSplit',
-  optDim: 'dim',
-};
+const LEGACY_OPT_NAMES: Record<string, keyof AppOptions> = { optDim: 'dim' };
 
 const caughtKey = (gameId: string) => `ldt:${gameId}:caught`;
 const optsKey = (gameId: string) => `ldt:${gameId}:opts`;
@@ -54,7 +57,7 @@ export function loadOptions(gameId: string): AppOptions {
     if (!src || typeof src !== 'object') return;
     for (const [k, v] of Object.entries(src)) {
       const name = names(k);
-      if (name && typeof v === 'boolean') out[name] = v;
+      if (name && typeof v === typeof out[name]) Object.assign(out, { [name]: v });
     }
   };
   const current = read(optsKey(gameId));
@@ -65,6 +68,19 @@ export function loadOptions(gameId: string): AppOptions {
 }
 
 export const saveOptions = (gameId: string, o: AppOptions) => write(optsKey(gameId), o);
+
+/**
+ * Do the saved options still hide Alcremie? The `alc` option was removed (issue #20). The
+ * caller shows a notice once, then calls `saveOptions`, which drops the old key.
+ */
+export function hidAlcremie(gameId: string): boolean {
+  const current = read(optsKey(gameId));
+  const [src, key] =
+    current !== undefined
+      ? [current, 'alc']
+      : [LEGACY[gameId] && read(LEGACY[gameId].opts), 'optAlc'];
+  return !!src && typeof src === 'object' && (src as Record<string, unknown>)[key] === false;
+}
 
 /** Backup code: base64 of the UTF-8 JSON array of ids (same as the prototype). */
 export function exportCode(caught: Set<string>): string {
