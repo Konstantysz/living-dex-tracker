@@ -1,4 +1,4 @@
-import type { Area, AreasByVersion } from '../src/core/locations';
+import type { Area, AreasByVersion, Locations } from '../src/core/locations';
 
 /** One line of a Locations cell on a Serebii species page. */
 export interface LocationLine {
@@ -161,4 +161,60 @@ export function parseDexList(html: string): Map<number, string> {
   for (const [, slug, nat] of html.matchAll(re)) out.set(Number(nat), slug!);
   if (!out.size) throw new Error('dex list has no species links');
   return out;
+}
+
+/**
+ * Builds the `Locations` file content from matched areas (`matchEntries` output) and the page
+ * slug of each entry, in layout order. An entry gets one shared list when it has areas in every
+ * version that occurs in the input with the same slugs, else an object with its versions only.
+ * Throws when one slug has two names.
+ */
+export function buildLocations(
+  entries: { id: string; page: string; areas?: AreasByVersion }[],
+  source: string,
+  scraped: string,
+): Locations {
+  const names = new Map<string, string>();
+  const versions = new Set(entries.flatMap((e) => Object.keys(e.areas ?? {})));
+  const out: Locations['entries'] = {};
+  for (const e of entries) {
+    const per: Record<string, string[]> = {};
+    for (const [v, list] of Object.entries(e.areas ?? {})) {
+      if (!list?.length) continue;
+      per[v] = list.map((a) => {
+        const seen = names.get(a.slug);
+        if (seen !== undefined && seen !== a.name)
+          throw new Error(`area "${a.slug}" has two names: "${seen}" and "${a.name}"`);
+        names.set(a.slug, a.name);
+        return a.slug;
+      });
+    }
+    const keys = Object.keys(per);
+    const first = per[keys[0]!];
+    out[e.id] = !first
+      ? { page: e.page }
+      : keys.length === versions.size && keys.every((k) => per[k]!.join() === first.join())
+        ? { page: e.page, areas: first }
+        : { page: e.page, areas: per };
+  }
+  return {
+    source,
+    scraped,
+    areas: Object.fromEntries([...names].sort(([a], [b]) => (a < b ? -1 : 1))),
+    entries: out,
+  };
+}
+
+/** Serializes `Locations` with one top-level key and one entry per line, and a final newline. */
+export function formatLocations(l: Locations): string {
+  const block = (o: Record<string, unknown>) =>
+    '{\n' +
+    Object.entries(o)
+      .map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v)}`)
+      .join(',\n') +
+    '\n }';
+  return (
+    `{\n "source": ${JSON.stringify(l.source)},\n "scraped": ${JSON.stringify(l.scraped)},\n` +
+    ` "areas": ${block(l.areas)},\n "entries": ${block(l.entries)}\n}\n`
+  );
 }

@@ -19,14 +19,9 @@ const entry = (id: string): DexEntry => ({
 const locations: Locations = {
   source: 'https://www.serebii.net/pokedex-sv/',
   scraped: '2026-11-22',
+  areas: { applehills: 'Apple Hills', asadodesert: 'Asado Desert' },
   entries: {
-    a: {
-      page: 'a',
-      areas: {
-        S: [{ name: 'Asado Desert', slug: 'asadodesert' }],
-        V: [{ name: 'Apple Hills', slug: 'applehills' }],
-      },
-    },
+    a: { page: 'a', areas: { S: ['asadodesert'], V: ['applehills'] } },
     b: { page: 'b' },
   },
 };

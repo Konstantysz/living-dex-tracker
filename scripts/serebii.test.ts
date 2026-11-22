@@ -1,7 +1,14 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { matchEntries, parseDexList, parseSpeciesPage } from './serebii';
+import { areasFor, type AreasByVersion } from '../src/core/locations';
+import {
+  buildLocations,
+  formatLocations,
+  matchEntries,
+  parseDexList,
+  parseSpeciesPage,
+} from './serebii';
 
 // Locations tables cut from https://www.serebii.net/pokedex-sv/<species>/ (2026-11-22)
 const fixture = (s: string) =>
@@ -148,4 +155,52 @@ test('parseDexList maps national numbers to page slugs', () => {
     [901, 'ursaluna'],
   ]);
   expect(() => parseDexList('')).toThrow();
+});
+
+describe('buildLocations', () => {
+  const A = { name: 'Apple Hills', slug: 'applehills' };
+  const B = { name: 'Asado Desert', slug: 'asadodesert' };
+  const input: { id: string; page: string; areas?: AreasByVersion }[] = [
+    { id: 'shared', page: 'shared', areas: { S: [A], V: [A] } },
+    { id: 'differs', page: 'differs', areas: { S: [A, B], V: [B] } },
+    { id: 'only-s', page: 'only-s', areas: { S: [B] } },
+    { id: 'none', page: 'none' },
+  ];
+  const locs = buildLocations(input, 'src/', '2026-11-22');
+
+  test('writes a shared list, a per-version object, or no areas key', () => {
+    expect(locs.entries['shared']).toEqual({ page: 'shared', areas: ['applehills'] });
+    expect(locs.entries['differs']!.areas).toEqual({
+      S: ['applehills', 'asadodesert'],
+      V: ['asadodesert'],
+    });
+    expect(locs.entries['only-s']!.areas).toEqual({ S: ['asadodesert'] });
+    expect(locs.entries['none']).toEqual({ page: 'none' });
+    expect(Object.keys(locs.areas)).toEqual(['applehills', 'asadodesert']);
+  });
+
+  test('areasFor gives back the input for each entry, version and null', () => {
+    for (const e of input)
+      for (const v of ['S', 'V', null]) {
+        const lists = Object.entries(e.areas ?? {})
+          .filter(([k]) => v === null || k === v)
+          .flatMap(([, l]) => l ?? []);
+        const want = [...new Map(lists.map((a) => [a.slug, a])).values()];
+        expect(areasFor(locs, e.id, v) ?? []).toEqual(want);
+      }
+  });
+
+  test('throws on one slug with two names and gives the same output twice', () => {
+    expect(() =>
+      buildLocations(
+        [{ id: 'x', page: 'x', areas: { S: [A, { ...A, name: 'Other' }] } }],
+        's',
+        'd',
+      ),
+    ).toThrow(/two names/);
+    expect(formatLocations(buildLocations(input, 'src/', 'd'))).toBe(
+      formatLocations(buildLocations(input, 'src/', 'd')),
+    );
+    expect(JSON.parse(formatLocations(locs))).toEqual(locs);
+  });
 });
