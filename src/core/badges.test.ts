@@ -56,6 +56,16 @@ test('progress counts visible members and earns when all are caught', () => {
   });
 });
 
+test('a count badge is off when options hide too many members', () => {
+  const count = { ...find('all'), need: 2 };
+  expect(badgeProgress(count, new Set(['a']), new Set(['a']))).toMatchObject({
+    earned: false,
+    off: true,
+    hidden: 2,
+  });
+  expect(badgeProgress(count, new Set(), all)).toMatchObject({ off: false, hidden: 0 });
+});
+
 test('a list with main-dex and DLC members gives a base badge and a DLC badge', () => {
   // `a-k` has number 1 but is moved to the DLC dex (field `d`), so it is a DLC member.
   expect(find('all')).toMatchObject({ dlc: false, members: ['a', 'a-female', 'b'] });

@@ -1,5 +1,5 @@
-import { sectionIds } from './entry';
-import { dexOf, keep, type Box, type LayoutOptions } from './layout';
+import { setIds, sectionIds } from './entry';
+import { dexOf, inPc, type Box } from './layout';
 import type { DexEntry, GameConfig, GameLayout } from './types';
 
 /**
@@ -31,21 +31,19 @@ export interface BadgeProgress {
   got: number;
   need: number;
   earned: boolean;
-  /** All members are hidden by an option, so the badge cannot be earned now. */
+  /** Options hide too many members, so the badge cannot be earned now. */
   off: boolean;
+  /** Members that an option hides. They do not count. */
+  hidden: number;
 }
-
-// Every entry that the game's PC can store, whatever the toggles.
-const ALL_SHOWN: LayoutOptions = { alc: true, go: true, noSplit: false };
 
 type Draft = Omit<Badge, 'dlc' | 'trade'>;
 
 // Badge texts are drafts. The owner decides the final texts in review (issue #12).
 /** All badges of a game. `boxes` is the current layout, for "Pełny box". */
 export function gameBadges(config: GameConfig, layout: GameLayout, boxes: Box[]): Badge[] {
-  const pc = [...layout.groups.flatMap((g) => g.items), ...layout.dlc].filter((it) =>
-    keep(it, ALL_SHOWN),
-  );
+  // Every entry that the game's PC can store, whatever the options.
+  const pc = [...layout.groups.flatMap((g) => g.items), ...layout.dlc].filter(inPc);
   const byId = new Map(pc.map((it) => [it.id, it]));
   // Collectibles have no dex. They are base game.
   const isBase = (id: string) => {
@@ -121,7 +119,9 @@ export function gameBadges(config: GameConfig, layout: GameLayout, boxes: Box[])
       isHidden: true,
       members: ids(pc.filter((it) => it.g === '♀')),
     },
+    // A female entry is not a form of its own.
     ...species
+      .map((list) => list.filter((it) => it.g !== '♀'))
       .filter((list) => list.length >= 4)
       .map((list) => ({
         id: `forms:${list[0]!.nat}`,
@@ -153,14 +153,14 @@ export function gameBadges(config: GameConfig, layout: GameLayout, boxes: Box[])
     ...(config.collectibles ?? []).flatMap((set) => [
       {
         id: `set:${set.id}`,
-        title: set.badge ?? set.name,
+        title: set.badgeTitle ?? set.name,
         info: `Wszystkie: ${set.name}.`,
         image: '🗝️',
-        members: set.sections.flatMap((sec) => sectionIds(set.id, sec)),
+        members: setIds(set),
       },
       ...set.sections.map((sec) => ({
         id: `set:${set.id}:${sec.id}`,
-        title: set.badge ?? set.name,
+        title: set.badgeTitle ?? set.name,
         item: sec.name,
         info: `Wszystkie: ${set.name}, jedna sekcja.`,
         image: '🗝️',
@@ -180,7 +180,8 @@ export function badgeProgress(b: Badge, caught: Set<string>, visible: Set<string
     got: Math.min(got, need),
     need,
     earned: !!shown.length && got >= need,
-    off: !shown.length,
+    off: !shown.length || shown.length < need,
+    hidden: b.members.length - shown.length,
   };
 }
 

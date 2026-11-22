@@ -3,6 +3,7 @@ import s from './BadgeList.module.css';
 
 const TRADE = 'Część wpisów jest z drugiej wersji: Union Circle lub wymiana.';
 const OFF = 'Wpisy tej odznaki są ukryte w Ustawieniach.';
+const PART = 'Część wpisów jest ukryta w Ustawieniach. Ukryte wpisy się nie liczą.';
 
 /** Badges in one row: a single badge, or a collection (same title, each with an item). */
 function rows(badges: Badge[]): Badge[][] {
@@ -56,6 +57,7 @@ export function BadgeList({
                     {!secret && <p>{b.info}</p>}
                     {!secret && row.some((x) => x.trade) && <p className="mono-mute">{TRADE}</p>}
                     {off && <p className="mono-mute">{OFF}</p>}
+                    {!off && ps.some((p) => p.hidden) && <p className="mono-mute">{PART}</p>}
                     {row.length > 1 && (
                       <ul className={s.items}>
                         {row.map((x, i) => (

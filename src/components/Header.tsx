@@ -19,7 +19,7 @@ interface Props {
   onShowBackup: () => void;
   onShowGuide: () => void;
   /** Number of earned badges. */
-  badges: number;
+  earnedBadges: number;
   /** Opens the Guide on the "Odznaki" tab. */
   onShowBadges: () => void;
 }
@@ -68,10 +68,10 @@ export function Header(p: Props) {
           <button
             type="button"
             className={s.chip}
-            aria-label={`Odznaki: ${p.badges}`}
+            aria-label={`Odznaki: ${p.earnedBadges}`}
             onClick={p.onShowBadges}
           >
-            🏅 {p.badges}
+            🏅 {p.earnedBadges}
           </button>
         </div>
         <span className={`${s.fold} mono-mute`}>

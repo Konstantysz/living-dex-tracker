@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { badgeProgress, badgeToast, gameBadges, newlyEarned } from '../core/badges';
-import { entryLabel, matches, sectionIds } from '../core/entry';
+import { entryLabel, matches, setIds } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
 import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } from '../core/storage';
 import { findGame, type Game } from '../games';
@@ -80,13 +80,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
 
   const badges = useMemo(() => gameBadges(config, layout, boxes), [config, layout, boxes]);
   const visible = useMemo(
-    () =>
-      new Set([
-        ...entries.keys(),
-        ...(config.collectibles ?? []).flatMap((set) =>
-          set.sections.flatMap((sec) => sectionIds(set.id, sec)),
-        ),
-      ]),
+    () => new Set([...entries.keys(), ...(config.collectibles ?? []).flatMap(setIds)]),
     [entries, config],
   );
   const earned = useMemo(
@@ -170,7 +164,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onShowText={() => setDialog('text')}
         onShowBackup={() => setDialog('backup')}
         onShowGuide={() => setDialog('guide')}
-        badges={earned}
+        earnedBadges={earned}
         onShowBadges={() => setDialog('badges')}
       />
       <BoxGrid
