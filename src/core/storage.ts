@@ -11,11 +11,7 @@ export const DEFAULT_APP_OPTIONS: AppOptions = { ...DEFAULT_OPTIONS, dim: false 
 const LEGACY: Record<string, { caught: string; opts: string }> = {
   sv: { caught: 'paldea-living-dex-v1', opts: 'sv-living-dex-opt-v2' },
 };
-const LEGACY_OPT_NAMES: Record<string, keyof AppOptions> = {
-  optAlc: 'alc',
-  optNoSplit: 'noSplit',
-  optDim: 'dim',
-};
+const LEGACY_OPT_NAMES: Record<string, keyof AppOptions> = { optDim: 'dim' };
 
 const caughtKey = (gameId: string) => `ldt:${gameId}:caught`;
 const optsKey = (gameId: string) => `ldt:${gameId}:opts`;
@@ -65,6 +61,19 @@ export function loadOptions(gameId: string): AppOptions {
 }
 
 export const saveOptions = (gameId: string, o: AppOptions) => write(optsKey(gameId), o);
+
+/**
+ * Do the saved options still hide Alcremie? The `alc` option was removed (issue #20). The
+ * caller shows a notice once, then calls `saveOptions`, which drops the old key.
+ */
+export function hidAlcremie(gameId: string): boolean {
+  const current = read(optsKey(gameId));
+  const [src, key] =
+    current !== undefined
+      ? [current, 'alc']
+      : [LEGACY[gameId] && read(LEGACY[gameId].opts), 'optAlc'];
+  return !!src && typeof src === 'object' && (src as Record<string, unknown>)[key] === false;
+}
 
 /** Backup code: base64 of the UTF-8 JSON array of ids (same as the prototype). */
 export function exportCode(caught: Set<string>): string {

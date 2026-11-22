@@ -3,9 +3,7 @@ import { Dialog } from './Dialog';
 import s from './Header.module.css';
 
 const TOGGLES: [keyof AppOptions, string][] = [
-  ['alc', 'wszystkie Alcremie (63)'],
   ['go', 'wszystkie wzory Vivillon (wymaga Pokémon GO)'],
-  ['noSplit', 'nie dziel małych grup (do 6 form) między boxy'],
   ['dim', 'przyciemnij złapane'],
 ];
 

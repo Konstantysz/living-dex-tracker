@@ -2,7 +2,7 @@
 title: Layout rules
 type: concept
 sources: [reference/build_sv_layout_reference.py, src/games/sv/config.ts, conversation:2026-11-16]
-updated: 2026-11-16
+updated: 2026-11-22
 ---
 
 # Layout rules
@@ -35,7 +35,7 @@ Rules that decide which entries exist and in which order. They must stay 1:1 wit
 | `nreg` | regional form native to SV (DLC)         | `--reg`         |
 | `reg`  | regional form only through HOME          | `--reg`         |
 | `bat`  | battle form                              | `--bat`         |
-| `alc`  | Alcremie variants (toggle as a set)      | `--form`        |
+| `alc`  | Alcremie forms (always shown)            | `--form`        |
 | `xreg` | extra box, regional                      | `--reg`         |
 | `xbat` | extra box, battle                        | `--bat`         |
 
