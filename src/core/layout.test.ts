@@ -48,17 +48,6 @@ describe('packBoxes on SV data', () => {
     expect(flat.find((it) => it!.id === 'wooper-paldea')!.form).toBe('Paldea');
   });
 
-  test('groups of 2..6 are never split across boxes with noSplit', () => {
-    const boxes = layoutBoxes(sv, { ...DEFAULT_OPTIONS, noSplit: true });
-    const boxOf = new Map<string, number>();
-    boxes.forEach((b, i) => b.forEach((it) => it && boxOf.set(it.id, i)));
-    for (const g of sv.groups) {
-      const items = g.items.filter((it) => boxOf.has(it.id));
-      if (items.length < 2 || items.length > 6) continue;
-      expect(new Set(items.map((it) => boxOf.get(it.id))).size, g.sp).toBe(1);
-    }
-  });
-
   test('HOME-only, battle and out-of-dex forms are never shown', () => {
     const kinds = new Set(
       layoutBoxes(sv, DEFAULT_OPTIONS)
@@ -78,9 +67,11 @@ describe('packBoxes on SV data', () => {
     expect(ids).not.toContain('vivillon-poke-ball');
   });
 
-  test('alc toggle hides the 62 extra Alcremie forms', () => {
-    const count = (alc: boolean) => stats(layoutBoxes(sv, { ...DEFAULT_OPTIONS, alc })).slots;
-    expect(count(true) - count(false)).toBe(62);
+  test('all 63 Alcremie are always shown', () => {
+    const ids = layoutBoxes(sv, DEFAULT_OPTIONS)
+      .flat()
+      .filter((it) => it?.id.startsWith('alcremie'));
+    expect(ids).toHaveLength(63);
   });
 });
 
@@ -97,14 +88,9 @@ describe('packBoxes unit', () => {
   });
   const grp = (p: string, n: number) => Array.from({ length: n }, (_, i) => e(`${p}${i}`));
 
-  test('small group moves to a new box only with noSplit', () => {
-    const groups = [grp('a', 28), grp('b', 4)];
-    expect(packBoxes(groups, { noSplit: true })[0]!.filter(Boolean)).toHaveLength(28);
-    expect(packBoxes(groups, { noSplit: false })[0]!.filter(Boolean)).toHaveLength(30);
-  });
-
-  test('large group flows across the boundary', () => {
-    const boxes = packBoxes([grp('a', 28), grp('b', 7)], { noSplit: true });
+  test('a species flows across the box boundary', () => {
+    const boxes = packBoxes([grp('a', 28), grp('b', 4)]);
     expect(boxes[0]!.filter(Boolean)).toHaveLength(30);
+    expect(boxes[1]!.filter(Boolean)).toHaveLength(2);
   });
 });

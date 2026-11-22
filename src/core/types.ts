@@ -77,7 +77,7 @@ export interface GameConfig {
   labelOverrides: Record<string, string>;
   /** Form label forced per entry id (e.g. Johto Wooper, Kanto Tauros). */
   formNames: Record<string, string>;
-  /** Species whose non-base forms are toggleable as a set (kind "alc"); label drops "-sweet". */
+  /** Species whose non-base forms get kind "alc" (always shown). The label drops "-sweet". */
   toggleableForms: string[];
   /** Entry ids obtainable only through a link with another app (Vivillon + Pokémon GO): kind "go". */
   goForms: string[];

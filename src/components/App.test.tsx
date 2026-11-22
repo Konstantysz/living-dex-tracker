@@ -123,12 +123,32 @@ test('toggles recompute the layout live', async () => {
   const user = userEvent.setup();
   render(<App />);
   await user.click(screen.getByText('Ustawienia'));
-  await user.click(screen.getByLabelText(/nie dziel małych grup/));
-  await user.click(screen.getByLabelText(/wszystkie Alcremie/));
-  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({
-    noSplit: true,
-    alc: false,
+  expect(within(screen.getByRole('dialog')).getAllByRole('checkbox')).toHaveLength(2);
+  await user.click(screen.getByLabelText(/wszystkie wzory Vivillon/));
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toEqual({
+    go: true,
+    dim: false,
+    version: '',
   });
+  const goTotal = layoutBoxes(findGame('sv').layout, { go: true }).flat().filter(Boolean).length;
+  expect(screen.getByText(new RegExp(`^0 / ${goTotal}`))).toBeInTheDocument();
+});
+
+test('old saved alc: false shows a notice once', () => {
+  localStorage.setItem('ldt:sv:opts', JSON.stringify({ alc: false, noSplit: true }));
+  const { unmount } = render(<App />);
+  expect(screen.getByRole('status')).toHaveTextContent(/wszystkie 63 formy Alcremie/);
+  expect(screen.queryByText('Cofnij')).not.toBeInTheDocument();
+  unmount();
+  render(<App />);
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+
+test('a game without Alcremie forms shows no Alcremie notice', () => {
+  location.hash = '#za';
+  localStorage.setItem('ldt:za:opts', JSON.stringify({ alc: false }));
+  render(<App />);
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
 });
 
 test('game version is stored and keeps exclusives of the other version visible', async () => {

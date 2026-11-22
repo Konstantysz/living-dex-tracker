@@ -19,8 +19,8 @@ Catalog of all wiki pages. The LLM updates this file on every change.
 
 - [Architecture](concepts/architecture.md) — three layers, folder map, checks
 - [Layout rules](concepts/layout-rules.md) — which entries exist, order, kinds, extra box
-- [Packing algorithm](concepts/packing-algorithm.md) — `packBoxes`, no-split rule, verified numbers
-- [Options and filters](concepts/options-and-filters.md) — four toggles, defaults, always-hidden kinds
+- [Packing algorithm](concepts/packing-algorithm.md) — `packBoxes`, species flow across boxes, verified numbers
+- [Options and filters](concepts/options-and-filters.md) — two toggles, defaults, always-hidden kinds
 - [Backup code and storage](concepts/backup-and-storage.md) — caught set with collectibles, code format, localStorage keys
 - [UI behaviour](concepts/ui-behaviour.md) — box screen, undo toast, Guide, dialogs, routing
 - [Adding a new game](concepts/adding-a-new-game.md) — step-by-step
