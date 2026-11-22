@@ -41,7 +41,31 @@ updated: 2026-11-16
 - Every factual claim cites a source: `(source: [name](../sources/name.md))`.
 - When two sources disagree, write both claims and mark it: `> **Conflict:** …`.
 - A claim without a source is marked `> **Unverified:** …`. Do not present it as fact.
-- Use short sentences. Keep one idea per paragraph.
+- Write prose in ASD-STE100 Simplified Technical English. See "Writing style".
+
+## Writing style (ASD-STE100)
+
+Wiki prose follows ASD-STE100 Issue 9. Code, identifiers, file paths and quotes stay as they are.
+
+- Use active voice. Use passive voice only when the actor is not known.
+- Use simple tenses: imperative, simple present, simple past, simple future. Use present perfect
+  only when the simple form loses information. Example: "may have failed".
+- Write one instruction per sentence.
+- Keep a sentence to 20 words or fewer for instructions, and to 25 words or fewer for descriptions.
+- Do not use semicolons.
+- Do not use phrasal verbs. Write "remove", not "take out". Write "start", not "kick off".
+- Do not stack more than 3 nouns.
+- Use the verb, not a noun made from it. Write "analyze the log", not "perform an analysis".
+- Keep every hedge. Do not change "may" into a fact.
+- Do not use marketing words, for example "seamless" or "robust".
+- Keep one topic per paragraph, and 6 sentences or fewer per paragraph.
+- Put 3 or more steps or conditions in a list.
+- Use one word for one meaning. Use the terms of [`GLOSSARY.md`](../../GLOSSARY.md). Do not use
+  their "Avoid" synonyms. Define a new domain term once, and add it to the glossary.
+
+Lint also checks these rules. `npm run wiki:lint` checks the structural rules on all pages except
+`raw/`. It runs `scripts/ste-lint.py` and needs `uv`. Extra arguments go to the linter, for example
+`npm run wiki:lint -- --json`. The linter never flags hedges.
 
 ## Operations
 
@@ -72,6 +96,7 @@ Check for:
 - concepts mentioned often but with no page
 - claims without a source
 - broken links and pages missing from `index.md`
+- prose that breaks the ASD-STE100 rules in "Writing style"
 
 Report findings first. Fix only what the human approves. Log the lint pass.
 

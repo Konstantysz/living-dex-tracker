@@ -13,15 +13,15 @@ game. The type is in `src/core/types.ts`.
 | Field                | Content (SV)                                                              |
 | -------------------- | ------------------------------------------------------------------------- |
 | `dexes`              | pokedex 31 Paldea (`''`), 32 Kitakami (`K`), 33 Blueberry (`B`)           |
-| `baseFormOverrides`  | wooper → `wooper-paldea`; tauros → `tauros-paldea-combat-breed`; minior → `minior-red`; alcremie → vanilla-cream-berry |
+| `baseFormOverrides`  | wooper → `wooper-paldea`, tauros → `tauros-paldea-combat-breed`, minior → `minior-red`, alcremie → vanilla-cream-berry |
 | `forms`              | native forms after the species (Vivillon 18 patterns, Rotom, Oricorio, Ogerpon masks, Alcremie, native regional forms of DLC species, …) |
 | `nativeRegional`     | form ids that get kind `nreg`                                             |
 | `genderDifferences`  | species that get a `<base>-female` slot                                   |
 | `femaleForms`        | females that are separate forms: Oinkologne, Indeedee, Meowstic, Basculegion |
 | `homeRegional`       | regional forms only through HOME (kind `reg`)                             |
 | `battleForms`        | Mimikyu busted, Palafin hero, Eiscue noice, Morpeko hangry, Cramorant, Minior meteor, Terapagos |
-| `extras`             | Galarian Articuno/Zapdos/Moltres (`xreg`); Pirouette Meloetta, Crowned Zacian/Zamazenta (`xbat`) |
-| `mergedLines`        | Scatterbug+Spewpa+Vivillon; Flabébé+Floette+Florges                       |
+| `extras`             | Galarian Articuno/Zapdos/Moltres (`xreg`), Pirouette Meloetta, Crowned Zacian/Zamazenta (`xbat`) |
+| `mergedLines`        | Scatterbug+Spewpa+Vivillon, Flabébé+Floette+Florges                       |
 | `labelOverrides`     | raw title-cased label → display label (e.g. "Paldea Combat Breed" → "Combat") |
 | `formNames`          | forced labels: Wooper and Wooper ♀ "Johto", Tauros "Kanto"                |
 | `toggleableForms`    | `alcremie`: non-base forms get kind `alc`                                 |

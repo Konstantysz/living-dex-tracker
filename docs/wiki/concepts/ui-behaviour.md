@@ -21,9 +21,9 @@ Components: `App`, `Header`, `BoxGrid`, `Box`, `Cell`, `Tooltip`, `LayoutTextDia
 - **Tooltip:** full name with form and gender, then "Paldea/Kitakami/Blueberry #N · nat. #N".
   Entries outside every dex show only "nat. #N".
 - **Text dialog:** boxes in 5 rows of 6, `—` for empty slots, copy button.
-- **Backup dialog:** shows the export code; the import validates and shows "Nieprawidłowy kod."
+- **Backup dialog:** shows the export code. The import validates and shows "Nieprawidłowy kod."
 - **Routing:** hash, for example `#sv`. An unknown hash falls back to the first game.
-- **Performance:** `Box` and `Cell` use `React.memo`; the tooltip listens to mouse events on the
+- **Performance:** `Box` and `Cell` use `React.memo`. The tooltip listens to mouse events on the
   grid instead of re-rendering the app.
 
 ## Testing note

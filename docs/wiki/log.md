@@ -20,3 +20,9 @@ concepts/options-and-filters.md, concepts/backup-and-storage.md, concepts/ui-beh
 concepts/adding-a-new-game.md, analyses/reference-quirks.md, analyses/project-decisions.md,
 index.md. Notes: written from the session and the repo files; open points are in
 analyses/project-decisions.md.
+
+## [2026-11-22] schema | ASD-STE100 writing style
+Pages touched: CLAUDE.md. Notes: wiki prose follows ASD-STE100. Terms come from GLOSSARY.md. Lint checks the rules. Existing pages are not rewritten yet.
+
+## [2026-11-22] lint | ASD-STE100 structural rules
+Pages touched: analyses/project-decisions.md, concepts/layout-rules.md, concepts/options-and-filters.md, concepts/packing-algorithm.md, concepts/ui-behaviour.md, entities/github-pages-deployment.md, entities/sv-game-config.md, sources/sv-prototype.md. Notes: removed all semicolons and one synonym pair. `npm run wiki:lint` now runs scripts/ste-lint.py. It skips raw/, CLAUDE.md and log.md. 24 advisory findings (possible passive voice) stay.

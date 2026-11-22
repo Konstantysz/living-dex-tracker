@@ -39,7 +39,7 @@ Rules that decide which entries exist and in which order. They must stay 1:1 wit
 | `xreg` | extra box, regional                      | `--reg`         |
 | `xbat` | extra box, battle                        | `--bat`         |
 
-Alcremie has 63 entries: 9 creams × 7 sweets. One is the base; the other 62 are kind `alc`.
+Alcremie has 63 entries: 9 creams × 7 sweets. One is the base. The other 62 are kind `alc`.
 
 ## Related
 

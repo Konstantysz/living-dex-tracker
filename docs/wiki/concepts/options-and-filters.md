@@ -22,7 +22,7 @@ Notes:
 
 - `xbat` entries need both `extra` and `bat`.
 - `nreg` (regional forms native to SV) and all other kinds are always shown.
-- `dim` is stored with the options but is not part of `LayoutOptions`; it toggles the body class
+- `dim` is stored with the options but is not part of `LayoutOptions`. It toggles the body class
   `dimcaught`.
 
 ## Related

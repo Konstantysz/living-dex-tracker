@@ -16,4 +16,4 @@ updated: 2026-11-16
 - **Paths:** `base: './'` in `vite.config.ts` and hash routing (`#sv`) work under the sub-path
   `/living-dex-tracker/`. Sprites load from `import.meta.env.BASE_URL + entry.s`.
 - **Open point:** the workflow log warns that Node 20 actions are deprecated and that
-  `ubuntu-latest` will move to Ubuntu 26 (from 2026-10-19). The deploy works; no change made yet.
+  `ubuntu-latest` will move to Ubuntu 26 (from 2026-10-19). The deploy works. Nobody changed the workflow yet.

@@ -15,7 +15,7 @@ placeholders). The prototype is the **specification of behaviour and look** for 
 
 - Dark theme. Fonts: Space Grotesk and JetBrains Mono. Colours are CSS custom properties
   (`--fem`, `--form`, `--reg`, `--bat`, `--caught`, and others).
-- Box grid: `repeat(auto-fill, minmax(330px, 1fr))`; each box has 6 columns × 5 rows.
+- Box grid: `repeat(auto-fill, minmax(330px, 1fr))`. Each box has 6 columns × 5 rows.
 - `layout()` filters entries by toggles and packs them into boxes. See
   [Packing algorithm](../concepts/packing-algorithm.md).
 - Toggles and defaults: see [Options and filters](../concepts/options-and-filters.md).

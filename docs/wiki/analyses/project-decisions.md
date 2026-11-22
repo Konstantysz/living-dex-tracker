@@ -11,13 +11,13 @@ updated: 2026-11-16
 
 - **Pin PokeAPI to a commit SHA and commit the CSV cache.** Reason: `master` drifts, which could
   break the golden test, and offline builds need the files. The user approved.
-- **MIT licence, owner `konstantysz`.** The user confirmed they own the licence.
+- **MIT licence, owner `konstantysz`.** The user said that they own the licence.
 - **Public GitHub repo.** Reason: free GitHub Pages needs it.
 - **Keep prototype storage keys as a read-only fallback for `sv`.** Reason: do not lose progress.
 - **No "exclusions" field in the config.** Reason: excluded forms are simply not listed.
 - **Sprite folder `public/sprites/pokemon/…`**, not `public/sprites/…`. Reason: `s` in the golden
   file is `sprites/pokemon/…`, so it works unchanged.
-- **Commits in small steps; no push without a request.** The first push came with the Pages
+- **Commits in small steps. No push without a request.** The first push came with the Pages
   request.
 
 ## Acceptance criteria (from the task brief)
@@ -25,8 +25,8 @@ updated: 2026-11-16
 | # | Criterion                                                    | Status                         |
 | - | ------------------------------------------------------------ | ------------------------------ |
 | 1 | `data:build` output equals the golden file (test)            | Done, passes                   |
-| 2 | Defaults: 31 boxes, 917 slots, 13 empty; box 7 → `flabebe-orange` | Done, tested             |
-| 3 | Paldea-only: 18 boxes; box 7 → `floette-red`                 | Done, tested                   |
+| 2 | Defaults: 31 boxes, 917 slots, 13 empty, box 7 → `flabebe-orange` | Done, tested             |
+| 3 | Paldea-only: 18 boxes, box 7 → `floette-red`                 | Done, tested                   |
 | 4 | Manual comparison with the prototype                         | **Open** (user to check)       |
 | 5 | `build`, `test`, `lint` pass                                 | Done                           |
 | 6 | README with "how to add a new game"                          | Done                           |

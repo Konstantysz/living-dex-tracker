@@ -27,7 +27,7 @@ filters entries by the [toggles](options-and-filters.md), then calls it.
 | ------------------------------------------------- | ------------------------------------------ |
 | Full SV data                                      | 31 boxes, 917 slots, 13 empty              |
 | Full SV data, box 7 last entry                    | `flabebe-orange`                           |
-| Paldea dex only, no DLC-only forms                | 18 boxes; box 7 ends at `floette-red`      |
+| Paldea dex only, no DLC-only forms                | 18 boxes, box 7 ends at `floette-red`      |
 | Alcremie toggle off                               | 917 − 62 slots                             |
 
 "DLC-only forms" are eight ids: `wooper`, `wooper-female`, `tauros`, `diglett-alola`,

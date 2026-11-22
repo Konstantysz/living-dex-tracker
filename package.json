@@ -13,6 +13,7 @@
     "data:build": "tsx scripts/data-build.ts",
     "golden:update": "tsx scripts/data-build.ts && tsx scripts/golden-update.ts",
     "typecheck": "tsc --noEmit",
+    "wiki:lint": "uv run python scripts/wiki-lint.py",
     "check": "npm run lint && npm run typecheck && npm test",
     "prepare": "husky"
   },
