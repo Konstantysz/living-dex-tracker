@@ -3,6 +3,7 @@ import { findGame } from '../games';
 import {
   exportCode,
   gameVersion,
+  hidAlcremie,
   importCode,
   loadCaught,
   loadOptions,
@@ -55,11 +56,25 @@ describe('per-game persistence', () => {
     localStorage.setItem('paldea-living-dex-v1', JSON.stringify(['a']));
     localStorage.setItem(
       'sv-living-dex-opt-v2',
-      JSON.stringify({ optBat: true, optNoSplit: true }),
+      JSON.stringify({ optBat: true, optNoSplit: true, optDim: true }),
     );
     expect(loadCaught('sv')).toEqual(new Set(['a']));
     expect(loadCaught('other').size).toBe(0);
-    expect(loadOptions('sv')).toMatchObject({ noSplit: true, alc: true });
+    expect(loadOptions('sv')).toEqual({ go: false, dim: true, version: '' });
+  });
+
+  test('ignores the removed alc and noSplit options', () => {
+    localStorage.setItem('ldt:sv:opts', JSON.stringify({ alc: false, noSplit: true, go: true }));
+    expect(loadOptions('sv')).toEqual({ go: true, dim: false, version: '' });
+    expect(hidAlcremie('sv')).toBe(true);
+    saveOptions('sv', loadOptions('sv'));
+    expect(hidAlcremie('sv')).toBe(false);
+  });
+
+  test('reads alc off from the prototype keys', () => {
+    localStorage.setItem('sv-living-dex-opt-v2', JSON.stringify({ optAlc: false }));
+    expect(hidAlcremie('sv')).toBe(true);
+    expect(hidAlcremie('other')).toBe(false);
   });
 
   test('works when localStorage throws', () => {
@@ -69,7 +84,8 @@ describe('per-game persistence', () => {
     };
     try {
       expect(loadCaught('sv').size).toBe(0);
-      expect(loadOptions('sv').alc).toBe(true);
+      expect(loadOptions('sv')).toEqual({ go: false, dim: false, version: '' });
+      expect(hidAlcremie('sv')).toBe(false);
     } finally {
       Storage.prototype.getItem = orig;
     }

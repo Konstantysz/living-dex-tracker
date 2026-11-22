@@ -1,7 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { entryLabel, matches } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
-import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } from '../core/storage';
+import {
+  hidAlcremie,
+  loadCaught,
+  loadOptions,
+  saveCaught,
+  saveOptions,
+  type AppOptions,
+} from '../core/storage';
 import { findGame, type Game } from '../games';
 import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
@@ -75,7 +82,19 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   }, [hits, entries]);
 
   // One-step undo: the set before the last change, shown in a toast for 5 s.
-  const [undo, setUndo] = useState<{ text: string; prev: Set<string> } | null>(null);
+  // A toast without `prev` is a notice with no undo button.
+  // The Alcremie notice shows only in a game that has Alcremie forms (kind `alc`).
+  const [undo, setUndo] = useState<{ text: string; prev?: Set<string> } | null>(() =>
+    hidAlcremie(config.id) && layout.groups.some((g) => g.items.some((it) => it.k === 'alc'))
+      ? {
+          text: 'Usunięto opcję ukrywania Alcremie. Boxy pokazują teraz wszystkie 63 formy Alcremie.',
+        }
+      : null,
+  );
+  useEffect(() => {
+    // Drops the old `alc` key, so the notice above shows only once.
+    if (hidAlcremie(config.id)) saveOptions(config.id, options);
+  }, [config.id, options]);
   // A ref keeps `toggle` stable across toggles, so memoized cells do not re-render.
   const caughtRef = useRef(caught);
   const replace = useCallback(
@@ -178,14 +197,16 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       {undo && (
         <div className="toast" role="status">
           <span>{undo.text}</span>
-          <button
-            onClick={() => {
-              replace(undo.prev);
-              setUndo(null);
-            }}
-          >
-            Cofnij
-          </button>
+          {undo.prev && (
+            <button
+              onClick={() => {
+                replace(undo.prev!);
+                setUndo(null);
+              }}
+            >
+              Cofnij
+            </button>
+          )}
         </div>
       )}
     </>
