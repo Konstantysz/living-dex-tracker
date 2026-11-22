@@ -229,6 +229,7 @@ export const svConfig: GameConfig = {
     {
       id: 'stake',
       name: 'Słupki ruin',
+      badgeTitle: 'Strażnik ruin',
       unitLabel: 'Słupek',
       intro: '8 słupków jednej świątyni otwiera drogę do jej legendarnego Pokémona.',
       source: { name: 'Serebii', url: 'https://www.serebii.net/scarletviolet/stakes.shtml' },

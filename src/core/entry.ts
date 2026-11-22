@@ -1,7 +1,13 @@
-import type { DexConfig, DexEntry } from './types';
+import type { CollectibleSet, DexConfig, DexEntry } from './types';
 
 // Collectible ids share the caught set with entry ids (ADR 0002). Entry ids never contain ":".
 export const collectibleId = (set: string, section: string, n: number) => `${set}:${section}-${n}`;
+/** Ids of all collectibles in one section of a set, from 1 to `count`. */
+export const sectionIds = (set: string, sec: { id: string; count: number }) =>
+  Array.from({ length: sec.count }, (_, i) => collectibleId(set, sec.id, i + 1));
+/** Ids of all collectibles in a set. */
+export const setIds = (set: CollectibleSet) =>
+  set.sections.flatMap((sec) => sectionIds(set.id, sec));
 export const isEntryId = (id: string) => !id.includes(':');
 /** Caught entries only, without collectibles. */
 export const entryCount = (caught: Set<string>) => [...caught].filter(isEntryId).length;

@@ -100,6 +100,8 @@ export interface CollectibleSet {
   id: string;
   /** Title in the Guide, e.g. "Słupki ruin". */
   name: string;
+  /** Title of the set's badges, e.g. "Strażnik ruin". Default: `name`. */
+  badgeTitle?: string;
   /** Label of one collectible, e.g. "Słupek" → "Słupek 3". */
   unitLabel: string;
   /** One sentence for the player. */

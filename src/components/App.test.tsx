@@ -265,10 +265,49 @@ test('the guide tracks collectibles in the caught set without counting them', as
   expect(screen.getByText(/Złapane w kodzie: 1\. Obecnie: 0\./)).toBeInTheDocument();
 });
 
-test('a game without collectibles has no guide', () => {
+test('a game without collectibles shows only the badges tab of the guide', async () => {
+  const user = userEvent.setup();
   location.hash = '#za';
   render(<App />);
-  expect(screen.queryByText('Poradnik')).not.toBeInTheDocument();
+  await user.click(screen.getByText('Poradnik'));
+  expect(screen.queryByText('Znajdźki')).not.toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Gra bazowa' })).toBeInTheDocument();
+  expect(screen.getByText('Pokédex Lumiose')).toBeInTheDocument();
+});
+
+test('a tap that earns a badge adds a toast line, an import and an undo do not', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  expect(screen.getByRole('button', { name: 'Odznaki: 0' })).toBeInTheDocument();
+
+  // Import all 8 Ting-Lu stakes: the import earns the shrine badge, but the toast has no line.
+  await user.click(screen.getByText('Kopia postępu'));
+  const box = screen.getByLabelText('Kod kopii');
+  await user.clear(box);
+  await user.click(box);
+  const eight = Array.from({ length: 8 }, (_, i) => `stake:ting-lu-${i + 1}`);
+  await user.paste(exportCode(new Set(eight)));
+  await user.click(screen.getByText('Wczytaj'));
+  await user.click(screen.getByText('Tak, zastąp'));
+  expect(screen.getByRole('status')).toHaveTextContent('Wczytano kopię postępu');
+  expect(screen.getByRole('status')).not.toHaveTextContent('🏅');
+  expect(screen.getByRole('button', { name: 'Odznaki: 1' })).toBeInTheDocument();
+
+  // The chip opens the "Odznaki" tab. Untick and tick the 8th stake: the tap earns the badge.
+  await user.click(screen.getByRole('button', { name: 'Odznaki: 1' }));
+  expect(screen.getByRole('button', { name: 'Odznaki' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getAllByText('???').length).toBeGreaterThan(0);
+  await user.click(screen.getByRole('button', { name: 'Znajdźki' }));
+  const stake8 = within(screen.getByRole('group', { name: /Ting-Lu/ })).getByLabelText('Słupek 8');
+  await user.click(stake8);
+  expect(screen.getByRole('status')).not.toHaveTextContent('🏅');
+  await user.click(stake8);
+  expect(screen.getByRole('status')).toHaveTextContent('🏅 Strażnik ruin: Ting-Lu');
+
+  // Undo shows no toast, so no badge line.
+  await user.click(screen.getByText('Cofnij'));
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Odznaki: 0' })).toBeInTheDocument();
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {

@@ -40,6 +40,11 @@
   height: 100%;
   background: var(--progress);
 }
+.chip {
+  flex: none;
+  padding: 0 var(--space-xs);
+  white-space: nowrap;
+}
 .ctrls {
   display: flex;
   flex-wrap: wrap;
