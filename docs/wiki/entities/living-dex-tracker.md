@@ -40,7 +40,9 @@ GitHub issues hold the plan. The main threads (source: `conversation:2026-11-22`
 
 - Badges like trophies or achievements: #20, #24, #12, #21, #22, #23.
 - Details dialog, my-version setting, missing-only view: #10, #7, #8.
-- Locations from Serebii, areas, area map: #11, #13, #14, #15, #16, #17.
+- Locations from Serebii, areas, area map: #11, #13, #14, #15, #16, #17. #31 added the first
+  slice of #11 (Areas). #35 and #36 change the data format and add a change summary. See
+  [Location data](../concepts/location-data.md).
 
 ## Where to read next
 

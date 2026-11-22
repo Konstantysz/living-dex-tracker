@@ -1,8 +1,8 @@
 ---
 title: Generator and PokeAPI data
 type: entity
-sources: [scripts/pokeapi.ts, scripts/buildLayout.ts, scripts/data-build.ts, scripts/golden.test.ts]
-updated: 2026-11-16
+sources: [scripts/pokeapi.ts, scripts/buildLayout.ts, scripts/data-build.ts, scripts/golden.test.ts, scripts/data-locations.ts]
+updated: 2026-11-22
 ---
 
 # Generator and PokeAPI data
@@ -19,7 +19,11 @@ Build-time Node/TypeScript scripts. Run with `npm run data:build` (uses `tsx`).
   `src/games/<id>/generated/layout.json` and downloads missing sprites. Prints warnings for sprites
   that do not exist upstream (SV: 0 missing).
 - `scripts/golden.test.ts`: generator output equals the golden file, and the committed
-  `layout.json` equals it too.
+  `layout.json` equals it too. It also checks the version exclusive marks against the
+  [Location data](../concepts/location-data.md).
+- `buildLayout` stops on an `exclusives` item that marks no entry, for example a typo.
+- `npm run data:locations` is a separate script for the Serebii data. See
+  [Location data](../concepts/location-data.md).
 
 ## Data pinning
 
