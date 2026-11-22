@@ -83,7 +83,10 @@ export interface GameConfig {
   goForms: string[];
   /** Form id -> dex prefix: forms obtainable only in that DLC; shown at the end of its boxes. */
   dlcForms: Record<string, string>;
-  /** Version key (one letter, shown on the tile) -> game name and the species exclusive to it. */
+  /**
+   * Version key (one letter, shown on the tile) -> game name and what is exclusive to it. An item is
+   * a species identifier (all its entries except `dlcForms`) or an entry id (that entry only).
+   */
   exclusives: Record<string, { name: string; species: string[] }>;
   /** Collectible sets shown in the Guide (e.g. SV ruin stakes). */
   collectibles?: CollectibleSet[];

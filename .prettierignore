@@ -7,3 +7,5 @@ scripts/fixtures
 package-lock.json
 docs/wiki
 .hallmark
+# Prettier pads the whole table when one row gets wider, so parallel PRs conflict on every row.
+GLOSSARY.md

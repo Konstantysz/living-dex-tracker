@@ -7663,7 +7663,6 @@
    "sp": "vulpix",
    "items": [
     {
-     "v": "S",
      "id": "vulpix",
      "n": "K37",
      "nat": 37,
@@ -7679,7 +7678,6 @@
    "sp": "ninetales",
    "items": [
     {
-     "v": "S",
      "id": "ninetales",
      "n": "K38",
      "nat": 38,
@@ -8336,7 +8334,6 @@
    "sp": "sandshrew",
    "items": [
     {
-     "v": "V",
      "id": "sandshrew",
      "n": "K116",
      "nat": 27,
@@ -8352,7 +8349,6 @@
    "sp": "sandslash",
    "items": [
     {
-     "v": "V",
      "id": "sandslash",
      "n": "K117",
      "nat": 28,
@@ -12564,6 +12560,7 @@
    "d": "B146"
   },
   {
+   "v": "S",
    "id": "vulpix-alola",
    "n": "K37",
    "nat": 37,
@@ -12575,6 +12572,7 @@
    "d": "B157"
   },
   {
+   "v": "S",
    "id": "ninetales-alola",
    "n": "K38",
    "nat": 38,
@@ -12619,6 +12617,7 @@
    "d": "B98"
   },
   {
+   "v": "V",
    "id": "sandshrew-alola",
    "n": "K116",
    "nat": 27,
@@ -12630,6 +12629,7 @@
    "d": "B155"
   },
   {
+   "v": "V",
    "id": "sandslash-alola",
    "n": "K117",
    "nat": 28,

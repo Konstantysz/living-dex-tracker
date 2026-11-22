@@ -202,12 +202,14 @@ export const svConfig: GameConfig = {
     ...vivillon.filter((x) => x !== 'fancy' && x !== 'poke-ball').map((x) => `vivillon-${x}`),
   ],
   // Version exclusives: https://www.serebii.net/scarletviolet/exclusives.shtml (2026-11-21).
-  // Tauros is on both lists (different breeds per game), so it is not marked. DLC forms are not marked.
+  // Tauros is on both lists (different breeds per game), so it is not marked. Serebii lists only
+  // the Alolan forms of Vulpix, Ninetales, Sandshrew and Sandslash (icons 037-a etc.), so these are
+  // entry ids: the Kanto forms are in both games (Kitakami).
   exclusives: {
     S: {
       name: 'Scarlet',
       species:
-        `vulpix ninetales gligar gliscor larvitar pupitar tyranitar cranidos rampardos drifloon drifblim
+        `vulpix-alola ninetales-alola gligar gliscor larvitar pupitar tyranitar cranidos rampardos drifloon drifblim
         stunky skuntank deino zweilous hydreigon skrelp dragalge oranguru cramorant stonjourner armarouge
         great-tusk scream-tail brute-bonnet flutter-mane slither-wing sandy-shocks roaring-moon koraidon
         walking-wake gouging-fire raging-bolt`.split(/\s+/),
@@ -215,7 +217,7 @@ export const svConfig: GameConfig = {
     V: {
       name: 'Violet',
       species:
-        `sandshrew sandslash aipom ambipom misdreavus mismagius gulpin swalot bagon shelgon salamence
+        `sandshrew-alola sandslash-alola aipom ambipom misdreavus mismagius gulpin swalot bagon shelgon salamence
         shieldon bastiodon clauncher clawitzer passimian morpeko dreepy drakloak dragapult eiscue ceruledge
         iron-treads iron-bundle iron-hands iron-jugulis iron-moth iron-thorns iron-valiant miraidon
         iron-leaves iron-boulder iron-crown`.split(/\s+/),
