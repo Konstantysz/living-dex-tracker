@@ -61,8 +61,9 @@ Alcremie forms (Z-A) shows no notice. (source: `src/components/App.tsx`)
   600 px) the Guide fills the screen. See [Backup code and storage](backup-and-storage.md) for the
   ids.
 - **Details dialog ("Szczegóły"):** the label, the dex and national number, the kind, the version
-  exclusive mark and a Serebii link (`GameConfig.serebii`, SV only). Later issues add locations
-  and tips. (source: `src/components/DetailsDialog.tsx`)
+  exclusive mark and a Serebii link (`GameConfig.serebii`, SV only). For SV it also shows "Miejsca
+  złapania": the Areas for "Moja wersja", or for both versions. See
+  [Location data](location-data.md). Later issues add tips. (source: `src/components/DetailsDialog.tsx`)
 - **Text dialog:** boxes in 5 rows of 6, `—` for empty slots, copy button.
 - **Backup dialog:** shows the export code. "Wczytaj" checks the code ("Nieprawidłowy kod.")
   and then asks: "Złapane w kodzie: N. Obecnie: M. Wczytać i zastąpić obecny postęp?". The counts

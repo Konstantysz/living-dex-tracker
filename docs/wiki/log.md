@@ -35,3 +35,6 @@ Pages touched: concepts/options-and-filters.md, concepts/packing-algorithm.md, c
 
 ## [2026-11-22] ingest | Details dialog (#10)
 Pages touched: concepts/ui-behaviour.md. Notes: source is the #10 change. The page now describes the details gesture per device and the details dialog.
+
+## [2026-11-22] ingest | Locations (#31), Alolan exclusives (#33), generated files (#37), exclusives checks (#38)
+Pages touched: concepts/location-data.md (new), entities/sv-game-config.md, entities/generator-and-pokeapi.md, entities/living-dex-tracker.md, concepts/ui-behaviour.md, concepts/architecture.md, index.md. Notes: sources are the merged changes and the review session. The location page describes the current locations.json format. #35 changes that format.

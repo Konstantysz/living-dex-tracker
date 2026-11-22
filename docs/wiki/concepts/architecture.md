@@ -1,7 +1,7 @@
 ---
 title: Architecture
 type: concept
-sources: [README.md, CLAUDE.md, src/core, src/games, scripts]
+sources: [README.md, CLAUDE.md, src/core, src/games, scripts, .gitattributes]
 updated: 2026-11-22
 ---
 
@@ -19,11 +19,11 @@ Three layers, so a new game needs only a config.
 
 ```
 reference/                  prototype, script, golden (do not edit)
-scripts/                    generator, cache/<sha>/, ste-lint.py, wiki-lint.py
-src/core/                   types, layout (packBoxes), storage, entry helpers (ids, labels)
+scripts/                    generator, Serebii scraper, cache/<sha>/, ste-lint.py, wiki-lint.py
+src/core/                   types, layout (packBoxes), storage, entry helpers, locations (areasFor)
 src/games/configs.ts        list of configs (no JSON imports)
 src/games/index.ts          registry: config + layout per game, imports theme.css
-src/games/<id>/             config.ts, theme.css, generated/layout.json
+src/games/<id>/             config.ts, theme.css, generated/layout.json, generated/locations.json (SV)
 src/components/             React UI
 public/sprites/pokemon/     sprites
 docs/adr/                   decisions (ADR 0001 to 0003)
@@ -49,5 +49,7 @@ CODING_STANDARDS.md         judgement rules for the reviewer
 - `npm run check` runs lint, typecheck and tests. The pre-commit hook runs lint-staged, typecheck
   and tests.
 - `npm run wiki:lint` runs the ASD-STE100 linter on the wiki.
+- `.gitattributes` marks the files in each `generated/` folder as `linguist-generated`. GitHub
+  collapses them in a pull request diff. (source: `.gitattributes`)
 - `.github/workflows/check.yml` runs `npm run check`, the wiki linter and the build on every pull
   request. See [GitHub Pages deployment](../entities/github-pages-deployment.md).
