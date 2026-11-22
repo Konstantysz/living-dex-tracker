@@ -5,11 +5,20 @@ import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } fro
 import { findGame, type Game } from '../games';
 import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
+import { GuideDialog } from './GuideDialog';
 import { Header } from './Header';
 import { LayoutTextDialog } from './LayoutTextDialog';
 import { SettingsDialog } from './SettingsDialog';
 
 const hashId = () => location.hash.replace(/^#/, '');
+
+/** The caught set with `id` added or removed, and whether it was added. */
+function flip(caught: Set<string>, id: string): [Set<string>, boolean] {
+  const next = new Set(caught);
+  const added = !next.delete(id);
+  if (added) next.add(id);
+  return [next, added];
+}
 
 export function App() {
   const [hash, setHash] = useState(hashId);
@@ -36,7 +45,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   const [caught, setCaught] = useState(() => loadCaught(config.id));
   const [options, setOptions] = useState(() => loadOptions(config.id));
   const [query, setQuery] = useState('');
-  const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | null>(null);
+  const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | 'guide' | null>(null);
 
   const boxes = useMemo(() => layoutBoxes(layout, options), [layout, options]);
   const entries = useMemo(
@@ -92,13 +101,18 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
 
   const toggle = useCallback(
     (id: string) => {
-      const next = new Set(caughtRef.current);
-      const added = !next.delete(id);
-      if (added) next.add(id);
+      const [next, added] = flip(caughtRef.current, id);
       const it = entries.get(id);
       commit(next, `${added ? 'Złapano' : 'Odznaczono'} ${it ? entryLabel(it) : id}`);
     },
     [commit, entries],
+  );
+  const toggleCollectible = useCallback(
+    (id: string, label: string) => {
+      const [next, added] = flip(caughtRef.current, id);
+      commit(next, `${added ? 'Zaznaczono' : 'Odznaczono'} ${label}`);
+    },
+    [commit],
   );
   const setOption = (k: keyof AppOptions, v: boolean) => {
     const next = { ...options, [k]: v };
@@ -106,6 +120,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     saveOptions(config.id, next);
   };
 
+  const collectibles = config.collectibles ?? [];
   const total = entries.size;
   const got = [...entries.keys()].filter((id) => caught.has(id)).length;
   const stats = { boxes: boxes.length, slots: total, empty: boxes.length * 30 - total };
@@ -125,6 +140,7 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onShowSettings={() => setDialog('settings')}
         onShowText={() => setDialog('text')}
         onShowBackup={() => setDialog('backup')}
+        onShowGuide={collectibles.length ? () => setDialog('guide') : undefined}
       />
       <BoxGrid
         boxes={boxes}
@@ -137,10 +153,19 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       {dialog === 'settings' && (
         <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
       )}
+      {dialog === 'guide' && (
+        <GuideDialog
+          sets={collectibles}
+          caught={caught}
+          onToggle={toggleCollectible}
+          onClose={() => setDialog(null)}
+        />
+      )}
       {dialog === 'text' && <LayoutTextDialog boxes={boxes} onClose={() => setDialog(null)} />}
       {dialog === 'backup' && (
         <BackupDialog
           caught={caught}
+          collectibles={collectibles.map((c) => c.name)}
           onLoad={(c) => commit(c, 'Wczytano kopię postępu')}
           onClose={() => setDialog(null)}
         />

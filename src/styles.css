@@ -170,6 +170,54 @@ dialog [role='alert'] {
   justify-content: flex-end;
   margin-top: var(--space-sm);
 }
+dialog h4 {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--text-md);
+}
+.collectibles {
+  margin: 0 0 var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--pill);
+  border-radius: var(--radius);
+}
+.collectibles legend {
+  padding: 0 var(--space-xs);
+  font-weight: 600;
+}
+.collectibles p {
+  margin: 0 0 var(--space-xs);
+}
+.collectibles ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 4px var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.collectibles li {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.collectibles label {
+  flex: 1;
+}
+.guide a {
+  color: var(--ink);
+}
+/* Phone: the Guide fills the screen. */
+@media (max-width: 600px) {
+  dialog.guide {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
+}
 .toast {
   position: fixed;
   left: 50%;

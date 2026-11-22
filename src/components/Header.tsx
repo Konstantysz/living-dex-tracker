@@ -17,6 +17,8 @@ interface Props {
   onShowSettings: () => void;
   onShowText: () => void;
   onShowBackup: () => void;
+  /** Absent when the game has nothing in the guide yet. */
+  onShowGuide?: () => void;
 }
 
 export function Header(p: Props) {
@@ -69,6 +71,11 @@ export function Header(p: Props) {
         <button className={s.fold} onClick={p.onShowSettings}>
           Ustawienia
         </button>
+        {p.onShowGuide && (
+          <button className={s.fold} onClick={p.onShowGuide}>
+            Poradnik
+          </button>
+        )}
         <input
           type="search"
           placeholder="szukaj nazwy lub #nr"

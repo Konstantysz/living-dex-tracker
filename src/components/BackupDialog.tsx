@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { entryCount } from '../core/entry';
 import { exportCode, importCode } from '../core/storage';
 import { CopyButton, Dialog } from './Dialog';
 
 export function BackupDialog({
   caught,
+  collectibles,
   onLoad,
   onClose,
 }: {
   caught: Set<string>;
+  /** Names of the game's collectible sets, which the code also carries. */
+  collectibles: string[];
   onLoad: (c: Set<string>) => void;
   onClose: () => void;
 }) {
@@ -25,6 +29,7 @@ export function BackupDialog({
       <p className="mono-mute">
         Postęp zapisuje się w tej przeglądarce. Skopiuj kod poniżej, żeby go przenieść; wklej kod i
         kliknij „Wczytaj”, żeby go odtworzyć.
+        {collectibles.length > 0 && ` Kod zawiera też: ${collectibles.join(', ')}.`}
       </p>
       <textarea
         value={text}
@@ -38,8 +43,8 @@ export function BackupDialog({
       {pending ? (
         <>
           <p>
-            Złapane w kodzie: {pending.size}. Obecnie: {caught.size}. Wczytać i zastąpić obecny
-            postęp?
+            Złapane w kodzie: {entryCount(pending)}. Obecnie: {entryCount(caught)}. Wczytać i
+            zastąpić obecny postęp?
           </p>
           <div className="dialog-row">
             <button

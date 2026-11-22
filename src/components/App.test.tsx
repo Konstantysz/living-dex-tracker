@@ -114,6 +114,47 @@ test('an import asks first, and the toast can undo it', async () => {
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['sprigatito']);
 });
 
+test('the guide tracks collectibles in the caught set without counting them', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Poradnik'));
+  expect(screen.getByRole('heading', { name: 'Słupki ruin' })).toBeInTheDocument();
+  const tingLu = screen.getByRole('group', { name: /Ting-Lu/ });
+  expect(tingLu).toHaveTextContent('0/8');
+  await user.click(within(tingLu).getByLabelText('Słupek 1'));
+  expect(tingLu).toHaveTextContent('1/8');
+  expect(screen.getByRole('status')).toHaveTextContent('Zaznaczono Słupek 1 (Ting-Lu)');
+  expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['stake:ting-lu-1']);
+  expect(within(tingLu).getAllByRole('link', { name: 'mapka' })[2]).toHaveAttribute(
+    'href',
+    'https://www.serebii.net/scarletviolet/stakes/map/ting-lu3.jpg',
+  );
+  await user.click(screen.getByText('Zamknij'));
+
+  // Collectibles are not entries: progress, the text export and the import count ignore them.
+  expect(screen.getByText(new RegExp(`^0 / ${total}`))).toBeInTheDocument();
+  await user.click(screen.getByText('Układ jako tekst'));
+  const text = (screen.getByLabelText('Układ jako tekst') as HTMLTextAreaElement).value;
+  expect(text).not.toContain('stake');
+  expect(text).not.toContain('Słupek');
+  await user.click(screen.getByText('Zamknij'));
+
+  await user.click(screen.getByText('Kopia postępu'));
+  expect(screen.getByText(/Kod zawiera też: Słupki ruin\./)).toBeInTheDocument();
+  const box = screen.getByLabelText('Kod kopii');
+  await user.clear(box);
+  await user.click(box);
+  await user.paste(exportCode(new Set(['sprigatito', 'stake:chi-yu-2', 'stake:chi-yu-3'])));
+  await user.click(screen.getByText('Wczytaj'));
+  expect(screen.getByText(/Złapane w kodzie: 1\. Obecnie: 0\./)).toBeInTheDocument();
+});
+
+test('a game without collectibles has no guide', () => {
+  location.hash = '#za';
+  render(<App />);
+  expect(screen.queryByText('Poradnik')).not.toBeInTheDocument();
+});
+
 test('text dialog lists boxes in 5 rows of 6', async () => {
   const user = userEvent.setup();
   render(<App />);
