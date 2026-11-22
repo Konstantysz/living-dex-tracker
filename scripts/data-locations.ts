@@ -9,7 +9,9 @@ import type { DexEntry, GameLayout } from '../src/core/types';
 import svLayout from '../src/games/sv/generated/layout.json';
 import {
   buildLocations,
+  diffLocations,
   formatLocations,
+  isLocations,
   matchEntries,
   parseDexList,
   parseSpeciesPage,
@@ -91,7 +93,13 @@ const missing = Object.values(data.entries)
   .flatMap((e) => (Array.isArray(e.areas) ? e.areas : Object.values(e.areas ?? {}).flat()))
   .filter((s) => s && !(s in data.areas));
 if (missing.length) throw new Error(`area slugs not in the Area table: ${missing.join(' ')}`);
+const old: unknown = existsSync(OUT) ? JSON.parse(await readFile(OUT, 'utf8')) : undefined;
 await writeFile(OUT, formatLocations(data));
+console.log(
+  isLocations(old)
+    ? `\nChanges since the committed locations.json:\n${diffLocations(old, data)}\n`
+    : 'The committed locations.json is not in the new format, no change summary.',
+);
 for (const n of notes) console.log(`  ${n}`);
 console.log(
   `Entries without data (${withoutData.length}): ${withoutData.map(([id]) => id).join(' ')}`,

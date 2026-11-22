@@ -1,9 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
-import { areasFor, type AreasByVersion } from '../src/core/locations';
+import { areasFor, type AreasByVersion, type Locations } from '../src/core/locations';
 import {
   buildLocations,
+  diffLocations,
+  isLocations,
   formatLocations,
   matchEntries,
   parseDexList,
@@ -238,5 +240,57 @@ describe('buildLocations', () => {
       formatLocations(buildLocations(input, 'src/', 'd')),
     );
     expect(JSON.parse(formatLocations(locs))).toEqual(locs);
+  });
+});
+
+describe('diffLocations', () => {
+  const base = (): Locations => ({
+    source: 's',
+    scraped: 'd',
+    areas: { a: 'A', b: 'B' },
+    entries: {
+      x: { page: 'x' },
+      y: { page: 'y', areas: ['a'] },
+      z: { page: 'z', areas: { S: ['a'], V: ['b'] } },
+    },
+  });
+
+  test('equal values give no changes', () => {
+    expect(diffLocations(base(), base())).toBe('No changes.');
+  });
+
+  test('lists got data, lost data and changed areas under their headings', () => {
+    const after = base();
+    after.entries.x = { page: 'x', areas: ['a'] };
+    after.entries.y = { page: 'y' };
+    after.entries.z = { page: 'z', areas: { S: ['a'], V: ['a'] } };
+    expect(diffLocations(base(), after).split('\n')).toEqual([
+      'Got data: (1) x',
+      'Lost data: (1) y',
+      'Areas changed: (1) z (V)',
+    ]);
+  });
+
+  test('a shared list equals the same slugs in every version', () => {
+    const before = base();
+    const after = base();
+    before.entries.y = { page: 'y', areas: ['a'] };
+    after.entries.y = { page: 'y', areas: { S: ['a'], V: ['a'] } };
+    expect(diffLocations(before, after)).toBe('No changes.');
+  });
+
+  test('lists renamed, added and removed areas', () => {
+    const after = base();
+    after.areas = { a: 'A2', c: 'C' };
+    expect(diffLocations(base(), after).split('\n')).toEqual([
+      'Areas added: (1) c',
+      'Areas removed: (1) b',
+      'Areas renamed: (1) a: "A" -> "A2"',
+    ]);
+  });
+
+  test('isLocations rejects the old format', () => {
+    expect(isLocations(base())).toBe(true);
+    expect(isLocations({ areas: {}, entries: { x: ['a'] } })).toBe(false);
   });
 });
