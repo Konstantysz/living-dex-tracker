@@ -1357,6 +1357,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -1381,6 +1385,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -1547,6 +1555,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -1565,6 +1577,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -1588,6 +1604,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -1606,6 +1626,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -1629,6 +1653,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -1647,6 +1675,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -1670,6 +1702,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -1688,6 +1724,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -3469,6 +3509,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -3501,6 +3545,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -4015,8 +4063,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -4065,8 +4121,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -4118,6 +4182,14 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -4154,6 +4226,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -4746,8 +4826,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -4772,8 +4860,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -4969,6 +5065,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -5025,6 +5125,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -5568,6 +5672,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -5614,6 +5722,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -5665,6 +5777,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -5711,6 +5827,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -6035,6 +6155,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -6059,6 +6183,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -6700,6 +6828,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -6742,6 +6878,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -7566,6 +7710,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -7656,6 +7808,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -7751,6 +7911,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -7841,6 +8009,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -8050,6 +8226,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
      }
     ],
     "V": [
@@ -8108,6 +8288,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
      }
     ]
    }
@@ -9367,8 +9551,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -9409,8 +9601,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -11143,6 +11343,10 @@
       "slug": "onimountain"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -11187,6 +11391,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -11240,6 +11448,10 @@
       "slug": "onimountain"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -11284,6 +11496,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -11399,6 +11615,10 @@
       "slug": "onimountain"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -11431,6 +11651,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -13290,6 +13514,10 @@
       "slug": "onimountain"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -13354,6 +13582,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -13465,6 +13697,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -13509,6 +13745,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -14053,6 +14293,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -14079,6 +14323,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -14110,6 +14358,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -14136,6 +14388,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -14720,8 +14976,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -14766,8 +15030,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -15232,8 +15504,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -15262,8 +15542,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -15537,6 +15825,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -15579,6 +15875,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -18208,6 +18512,10 @@
       "slug": "mossfellconfluence"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -18240,6 +18548,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -18630,6 +18942,10 @@
       "slug": "mossfellconfluence"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -18662,6 +18978,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -18703,6 +19023,10 @@
       "slug": "mossfellconfluence"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -18737,6 +19061,10 @@
       "slug": "mossfellconfluence"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -18762,6 +19090,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -18776,6 +19108,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -18987,6 +19323,10 @@
       "slug": "onimountain"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -19019,6 +19359,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -19136,6 +19480,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -19158,6 +19506,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -19181,6 +19533,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -19199,6 +19555,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -19243,8 +19603,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19289,8 +19657,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19327,6 +19703,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -19341,6 +19721,10 @@
      {
       "name": "Mossfell Confluence",
       "slug": "mossfellconfluence"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -19408,6 +19792,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -19440,6 +19828,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19542,6 +19934,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      },
@@ -19575,6 +19971,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19612,6 +20012,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -19630,6 +20038,14 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -19703,6 +20119,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -19731,6 +20151,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19764,6 +20188,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -19788,6 +20216,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19821,6 +20253,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -19847,6 +20283,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -19868,6 +20308,10 @@
       "slug": "kitakamiwilds"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Timeless Woods",
       "slug": "timelesswoods"
      }
@@ -19876,6 +20320,10 @@
      {
       "name": "Kitakami Wilds",
       "slug": "kitakamiwilds"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Timeless Woods",
@@ -19950,8 +20398,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -19984,8 +20440,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -20104,8 +20568,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -20142,8 +20614,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -20193,8 +20673,16 @@
       "slug": "onimountain"
      },
      {
+      "name": "Oni's Maw",
+      "slug": "oni'smaw"
+     },
+     {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -20593,6 +21081,10 @@
       "slug": "paradisebarrens"
      },
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Wistful Fields",
       "slug": "wistfulfields"
      }
@@ -20609,6 +21101,10 @@
      {
       "name": "Paradise Barrens",
       "slug": "paradisebarrens"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      },
      {
       "name": "Wistful Fields",
@@ -21235,6 +21731,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -21253,6 +21753,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -21276,6 +21780,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ],
     "V": [
@@ -21294,6 +21802,10 @@
      {
       "name": "Oni Mountain",
       "slug": "onimountain"
+     },
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
      }
     ]
    }
@@ -23781,11 +24293,19 @@
    "areas": {
     "S": [
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Canyon Biome",
       "slug": "canyonbiome"
      }
     ],
     "V": [
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
      {
       "name": "Canyon Biome",
       "slug": "canyonbiome"
@@ -23804,11 +24324,19 @@
    "areas": {
     "S": [
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Polar Biome",
       "slug": "polarbiome"
      }
     ],
     "V": [
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
      {
       "name": "Polar Biome",
       "slug": "polarbiome"
@@ -23827,11 +24355,19 @@
    "areas": {
     "S": [
      {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
+     {
       "name": "Polar Biome",
       "slug": "polarbiome"
      }
     ],
     "V": [
+     {
+      "name": "Reveler's Road",
+      "slug": "reveler'sroad"
+     },
      {
       "name": "Polar Biome",
       "slug": "polarbiome"

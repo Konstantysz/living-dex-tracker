@@ -29,3 +29,9 @@ Pages touched: analyses/project-decisions.md, concepts/layout-rules.md, concepts
 
 ## [2026-11-22] ingest | Repo changes 2026-11-16 to 2026-11-22
 Pages touched: entities/living-dex-tracker.md, entities/github-pages-deployment.md, entities/sv-game-config.md, entities/za-game-config.md (new), concepts/architecture.md, concepts/options-and-filters.md, concepts/backup-and-storage.md, concepts/ui-behaviour.md, analyses/project-decisions.md, index.md. Notes: sources are the repo files and commits since 2026-11-16 (Z-A, version exclusives, PC box look, PC-only forms, undo, Guide, ADRs, GLOSSARY, CODING_STANDARDS, check workflow). Options now have four toggles, not six. Not checked again: layout-rules, packing-algorithm and adding-a-new-game.
+
+## [2026-11-22] ingest | Issue #20: remove the alc and noSplit options
+Pages touched: concepts/options-and-filters.md, concepts/packing-algorithm.md, concepts/layout-rules.md, concepts/backup-and-storage.md, concepts/ui-behaviour.md. Notes: source is the change for issue #20. The packing table now uses the numbers from src/core/layout.test.ts.
+
+## [2026-11-22] ingest | Details dialog (#10)
+Pages touched: concepts/ui-behaviour.md. Notes: source is the #10 change. The page now describes the details gesture per device and the details dialog.

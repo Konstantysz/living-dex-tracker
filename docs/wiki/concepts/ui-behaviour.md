@@ -15,7 +15,7 @@ updated: 2026-11-22
 # UI behaviour
 
 Components: `App`, `Header`, `BoxGrid`, `Box`, `Cell`, `Tooltip`, `Legend`, `SettingsDialog`,
-`LayoutTextDialog`, `BackupDialog`, `GuideDialog`, plus a small `Dialog` wrapper.
+`LayoutTextDialog`, `BackupDialog`, `GuideDialog`, `DetailsDialog`, plus a small `Dialog` wrapper.
 
 ## Box screen
 
@@ -24,6 +24,12 @@ Components: `App`, `Header`, `BoxGrid`, `Box`, `Cell`, `Tooltip`, `Legend`, `Set
 - **Cell:** a `<button>` with `aria-pressed` and `aria-label`. A click, Enter or Space toggles it.
   Empty slots are dashed frames and are not buttons. A missing sprite falls back to the species
   name. A version exclusive shows its version letter (for example S or V).
+- **Details gesture:** a click or tap always toggles. With a mouse, an "i" button shows in the tile
+  corner on hover, and a right click also opens the details dialog. On a touch screen, the header
+  has "Tryb: szczegóły": in this mode a tap opens the details. A long press (500 ms) also opens
+  them. A finger that moves more than 10 px cancels the long press. The keys "i" and Shift+Enter
+  open the details. CSS media queries `(hover: hover)` and `(pointer: coarse)` select the "i"
+  button, the mode toggle and the Legend text. (source: `src/components/Cell.tsx`)
 - **Box header:** "Box N", number range (first – last), `caught/total`, and a highlight when
   complete. A box with only extra entries shows "dodatki".
 - **Header:** title, game selector, progress bar and `X / Y (Z%)`, stats
@@ -42,6 +48,10 @@ Each toggle shows a toast for 5 s, for example "Złapano Sprigatito · Cofnij". 
 caught set from before the last change (one step). An import shows "Wczytano kopię postępu ·
 Cofnij". (source: `src/components/App.tsx`)
 
+The same toast shows a notice without "Cofnij" once, when the saved options still have the removed
+`alc: false`. The notice says that the boxes now show all 63 Alcremie forms. A game without
+Alcremie forms (Z-A) shows no notice. (source: `src/components/App.tsx`)
+
 ## Dialogs
 
 - **Settings:** the toggles. See [Options and filters](options-and-filters.md).
@@ -50,6 +60,9 @@ Cofnij". (source: `src/components/App.tsx`)
   its Serebii image and mini-map. The button shows only for a game with collectibles. On a phone (up to
   600 px) the Guide fills the screen. See [Backup code and storage](backup-and-storage.md) for the
   ids.
+- **Details dialog ("Szczegóły"):** the label, the dex and national number, the kind, the version
+  exclusive mark and a Serebii link (`GameConfig.serebii`, SV only). Later issues add locations
+  and tips. (source: `src/components/DetailsDialog.tsx`)
 - **Text dialog:** boxes in 5 rows of 6, `—` for empty slots, copy button.
 - **Backup dialog:** shows the export code. "Wczytaj" checks the code ("Nieprawidłowy kod.")
   and then asks: "Złapane w kodzie: N. Obecnie: M. Wczytać i zastąpić obecny postęp?". The counts

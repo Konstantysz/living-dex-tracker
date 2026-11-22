@@ -42,16 +42,132 @@ test('click and keyboard toggle caught state and persist it', async () => {
   expect(sprig).toHaveAttribute('aria-pressed', 'true');
 });
 
+const details = () => screen.queryByRole('dialog');
+
+test('the "i" button, a right click and the keyboard open details without a toggle', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const sprig = cell(/^Sprigatito, 1$/);
+  await user.click(sprig);
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  expect(details()).not.toBeInTheDocument();
+
+  await user.click(within(sprig).getByText('i'));
+  const d = screen.getByRole('dialog', { name: 'Sprigatito' });
+  expect(d).toHaveTextContent('Paldea #1 · nat. #906');
+  expect(d).toHaveTextContent('podstawowa');
+  expect(d).not.toHaveTextContent('Ekskluzyw');
+  expect(within(d).getByRole('link', { name: 'Serebii' })).toHaveAttribute(
+    'href',
+    'https://www.serebii.net/pokedex-sv/sprigatito/',
+  );
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  await user.click(within(d).getByText('Zamknij'));
+  expect(details()).not.toBeInTheDocument();
+
+  const gestures = [
+    () => user.pointer({ keys: '[MouseRight]', target: sprig }),
+    () => user.keyboard('i'),
+    () => user.keyboard('{Shift>}{Enter}{/Shift}'),
+  ];
+  for (const gesture of gestures) {
+    sprig.focus();
+    await gesture();
+    expect(details()).toBeInTheDocument();
+    expect(sprig).toHaveAttribute('aria-pressed', 'true');
+    await user.click(within(details()!).getByText('Zamknij'));
+  }
+});
+
+test('details show the version exclusive mark', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const it = boxes.flat().find((x) => x?.v === 'S')!;
+  await user.pointer({
+    keys: '[MouseRight]',
+    target: document.querySelector(`[data-id="${it.id}"]`)!,
+  });
+  expect(screen.getByRole('dialog')).toHaveTextContent('Ekskluzywtylko Scarlet');
+});
+
+test('the Serebii link drops accents and spaces', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  const it = boxes.flat().find((x) => x?.name === 'Flabébé')!;
+  await user.pointer({
+    keys: '[MouseRight]',
+    target: document.querySelector(`[data-id="${it.id}"]`)!,
+  });
+  expect(screen.getByRole('link', { name: 'Serebii' })).toHaveAttribute(
+    'href',
+    'https://www.serebii.net/pokedex-sv/flabebe/',
+  );
+});
+
+test('in details mode a tap opens details and does not toggle', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByLabelText('Tryb: szczegóły'));
+  const sprig = cell(/^Sprigatito, 1$/);
+  await user.click(sprig);
+  expect(screen.getByRole('dialog', { name: 'Sprigatito' })).toBeInTheDocument();
+  expect(sprig).toHaveAttribute('aria-pressed', 'false');
+  await user.click(screen.getByText('Zamknij'));
+  await user.click(screen.getByLabelText('Tryb: szczegóły'));
+  await user.click(sprig);
+  expect(sprig).toHaveAttribute('aria-pressed', 'true');
+  expect(details()).not.toBeInTheDocument();
+});
+
 test('toggles recompute the layout live', async () => {
   const user = userEvent.setup();
   render(<App />);
   await user.click(screen.getByText('Ustawienia'));
-  await user.click(screen.getByLabelText(/nie dziel małych grup/));
-  await user.click(screen.getByLabelText(/wszystkie Alcremie/));
-  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({
-    noSplit: true,
-    alc: false,
+  expect(within(screen.getByRole('dialog')).getAllByRole('checkbox')).toHaveLength(2);
+  await user.click(screen.getByLabelText(/wszystkie wzory Vivillon/));
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toEqual({
+    go: true,
+    dim: false,
+    version: '',
   });
+  const goTotal = layoutBoxes(findGame('sv').layout, { go: true }).flat().filter(Boolean).length;
+  expect(screen.getByText(new RegExp(`^0 / ${goTotal}`))).toBeInTheDocument();
+});
+
+test('old saved alc: false shows a notice once', () => {
+  localStorage.setItem('ldt:sv:opts', JSON.stringify({ alc: false, noSplit: true }));
+  const { unmount } = render(<App />);
+  expect(screen.getByRole('status')).toHaveTextContent(/wszystkie 63 formy Alcremie/);
+  expect(screen.queryByText('Cofnij')).not.toBeInTheDocument();
+  unmount();
+  render(<App />);
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+
+test('a game without Alcremie forms shows no Alcremie notice', () => {
+  location.hash = '#za';
+  localStorage.setItem('ldt:za:opts', JSON.stringify({ alc: false }));
+  render(<App />);
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+
+test('game version is stored and keeps exclusives of the other version visible', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  const select = screen.getByLabelText(/Moja wersja/);
+  expect(select).toHaveValue('');
+  await user.selectOptions(select, 'Scarlet');
+  expect(JSON.parse(localStorage.getItem('ldt:sv:opts')!)).toMatchObject({ version: 'S' });
+  expect(document.querySelector('[data-id="misdreavus"]')).toHaveTextContent('V');
+});
+
+test('game without versions does not show the version setting', async () => {
+  location.hash = '#za';
+  const user = userEvent.setup();
+  render(<App />);
+  await user.click(screen.getByText('Ustawienia'));
+  expect(screen.queryByLabelText(/Moja wersja/)).not.toBeInTheDocument();
 });
 
 test('search highlights matches by name and number', async () => {
@@ -149,10 +265,49 @@ test('the guide tracks collectibles in the caught set without counting them', as
   expect(screen.getByText(/Złapane w kodzie: 1\. Obecnie: 0\./)).toBeInTheDocument();
 });
 
-test('a game without collectibles has no guide', () => {
+test('a game without collectibles shows only the badges tab of the guide', async () => {
+  const user = userEvent.setup();
   location.hash = '#za';
   render(<App />);
-  expect(screen.queryByText('Poradnik')).not.toBeInTheDocument();
+  await user.click(screen.getByText('Poradnik'));
+  expect(screen.queryByText('Znajdźki')).not.toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Gra bazowa' })).toBeInTheDocument();
+  expect(screen.getByText('Pokédex Lumiose')).toBeInTheDocument();
+});
+
+test('a tap that earns a badge adds a toast line, an import and an undo do not', async () => {
+  const user = userEvent.setup();
+  render(<App />);
+  expect(screen.getByRole('button', { name: 'Odznaki: 0' })).toBeInTheDocument();
+
+  // Import all 8 Ting-Lu stakes: the import earns the shrine badge, but the toast has no line.
+  await user.click(screen.getByText('Kopia postępu'));
+  const box = screen.getByLabelText('Kod kopii');
+  await user.clear(box);
+  await user.click(box);
+  const eight = Array.from({ length: 8 }, (_, i) => `stake:ting-lu-${i + 1}`);
+  await user.paste(exportCode(new Set(eight)));
+  await user.click(screen.getByText('Wczytaj'));
+  await user.click(screen.getByText('Tak, zastąp'));
+  expect(screen.getByRole('status')).toHaveTextContent('Wczytano kopię postępu');
+  expect(screen.getByRole('status')).not.toHaveTextContent('🏅');
+  expect(screen.getByRole('button', { name: 'Odznaki: 1' })).toBeInTheDocument();
+
+  // The chip opens the "Odznaki" tab. Untick and tick the 8th stake: the tap earns the badge.
+  await user.click(screen.getByRole('button', { name: 'Odznaki: 1' }));
+  expect(screen.getByRole('button', { name: 'Odznaki' })).toHaveAttribute('aria-pressed', 'true');
+  expect(screen.getAllByText('???').length).toBeGreaterThan(0);
+  await user.click(screen.getByRole('button', { name: 'Znajdźki' }));
+  const stake8 = within(screen.getByRole('group', { name: /Ting-Lu/ })).getByLabelText('Słupek 8');
+  await user.click(stake8);
+  expect(screen.getByRole('status')).not.toHaveTextContent('🏅');
+  await user.click(stake8);
+  expect(screen.getByRole('status')).toHaveTextContent('🏅 Strażnik ruin: Ting-Lu');
+
+  // Undo shows no toast, so no badge line.
+  await user.click(screen.getByText('Cofnij'));
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Odznaki: 0' })).toBeInTheDocument();
 });
 
 test('text dialog lists boxes in 5 rows of 6', async () => {

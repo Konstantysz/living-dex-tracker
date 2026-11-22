@@ -1,10 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { entryLabel, matches } from '../core/entry';
+import { badgeProgress, badgeToast, gameBadges, newlyEarned } from '../core/badges';
+import { entryLabel, matches, setIds } from '../core/entry';
 import { layoutBoxes } from '../core/layout';
-import { loadCaught, loadOptions, saveCaught, saveOptions, type AppOptions } from '../core/storage';
+import {
+  gameVersion,
+  hidAlcremie,
+  loadCaught,
+  loadOptions,
+  saveCaught,
+  saveOptions,
+  type AppOptions,
+} from '../core/storage';
 import { findGame, type Game } from '../games';
 import { BackupDialog } from './BackupDialog';
 import { BoxGrid } from './BoxGrid';
+import { DetailsDialog } from './DetailsDialog';
 import { GuideDialog } from './GuideDialog';
 import { Header } from './Header';
 import { LayoutTextDialog } from './LayoutTextDialog';
@@ -45,7 +55,13 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
   const [caught, setCaught] = useState(() => loadCaught(config.id));
   const [options, setOptions] = useState(() => loadOptions(config.id));
   const [query, setQuery] = useState('');
-  const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | 'guide' | null>(null);
+  // 'badges' opens the Guide on its "Odznaki" tab.
+  const [dialog, setDialog] = useState<'text' | 'backup' | 'settings' | 'guide' | 'badges' | null>(
+    null,
+  );
+  // Id of the entry in the details dialog. Details mode (phone): a tap opens it, not a toggle.
+  const [details, setDetails] = useState<string | null>(null);
+  const [detailsMode, setDetailsMode] = useState(false);
 
   const boxes = useMemo(() => layoutBoxes(layout, options), [layout, options]);
   const entries = useMemo(
@@ -74,8 +90,35 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       ?.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
   }, [hits, entries]);
 
+  const badges = useMemo(() => gameBadges(config, layout, boxes), [config, layout, boxes]);
+  const visible = useMemo(
+    () => new Set([...entries.keys(), ...(config.collectibles ?? []).flatMap(setIds)]),
+    [entries, config],
+  );
+  const earned = useMemo(
+    () => badges.filter((b) => badgeProgress(b, caught, visible).earned).length,
+    [badges, caught, visible],
+  );
+
   // One-step undo: the set before the last change, shown in a toast for 5 s.
-  const [undo, setUndo] = useState<{ text: string; prev: Set<string> } | null>(null);
+  // A toast without `prev` is a notice with no undo button.
+  // `badge` is the line for badges that the change earned (only for taps).
+  // The Alcremie notice shows only in a game that has Alcremie forms (kind `alc`).
+  const [undo, setUndo] = useState<{
+    text: string;
+    badge?: string;
+    prev?: Set<string>;
+  } | null>(() =>
+    hidAlcremie(config.id) && layout.groups.some((g) => g.items.some((it) => it.k === 'alc'))
+      ? {
+          text: 'Usunięto opcję ukrywania Alcremie. Boxy pokazują teraz wszystkie 63 formy Alcremie.',
+        }
+      : null,
+  );
+  useEffect(() => {
+    // Drops the old `alc` key, so the notice above shows only once.
+    if (hidAlcremie(config.id)) saveOptions(config.id, options);
+  }, [config.id, options]);
   // A ref keeps `toggle` stable across toggles, so memoized cells do not re-render.
   const caughtRef = useRef(caught);
   const replace = useCallback(
@@ -87,11 +130,17 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     [config.id],
   );
   const commit = useCallback(
-    (next: Set<string>, text: string) => {
-      setUndo({ text, prev: caughtRef.current });
+    (next: Set<string>, text: string, badge?: string) => {
+      setUndo({ text, badge, prev: caughtRef.current });
       replace(next);
     },
     [replace],
+  );
+  // A tap: the toast also names the badges it earned.
+  const tap = useCallback(
+    (next: Set<string>, text: string) =>
+      commit(next, text, badgeToast(newlyEarned(badges, caughtRef.current, next, visible))),
+    [commit, badges, visible],
   );
   useEffect(() => {
     if (!undo) return;
@@ -103,23 +152,24 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
     (id: string) => {
       const [next, added] = flip(caughtRef.current, id);
       const it = entries.get(id);
-      commit(next, `${added ? 'Złapano' : 'Odznaczono'} ${it ? entryLabel(it) : id}`);
+      tap(next, `${added ? 'Złapano' : 'Odznaczono'} ${it ? entryLabel(it) : id}`);
     },
-    [commit, entries],
+    [tap, entries],
   );
   const toggleCollectible = useCallback(
     (id: string, label: string) => {
       const [next, added] = flip(caughtRef.current, id);
-      commit(next, `${added ? 'Zaznaczono' : 'Odznaczono'} ${label}`);
+      tap(next, `${added ? 'Zaznaczono' : 'Odznaczono'} ${label}`);
     },
-    [commit],
+    [tap],
   );
-  const setOption = (k: keyof AppOptions, v: boolean) => {
+  const setOption = <K extends keyof AppOptions>(k: K, v: AppOptions[K]) => {
     const next = { ...options, [k]: v };
     setOptions(next);
     saveOptions(config.id, next);
   };
 
+  const detailsEntry = details ? entries.get(details) : undefined;
   const collectibles = config.collectibles ?? [];
   const total = entries.size;
   const got = [...entries.keys()].filter((id) => caught.has(id)).length;
@@ -140,7 +190,11 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         onShowSettings={() => setDialog('settings')}
         onShowText={() => setDialog('text')}
         onShowBackup={() => setDialog('backup')}
-        onShowGuide={collectibles.length ? () => setDialog('guide') : undefined}
+        onShowGuide={() => setDialog('guide')}
+        earnedBadges={earned}
+        onShowBadges={() => setDialog('badges')}
+        detailsMode={detailsMode}
+        onDetailsMode={setDetailsMode}
       />
       <BoxGrid
         boxes={boxes}
@@ -148,14 +202,32 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
         hits={hits}
         entries={entries}
         dexes={config.dexes}
-        onToggle={toggle}
+        onToggle={detailsMode ? setDetails : toggle}
+        onDetails={setDetails}
       />
-      {dialog === 'settings' && (
-        <SettingsDialog options={options} onOption={setOption} onClose={() => setDialog(null)} />
+      {detailsEntry && (
+        <DetailsDialog
+          entry={detailsEntry}
+          config={config}
+          locations={game.locations}
+          version={gameVersion(config.exclusives, options)}
+          onClose={() => setDetails(null)}
+        />
       )}
-      {dialog === 'guide' && (
+      {dialog === 'settings' && (
+        <SettingsDialog
+          options={options}
+          exclusives={config.exclusives}
+          onOption={setOption}
+          onClose={() => setDialog(null)}
+        />
+      )}
+      {(dialog === 'guide' || dialog === 'badges') && (
         <GuideDialog
           sets={collectibles}
+          badges={badges}
+          visible={visible}
+          tab={dialog === 'badges' ? 'badges' : 'collectibles'}
           caught={caught}
           onToggle={toggleCollectible}
           onClose={() => setDialog(null)}
@@ -172,15 +244,25 @@ function GameView({ game, onGame }: { game: Game; onGame: (id: string) => void }
       )}
       {undo && (
         <div className="toast" role="status">
-          <span>{undo.text}</span>
-          <button
-            onClick={() => {
-              replace(undo.prev);
-              setUndo(null);
-            }}
-          >
-            Cofnij
-          </button>
+          <span>
+            {undo.text}
+            {undo.badge && (
+              <>
+                <br />
+                {undo.badge}
+              </>
+            )}
+          </span>
+          {undo.prev && (
+            <button
+              onClick={() => {
+                replace(undo.prev!);
+                setUndo(null);
+              }}
+            >
+              Cofnij
+            </button>
+          )}
         </div>
       )}
     </>

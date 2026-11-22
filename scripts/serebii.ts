@@ -1,10 +1,11 @@
-import type { Area, Version } from '../src/core/locations';
+import type { Area, AreasByVersion } from '../src/core/locations';
 
 /** One line of a Locations cell on a Serebii species page. */
 export interface LocationLine {
-  version: Version;
-  /** Dex prefix of the section: '' for the base game, 'K' Teal Mask, 'B' Indigo Disk. */
-  section: string;
+  /** Game version: a key of `GameConfig.exclusives` ("S", "V"). */
+  version: string;
+  /** Dex prefix of the row: '' for the Paldea rows, 'K' The Teal Mask, 'B' The Indigo Disk. */
+  dex: string;
   /** Form label that Serebii puts before the areas (e.g. "Paldean Form"), null when there is none. */
   label: string | null;
   /** Text in brackets after the areas, e.g. "White-Striped Form" or "May disguise as other Pokémon". */
@@ -12,12 +13,14 @@ export interface LocationLine {
   areas: Area[];
 }
 
-const VERSIONS: Record<string, Version> = { scarlet: 'S', violet: 'V' };
-const SECTIONS: Record<string, string> = { ttm: 'K', tid: 'B' };
+const VERSIONS: Record<string, string> = { scarlet: 'S', violet: 'V' };
+const DLC_ROWS: Record<string, string> = { ttm: 'K', tid: 'B' };
 /** Rows of the table that are not SV locations: header, spawn biomes, Legends Z-A. */
 const IGNORED_ROWS = new Set(['fooevo', 'fooblack', 'fooza', 'foozamd']);
 /** Line prefixes of a later slice (fixed encounters, Titans, Tera Raid stars). */
 const IGNORED_LABELS = new Set(['Fixed', 'Titan', 'Tera Raid Battles']);
+// slugs can hold an apostrophe: "reveler'sroad", "oni'smaw"
+const AREA_LINK = /<a href="\/pokearth\/[a-z0-9]+\/([a-z0-9']+)\.shtml">([^<]+)<\/a>/g;
 
 const ENTITIES: Record<string, string> = { amp: '&', quot: '"', apos: "'", eacute: 'é' };
 
@@ -41,8 +44,8 @@ export function parseSpeciesPage(html: string): LocationLine[] {
   if (start < 0) throw new Error('no "Locations" table');
   const table = html.slice(start, html.indexOf('</table>', start));
   const lines: LocationLine[] = [];
-  let section = '';
-  let sectionRows = 0;
+  let dex = '';
+  let dexRows = 0;
   let rows = 0;
   for (const row of table.split(/<tr[^>]*>/).slice(1)) {
     const cells = [...row.matchAll(/<td([^>]*)>([\s\S]*?)<\/td>/g)].map(([, attrs, body]) => ({
@@ -52,12 +55,12 @@ export function parseSpeciesPage(html: string): LocationLine[] {
     }));
     if (!cells.length || IGNORED_ROWS.has(cells[0]!.cls)) continue;
     let i = 0;
-    if (cells[0]!.cls in SECTIONS) {
-      section = SECTIONS[cells[0]!.cls]!;
-      sectionRows = cells[0]!.rowspan;
+    if (cells[0]!.cls in DLC_ROWS) {
+      dex = DLC_ROWS[cells[0]!.cls]!;
+      dexRows = cells[0]!.rowspan;
       i = 1;
-    } else if (sectionRows <= 0) section = '';
-    sectionRows--;
+    } else if (dexRows <= 0) dex = '';
+    dexRows--;
     const version = VERSIONS[cells[i]?.cls ?? ''];
     const info = cells[i + 1];
     if (!version || info?.cls !== 'fooinfo') {
@@ -65,7 +68,10 @@ export function parseSpeciesPage(html: string): LocationLine[] {
     }
     rows++;
     let heading: string | null = null;
-    for (const part of info.body.split(/<br\s*\/?>/)) {
+    // An anchor with no text and no end tag (Serebii typo on the Scyther page) has no area name.
+    // Drop it, so the link check below still fails on every other link format.
+    const body = info.body.replace(/<a href="\/pokearth\/[^"]*">\s*(?=<a )/g, '');
+    for (const part of body.split(/<br\s*\/?>/)) {
       const t = text(part);
       if (!t) continue;
       // "<b>Kantonian Form</b>" on its own line labels the lines after it
@@ -75,12 +81,17 @@ export function parseSpeciesPage(html: string): LocationLine[] {
       }
       const prefix = t.match(/^([^:]+):/)?.[1]?.trim() ?? null;
       if (prefix && IGNORED_LABELS.has(prefix)) continue;
-      const areas = [
-        ...part.matchAll(/<a href="\/pokearth\/[a-z0-9]+\/([a-z0-9]+)\.shtml">([^<]+)<\/a>/g),
-      ].map(([, slug, name]) => ({ name: decode(name!).trim(), slug: slug! }));
+      const areas = [...part.matchAll(AREA_LINK)].map(([, slug, name]) => ({
+        name: decode(name!).trim(),
+        slug: slug!,
+      }));
+      // every Pokéarth link must match, else a changed link format drops areas without a word
+      if (areas.length !== part.split('/pokearth/').length - 1) {
+        throw new Error(`unknown area link: ${part.trim()}`);
+      }
       if (!areas.length) continue;
       const note = t.match(/\(([^)]*)\)/)?.[1]?.trim() ?? null;
-      lines.push({ version, section, label: prefix ?? heading, note, areas });
+      lines.push({ version, dex, label: prefix ?? heading, note, areas });
     }
   }
   if (!rows) throw new Error('"Locations" table has no version rows');
@@ -99,18 +110,18 @@ export interface MatchEntry {
 /**
  * Gives each entry of one species the areas of the lines that name it. A line with a label goes
  * to the one entry whose form label starts the line's label ("Paldean Form" -> "Paldea"). A line
- * without a label goes to the entries only when all entries obtainable in that section share one
+ * without a label goes to the entries only when all entries obtainable in that dex share one
  * form label. A line whose note names a form ("(Bloodmoon)", "(White-Striped Form)") goes to no
  * entry. Otherwise the line is ambiguous and no entry gets it (no data is invented).
  */
 export function matchEntries(
   lines: LocationLine[],
   entries: MatchEntry[],
-): { areas: Record<string, Partial<Record<Version, Area[]>>>; unmatched: string[] } {
-  const areas: Record<string, Partial<Record<Version, Area[]>>> = {};
+): { areas: Record<string, AreasByVersion>; unmatched: string[] } {
+  const areas: Record<string, AreasByVersion> = {};
   const unmatched: string[] = [];
   for (const line of lines) {
-    const candidates = entries.filter((e) => !e.dlc || e.dlc === line.section);
+    const candidates = entries.filter((e) => !e.dlc || e.dlc === line.dex);
     const note = line.note?.toLowerCase();
     let hits: MatchEntry[];
     if (
@@ -130,10 +141,10 @@ export function matchEntries(
       );
       hits = forms.size === 1 ? candidates.filter((e) => forms.has(e.form)) : [];
     }
-    if (!hits.length)
-      unmatched.push(
-        `${line.version}${line.section}: ${line.label ?? '(no label)'}${line.note ? ` (${line.note})` : ''}`,
-      );
+    if (!hits.length) {
+      const note = line.note ? ` (${line.note})` : '';
+      unmatched.push(`${line.version}${line.dex}: ${line.label ?? '(no label)'}${note}`);
+    }
     for (const e of hits) {
       const list = ((areas[e.id] ??= {})[line.version] ??= []);
       for (const a of line.areas) if (!list.some((b) => b.slug === a.slug)) list.push(a);

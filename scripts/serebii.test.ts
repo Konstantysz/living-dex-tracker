@@ -14,9 +14,9 @@ const hills = '<a href="/pokearth/kitakami/applehills.shtml">Apple Hills</a>';
 const woods = '<a href="/pokearth/kitakami/timelesswoods.shtml">Timeless Woods</a>';
 
 describe('parseSpeciesPage', () => {
-  test('reads areas per version and section, without Fixed, Tera Raid and Z-A lines', () => {
+  test('reads areas per version and dex, without Fixed, Tera Raid and Z-A lines', () => {
     const lines = parseSpeciesPage(pikachu);
-    expect(lines.map((l) => `${l.version}${l.section}:${l.label}:${l.areas.length}`)).toEqual([
+    expect(lines.map((l) => `${l.version}${l.dex}:${l.label}:${l.areas.length}`)).toEqual([
       'S:null:4',
       'V:null:4',
       'SK:null:7',
@@ -31,7 +31,7 @@ describe('parseSpeciesPage', () => {
 
   test('reads the form label before the areas', () => {
     const lines = parseSpeciesPage(fixture('tauros'));
-    expect(lines.map((l) => `${l.version}${l.section}:${l.label}`)).toEqual([
+    expect(lines.map((l) => `${l.version}${l.dex}:${l.label}`)).toEqual([
       'S:Combat Breed',
       'S:Blaze Breed',
       'V:Combat Breed',
@@ -54,14 +54,14 @@ describe('parseSpeciesPage', () => {
     expect(lines).toEqual([
       {
         version: 'S',
-        section: '',
+        dex: '',
         label: 'Kantonian Form',
         note: null,
         areas: [{ name: 'Apple Hills', slug: 'applehills' }],
       },
       {
         version: 'S',
-        section: '',
+        dex: '',
         label: 'Kantonian Form',
         note: 'White-Striped Form',
         areas: [{ name: 'Timeless Woods', slug: 'timelesswoods' }],
@@ -78,6 +78,17 @@ describe('parseSpeciesPage', () => {
     expect(() => parseSpeciesPage(pikachu.replace('Apple Hills', 'Apple&nbsp;Hills'))).toThrow(
       'unknown HTML entity',
     );
+    expect(() => parseSpeciesPage(cell(hills.replace('<a ', '<a class="x" ')))).toThrow(
+      'unknown area link',
+    );
+  });
+
+  test('reads slugs with an apostrophe and drops an empty anchor without an end tag', () => {
+    const road = `<a href="/pokearth/kitakami/reveler'sroad.shtml">Reveler's Road</a>`;
+    const empty = '<a href="/pokearth/terarium/chargestonecavern.shtml"> ';
+    expect(parseSpeciesPage(cell(`${empty}${road}`))[0]!.areas).toEqual([
+      { name: "Reveler's Road", slug: "reveler'sroad" },
+    ]);
   });
 });
 
@@ -91,7 +102,7 @@ describe('matchEntries', () => {
     expect(areas['pikachu-female']).toEqual(areas['pikachu']);
   });
 
-  test('a DLC-only form is not a candidate in other sections', () => {
+  test('a DLC-only form is not a candidate in other dexes', () => {
     const { areas, unmatched } = matchEntries(parseSpeciesPage(pikachu), [
       { id: 'base', form: '' },
       { id: 'dlc', form: 'Alola', dlc: 'B' },
@@ -116,19 +127,16 @@ describe('matchEntries', () => {
   });
 
   test('a note that names a form gives the line to no entry, another note does not', () => {
-    const lines = parseSpeciesPage(
-      cell(`${hills} (Bloodmoon)<br />${woods} (May disguise as other Pok&eacute;mon)`),
-    );
-    expect(matchEntries(lines, [{ id: 'ditto', form: '' }]).areas['ditto']!.S).toHaveLength(2);
-    const { areas, unmatched } = matchEntries(lines, [
-      { id: 'ursaluna', form: '' },
-      { id: 'ursaluna-bloodmoon', form: 'Bloodmoon' },
-    ]);
-    expect(areas).toEqual({});
-    expect(unmatched).toEqual([
-      'S: (no label) (Bloodmoon)',
-      'S: (no label) (May disguise as other Pokémon)',
-    ]);
+    // one entry per test, so without the note rule each line would go to it
+    const other = parseSpeciesPage(cell(`${woods} (May disguise as other Pok&eacute;mon)`));
+    expect(matchEntries(other, [{ id: 'ditto', form: '' }]).areas['ditto']!.S).toHaveLength(1);
+    const named = parseSpeciesPage(cell(`${hills} (Bloodmoon)`));
+    expect(matchEntries(named, [{ id: 'ursaluna-bloodmoon', form: 'Bloodmoon' }])).toEqual({
+      areas: {},
+      unmatched: ['S: (no label) (Bloodmoon)'],
+    });
+    const form = parseSpeciesPage(cell(`${woods} (White-Striped Form)`));
+    expect(matchEntries(form, [{ id: 'basculin', form: '' }]).areas).toEqual({});
   });
 });
 

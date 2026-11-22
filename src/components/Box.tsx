@@ -9,9 +9,10 @@ interface Props {
   caught: Set<string>;
   hits: Set<string>;
   onToggle: (id: string) => void;
+  onDetails: (id: string) => void;
 }
 
-export const Box = memo(function Box({ index, box, caught, hits, onToggle }: Props) {
+export const Box = memo(function Box({ index, box, caught, hits, onToggle, onDetails }: Props) {
   const items = box.filter((x) => x !== null);
   const nums = items.flatMap((x) => (x.n ? [x.n] : []));
   const range = nums.length ? `${nums[0]} – ${nums[nums.length - 1]}` : 'dodatki';
@@ -34,6 +35,7 @@ export const Box = memo(function Box({ index, box, caught, hits, onToggle }: Pro
             caught={!!it && caught.has(it.id)}
             hit={!!it && hits.has(it.id)}
             onToggle={onToggle}
+            onDetails={onDetails}
           />
         ))}
       </div>

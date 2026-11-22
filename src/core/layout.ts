@@ -6,19 +6,11 @@ export const BOX_COLS = 6;
 export type Box = (DexEntry | null)[];
 
 export interface LayoutOptions {
-  /** Show all Alcremie-style toggleable forms. */
-  alc: boolean;
   /** Show Vivillon patterns that need Pokémon GO. */
   go: boolean;
-  /** Start a new box instead of splitting a group of 2..6 entries. */
-  noSplit: boolean;
 }
 
-export const DEFAULT_OPTIONS: LayoutOptions = {
-  alc: true,
-  go: false,
-  noSplit: false,
-};
+export const DEFAULT_OPTIONS: LayoutOptions = { go: false };
 
 /**
  * Is the entry visible under the given toggles? HOME-only regional and battle forms cannot be
@@ -26,30 +18,26 @@ export const DEFAULT_OPTIONS: LayoutOptions = {
  */
 export function keep(it: DexEntry, o: LayoutOptions): boolean {
   switch (it.k) {
-    case 'alc':
-      return o.alc;
     case 'go':
       return o.go;
-    case 'reg':
-    case 'bat':
-    case 'xreg':
-    case 'xbat':
-      return false;
     default:
-      return true;
+      return inPc(it);
   }
 }
 
+/** Can the game's PC store the entry? HOME-only regional and battle forms cannot. */
+export const inPc = (it: DexEntry) => !['reg', 'bat', 'xreg', 'xbat'].includes(it.k);
+
 /** Dex prefix of an entry: "" for the main dex, "K", "B" for DLC dexes. */
-const dexOf = (it: DexEntry) => (it.d ?? it.n)?.match(/^[A-Z]/)?.[0] ?? '';
+export const dexOf = (it: DexEntry) => (it.d ?? it.n)?.match(/^[A-Z]/)?.[0] ?? '';
 /** Number inside the dex ("K5" -> 5); Infinity when there is none. */
 const numOf = (it: DexEntry) => Number((it.d ?? it.n)?.match(/\d+/)?.[0] ?? Infinity);
 
 /**
- * Pure packing: slots run continuously; with `noSplit`, a group of 2..6 that does not fit in the
- * current box starts a new one. A group from another dex (prefix K, B) always starts a fresh box.
+ * Pure packing: slots run continuously, and a species can flow across a box boundary. A species
+ * from another dex (prefix K, B) always starts a fresh box.
  */
-export function packBoxes(groups: DexEntry[][], { noSplit }: { noSplit: boolean }): Box[] {
+export function packBoxes(groups: DexEntry[][]): Box[] {
   const boxes: Box[] = [];
   let cur: Box = [];
   const flush = () => {
@@ -64,7 +52,6 @@ export function packBoxes(groups: DexEntry[][], { noSplit }: { noSplit: boolean 
     const p = dexOf(g[0]!);
     if (p !== dex) flush();
     dex = p;
-    if (noSplit && g.length > 1 && g.length <= 6 && cur.length + g.length > BOX_SIZE) flush();
     for (const it of g) {
       cur.push(it);
       if (cur.length === BOX_SIZE) {
@@ -94,5 +81,5 @@ export function layoutBoxes(layout: GameLayout, o: LayoutOptions): Box[] {
     const at = next >= 0 ? next : groups.map(inDex).lastIndexOf(true) + 1;
     groups.splice(at, 0, forms);
   }
-  return packBoxes(groups, { noSplit: o.noSplit });
+  return packBoxes(groups);
 }

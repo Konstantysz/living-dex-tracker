@@ -3,7 +3,7 @@
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { DEFAULT_OPTIONS, keep } from '../src/core/layout';
+import { inPc } from '../src/core/layout';
 import type { EntryLocation, Locations } from '../src/core/locations';
 import type { DexEntry, GameLayout } from '../src/core/types';
 import svLayout from '../src/games/sv/generated/layout.json';
@@ -16,10 +16,11 @@ const CACHE = join(import.meta.dirname, 'cache', 'serebii');
 const OUT = join(import.meta.dirname, '..', 'src', 'games', 'sv', 'generated', 'locations.json');
 
 let lastRequest = 0;
+/** Download times of the pages read, for the scrape date. */
 const mtimes: number[] = [];
 
 /** Reads a page from the cache. On a miss it downloads it, at most 1 request per second. */
-async function page(url: string, file: string): Promise<string> {
+async function readPage(url: string, file: string): Promise<string> {
   const path = join(CACHE, file);
   if (!existsSync(path)) {
     await new Promise((r) => setTimeout(r, Math.max(0, lastRequest + 1000 - Date.now())));
@@ -37,14 +38,11 @@ async function page(url: string, file: string): Promise<string> {
 }
 
 const layout = svLayout as GameLayout;
-const all = { ...DEFAULT_OPTIONS, alc: true, go: true };
-const entries: DexEntry[] = [...layout.groups.flatMap((g) => g.items), ...layout.dlc].filter((e) =>
-  keep(e, all),
-);
+const entries: DexEntry[] = [...layout.groups.flatMap((g) => g.items), ...layout.dlc].filter(inPc);
 
 const slugs = new Map<number, string>();
 for (const list of DEX_LISTS) {
-  const html = await page(`${SITE}/scarletviolet/${list}.shtml`, `_${list}.html`);
+  const html = await readPage(`${SITE}/scarletviolet/${list}.shtml`, `_${list}.html`);
   for (const [nat, slug] of parseDexList(html)) slugs.set(nat, slug);
 }
 
@@ -61,7 +59,7 @@ for (const [nat, species] of byNat) {
     continue;
   }
   try {
-    const lines = parseSpeciesPage(await page(`${SOURCE}${slug}/`, `${slug}.html`));
+    const lines = parseSpeciesPage(await readPage(`${SOURCE}${slug}/`, `${slug}.html`));
     const match: MatchEntry[] = species.map((e) => ({ id: e.id, form: e.form, dlc: e.d?.[0] }));
     const { areas, unmatched } = matchEntries(lines, match);
     for (const e of species)

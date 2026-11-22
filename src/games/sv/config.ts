@@ -221,12 +221,15 @@ export const svConfig: GameConfig = {
         iron-leaves iron-boulder iron-crown`.split(/\s+/),
     },
   },
+  // Checked with greattusk, sprigatito, mr.mime (2026-11-22).
+  serebii: 'https://www.serebii.net/pokedex-sv/{name}/',
   // Section ids are the Serebii image names (stakes/<id><n>.jpg). Areas and order:
   // https://www.serebii.net/scarletviolet/stakes.shtml (2026-11-22). Serebii gives no per-stake text.
   collectibles: [
     {
       id: 'stake',
       name: 'Słupki ruin',
+      badgeTitle: 'Strażnik ruin',
       unitLabel: 'Słupek',
       intro: '8 słupków jednej świątyni otwiera drogę do jej legendarnego Pokémona.',
       source: { name: 'Serebii', url: 'https://www.serebii.net/scarletviolet/stakes.shtml' },

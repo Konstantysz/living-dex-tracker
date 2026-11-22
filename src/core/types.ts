@@ -77,7 +77,7 @@ export interface GameConfig {
   labelOverrides: Record<string, string>;
   /** Form label forced per entry id (e.g. Johto Wooper, Kanto Tauros). */
   formNames: Record<string, string>;
-  /** Species whose non-base forms are toggleable as a set (kind "alc"); label drops "-sweet". */
+  /** Species whose non-base forms get kind "alc" (always shown). The label drops "-sweet". */
   toggleableForms: string[];
   /** Entry ids obtainable only through a link with another app (Vivillon + Pokémon GO): kind "go". */
   goForms: string[];
@@ -87,6 +87,8 @@ export interface GameConfig {
   exclusives: Record<string, { name: string; species: string[] }>;
   /** Collectible sets shown in the Guide (e.g. SV ruin stakes). */
   collectibles?: CollectibleSet[];
+  /** Serebii species page for the details dialog. `{name}` = species name, lower case, no spaces. */
+  serebii?: string;
 }
 
 /**
@@ -98,6 +100,8 @@ export interface CollectibleSet {
   id: string;
   /** Title in the Guide, e.g. "Słupki ruin". */
   name: string;
+  /** Title of the set's badges, e.g. "Strażnik ruin". Default: `name`. */
+  badgeTitle?: string;
   /** Label of one collectible, e.g. "Słupek" → "Słupek 3". */
   unitLabel: string;
   /** One sentence for the player. */

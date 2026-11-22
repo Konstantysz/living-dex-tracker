@@ -17,8 +17,13 @@ interface Props {
   onShowSettings: () => void;
   onShowText: () => void;
   onShowBackup: () => void;
-  /** Absent when the game has nothing in the guide yet. */
-  onShowGuide?: () => void;
+  onShowGuide: () => void;
+  /** Number of earned badges. */
+  earnedBadges: number;
+  /** Opens the Guide on the "Odznaki" tab. */
+  onShowBadges: () => void;
+  detailsMode: boolean;
+  onDetailsMode: (on: boolean) => void;
 }
 
 export function Header(p: Props) {
@@ -62,6 +67,14 @@ export function Header(p: Props) {
           <span>
             {p.got} / {p.total} ({pct.toFixed(1)}%)
           </span>
+          <button
+            type="button"
+            className={s.chip}
+            aria-label={`Odznaki: ${p.earnedBadges}`}
+            onClick={p.onShowBadges}
+          >
+            🏅 {p.earnedBadges}
+          </button>
         </div>
         <span className={`${s.fold} mono-mute`}>
           {p.stats.boxes} boxów · {p.stats.slots} slotów · {p.stats.empty} pustych
@@ -71,11 +84,9 @@ export function Header(p: Props) {
         <button className={s.fold} onClick={p.onShowSettings}>
           Ustawienia
         </button>
-        {p.onShowGuide && (
-          <button className={s.fold} onClick={p.onShowGuide}>
-            Poradnik
-          </button>
-        )}
+        <button className={s.fold} onClick={p.onShowGuide}>
+          Poradnik
+        </button>
         <input
           type="search"
           placeholder="szukaj nazwy lub #nr"
@@ -83,6 +94,14 @@ export function Header(p: Props) {
           value={p.query}
           onChange={(e) => p.onQuery(e.target.value)}
         />
+        <label className={`${s.toggle} ${s.touch}`}>
+          <input
+            type="checkbox"
+            checked={p.detailsMode}
+            onChange={(e) => p.onDetailsMode(e.target.checked)}
+          />
+          Tryb: szczegóły
+        </label>
         <button className={s.fold} onClick={p.onShowText}>
           Układ jako tekst
         </button>

@@ -44,8 +44,8 @@ A new game needs: config → add to `configs.ts` → `data:build` → import its
   forms: `docs/research/sources.md`. Dex numbers of a species:
   `scripts/cache/<sha>/pokemon_dex_numbers.csv` (pokedex 31 Paldea, 32 Kitakami, 33 Blueberry).
 - Layout invariants are pinned by tests in `src/core/layout.test.ts` (box and slot counts, DLC
-  dexes start on a new box, DLC forms follow their dex number, groups of 2–6 are not split when
-  `noSplit` is on). Change the numbers there, nowhere else.
+  dexes start on a new box, DLC forms follow their dex number, all 63 Alcremie show). Change the
+  numbers there, nowhere else.
 - Backup code = base64 of UTF-8 JSON array of ids, identical to the prototype. For `sv`,
   `storage.ts` also reads the prototype's old localStorage keys as a fallback.
 - Updating PokeAPI data: change `POKEAPI_SHA`, delete the old `scripts/cache/<sha>/`, run

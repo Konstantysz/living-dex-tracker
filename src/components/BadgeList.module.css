@@ -1,0 +1,48 @@
+.list {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0 0 var(--space-sm);
+  padding: 0;
+  list-style: none;
+}
+.badge {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--pill);
+  border-radius: var(--radius);
+  color: var(--mute);
+}
+.badge p {
+  margin: 0;
+}
+.image {
+  font-size: 1.75rem;
+  line-height: 1;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.earned {
+  color: var(--ink);
+}
+.earned .image {
+  filter: none;
+  opacity: 1;
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: var(--space-xs) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.items li {
+  padding: 0 var(--space-xs);
+  border: 1px solid var(--pill);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+}
+.items li.earned {
+  border-color: var(--ink);
+}

@@ -45,8 +45,8 @@ golden test.
 
 `npm run data:locations` reads the Serebii species page of each SV entry (ADR 0001) and writes
 `src/games/sv/generated/locations.json`. It sends at most 1 request per second and caches the raw
-HTML in `scripts/cache/serebii/` (git-ignored). A full run with an empty cache takes about 12
-minutes. The parser (`scripts/serebii.ts`) stops on HTML it does not know. The log lists the
+HTML in `scripts/cache/serebii/` (git-ignored). A full run with an empty cache takes 10 to 15
+minutes. The date in the file is the download date of the oldest cached page. The parser (`scripts/serebii.ts`) stops on HTML it does not know. The log lists the
 entries without data and the lines that it could not give to one entry.
 
 ## How to add a new game

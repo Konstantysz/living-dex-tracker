@@ -1,26 +1,55 @@
+import { useState } from 'react';
+import type { Badge } from '../core/badges';
 import { collectibleId } from '../core/entry';
 import type { CollectibleSet } from '../core/types';
+import { BadgeList } from './BadgeList';
 import { Dialog } from './Dialog';
 
 const fill = (url: string, section: string, n: number) =>
   url.replaceAll('{section}', section).replaceAll('{n}', String(n));
 
-/** Guide (Poradnik): the one entry point for help features. Now: collectible checklists. */
+export type GuideTab = 'collectibles' | 'badges';
+
+/** Guide (Poradnik): the one entry point for help features. Tabs: collectibles and badges. */
 export function GuideDialog({
   sets,
+  badges,
+  visible,
+  tab: initialTab,
   caught,
   onToggle,
   onClose,
 }: {
   sets: CollectibleSet[];
+  badges: Badge[];
+  /** Ids the player can see now: visible entries and all collectibles. */
+  visible: Set<string>;
+  tab: GuideTab;
   caught: Set<string>;
   /** `label` names the collectible in the undo toast. */
   onToggle: (id: string, label: string) => void;
   onClose: () => void;
 }) {
+  const [picked, setTab] = useState(initialTab);
+  // A game without collectibles (Z-A) has only the badges tab.
+  const tab = sets.length ? picked : 'badges';
+  const tabs: [GuideTab, string][] = [
+    ['collectibles', 'Znajdźki'],
+    ['badges', 'Odznaki'],
+  ];
   return (
     <Dialog title="Poradnik" className="guide" onClose={onClose}>
-      {sets.map((set) => (
+      {sets.length > 0 && (
+        <div className="dialog-row">
+          {tabs.map(([id, name]) => (
+            <button key={id} aria-pressed={tab === id} onClick={() => setTab(id)}>
+              {name}
+            </button>
+          ))}
+        </div>
+      )}
+      {tab === 'badges' && <BadgeList badges={badges} caught={caught} visible={visible} />}
+      {(tab === 'collectibles' ? sets : []).map((set) => (
         <section key={set.id}>
           <h4>{set.name}</h4>
           <p className="mono-mute">
