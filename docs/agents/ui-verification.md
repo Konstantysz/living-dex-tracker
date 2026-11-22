@@ -8,6 +8,16 @@ Read this before you check a UI change in the Claude desktop browser pane.
    5173 is busy, the server moves to the next free port. Use the URL that the tool returns.
 2. Open the game by hash, e.g. `http://localhost:<port>/#sv`.
 
+### From a worktree
+
+`preview_start` with the name `dev` serves the main checkout, not your worktree. In a worktree:
+
+1. Run `npx vite --port <free port>` from the worktree root, with `run_in_background`.
+2. Open `http://localhost:<port>/#sv` with `preview_start` and `url`.
+3. Stop the server when you finish.
+
+Each port has its own localStorage. A wrong click changes only the test data of that port.
+
 ## Measure first, then look
 
 The pane scales its screenshots. A screenshot can cut off the right edge of a page that fits. Use the

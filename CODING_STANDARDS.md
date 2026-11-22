@@ -16,6 +16,14 @@ The reviewer reads this file. It holds judgement rules that no tool can check. E
   nothing.
 - Put the setup and the assertion in the same test. Example: to show that the text export ignores
   collectibles, tick a collectible first, in the same test.
+- Scope a component query to the element under test with `within(...)`, e.g. the settings dialog.
+  A count over the whole page breaks when another component adds the same role.
+- Find elements by role, label or text. A CSS-module class name is not a stable selector.
+
+## Docs follow behaviour
+
+- A change to user-visible behaviour (an option, a dialog, a gesture) updates the
+  `docs/wiki/concepts/` page that describes it, in the same change.
 
 ## Data has a source
 
