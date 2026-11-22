@@ -12,16 +12,17 @@ Catalog of all wiki pages. The LLM updates this file on every change.
 - [living-dex-tracker (project)](entities/living-dex-tracker.md) — overview, stack, status, links
 - [Generator and PokeAPI data](entities/generator-and-pokeapi.md) — build scripts, pinned SHA, cache, sprites
 - [SV game config](entities/sv-game-config.md) — the declarative `GameConfig` for Scarlet/Violet
-- [GitHub Pages deployment](entities/github-pages-deployment.md) — live URL, workflow, open warnings
+- [Z-A game config](entities/za-game-config.md) — the `GameConfig` for Legends: Z-A, box check from screenshots
+- [GitHub Pages deployment](entities/github-pages-deployment.md) — live URL, deploy and PR check workflows
 
 ## Concepts
 
-- [Architecture](concepts/architecture.md) — three layers and folder map
+- [Architecture](concepts/architecture.md) — three layers, folder map, checks
 - [Layout rules](concepts/layout-rules.md) — which entries exist, order, kinds, extra box
 - [Packing algorithm](concepts/packing-algorithm.md) — `packBoxes`, no-split rule, verified numbers
-- [Options and filters](concepts/options-and-filters.md) — six toggles and defaults
-- [Backup code and storage](concepts/backup-and-storage.md) — code format, localStorage keys, migration
-- [UI behaviour](concepts/ui-behaviour.md) — cells, search, tooltip, dialogs, routing
+- [Options and filters](concepts/options-and-filters.md) — four toggles, defaults, always-hidden kinds
+- [Backup code and storage](concepts/backup-and-storage.md) — caught set with collectibles, code format, localStorage keys
+- [UI behaviour](concepts/ui-behaviour.md) — box screen, undo toast, Guide, dialogs, routing
 - [Adding a new game](concepts/adding-a-new-game.md) — step-by-step
 
 ## Analyses

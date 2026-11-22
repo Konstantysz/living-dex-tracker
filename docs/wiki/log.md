@@ -26,3 +26,6 @@ Pages touched: CLAUDE.md. Notes: wiki prose follows ASD-STE100. Terms come from 
 
 ## [2026-11-22] lint | ASD-STE100 structural rules
 Pages touched: analyses/project-decisions.md, concepts/layout-rules.md, concepts/options-and-filters.md, concepts/packing-algorithm.md, concepts/ui-behaviour.md, entities/github-pages-deployment.md, entities/sv-game-config.md, sources/sv-prototype.md. Notes: removed all semicolons and one synonym pair. `npm run wiki:lint` now runs scripts/ste-lint.py. It skips raw/, CLAUDE.md and log.md. 24 advisory findings (possible passive voice) stay.
+
+## [2026-11-22] ingest | Repo changes 2026-11-16 to 2026-11-22
+Pages touched: entities/living-dex-tracker.md, entities/github-pages-deployment.md, entities/sv-game-config.md, entities/za-game-config.md (new), concepts/architecture.md, concepts/options-and-filters.md, concepts/backup-and-storage.md, concepts/ui-behaviour.md, analyses/project-decisions.md, index.md. Notes: sources are the repo files and commits since 2026-11-16 (Z-A, version exclusives, PC box look, PC-only forms, undo, Guide, ADRs, GLOSSARY, CODING_STANDARDS, check workflow). Options now have four toggles, not six. Not checked again: layout-rules, packing-algorithm and adding-a-new-game.

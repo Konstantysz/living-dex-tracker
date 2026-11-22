@@ -2,7 +2,7 @@
 title: SV game config
 type: entity
 sources: [src/games/sv/config.ts, src/core/types.ts]
-updated: 2026-11-16
+updated: 2026-11-22
 ---
 
 # SV game config
@@ -25,9 +25,14 @@ game. The type is in `src/core/types.ts`.
 | `labelOverrides`     | raw title-cased label → display label (e.g. "Paldea Combat Breed" → "Combat") |
 | `formNames`          | forced labels: Wooper and Wooper ♀ "Johto", Tauros "Kanto"                |
 | `toggleableForms`    | `alcremie`: non-base forms get kind `alc`                                 |
+| `goForms`            | Vivillon patterns that need Pokémon GO: kind `go`                         |
+| `dlcForms`           | forms that only a DLC gives: they move to that DLC dex, at the species number there |
+| `exclusives`         | `S` Scarlet and `V` Violet with their exclusive species (source: Serebii exclusives page, 2026-11-21) |
+| `collectibles`       | one set, `stake` "Słupki ruin": 4 shrines × 8 stakes, with Serebii image and mini-map links |
 
 Config files may contain code. Alcremie forms are computed from lists of creams and sweets
-(`slice(1)` drops the base form).
+(`slice(1)` drops the base form). Hand-written lists (`exclusives`, `collectibles`) have a comment
+with the source URL and the date.
 
 ## Related
 
