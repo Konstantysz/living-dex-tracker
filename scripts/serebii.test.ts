@@ -165,8 +165,8 @@ test('parseDexList maps national numbers to page slugs', () => {
 });
 
 describe('buildLocations', () => {
-  const A = { name: 'Apple Hills', slug: 'applehills' };
-  const B = { name: 'Asado Desert', slug: 'asadodesert' };
+  const A = { name: 'Apple Hills', slug: 'applehills', region: 'kitakami' };
+  const B = { name: 'Asado Desert', slug: 'asadodesert', region: 'paldea' };
   const input: { id: string; page: string; areas?: AreasByVersion }[] = [
     { id: 'shared', page: 'shared', areas: { S: [A], V: [A] } },
     { id: 'differs', page: 'differs', areas: { S: [A, B], V: [B] } },
@@ -192,7 +192,9 @@ describe('buildLocations', () => {
         const lists = Object.entries(e.areas ?? {})
           .filter(([k]) => v === null || k === v)
           .flatMap(([, l]) => l ?? []);
-        const want = [...new Map(lists.map((a) => [a.slug, a])).values()];
+        const want = [
+          ...new Map(lists.map((a) => [a.slug, { slug: a.slug, name: a.name }])).values(),
+        ];
         expect(areasFor(locs, e.id, v) ?? []).toEqual(want);
       }
   });
@@ -241,6 +243,24 @@ describe('buildLocations', () => {
         'd',
       ),
     ).toThrow(/two names/);
+    expect(() =>
+      buildLocations(
+        [{ id: 'x', page: 'x', areas: { S: [A, { ...A, region: 'paldea' }] } }],
+        's',
+        'd',
+      ),
+    ).toThrow(/region/);
+    expect(() =>
+      buildLocations(
+        [{ id: 'x', page: 'x', areas: { S: [{ ...A, region: undefined }] } }],
+        's',
+        'd',
+      ),
+    ).toThrow(/region/);
+    expect(buildLocations(input, 's', 'd').regions).toEqual({
+      applehills: 'kitakami',
+      asadodesert: 'paldea',
+    });
     expect(formatLocations(buildLocations(input, 'src/', 'd'))).toBe(
       formatLocations(buildLocations(input, 'src/', 'd')),
     );

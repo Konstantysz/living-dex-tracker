@@ -243,7 +243,9 @@ test('the areas tab opens details on a tap and does not toggle caught', async ()
   );
   await user.click(area.getAllByRole('button')[0]!);
   expect(document.querySelector('dialog.details')).toBeInTheDocument();
-  expect(localStorage.getItem('ldt:sv:caught')).toBeNull();
+  // A toggle would show the undo toast and raise the counter.
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  expect(screen.getByText(new RegExp(`^0 / ${total}`))).toBeInTheDocument();
 });
 
 test('the guide tracks collectibles in the caught set without counting them', async () => {

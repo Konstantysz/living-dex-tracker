@@ -188,7 +188,10 @@ export function buildLocations(
         if (seen !== undefined && seen !== a.name)
           throw new Error(`area "${a.slug}" has two names: "${seen}" and "${a.name}"`);
         names.set(a.slug, a.name);
-        if (a.region) regions.set(a.slug, a.region);
+        const region = regions.get(a.slug);
+        if (!a.region || (region !== undefined && region !== a.region))
+          throw new Error(`area "${a.slug}" has region "${a.region}", before "${region}"`);
+        regions.set(a.slug, a.region);
         return a.slug;
       });
     }
