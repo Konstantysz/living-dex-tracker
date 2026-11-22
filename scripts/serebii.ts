@@ -1,4 +1,4 @@
-import type { Area, AreasByVersion, Locations } from '../src/core/locations';
+import type { Area, AreasByVersion, EntryLocation, Locations } from '../src/core/locations';
 
 /** One line of a Locations cell on a Serebii species page. */
 export interface LocationLine {
@@ -216,5 +216,72 @@ export function formatLocations(l: Locations): string {
   return (
     `{\n "source": ${JSON.stringify(l.source)},\n "scraped": ${JSON.stringify(l.scraped)},\n` +
     ` "areas": ${block(l.areas)},\n "entries": ${block(l.entries)}\n}\n`
+  );
+}
+
+/** Areas of an entry as slugs per version. A shared list has the key `*`. */
+function perVersion(e: EntryLocation | undefined): Record<string, string[]> {
+  const a = e?.areas;
+  return !a ? {} : Array.isArray(a) ? { '*': a } : (a as Record<string, string[]>);
+}
+
+/**
+ * Plain-text summary of what changed between two `Locations`, for a PR body. Lists only entry ids
+ * and area slugs that changed. A shared list and a per-version object with the same slugs in
+ * every version are equal.
+ */
+export function diffLocations(before: Locations, after: Locations): string {
+  const has = (l: Locations) => Object.values(l.entries).filter((e) => e.areas).length;
+  const got: string[] = [];
+  const lost: string[] = [];
+  const changed: string[] = [];
+  for (const [id, e] of Object.entries(after.entries)) {
+    const b = perVersion(before.entries[id]);
+    const a = perVersion(e);
+    const bv = Object.keys(b);
+    const av = Object.keys(a);
+    if (!bv.length && av.length) got.push(id);
+    else if (bv.length && !av.length) lost.push(id);
+    else {
+      // expand a shared list to the versions of the other side
+      const keys = [...new Set([...bv, ...av])].filter((k) => k !== '*');
+      const get = (m: Record<string, string[]>, k: string) => (m[k] ?? m['*'] ?? []).join();
+      const diff = (keys.length ? keys : ['*']).filter((k) => get(a, k) !== get(b, k));
+      if (diff.length) changed.push(`${id} (${diff.join(', ')})`);
+    }
+  }
+  const added = Object.keys(after.areas).filter((s) => !(s in before.areas));
+  const removed = Object.keys(before.areas).filter((s) => !(s in after.areas));
+  const renamed = Object.keys(after.areas)
+    .filter((s) => s in before.areas && before.areas[s] !== after.areas[s])
+    .map((s) => `${s}: "${before.areas[s]}" -> "${after.areas[s]}"`);
+  const lines = [
+    [`Entries with data`, has(before) !== has(after) ? `${has(before)} -> ${has(after)}` : ''],
+    ...(
+      [
+        ['Got data', got],
+        ['Lost data', lost],
+        ['Areas changed', changed],
+        ['Areas added', added],
+        ['Areas removed', removed],
+        ['Areas renamed', renamed],
+      ] as const
+    ).map(([h, l]) => [
+      h,
+      l.length ? `(${l.length}) ${l.join(h === 'Areas renamed' ? '; ' : ' ')}` : '',
+    ]),
+  ]
+    .filter(([, v]) => v)
+    .map(([h, v]) => `${h}: ${v}`);
+  return lines.join('\n') || 'No changes.';
+}
+
+/** True when `x` has the shape of the `Locations` file. */
+export function isLocations(x: unknown): x is Locations {
+  const l = x as Locations | null;
+  return (
+    typeof l?.areas === 'object' &&
+    typeof l?.entries === 'object' &&
+    Object.values(l.entries ?? {}).every((e) => typeof e?.page === 'string')
   );
 }
