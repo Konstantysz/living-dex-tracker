@@ -3,6 +3,21 @@
  * (`scripts/map-overlay.ts`) share. The overlay writes `data-z` from `AREA_Z`.
  */
 
+export type Ring = [number, number][];
+
+/** A path is a list of rings: one ring for each `M ... Z` part of `d` (only M, L and Z). */
+export const parseRings = (d: string): Ring[] =>
+  d
+    .split('M')
+    .map((part) => part.match(/-?\d+(\.\d+)?/g)?.map(Number) ?? [])
+    .filter((nums) => nums.length >= 6)
+    .map((nums) =>
+      Array.from({ length: nums.length >> 1 }, (_, i): [number, number] => [
+        nums[2 * i]!,
+        nums[2 * i + 1]!,
+      ]),
+    );
+
 /** Paldea slugs that get no path: no source for their shape (#46). */
 export const NO_PATH = ['greatcraterofpaldea'];
 

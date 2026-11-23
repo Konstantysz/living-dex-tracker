@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Locations } from '../../core/locations';
 import locations from './generated/locations.json';
-import { AREA_Z, ENCLAVES, NO_PATH } from './mapAreas';
+import { AREA_Z, ENCLAVES, NO_PATH, parseRings } from './mapAreas';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const read = (name: string) => readFileSync(join(dir, name), 'utf8');
@@ -52,12 +52,11 @@ describe('map-areas.svg', () => {
   });
 
   it('cuts each enclave out of its parent: same corners, opposite winding, data-z 1', () => {
-    const rings = (id: string) =>
-      (paths.find((p) => p.id === id)?.d ?? '')
-        .split('M')
-        .slice(1)
-        .map((r) => (r.match(/-?\d+(\.\d+)?/g) ?? []).map(Number))
-        .map((n) => Array.from({ length: n.length / 2 }, (_, i) => [n[2 * i]!, n[2 * i + 1]!]));
+    const rings = (id: string) => {
+      const d = paths.find((p) => p.id === id)?.d;
+      if (d === undefined) throw new Error(`no path "${id}" in map-areas.svg`);
+      return parseRings(d);
+    };
     const signed = (r: number[][]) =>
       r.reduce(
         (s, p, i) => s + p[0]! * r[(i + 1) % r.length]![1]! - r[(i + 1) % r.length]![0]! * p[1]!,

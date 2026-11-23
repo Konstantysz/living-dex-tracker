@@ -8,7 +8,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import type { Locations } from '../src/core/locations';
-import { AREA_Z, NO_PATH } from '../src/games/sv/mapAreas';
+import { AREA_Z, NO_PATH, parseRings, type Ring } from '../src/games/sv/mapAreas';
 
 const at = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 const CACHE = at('./cache/serebii/');
@@ -28,18 +28,12 @@ if (unlisted.length)
 // The paths of the file are the start of the draft (the contract allows only M, L and Z).
 const areasFile = at('../src/games/sv/map-areas.svg');
 // A path is a list of rings: one ring for each `M ... Z` part of `d`.
-const initial: Record<string, [number, number][][]> = {};
+const initial: Record<string, Ring[]> = {};
 if (existsSync(areasFile)) {
   for (const [tag] of readFileSync(areasFile, 'utf8').matchAll(/<path\b[^>]*>/g)) {
     const id = tag.match(/\sid="([^"]+)"/)?.[1];
     if (!id) continue;
-    initial[id] = (tag.match(/\sd="([^"]*)"/)?.[1] ?? '')
-      .split('M')
-      .map((part) => part.match(/-?\d+(\.\d+)?/g)?.map(Number) ?? [])
-      .filter((nums) => nums.length >= 6)
-      .map((nums) =>
-        Array.from({ length: nums.length >> 1 }, (_, i) => [nums[2 * i]!, nums[2 * i + 1]!]),
-      );
+    initial[id] = parseRings(tag.match(/\sd="([^"]*)"/)?.[1] ?? '');
   }
 }
 
