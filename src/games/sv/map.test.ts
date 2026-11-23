@@ -3,12 +3,10 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Locations } from '../../core/locations';
 import locations from './generated/locations.json';
+import { AREA_Z, ENCLAVES, NO_PATH, parseRings } from './mapAreas';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const read = (name: string) => readFileSync(join(dir, name), 'utf8');
-
-/** Paldea slugs that get no path: no source for their shape (#46). */
-const NO_PATH = ['greatcraterofpaldea'];
 
 const locs = locations as Locations;
 const paldea = Object.keys(locs.regions).filter((s) => locs.regions[s] === 'paldea');
@@ -24,14 +22,13 @@ const paths = existsSync(join(dir, 'map-areas.svg'))
 const ids = paths.map((p) => p.id);
 
 describe('map-areas.svg', () => {
-  // TODO(#15): remove both .skip when map-areas.svg is drawn (step 3). They fail until it exists.
-  it.skip('exists, with the game-unit viewBox and no raster', () => {
+  it('exists, with the game-unit viewBox and no raster', () => {
     const svg = read('map-areas.svg');
     expect(svg).toContain('viewBox="0 0 5000 5000"');
     expect(svg).not.toMatch(/<image|data:/);
   });
 
-  it.skip('has a path for every Paldea slug except the listed ones', () => {
+  it('has a path for every Paldea slug except the listed ones', () => {
     expect(paldea.filter((s) => !NO_PATH.includes(s) && !ids.includes(s))).toEqual([]);
   });
 
@@ -45,8 +42,39 @@ describe('map-areas.svg', () => {
     expect(ids.length).toBe(new Set(ids).size);
   });
 
-  it('has data-z 0 to 3 on every path', () => {
+  it('has data-z 0 to 3 on every path, as in AREA_Z', () => {
     expect(paths.filter((p) => !/^[0-3]$/.test(p.z ?? '')).map((p) => p.id)).toEqual([]);
+    expect(paths.filter((p) => Number(p.z) !== AREA_Z[p.id!]).map((p) => p.id)).toEqual([]);
+  });
+
+  it('has a data-z in AREA_Z for every Paldea slug with a path, and for no other', () => {
+    expect(Object.keys(AREA_Z).sort()).toEqual(paldea.filter((s) => !NO_PATH.includes(s)).sort());
+  });
+
+  it('cuts each enclave out of its parent: same corners, opposite winding, data-z 1', () => {
+    const rings = (id: string) => {
+      const d = paths.find((p) => p.id === id)?.d;
+      if (d === undefined) throw new Error(`no path "${id}" in map-areas.svg`);
+      return parseRings(d);
+    };
+    const signed = (r: number[][]) =>
+      r.reduce(
+        (s, p, i) => s + p[0]! * r[(i + 1) % r.length]![1]! - r[(i + 1) % r.length]![0]! * p[1]!,
+        0,
+      );
+    const key = (r: number[][]) =>
+      r
+        .map((p) => p.join(','))
+        .sort()
+        .join(' ');
+    for (const [child, parent] of Object.entries(ENCLAVES)) {
+      const [outer, hole, ...rest] = rings(parent);
+      const [own, ...none] = rings(child);
+      expect(AREA_Z[child]).toBe(AREA_Z[parent]);
+      expect([rest.length, none.length]).toEqual([0, 0]);
+      expect(key(hole!)).toBe(key(own!));
+      expect(Math.sign(signed(hole!))).toBe(-Math.sign(signed(outer!)));
+    }
   });
 
   it('uses only absolute M, L and Z, with coordinates in 0 to 5000', () => {

@@ -32,6 +32,13 @@ The stand-in has these parts:
   array of x,y numbers), keeps `data-z` as draw order, and gives the polygons to Pixi `Graphics`.
   The prototype converts only `M`, `L` and `Z`. The map-file contract must either limit `map-areas.svg`
   to those commands or name a flattening step for curves.
+- **Enclaves (2026-11-23, #15):** some Areas lie inside another Area on the same level, for example
+  Socarrat Trail inside Casseroya Lake and Cortondo inside South Province Area Two. The parent path
+  has one more ring for each enclave: same corners, opposite winding. The enclave has the same
+  `data-z` as its parent (1). The renderer must read a path as a list of rings and cut the extra
+  rings out of the shape (a hole), so a tap in the enclave never hits the parent. The table is
+  `ENCLAVES` in `src/games/sv/mapAreas.ts`, and `map.test.ts` pins it. A layer above its parent (a
+  cave, a tiny Area) is not an enclave. It keeps a higher `data-z` and no hole.
 - **Hit-test:** Pixi's own event system (`rootBoundary.hitTest`). Sample the tap point and 4 points at
   12 px around it. Take the area with the highest `z`. This picked the right area on every tap in the
   prototype, including the tiny areas.

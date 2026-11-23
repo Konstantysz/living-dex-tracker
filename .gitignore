@@ -4,3 +4,5 @@ dist
 scripts/cache/serebii/
 scripts/cache/bulbagarden/
 .claude/worktrees/
+.hallmark/
+scripts/lpips-gate/
