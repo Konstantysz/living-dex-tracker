@@ -27,16 +27,19 @@ if (unlisted.length)
 
 // The paths of the file are the start of the draft (the contract allows only M, L and Z).
 const areasFile = at('../src/games/sv/map-areas.svg');
-const initial: Record<string, [number, number][]> = {};
+// A path is a list of rings: one ring for each `M ... Z` part of `d`.
+const initial: Record<string, [number, number][][]> = {};
 if (existsSync(areasFile)) {
   for (const [tag] of readFileSync(areasFile, 'utf8').matchAll(/<path\b[^>]*>/g)) {
     const id = tag.match(/\sid="([^"]+)"/)?.[1];
-    const nums = (tag.match(/\sd="([^"]*)"/)?.[1] ?? '').match(/-?\d+(\.\d+)?/g)?.map(Number) ?? [];
     if (!id) continue;
-    initial[id] = Array.from({ length: nums.length >> 1 }, (_, i) => [
-      nums[2 * i]!,
-      nums[2 * i + 1]!,
-    ]);
+    initial[id] = (tag.match(/\sd="([^"]*)"/)?.[1] ?? '')
+      .split('M')
+      .map((part) => part.match(/-?\d+(\.\d+)?/g)?.map(Number) ?? [])
+      .filter((nums) => nums.length >= 6)
+      .map((nums) =>
+        Array.from({ length: nums.length >> 1 }, (_, i) => [nums[2 * i]!, nums[2 * i + 1]!]),
+      );
   }
 }
 
@@ -62,6 +65,8 @@ const html = `<!doctype html>
   #map path[data-z="2"] { fill: #f3a; stroke: #f3a }
   #map path[data-z="3"] { fill: #f22; stroke: #f22 }
   #map .draft { fill: none; stroke: #0f0; stroke-width: 2; vector-effect: non-scaling-stroke }
+  #map .shared { fill: none; stroke: #fff; stroke-width: 4; stroke-opacity: .85; vector-effect: non-scaling-stroke; pointer-events: none }
+  #map .handle.weld { fill: #fc0 }
   #map .handle { fill: #fff; stroke: #000; stroke-width: 1.5; vector-effect: non-scaling-stroke; cursor: move }
   #map .mid { fill: #fff8; stroke: #000; stroke-width: 1; vector-effect: non-scaling-stroke; cursor: copy }
   #status { color: #8f8 }
@@ -75,6 +80,7 @@ const html = `<!doctype html>
   <button id="del" title="Delete">Delete path</button>
   <button id="undo" title="Ctrl+Z">Undo</button>
   <label><input type="checkbox" id="snap" checked> snap</label>
+  <label title="A corner that two paths share moves for both. Alt detaches one corner."><input type="checkbox" id="weld" checked> weld</label>
   <label><input type="checkbox" id="showPic" checked> picture</label>
   <label><input type="checkbox" id="showAreas" checked> areas</label>
   <label><input type="checkbox" id="fill" checked> fill</label>

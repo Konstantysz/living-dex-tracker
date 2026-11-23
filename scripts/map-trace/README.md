@@ -55,9 +55,14 @@ A human draws the paths in the draw mode of the overlay page. No editor is neede
    to add a corner. Right-click a white point to delete it.
 4. **Snap** reuses a nearby corner of any path, so shared borders have no gap. Turn it off to
    draw free.
-5. Controls: scroll zooms, a drag pans, **Ctrl+Z** undoes, **Esc** cancels, **Delete** removes the
+5. **Weld** (on by default) joins the sea and land Areas (`data-z` 0 and 1) like patches sewn
+   together. A corner that two paths share moves for both. A new corner on a shared edge goes into
+   both neighbours. A deleted corner leaves both. White thick lines are shared edges. Gold corners
+   are shared. **Alt** while you drag or delete detaches one corner. Nested Areas (`data-z` 2 and 3)
+   are not welded.
+6. Controls: scroll zooms, a drag pans, **Ctrl+Z** undoes, **Esc** cancels, **Delete** removes the
    selected path.
-6. The browser keeps the draft in `localStorage`. Click **Download map-areas.svg** and move the file
+7. The browser keeps the draft in `localStorage`. Click **Download map-areas.svg** and move the file
    to `src/games/sv/map-areas.svg`. Reload the page after `npm run map:overlay` to start from that
    file. **Reset to file** throws the draft away.
 

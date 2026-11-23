@@ -22,14 +22,13 @@ const paths = existsSync(join(dir, 'map-areas.svg'))
 const ids = paths.map((p) => p.id);
 
 describe('map-areas.svg', () => {
-  // TODO(#15): remove both .skip when map-areas.svg is drawn (step 3). They fail until it exists.
-  it.skip('exists, with the game-unit viewBox and no raster', () => {
+  it('exists, with the game-unit viewBox and no raster', () => {
     const svg = read('map-areas.svg');
     expect(svg).toContain('viewBox="0 0 5000 5000"');
     expect(svg).not.toMatch(/<image|data:/);
   });
 
-  it.skip('has a path for every Paldea slug except the listed ones', () => {
+  it('has a path for every Paldea slug except the listed ones', () => {
     expect(paldea.filter((s) => !NO_PATH.includes(s) && !ids.includes(s))).toEqual([]);
   });
 
