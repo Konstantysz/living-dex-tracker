@@ -1,8 +1,11 @@
 import { expect, test } from 'vitest';
+import svLayout from '../games/sv/generated/layout.json';
+import svLocations from '../games/sv/generated/locations.json';
 import type { DexEntry } from './types';
 import {
   areasFor,
   crowdedArea,
+  hasPaldeaArea,
   inPaldea,
   MANY_MISSING,
   missingByArea,
@@ -46,9 +49,26 @@ test('PokéMaps slugs follow the rule and the Area Zero exception', () => {
   expect(pokemapsEntryUrl('Wo-Chien')).toBe(`${base}wo-chien`);
 });
 
-test('inPaldea is true only for Paldea areas', () => {
+test('inPaldea and hasPaldeaArea are true only for Paldea areas', () => {
   expect(inPaldea(locs, 'asadodesert')).toBe(true);
   expect(inPaldea(locs, 'applehills')).toBe(false);
+  expect(hasPaldeaArea(locs, [a, b])).toBe(true);
+  expect(hasPaldeaArea(locs, [a])).toBe(false);
+  expect(hasPaldeaArea(locs, null)).toBe(false);
+});
+
+// The slug rule has no case for an apostrophe, a period or a gender sign (Farfetch'd, Mr. Mime,
+// Nidoran). No Paldea area or species name has one. Only Kitakami areas have an apostrophe, and
+// they get no PokéMaps link. This test fails when a new name needs a rule.
+test('no Paldea area or species name needs more than the slug rule', () => {
+  const sv = svLocations as Locations;
+  const paldeaAreas = Object.keys(sv.regions).filter((s) => inPaldea(sv, s));
+  const species = svLayout.groups
+    .flatMap((g) => g.items)
+    .filter((e) => hasPaldeaArea(sv, areasFor(sv, e.id, null)));
+  const names = [...paldeaAreas.map((s) => sv.areas[s]!), ...species.map((e) => e.name)];
+  expect(species.length).toBeGreaterThan(300);
+  expect(names.filter((n) => /[^\p{L}\p{M} -]/u.test(n))).toEqual([]);
 });
 
 test('areasFor returns the areas of one version', () => {

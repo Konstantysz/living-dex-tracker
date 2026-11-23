@@ -101,6 +101,23 @@ other version. On the data before the Alolan fix
 (#33), this test fails for Vulpix, Sandshrew and Sandslash. See [SV game config](../entities/sv-game-config.md).
 (source: `scripts/golden.test.ts`)
 
+## PokéMaps links (#50)
+
+The Areas tab and the Details dialog link to [PokéMaps](https://pokemaps.net). We cannot embed it,
+because the site blocks frames. We never copy its data. (source: `src/core/locations.ts`)
+
+- An area link shows for a Paldea Area only. The slug is the lowercase hyphenated name. The
+  Area `greatcraterofpaldea` links to `area-zero`.
+- An entry link shows only when the entry has a Paldea Area. The slug comes from the species name,
+  not from the Serebii page slug. Example: `great-tusk`, not `greattusk`.
+- A test pins the slug rule. It also fails when a new name has an apostrophe, a period or a
+  gender sign.
+
+On 2026-11-23, a hand check loaded 11 of 12 sampled area slugs and 5 species slugs. The site
+answers 200 for a wrong slug and shows an empty page. (source: `conversation:2026-11-23`)
+
+> **Unverified:** about 330 entry slugs follow the rule but nobody loaded them.
+
 ## Related
 
 - [UI behaviour](ui-behaviour.md)

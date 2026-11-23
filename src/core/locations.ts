@@ -36,6 +36,12 @@ export interface Locations {
 export const pokearthUrl = (locs: Locations, slug: string) =>
   `https://www.serebii.net/pokearth/${locs.regions[slug]}/${slug}.shtml`;
 
+/**
+ * PokéMaps page of a Paldea area or species. The owner approved the link and agreed that we never
+ * embed or copy the site (#50). A hand check on 2026-11-23 loaded 11 of the 12 sampled area slugs
+ * and 5 species slugs. The only area without a page is `greatcraterofpaldea`: see below.
+ * The site answers 200 for a wrong slug and shows an empty page, so a test cannot find a dead link.
+ */
 const POKEMAPS = 'https://pokemaps.net/maps/sv/paldea/';
 /** "Great Tusk" -> "great-tusk", "Flabébé" -> "flabebe". The slug rule of PokéMaps. */
 const pokemapsSlug = (name: string) =>
@@ -50,6 +56,10 @@ export const pokemapsEntryUrl = (speciesName: string) => POKEMAPS + pokemapsSlug
 
 /** True when the area is on the Paldea map (not Kitakami or Blueberry). */
 export const inPaldea = (locs: Locations, slug: string) => locs.regions[slug] === 'paldea';
+
+/** True when at least one of the areas is in Paldea, so PokéMaps has a page for the entry. */
+export const hasPaldeaArea = (locs: Locations, areas?: Area[] | null) =>
+  !!areas?.some((a) => inPaldea(locs, a.slug));
 
 /**
  * Areas of an entry in one game version, or in all versions when `version` is null (see

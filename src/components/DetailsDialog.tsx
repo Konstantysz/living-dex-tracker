@@ -1,7 +1,7 @@
 import { entryLabel, numberText } from '../core/entry';
 import {
   areasFor,
-  inPaldea,
+  hasPaldeaArea,
   pokemapsEntryUrl,
   type AreaProgress,
   type Locations,
@@ -93,7 +93,7 @@ export function DetailsDialog({
             </a>
             , {locations.scraped}
           </p>
-          {areas?.some((a) => inPaldea(locations, a.slug)) && (
+          {hasPaldeaArea(locations, areas) && (
             <p>
               <a href={pokemapsEntryUrl(it.name)} target="_blank" rel="noopener noreferrer">
                 Zobacz na PokéMaps
