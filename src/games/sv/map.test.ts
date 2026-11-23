@@ -3,12 +3,10 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Locations } from '../../core/locations';
 import locations from './generated/locations.json';
+import { AREA_Z, NO_PATH } from './mapAreas';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const read = (name: string) => readFileSync(join(dir, name), 'utf8');
-
-/** Paldea slugs that get no path: no source for their shape (#46). */
-const NO_PATH = ['greatcraterofpaldea'];
 
 const locs = locations as Locations;
 const paldea = Object.keys(locs.regions).filter((s) => locs.regions[s] === 'paldea');
@@ -45,8 +43,13 @@ describe('map-areas.svg', () => {
     expect(ids.length).toBe(new Set(ids).size);
   });
 
-  it('has data-z 0 to 3 on every path', () => {
+  it('has data-z 0 to 3 on every path, as in AREA_Z', () => {
     expect(paths.filter((p) => !/^[0-3]$/.test(p.z ?? '')).map((p) => p.id)).toEqual([]);
+    expect(paths.filter((p) => Number(p.z) !== AREA_Z[p.id!]).map((p) => p.id)).toEqual([]);
+  });
+
+  it('has a data-z in AREA_Z for every Paldea slug with a path, and for no other', () => {
+    expect(Object.keys(AREA_Z).sort()).toEqual(paldea.filter((s) => !NO_PATH.includes(s)).sort());
   });
 
   it('uses only absolute M, L and Z, with coordinates in 0 to 5000', () => {
