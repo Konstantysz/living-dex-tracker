@@ -19,8 +19,10 @@ The owner accepts this risk.
   `Paldea.png`. We patch whole rectangles, never a mix inside one tile. Each patched rectangle (in
   game units) goes into `NOTES.md`.
 - The fine LOD is traced from the source picture downscaled to 3000 px, in 3x3 tiles with a 16 px
-  overlap. The numbers that were tested for this setup are in
-  `docs/wiki/analyses/lpips-gate-findings.md`.
+  overlap. The measurements and the gate numbers for this setup are in
+  `docs/wiki/analyses/lpips-gate-findings.md`. They are not part of this decision.
+- The Serebii zoom-3 grid is 16 by 16 tiles of 256 px. All 256 tiles exist and none is blank, so no
+  rectangle needs a patch.
 
 ## Consequences
 

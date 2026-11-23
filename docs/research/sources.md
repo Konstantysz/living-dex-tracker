@@ -51,7 +51,7 @@ PokéMaps (`pokemaps.net`), approved by the owner on 2026-11-23 as a second refe
 ## Sources for the area map (base art)
 
 - **Serebii map tiles:** `https://www.serebii.net/pokearth/paldea/map/tile_{z}-{x}-{y}.png`. Zoom 3 is
-  the maximum (8 by 8 tiles of 512 px, 4096 px). Zoom 4 and 5 return 404. The user approved it
+  the maximum (16 by 16 tiles of 256 px, 4096 px). Zoom 4 and 5 return 404. The user approved it
   as an LPIPS reference. The cache is git-ignored (`scripts/cache/serebii/`). The user approved
   tracing the stitched tiles to SVG for the base art, and we commit the SVG (ADR 5). We never
   commit the tiles.
