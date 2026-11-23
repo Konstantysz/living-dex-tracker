@@ -1,0 +1,6 @@
+[project]
+name = "lpips-gate"
+version = "0.0.0"
+description = "PROTOTYPE (throwaway): LPIPS gate for map-base.svg, issue #45"
+requires-python = ">=3.11,<3.14"
+dependencies = ["torch", "lpips", "vtracer", "resvg-py", "pillow", "numpy"]
