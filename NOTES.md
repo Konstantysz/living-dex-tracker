@@ -55,3 +55,17 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   in Kitakami in both games. So `exclusives` can now name an entry id: `vulpix-alola` and
   `ninetales-alola` get `v: 'S'`, `sandshrew-alola` and `sandslash-alola` get `v: 'V'`, and the
   Kanto forms lose their mark. No id or order changes.
+- **Base art LPIPS gate (#15, 2026-11-23).** `uv run scripts/map-trace/gate.py` scores the traced
+  `src/games/sv/map-base-*.svg` (17 MB, 12 files) with AlexNet LPIPS on 256 px windows. Fine LOD,
+  9 tiles painted in order, 3000 px, limit mean <= 0.04 and worst <= 0.08 per tile:
+  0-0 0.0235 / 0.0521, 0-1 0.0274 / 0.0810, **0-2 0.1828 / 0.5821**, 1-0 0.0212 / 0.0367,
+  1-1 0.0316 / 0.0468, 1-2 0.0401 / 0.0845, 2-0 0.0335 / 0.0599, 2-1 0.0432 / 0.0851,
+  2-2 0.0275 / 0.0767. Five tiles pass. Four miss the limit (0-1, 1-2, 2-1 by a small margin, 0-2
+  by a lot). Seam strips mean 0.0398, interior strips 0.0511: the seams are no worse. Coarse LODs
+  against their own downscale: LOD 8 0.0419 / 0.0700, LOD 4 0.0495 / 0.1294, LOD 2 0.0759 / 0.5253
+  (mean / worst; judged by eye, no limit). Cause of tile 0-2 and the LOD 2 worst window: the game
+  paints the deep sea (north-east) and the Area Zero lake with fine diagonal stripes. The trace
+  makes them one flat colour, so shape and colour match but LPIPS sees a large error. No patch of
+  the source picture was needed.
+  The owner accepted the gate as measured (2026-11-23): the lost stripes are known and wanted, and
+  the four tiles above the limit stay as they are.

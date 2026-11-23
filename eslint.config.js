@@ -4,7 +4,16 @@ import hooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
 export default tseslint.config(
-  { ignores: ['dist', 'reference', 'scripts/cache', 'public', '.claude/worktrees'] },
+  {
+    ignores: [
+      'dist',
+      'reference',
+      'scripts/cache',
+      'scripts/lpips-gate',
+      'public',
+      '.claude/worktrees',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
