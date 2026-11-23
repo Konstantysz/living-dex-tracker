@@ -1,7 +1,7 @@
 ---
 title: Paldea area map, research and decisions
 type: analysis
-sources: [docs/research/sources.md, docs/adr/0003-area-map-as-svg-data.md, src/games/sv/generated/locations.json, conversation:2026-11-23]
+sources: [docs/research/sources.md, docs/adr/0003-area-map-as-svg-data.md, docs/adr/0004-area-map-rendered-with-pixijs.md, src/games/sv/generated/locations.json, conversation:2026-11-23]
 updated: 2026-11-23
 ---
 
@@ -15,10 +15,12 @@ The map has these tickets:
 
 - Where do the area borders come from? Closed.
 - Which reference lets a human place the 31 Areas? Closed.
-- Which slugs get a path, and which get an exception? Open.
-- Which render engine? Open.
+- Which slugs get a path, and which get an exception? Closed. 30 of 31 slugs get a path.
+  `greatcraterofpaldea` is the only exception.
+- Which render engine? Closed. PixiJS (ADR 0004).
 - How good is the LPIPS gate for the base art? Open.
-- What is the contract of the map files for #15? Open. Three tickets block it.
+- What is the contract of the map files for #15? Open. The LPIPS ticket blocks it.
+- Does the Pixi prototype work on a real phone? Open.
 
 ## Scope
 
@@ -38,7 +40,8 @@ No approved Serebii source gives an Area border. (source: `conversation:2026-11-
   Markers use game units from 0 to 5000. The standard spawns form a grid of 250 units.
 
 > **Note:** ADR 0003 describes the 1024×1024 picture that we have. Serebii serves tiles up to 4096
-> px. The two do not contradict. ADR 0004 must say which one is the reference for the base art.
+> px. The two do not contradict. ADR 0004 does not say which one is the reference for the base art.
+> The LPIPS ticket must decide it.
 
 ## Reference maps for a human
 
@@ -81,13 +84,35 @@ PokéMaps is the quality bar for our map. A visitor test found these facts.
   has one `<path id="<slug>">` per Area. A human checks the Areas on an overlay.
 - LPIPS is the quality gate for the base art only. The tool lives in `scripts/`, outside
   `package.json`.
-- The owner chose a Canvas or WebGL renderer for the slippy map, with touch from version one. A
-  prototype ticket compares engines. It must include SVG with a CSS transform as the baseline,
-  because PokéMaps uses it.
-- ADR 0004 replaces ADR 0003 when the engine ticket closes.
+- The owner chose a Canvas or WebGL renderer for the slippy map, with touch from version one.
+- The render engine is PixiJS v8. ADR 0004 replaces the renderer parts of ADR 0003.
+  (source: `docs/adr/0004-area-map-rendered-with-pixijs.md`)
+
+## Render engine
+
+A prototype compared MapLibre GL, PixiJS and plain Canvas 2D. It used a stand-in for `map-areas.svg`
+with 30 paths, 300 markers and a 4096 px base. The branch is `prototype/area-map-engines`. It is not
+merged. (source: `docs/adr/0004-area-map-rendered-with-pixijs.md`)
+
+| Engine   | Normal mode | Stress mode (5,000 points per Area)    |
+| -------- | ----------- | -------------------------------------- |
+| PixiJS   | 60 fps      | 60 fps, start 131 ms                   |
+| Canvas   | 36 fps      | 24 fps, spikes to 200 ms               |
+| MapLibre | 60 fps      | start took 12 to 35 s, no valid timing |
+
+- All numbers come from a desktop browser with a visible window. A phone was not tested.
+- Pixi hit-tests took 0.4 to 3.5 ms. They found the right Area on every tap, also for the tiny Areas.
+- MapLibre needs an explicit worker URL under Vite. Without it, it logs "Worker failed to load".
+- The prototype reads only the path commands `M`, `L` and `Z`. The contract ticket decides how
+  curves work.
+- Our own code must handle pan, pinch and label hiding. Pixi has no label collision.
+
+> **Unverified:** phone behaviour, real path sizes, and sharpness of the base at high zoom.
 
 ## Open points
 
+- The ticket "Phone check of the Pixi area-map prototype" can reopen the engine choice.
+- Sharpness of the base at high zoom: one 4096 px texture or a tile pyramid.
 - `areazero` and `greatcraterofpaldea` are two Serebii slugs. PokéMaps has one shape for both.
 - Seas, caves, `pokemonleague` and `cortondo` need a decision: path, point marker or no mark.
 - The overlay page for the human check is not designed.

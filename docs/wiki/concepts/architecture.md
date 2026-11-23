@@ -26,7 +26,7 @@ src/games/index.ts          registry: config + layout per game, imports theme.cs
 src/games/<id>/             config.ts, theme.css, generated/layout.json, generated/locations.json (SV)
 src/components/             React UI
 public/sprites/pokemon/     sprites
-docs/adr/                   decisions (ADR 0001 to 0003)
+docs/adr/                   decisions (ADR 0001 to 0004)
 docs/wiki/                  this wiki
 GLOSSARY.md                 domain terms (EN, PL, code identifier)
 CODING_STANDARDS.md         judgement rules for the reviewer

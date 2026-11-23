@@ -47,3 +47,6 @@ Pages touched: concepts/location-data.md, concepts/ui-behaviour.md. Notes: sourc
 
 ## [2026-11-23] ingest | Paldea area map research (#43, #15)
 Pages touched: analyses/paldea-area-map-research.md (new), concepts/location-data.md, analyses/project-decisions.md, index.md. Notes: sources are the research of tickets #44 and #49 (unmerged branches `research/paldea-area-borders` and `research/paldea-area-sources-other`), a visitor test of PokéMaps, and docs/research/sources.md. The new page holds the findings. The rules of use stay in sources.md.
+
+## [2026-11-23] ingest | Render engine decision (#47)
+Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md. Notes: source is ADR 0004 and the engine prototype (unmerged branch `prototype/area-map-engines`). Ticket list updated for #46 and #47. All timings come from a desktop browser.

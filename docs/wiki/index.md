@@ -30,4 +30,4 @@ Catalog of all wiki pages. The LLM updates this file on every change.
 
 - [Reference quirks](analyses/reference-quirks.md) — odd details in the reference files, awaiting a decision
 - [Project decisions and acceptance status](analyses/project-decisions.md) — decisions, criteria, open points
-- [Paldea area map, research and decisions](analyses/paldea-area-map-research.md) — border sources, reference maps, engine facts, open points
+- [Paldea area map, research and decisions](analyses/paldea-area-map-research.md) — border sources, reference maps, render engine (PixiJS) and its test results, open points
