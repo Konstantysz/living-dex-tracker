@@ -1,3 +1,9 @@
+set -e
 npx lint-staged
-npm run typecheck
-npm run test
+staged=$(git diff --cached --name-only)
+# Wiki pages: run the wiki checks. Docs-only commits skip typecheck and tests (CI runs them).
+if echo "$staged" | grep -q '^docs/wiki/'; then npm run wiki:lint; fi
+if echo "$staged" | grep -qv '^docs/'; then
+  npm run typecheck
+  npm run test
+fi

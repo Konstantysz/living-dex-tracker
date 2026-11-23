@@ -36,6 +36,20 @@ Use a screenshot only to judge the look (colours, spacing, text).
 - `resize_window` with the `mobile` preset gives 375×812. Reset it with `desktop` when you finish.
 - On a phone, the header hides most buttons behind "Więcej". Open it first.
 
+## Frame timing
+
+A hidden pane throttles `requestAnimationFrame`. Frame times from a hidden pane are wrong (for
+example 2 fps and a 1000 ms max for an engine that runs at 60 fps). Bring the pane to the front
+(Ctrl+Shift+B) before any benchmark or animation check. Check `document.visibilityState` first.
+
+## Real phone over the LAN
+
+1. Run `npx vite --host --port <free port>`. The "Network" line shows the URL for the phone.
+2. Allow the port in Windows Firewall, in an admin PowerShell, for the Private profile:
+   `New-NetFirewallRule -DisplayName "vite-<port>" -Direction Inbound -Protocol TCP -LocalPort <port> -Action Allow -Profile Private`.
+   Remove the rule when you finish (`Remove-NetFirewallRule -DisplayName "vite-<port>"`).
+3. The phone must be on the same Wi-Fi, and Windows must call that network "Private".
+
 ## Interaction
 
 - Click by `ref` from `find`, not by coordinates. Coordinates go stale after a layout change.
