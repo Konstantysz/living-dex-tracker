@@ -9,12 +9,35 @@ Read this file before you research which forms or species belong to a dex.
 | Is a species in the Paldea, Kitakami or Blueberry dex, and at which number? | `scripts/cache/<sha>/pokemon_dex_numbers.csv`: columns `species_id,pokedex_id,pokedex_number`; pokedex 31 = Paldea, 32 = Kitakami, 33 = Blueberry. This file decides placement.                               |
 | How is a form obtained (wild, trade, gift, breeding, evolution)?            | Serebii per species: `https://www.serebii.net/pokedex-sv/<species>/`                                                                                                                                          |
 | Which species are in each dex?                                              | Serebii `paldeapokedex.shtml`, `kitakamipokedex.shtml`, `blueberrypokedex.shtml` (under `/scarletviolet/`). They list species only; form names appear as image suffixes (`-a` Alola, `-g` Galar, `-h` Hisui). |
+| Where is a Paldea area on the map?                                          | Bulbagarden Archives: `https://archives.bulbagarden.net/wiki/File:Paldea_<Area_Name>_Map.png` (one area outlined, 30 of 31) and `File:Paldea.png`. See "Area map references".                                 |
+| Where is a Paldea area on the map (second reference)?                       | PokéMaps: `https://pokemaps.net/maps/sv/paldea/`. Its "Area outlines" option draws the border of every area. See "Area map references".                                                                       |
 | Anything else                                                               | Pokémon Wiki, Pokepedia, game8. Bulbapedia returns 403 to `WebFetch`; read it through `WebSearch` snippets.                                                                                                   |
 
 ## How to read the pages
 
 - `WebFetch` summarises only the first 100,000 characters. Location tables and "Alternate Forms" are far down: call again with `offset`.
 - Give each fetch one narrow question (one species, one dex).
+
+## Area map references
+
+Approved by the owner on 2026-11-23, for the Paldea area map (issues #15 and #49). Findings: branch
+`research/paldea-area-sources-other`, file `docs/research/paldea-area-sources-other.md`.
+
+- Use: a human looks at the files to draw our own paths. Do not trace the outlines automatically. Do not copy the files, or any part of them, into the repository or the app.
+- Store the downloads only in a git-ignored cache.
+- Terms: the files are game screenshots ("fair use" on each file page). The site text is CC BY-NC-SA 2.5. `robots.txt` allows `/wiki/` and disallows `/w/`. Crawl delay is 5 seconds.
+- Coverage: 30 of the 31 Paldea slugs. `areazero` has no file, and no source shows its shape.
+- Scale: `File:Paldea.png` is 3000×3000 px and fits the Serebii map. `game units = px × 5000 / 3000`.
+- Neighbouring outlines do not match exactly. The human chooses one shared border.
+
+PokéMaps (`pokemaps.net`), approved by the owner on 2026-11-23 as a second reference:
+
+- Use: the same rule as above. A human looks at the map to draw our own paths. Do not scrape its data, tiles or polygons. Do not copy them into the repository or the app.
+- Terms: no licence and no statement about reuse. The imprint names a private, non-commercial fan project (Terastal.net, Germany). `robots.txt` disallows only `/internal/`.
+- Embedding is blocked: the page sends `X-Frame-Options: SAMEORIGIN` and `frame-ancestors 'self'`. Link to it. Do not embed it.
+- Coverage (a visitor test on 2026-11-23): "Area outlines" draws every area. 30 of our 31 Paldea slugs have a shape with a matching title. `greatcraterofpaldea` has none: the site shows it only as the subtitle of Area Zero. The geometry and the accuracy of the borders are not checked. The site names no source for its area shapes. It says only "Contains data from PokeDB".
+- Deep links: `https://pokemaps.net/maps/sv/paldea/<slug>`. An area slug is the lowercase, hyphenated name without parentheses (`south-province-area-two`). A Pokémon slug is the lowercase name (`lechonk`).
+- It also has maps of other games. Check it first for the later maps (Kitakami, Blueberry, Lumiose and other games).
 
 ## Rules for changing `config.ts`
 
