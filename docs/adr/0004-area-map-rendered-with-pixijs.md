@@ -1,15 +1,24 @@
 # 4. The area map is rendered with PixiJS from two SVG files
 
-Status: accepted (2026-11-23). Replaces the renderer parts of ADR 3.
+Status: accepted (2026-11-23). Replaces the renderer parts, the tracer part and the file name
+`map.svg` of ADR 3. The phone check (issue "Phone check of the Pixi area-map prototype") can reopen it.
 
 ## Context
 
-ADR 3 chose SVG in the DOM as the first renderer. Later work changed the target: a slippy map with
-pan, zoom, markers and filters, with touch support from version one, on Canvas or WebGL. The
-engine ticket compared MapLibre GL, PixiJS and plain Canvas 2D in a prototype
-(branch `prototype/area-map-engines`, page `prototype-map.html`). All three engines read the same
-stand-in for `map-areas.svg`: 30 paths in game coordinates 0 to 5000 (4 seas, 20 land areas, 4 nested
-areas, 2 tiny areas of about 76 units), 300 markers and a 4096 px raster base.
+ADR 3 chose SVG in the DOM as the first renderer. Later work changed the target. The map must pan
+and zoom, show markers and filters, and work by touch from version one. It must use Canvas or WebGL.
+
+An engine ticket compared MapLibre GL, PixiJS and plain Canvas 2D in a prototype. The branch is
+`prototype/area-map-engines` and the page is `prototype-map.html`. All three engines read the same
+stand-in for `map-areas.svg`. The prototype generates the shapes in code. It writes them as an SVG
+string and parses that string. It is not a drawn map.
+
+The stand-in has these parts:
+
+- 30 paths in game coordinates 0 to 5000: 4 seas, 20 land areas, 4 nested areas and 2 tiny areas
+  of about 76 units
+- 300 markers
+- a 4096 px raster base
 
 ## Decision
 
@@ -24,9 +33,10 @@ areas, 2 tiny areas of about 76 units), 300 markers and a 4096 px raster base.
   The prototype converts only `M`, `L` and `Z`. The map-file contract must either limit `map-areas.svg`
   to those commands or name a flattening step for curves.
 - **Hit-test:** Pixi's own event system (`rootBoundary.hitTest`). Sample the tap point and 4 points at
-  12 px around it, then take the area with the highest `z`. This picked the right area on every tap in
-  the prototype, including the tiny areas.
-- **Labels:** Pixi `Text` in screen space, hidden when the area is narrower than 50 px on screen.
+  12 px around it. Take the area with the highest `z`. This picked the right area on every tap in the
+  prototype, including the tiny areas.
+- **Labels:** Pixi `Text` in screen space. A label is hidden when the larger side of its area is 50 px
+  or less on screen.
   Pixi has no label collision. The renderer issue decides if that is enough.
 
 ## Results (desktop Chrome, pane visible, 8 s pan and zoom, 300 markers)

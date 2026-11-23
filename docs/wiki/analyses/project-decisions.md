@@ -29,8 +29,10 @@ Formal decisions now live as ADRs in `docs/adr/`. Domain terms live in `GLOSSARY
   [Backup code and storage](../concepts/backup-and-storage.md).
 - ADR 0003: the area map is our own SVG path data, not a copied picture.
 - ADR 0004: the area map uses PixiJS (WebGL). It replaces the renderer parts of ADR 0003.
+  (source: `docs/adr/0004-area-map-rendered-with-pixijs.md`)
 - Area map (2026-11-23): a human draws the 31 Paldea Areas. Reference maps are for looking only.
-  A prototype on desktop chose PixiJS. The phone check is still open. See
+  A prototype on desktop chose PixiJS. The phone check is still open.
+  (source: `conversation:2026-11-23`) See
   [Paldea area map, research and decisions](paldea-area-map-research.md).
 - In-game names (places, shrines, Pokémon) stay in English in the UI. (source: `GLOSSARY.md`)
 - Badges work like trophies or achievements: title, info, image, `is_hidden`. The split into base

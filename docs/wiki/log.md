@@ -50,3 +50,6 @@ Pages touched: analyses/paldea-area-map-research.md (new), concepts/location-dat
 
 ## [2026-11-23] ingest | Render engine decision (#47)
 Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md. Notes: source is ADR 0004 and the engine prototype (unmerged branch `prototype/area-map-engines`). Ticket list updated for #46 and #47. All timings come from a desktop browser.
+
+## [2026-11-23] lint | Review fixes for the render engine ingest
+Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md unchanged. Notes: added missing sources, removed an outdated "Open points" line, replaced the Note marker with Unverified, bumped one date, fixed phrasal verbs, long sentences and the word "region". Also fixed ADR 0003, ADR 0004 and sources.md.

@@ -2,7 +2,7 @@
 title: Architecture
 type: concept
 sources: [README.md, CLAUDE.md, src/core, src/games, scripts, .gitattributes]
-updated: 2026-11-22
+updated: 2026-11-23
 ---
 
 # Architecture

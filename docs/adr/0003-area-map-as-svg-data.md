@@ -1,6 +1,8 @@
 # 3. The area map is SVG path data, traced with help from an agent
 
-Status: accepted (2026-11-22). Renderer parts replaced by [ADR 4](0004-area-map-rendered-with-pixijs.md) (2026-11-23).
+Status: accepted (2026-11-22). Partly replaced by [ADR 4](0004-area-map-rendered-with-pixijs.md)
+(2026-11-23). ADR 4 replaces the renderer (now PixiJS, not SVG in the DOM), the tracer (a human draws
+the areas) and the file name (`map-base.svg` and `map-areas.svg`, not `map.svg`). The rest stands.
 
 ## Context
 

@@ -23,7 +23,7 @@ Read this file before you research which forms or species belong to a dex.
 Approved by the owner on 2026-11-23, for the Paldea area map (issues #15 and #49). Findings: branch
 `research/paldea-area-sources-other`, file `docs/research/paldea-area-sources-other.md`.
 
-- Use: a human looks at the files to draw our own paths. Do not trace the outlines automatically. Do not copy the files, or any part of them, into the repository or the app.
+- Use: a human examines the files to draw our own paths. Do not trace the outlines automatically. Do not copy the files, or any part of them, into the repository or the app.
 - Store the downloads only in a git-ignored cache.
 - Terms: the files are game screenshots ("fair use" on each file page). The site text is CC BY-NC-SA 2.5. `robots.txt` allows `/wiki/` and disallows `/w/`. Crawl delay is 5 seconds.
 - Coverage: 30 of the 31 Paldea slugs. `areazero` has no file, and no source shows its shape.
@@ -32,10 +32,13 @@ Approved by the owner on 2026-11-23, for the Paldea area map (issues #15 and #49
 
 PokéMaps (`pokemaps.net`), approved by the owner on 2026-11-23 as a second reference:
 
-- Use: the same rule as above. A human looks at the map to draw our own paths. Do not scrape its data, tiles or polygons. Do not copy them into the repository or the app.
+- Use: the same rule as above. A human examines the map to draw our own paths. Do not scrape its data, tiles or polygons. Do not copy them into the repository or the app.
 - Terms: no licence and no statement about reuse. The imprint names a private, non-commercial fan project (Terastal.net, Germany). `robots.txt` disallows only `/internal/`.
 - Embedding is blocked: the page sends `X-Frame-Options: SAMEORIGIN` and `frame-ancestors 'self'`. Link to it. Do not embed it.
-- Coverage (a visitor test on 2026-11-23): "Area outlines" draws every area. 30 of our 31 Paldea slugs have a shape with a matching title. `greatcraterofpaldea` has none: the site shows it only as the subtitle of Area Zero. The geometry and the accuracy of the borders are not checked. The site names no source for its area shapes. It says only "Contains data from PokeDB".
+- Coverage (a visitor test on 2026-11-23): "Area outlines" draws every area. 30 of our 31 Paldea slugs have a shape with a matching title.
+- `greatcraterofpaldea` has no shape. The site shows it only as the subtitle of Area Zero.
+- The geometry and the accuracy of the borders are not checked.
+- The site names no source for its area shapes. It says only "Contains data from PokeDB".
 - Deep links: `https://pokemaps.net/maps/sv/paldea/<slug>`. An area slug is the lowercase, hyphenated name without parentheses (`south-province-area-two`). A Pokémon slug is the lowercase name (`lechonk`).
 - It also has maps of other games. Check it first for the later maps (Kitakami, Blueberry, Lumiose and other games).
 
