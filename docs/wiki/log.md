@@ -44,3 +44,6 @@ Pages touched: concepts/location-data.md. Notes: source is the #35 change. The p
 
 ## [2026-11-22] ingest | Areas tab (#14)
 Pages touched: concepts/location-data.md, concepts/ui-behaviour.md. Notes: source is the #14 change. The pages now describe the "Obszary" tab, the `regions` field, the Pokéarth link and the details tip.
+
+## [2026-11-23] ingest | LPIPS gate for the base SVG (#45)
+Pages touched: analyses/lpips-gate-findings.md (new), entities/vectorcraft.md (new), index.md. Notes: source is the #45 work session. The four-LOD design is marked unverified until #54.

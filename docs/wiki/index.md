@@ -14,6 +14,7 @@ Catalog of all wiki pages. The LLM updates this file on every change.
 - [SV game config](entities/sv-game-config.md) — the declarative `GameConfig` for Scarlet/Violet
 - [Z-A game config](entities/za-game-config.md) — the `GameConfig` for Legends: Z-A, box check from screenshots
 - [GitHub Pages deployment](entities/github-pages-deployment.md) — live URL, deploy and PR check workflows
+- [VectorCraft](entities/vectorcraft.md) — image-trace tool for the area map, MCP setup, settings that worked
 
 ## Concepts
 
@@ -30,3 +31,4 @@ Catalog of all wiki pages. The LLM updates this file on every change.
 
 - [Reference quirks](analyses/reference-quirks.md) — odd details in the reference files, awaiting a decision
 - [Project decisions and acceptance status](analyses/project-decisions.md) — decisions, criteria, open points
+- [LPIPS gate for the base SVG](analyses/lpips-gate-findings.md) — scores, sizes, accepted gate, Serebii tile limit (#45)
