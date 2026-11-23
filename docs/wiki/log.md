@@ -57,3 +57,6 @@ Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.
 
 ## [2026-11-23] lint | Review fixes for the render engine ingest
 Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md unchanged. Notes: added missing sources, removed an outdated "Open points" line, replaced the Note marker with Unverified, bumped one date, fixed phrasal verbs, long sentences and the word "region". Also fixed ADR 0003, ADR 0004 and sources.md.
+
+## [2026-11-23] ingest | Seam test for traced fine tiles (#58)
+Pages touched: analyses/lpips-gate-findings.md, index.md. Also fixed ADR 0005 and sources.md. Notes: the Serebii grid is 16 by 16 tiles of 256 px, not 8 by 8 of 512 px. The four-LOD note is now a result of #54. The new fine-LOD gate rests on two scored tile files and one seam. The page marks it, and the four-LOD claim, as unverified.
