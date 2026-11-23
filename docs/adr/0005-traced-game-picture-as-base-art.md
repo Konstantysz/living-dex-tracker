@@ -27,3 +27,7 @@ The owner accepts this risk.
 ## Consequences
 
 A trace in git history is hard to remove. Only a history rewrite removes it.
+
+The gate in `docs/wiki/analyses/lpips-gate-findings.md` is not met by four of the nine fine tiles.
+The cause is the striped deep sea, which the trace makes one flat colour. The owner accepted the
+scores as measured on 2026-11-23. The numbers are in `NOTES.md`.
