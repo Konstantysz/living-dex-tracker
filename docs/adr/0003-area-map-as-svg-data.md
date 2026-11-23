@@ -1,6 +1,6 @@
 # 3. The area map is SVG path data, traced with help from an agent
 
-Status: accepted (2026-11-22)
+Status: accepted (2026-11-22). Renderer parts replaced by [ADR 4](0004-area-map-rendered-with-pixijs.md) (2026-11-23).
 
 ## Context
 
