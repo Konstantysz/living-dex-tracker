@@ -2,7 +2,7 @@
 title: Project decisions and acceptance status
 type: analysis
 sources: [conversation:2026-11-16, conversation:2026-11-22, README.md, NOTES.md, docs/adr]
-updated: 2026-11-22
+updated: 2026-11-23
 ---
 
 # Project decisions and acceptance status
@@ -28,6 +28,9 @@ Formal decisions now live as ADRs in `docs/adr/`. Domain terms live in `GLOSSARY
 - ADR 0002: collectibles (e.g. ruin stakes) share the caught set. See
   [Backup code and storage](../concepts/backup-and-storage.md).
 - ADR 0003: the area map is our own SVG path data, not a copied picture.
+- Area map (2026-11-23): a human draws the 31 Paldea Areas. Reference maps are for looking only.
+  The owner chose a Canvas or WebGL renderer. ADR 0004 replaces ADR 0003 when the engine is
+  chosen. See [Paldea area map, research and decisions](paldea-area-map-research.md).
 - In-game names (places, shrines, Pokémon) stay in English in the UI. (source: `GLOSSARY.md`)
 - Badges work like trophies or achievements: title, info, image, `is_hidden`. The split into base
   game and DLC is automatic. (source: issue #12)
