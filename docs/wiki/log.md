@@ -44,3 +44,12 @@ Pages touched: concepts/location-data.md. Notes: source is the #35 change. The p
 
 ## [2026-11-22] ingest | Areas tab (#14)
 Pages touched: concepts/location-data.md, concepts/ui-behaviour.md. Notes: source is the #14 change. The pages now describe the "Obszary" tab, the `regions` field, the Pokéarth link and the details tip.
+
+## [2026-11-23] ingest | Paldea area map research (#43, #15)
+Pages touched: analyses/paldea-area-map-research.md (new), concepts/location-data.md, analyses/project-decisions.md, index.md. Notes: sources are the research of tickets #44 and #49 (unmerged branches `research/paldea-area-borders` and `research/paldea-area-sources-other`), a visitor test of PokéMaps, and docs/research/sources.md. The new page holds the findings. The rules of use stay in sources.md.
+
+## [2026-11-23] ingest | Render engine decision (#47)
+Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md. Notes: source is ADR 0004 and the engine prototype (unmerged branch `prototype/area-map-engines`). Ticket list updated for #46 and #47. All timings come from a desktop browser.
+
+## [2026-11-23] lint | Review fixes for the render engine ingest
+Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.md, concepts/architecture.md, index.md unchanged. Notes: added missing sources, removed an outdated "Open points" line, replaced the Note marker with Unverified, bumped one date, fixed phrasal verbs, long sentences and the word "region". Also fixed ADR 0003, ADR 0004 and sources.md.
