@@ -9,7 +9,7 @@ sources:
     src/games/sv/theme.css,
     conversation:2026-11-22,
   ]
-updated: 2026-11-22
+updated: 2026-11-23
 ---
 
 # UI behaviour
@@ -59,8 +59,8 @@ Alcremie forms (Z-A) shows no notice. (source: `src/components/App.tsx`)
   "Słupki ruin": 4 shrines with 8 stakes each, and a counter "x/8" per shrine. Each stake links to
   its Serebii image and mini-map. The button shows only for a game with collectibles. On a phone (up to
   600 px) the Guide fills the screen. See [Backup code and storage](backup-and-storage.md) for the
-  ids. The Guide has the tabs "Znajdźki", "Odznaki" and "Obszary". The "Obszary" tab shows only for
-  a game with location data. See [Location data](location-data.md). (source: `src/components/GuideDialog.tsx`)
+  ids. The Guide has the tabs "Znajdźki", "Odznaki", "Obszary" and "Mapa". The "Obszary" tab shows only
+  for a game with location data. The "Mapa" tab shows only for a game with a map. See [Location data](location-data.md). (source: `src/components/GuideDialog.tsx`)
 - **Details dialog ("Szczegóły"):** the label, the dex and national number, the kind, the version
   exclusive mark and a Serebii link (`GameConfig.serebii`, SV only). For SV it also shows "Miejsca
   złapania": the Areas for "Moja wersja", or for both versions. See

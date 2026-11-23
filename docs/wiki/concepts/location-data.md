@@ -1,7 +1,7 @@
 ---
 title: Location data
 type: concept
-sources: [docs/adr/0001-serebii-as-source-of-location-data.md, scripts/serebii.ts, scripts/data-locations.ts, src/core/locations.ts, src/components/DetailsDialog.tsx, src/components/AreaList.tsx, scripts/golden.test.ts, .gitattributes, README.md, conversation:2026-11-22]
+sources: [docs/adr/0001-serebii-as-source-of-location-data.md, scripts/serebii.ts, scripts/data-locations.ts, src/core/locations.ts, src/components/DetailsDialog.tsx, src/components/AreaList.tsx, src/components/MapTab.tsx, src/components/MapCanvas.tsx, src/core/areaMap.ts, scripts/golden.test.ts, .gitattributes, README.md, conversation:2026-11-22]
 updated: 2026-11-23
 ---
 
@@ -92,6 +92,25 @@ The "Obszary" tab of the Guide lists the Areas for the "Moja wersja" setting. (s
 - Each Area links to its Pokéarth page.
 - `crowdedArea` finds the Area of an entry with the most missing entries. The details dialog shows
   a tip when this count is `MANY_MISSING` (10) or more.
+
+## Map tab (#16)
+
+The "Mapa" tab of the Guide shows the Areas on a PixiJS map. (source: `src/components/MapTab.tsx`,
+`src/components/MapCanvas.tsx`)
+
+- The tab shows only when every Paldea Area has a shape in `map-areas.svg` or is listed in `NO_PATH`.
+  The tab lists an Area in `NO_PATH` as text under the map. (source: `src/games/index.ts`)
+- The player picks an entry by search. Its Areas for "Moja wersja" light up.
+- A tap on the map calls `hitTest`. The rules (sample points, `data-z`, tie-break) are in
+  [ADR 0004](../../adr/0004-area-map-rendered-with-pixijs.md). (source: `src/core/areaMap.ts`)
+- A tap on an Area lists its missing entries, as in the Areas tab.
+- The base art uses the LODs 8, 4 and 2. The 9 fine tiles lie above them when the view touches 4
+  tiles or fewer. Each tile file has a 5000-unit viewBox, so the app cuts the viewBox to the square
+  of the tile (`tileRect`) before it makes the texture. The app keeps 4 tiles at most.
+  (source: `src/core/areaMap.ts`, `src/components/MapCanvas.tsx`)
+  > **Unverified:** a phone may run out of memory or drop frames with the tiles. Phone check #51
+  > is open.
+- The canvas has no keyboard control. The Areas tab is the route for a keyboard (owner decision).
 
 ## Checks
 
