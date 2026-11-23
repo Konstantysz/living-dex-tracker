@@ -26,6 +26,11 @@ The reviewer reads this file. It holds judgement rules that no tool can check. E
   `docs/wiki/concepts/` page that describes it, in the same PR. Follow `docs/wiki/CLAUDE.md` for
   the `index.md` and `log.md` updates.
 
+- A wiki page about a decision links to its ADR for numbers and rules. It does not copy tables.
+  One decision then needs one edit, not one per page.
+- An ADR that replaces part of an older ADR updates the status line of the older ADR in the same
+  change. Name what it replaces.
+
 ## Data has a source
 
 - Pokémon data comes from the config and the cached CSVs. See `docs/research/sources.md`.

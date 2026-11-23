@@ -45,6 +45,8 @@ Pages touched: concepts/location-data.md. Notes: source is the #35 change. The p
 ## [2026-11-22] ingest | Areas tab (#14)
 Pages touched: concepts/location-data.md, concepts/ui-behaviour.md. Notes: source is the #14 change. The pages now describe the "Obszary" tab, the `regions` field, the Pokéarth link and the details tip.
 
+## [2026-11-23] schema | wiki:lint runs wiki-structure.py
+Pages touched: CLAUDE.md. Notes: the Lint section now says that `wiki:lint` also runs `scripts/wiki-structure.py` (callout markers, links, index, `updated:` date, source warnings). Reason: a review found these problems by hand. The glossary "Avoid" check was tried and dropped, because an Avoid word is wrong only for one term.
 ## [2026-11-23] ingest | Paldea area map research (#43, #15)
 Pages touched: analyses/paldea-area-map-research.md (new), concepts/location-data.md, analyses/project-decisions.md, index.md. Notes: sources are the research of tickets #44 and #49 (unmerged branches `research/paldea-area-borders` and `research/paldea-area-sources-other`), a visitor test of PokéMaps, and docs/research/sources.md. The new page holds the findings. The rules of use stay in sources.md.
 
