@@ -69,3 +69,8 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   the source picture was needed.
   The owner accepted the gate as measured (2026-11-23): the lost stripes are known and wanted, and
   the four tiles above the limit stay as they are.
+- **Overlay check of `map-areas.svg` (#15, 2026-11-23).** The owner checked the 30 paths in
+  `npm run map:overlay` against the source picture and accepted them. Socarrat Trail and Cortondo
+  are enclaves (a hole in Casseroya Lake and in South Province Area Two, `data-z` 1). The other
+  nested Areas stay layers on top: Alfornada Cavern and Dalizapa Passage (2), Inlet Grotto (3).
+  This closes #15.
