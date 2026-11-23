@@ -63,11 +63,15 @@ Wiki prose follows ASD-STE100 Issue 9. Code, identifiers, file paths and quotes 
 - Use one word for one meaning. Use the terms of [`GLOSSARY.md`](../../GLOSSARY.md). Do not use
   their "Avoid" synonyms. Define a new domain term once, and add it to the glossary.
 
-Lint also checks these rules. `npm run wiki:lint` checks the structural rules on all pages except
-`raw/`. It runs `scripts/wiki-structure.py` (callout markers, links, `index.md`, `updated:` date of
-changed pages, and a warning for sections with no `(source: …)`) and `scripts/ste-lint.py`. It needs
-`uv`. The pre-commit hook runs it when a wiki page is staged. Extra arguments go to the linter, for example
-`npm run wiki:lint -- --json`. The linter never flags hedges.
+Lint also checks these rules. `npm run wiki:lint` checks all pages except `raw/`. It needs `uv`. It
+runs two scripts:
+
+- `scripts/wiki-structure.py` checks callout markers, links, `index.md` and the `updated:` date of
+  changed pages. It warns about a section with no `(source: …)`.
+- `scripts/ste-lint.py` checks the writing style. Extra arguments go to this linter, for example
+  `npm run wiki:lint -- --json`. It never flags hedges.
+
+The pre-commit hook runs `wiki:lint` when a wiki page is staged.
 
 ## Operations
 

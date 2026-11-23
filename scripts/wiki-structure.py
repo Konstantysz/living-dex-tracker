@@ -23,7 +23,15 @@ MARKERS = {"Conflict", "Unverified"}
 
 def git(*args):
     r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+    if r.returncode != 0 and r.stderr.strip():
+        print(f"warning git {' '.join(args)} failed: {r.stderr.strip()}", file=sys.stderr)
     return r.stdout.strip() if r.returncode == 0 else ""
+
+
+def dirty_files():
+    """Uncommitted changes, including new files that git does not track yet."""
+    names = git("diff", "--name-only", "HEAD").split("\n") + git("ls-files", "--others", "--exclude-standard").split("\n")
+    return {n for n in names if n}
 
 
 def pages():
@@ -51,7 +59,7 @@ def prose(text):
 
 def changed_pages():
     """Pages that differ from the working tree base: uncommitted, or ahead of origin/main."""
-    names = set(git("diff", "--name-only", "HEAD").split("\n"))
+    names = dirty_files()
     if git("rev-parse", "--verify", "-q", "origin/main"):
         names |= set(git("diff", "--name-only", "origin/main...HEAD").split("\n"))
     return {ROOT / n for n in names if n}
@@ -60,7 +68,7 @@ def changed_pages():
 def main():
     errors, warnings = [], []
     index = (WIKI / "index.md").read_text(encoding="utf-8")
-    dirty = set(git("diff", "--name-only", "HEAD").split("\n"))
+    dirty = dirty_files()
     changed = changed_pages()
     today = datetime.date.today().isoformat()
 
@@ -99,7 +107,7 @@ def main():
                     cur.append((n, line))
             sections.append(cur)
             for s in sections:
-                if page in changed and len(s) >= 2 and not any("(source:" in l or "source:" in l for _, l in s):
+                if page in changed and len(s) >= 2 and not any("source:" in l for _, l in s):
                     warnings.append(f"{rel}:{s[0][0]} source: section of {len(s)} lines has no (source: ...)")
 
     for w in warnings:
