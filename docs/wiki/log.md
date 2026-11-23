@@ -63,3 +63,12 @@ Pages touched: analyses/lpips-gate-findings.md, index.md. Also fixed ADR 0005 an
 
 ## [2026-11-23] ingest | PokéMaps links (#50)
 Pages touched: concepts/location-data.md, index.md unchanged. Notes: the slug rule, the Area Zero exception and the hand check of 2026-11-23. About 330 entry slugs are marked unverified.
+
+## [2026-11-23] ingest | Guide map tab (#16)
+Pages touched: concepts/ui-behaviour.md, concepts/location-data.md, index.md unchanged. Notes: sources are the new map code on branch `issue-16-area-map`. Nothing was tested on a phone. Fine tiles are not loaded.
+
+## [2026-11-23] ingest | Fine tiles in the map (#16)
+Pages touched: concepts/location-data.md, index.md unchanged. Notes: the map now loads the 9 fine tiles with a cut viewBox, so the line "Fine tiles are not loaded" in the entry above no longer holds. Nothing was tested on a phone.
+
+## [2026-11-23] lint | Review fixes for the map tab (#16)
+Pages touched: concepts/location-data.md (hit-test rules now link to ADR 0004). Also fixed ADR 0004 (hit-test is our own function) and the glossary. Notes: no page added, so index.md is unchanged.

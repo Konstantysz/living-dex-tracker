@@ -1,22 +1,27 @@
 import { useState } from 'react';
 import type { Badge } from '../core/badges';
+import type { GameMap } from '../core/areaMap';
 import { collectibleId } from '../core/entry';
 import type { AreaProgress, Locations } from '../core/locations';
-import type { CollectibleSet } from '../core/types';
+import type { CollectibleSet, DexEntry } from '../core/types';
 import { AreaList } from './AreaList';
 import { BadgeList } from './BadgeList';
 import { Dialog } from './Dialog';
+import { MapTab } from './MapTab';
 
 const fill = (url: string, section: string, n: number) =>
   url.replaceAll('{section}', section).replaceAll('{n}', String(n));
 
-export type GuideTab = 'collectibles' | 'badges' | 'areas';
+export type GuideTab = 'collectibles' | 'badges' | 'areas' | 'map';
 
 /** Guide (Poradnik): the one entry point for help features. Tabs: collectibles, badges, areas. */
 export function GuideDialog({
   sets,
   badges,
   locations,
+  map,
+  entries,
+  version,
   progress,
   onDetails,
   visible,
@@ -29,6 +34,10 @@ export function GuideDialog({
   badges: Badge[];
   /** Games without location data (Z-A) have no areas tab. */
   locations?: Locations;
+  /** Area map files. No map: no "Mapa" tab. */
+  map?: GameMap;
+  entries: DexEntry[];
+  version: string | null;
   /** Areas of the player's version (`missingByArea`). */
   progress: AreaProgress[];
   onDetails: (id: string) => void;
@@ -41,11 +50,13 @@ export function GuideDialog({
   onClose: () => void;
 }) {
   const [picked, setTab] = useState(initialTab);
-  const tabs: [GuideTab, string][] = [
-    ...(sets.length ? [['collectibles', 'Znajdźki'] as [GuideTab, string]] : []),
-    ['badges', 'Odznaki'],
-    ...(locations ? [['areas', 'Obszary'] as [GuideTab, string]] : []),
+  const all: [GuideTab, string, boolean][] = [
+    ['collectibles', 'Znajdźki', sets.length > 0],
+    ['badges', 'Odznaki', true],
+    ['areas', 'Obszary', !!locations],
+    ['map', 'Mapa', !!locations && !!map],
   ];
+  const tabs = all.filter(([, , on]) => on);
   // A tab the game lacks (Z-A has no collectibles) falls back to the badges tab.
   const tab = tabs.some(([id]) => id === picked) ? picked : 'badges';
   return (
@@ -62,6 +73,16 @@ export function GuideDialog({
       {tab === 'badges' && <BadgeList badges={badges} caught={caught} visible={visible} />}
       {tab === 'areas' && locations && (
         <AreaList locations={locations} progress={progress} onDetails={onDetails} />
+      )}
+      {tab === 'map' && locations && map && (
+        <MapTab
+          map={map}
+          locations={locations}
+          progress={progress}
+          entries={entries}
+          version={version}
+          onDetails={onDetails}
+        />
       )}
       {(tab === 'collectibles' ? sets : []).map((set) => (
         <section key={set.id}>

@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { tileRect } from '../../core/areaMap';
 import type { Locations } from '../../core/locations';
 import locations from './generated/locations.json';
 import { AREA_Z, ENCLAVES, NO_PATH, parseRings } from './mapAreas';
@@ -97,6 +98,16 @@ describe('map-base files', () => {
       const svg = read(f);
       expect(svg).toContain('viewBox="0 0 5000 5000"');
       expect(svg).not.toMatch(/<image|data:/);
+    }
+  });
+
+  // MapCanvas cuts the viewBox of a tile to `tileRect`. A re-trace that moves a tile must fail here.
+  it('place each fine tile at its tileRect', () => {
+    for (const f of files.filter((n) => n.startsWith('map-base-1-'))) {
+      const [, row, col] = f.match(/map-base-1-(\d)-(\d)\.svg$/)!;
+      const m = read(f).match(/translate\(([\d.]+) ([\d.]+)\) scale\(/)!;
+      const r = tileRect({ row: Number(row), col: Number(col) });
+      expect([Number(m[1]), Number(m[2])]).toEqual([r.x, r.y]);
     }
   });
 });

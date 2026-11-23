@@ -39,9 +39,11 @@ The stand-in has these parts:
   rings out of the shape (a hole), so a tap in the enclave never hits the parent. The table is
   `ENCLAVES` in `src/games/sv/mapAreas.ts`, and `map.test.ts` pins it. A layer above its parent (a
   cave, a tiny Area) is not an enclave. It keeps a higher `data-z` and no hole.
-- **Hit-test:** Pixi's own event system (`rootBoundary.hitTest`). Sample the tap point and 4 points at
-  12 px around it. Take the area with the highest `z`. This picked the right area on every tap in the
-  prototype, including the tiny areas.
+- **Hit-test (amended 2026-11-23, #16):** our own function `hitTest` in `src/core/areaMap.ts`, not
+  Pixi's event system (`rootBoundary.hitTest`). The prototype used the Pixi event system and picked
+  the right area on every tap. The app needs a test that runs without WebGL, so the rule is plain
+  code. Sample the tap point and 4 points at 12 px around it. Take the area with the highest `z`.
+  On a tie, take the area with the smaller net area, so an enclave wins over its parent.
 - **Labels:** Pixi `Text` in screen space. A label is hidden when the larger side of its area is 50 px
   or less on screen.
   Pixi has no label collision. The renderer issue decides if that is enough.

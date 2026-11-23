@@ -1,0 +1,22 @@
+.wrap {
+  position: relative;
+  height: min(60vh, 520px);
+  margin: var(--space-md) 0;
+}
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+.zoom {
+  position: absolute;
+  right: var(--space-xs);
+  top: var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+.zoom button {
+  width: 44px;
+  height: 44px;
+  font-size: 1.4rem;
+}

@@ -74,3 +74,10 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   are enclaves (a hole in Casseroya Lake and in South Province Area Two, `data-z` 1). The other
   nested Areas stay layers on top: Alfornada Cavern and Dalizapa Passage (2), Inlet Grotto (3).
   This closes #15.
+- **Guide map tab (#16, 2026-11-23).** The base LODs 8, 4 and 2 show by zoom. The 9 fine tiles lie
+  above them. Each tile file has a 5000-unit viewBox but paints only its own square, so the app
+  cuts the viewBox to that square (`tileRect`) before it makes the texture. One tile is about
+  11 MB. The view loads a tile only when it touches 4 tiles or fewer, and the app keeps 4 tiles
+  at most. A test pins the position of every tile to its `translate`. The tap test is our own
+  function (`hitTest`), not the Pixi event system, so a test can run without WebGL. The tile
+  memory and the frame rate are not checked on a phone. Phone check #51 is open.

@@ -336,3 +336,15 @@ test('text dialog lists boxes in 5 rows of 6', async () => {
   expect(text).toMatch(/^=== Box 1 ===\n(.* \| .*\n){5}\n=== Box 2 ===/);
   expect(within(document.body).getAllByText('Kopiuj').length).toBeGreaterThan(0);
 });
+
+test('the Guide has a "Mapa" tab only for a game with a map', async () => {
+  const user = userEvent.setup();
+  const { unmount } = render(<App />);
+  await user.click(screen.getByText('Poradnik'));
+  expect(screen.getByRole('button', { name: 'Mapa' })).toBeInTheDocument();
+  unmount();
+  location.hash = '#za';
+  render(<App />);
+  await user.click(screen.getByText('Poradnik'));
+  expect(screen.queryByRole('button', { name: 'Mapa' })).toBeNull();
+});
