@@ -3,7 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Locations } from '../../core/locations';
 import locations from './generated/locations.json';
-import { AREA_Z, NO_PATH } from './mapAreas';
+import { AREA_Z, ENCLAVES, NO_PATH } from './mapAreas';
 
 const dir = dirname(fileURLToPath(import.meta.url));
 const read = (name: string) => readFileSync(join(dir, name), 'utf8');
@@ -49,6 +49,33 @@ describe('map-areas.svg', () => {
 
   it('has a data-z in AREA_Z for every Paldea slug with a path, and for no other', () => {
     expect(Object.keys(AREA_Z).sort()).toEqual(paldea.filter((s) => !NO_PATH.includes(s)).sort());
+  });
+
+  it('cuts each enclave out of its parent: same corners, opposite winding, data-z 1', () => {
+    const rings = (id: string) =>
+      (paths.find((p) => p.id === id)?.d ?? '')
+        .split('M')
+        .slice(1)
+        .map((r) => (r.match(/-?\d+(\.\d+)?/g) ?? []).map(Number))
+        .map((n) => Array.from({ length: n.length / 2 }, (_, i) => [n[2 * i]!, n[2 * i + 1]!]));
+    const signed = (r: number[][]) =>
+      r.reduce(
+        (s, p, i) => s + p[0]! * r[(i + 1) % r.length]![1]! - r[(i + 1) % r.length]![0]! * p[1]!,
+        0,
+      );
+    const key = (r: number[][]) =>
+      r
+        .map((p) => p.join(','))
+        .sort()
+        .join(' ');
+    for (const [child, parent] of Object.entries(ENCLAVES)) {
+      const [outer, hole, ...rest] = rings(parent);
+      const [own, ...none] = rings(child);
+      expect(AREA_Z[child]).toBe(AREA_Z[parent]);
+      expect([rest.length, none.length]).toEqual([0, 0]);
+      expect(key(hole!)).toBe(key(own!));
+      expect(Math.sign(signed(hole!))).toBe(-Math.sign(signed(outer!)));
+    }
   });
 
   it('uses only absolute M, L and Z, with coordinates in 0 to 5000', () => {
