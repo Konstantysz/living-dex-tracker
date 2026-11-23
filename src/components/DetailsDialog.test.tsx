@@ -49,6 +49,17 @@ test('details show only the areas of the player version, with source and date', 
   expect(screen.getByText(/2026-11-22/)).toBeInTheDocument();
 });
 
+test('the PokéMaps link opens safely in a new tab and shows only for a Paldea entry', () => {
+  const { unmount } = show('a', 'S');
+  const link = screen.getByRole('link', { name: 'Zobacz na PokéMaps' });
+  expect(link).toHaveAttribute('href', 'https://pokemaps.net/maps/sv/paldea/a');
+  expect(link).toHaveAttribute('target', '_blank');
+  expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  unmount();
+  show('a', 'V'); // Violet: only a Kitakami area
+  expect(screen.queryByRole('link', { name: 'Zobacz na PokéMaps' })).not.toBeInTheDocument();
+});
+
 test('details show the areas of both versions when no version is set', () => {
   show('a', null);
   expect(screen.getByText('Apple Hills')).toBeInTheDocument();

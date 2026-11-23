@@ -1,5 +1,11 @@
 import { entryLabel } from '../core/entry';
-import { pokearthUrl, type AreaProgress, type Locations } from '../core/locations';
+import {
+  inPaldea,
+  pokearthUrl,
+  pokemapsAreaUrl,
+  type AreaProgress,
+  type Locations,
+} from '../core/locations';
 
 /** The "Obszary" tab of the Guide: areas by number of missing entries. */
 export function AreaList({
@@ -16,9 +22,23 @@ export function AreaList({
     <ul className="areas">
       {progress.map(({ area, missing }) => {
         const link = (
-          <a href={pokearthUrl(locations, area.slug)} target="_blank" rel="noreferrer">
-            Pokéarth
-          </a>
+          <>
+            <a href={pokearthUrl(locations, area.slug)} target="_blank" rel="noreferrer">
+              Pokéarth
+            </a>
+            {inPaldea(locations, area.slug) && (
+              <>
+                {' '}
+                <a
+                  href={pokemapsAreaUrl(locations, area.slug)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Zobacz na PokéMaps
+                </a>
+              </>
+            )}
+          </>
         );
         return missing.length ? (
           <li key={area.slug}>

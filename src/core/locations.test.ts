@@ -3,9 +3,12 @@ import type { DexEntry } from './types';
 import {
   areasFor,
   crowdedArea,
+  inPaldea,
   MANY_MISSING,
   missingByArea,
   pokearthUrl,
+  pokemapsAreaUrl,
+  pokemapsEntryUrl,
   type Locations,
 } from './locations';
 
@@ -21,6 +24,32 @@ const locs: Locations = {
     sprigatito: { page: 'sprigatito' },
   },
 };
+
+test('PokéMaps slugs follow the rule and the Area Zero exception', () => {
+  const l: Locations = {
+    ...locs,
+    areas: {
+      southprovinceareatwo: 'South Province Area Two',
+      glaseadomountain: 'Glaseado Mountain',
+      areazero: 'Area Zero',
+      greatcraterofpaldea: 'Great Crater of Paldea',
+    },
+  };
+  const base = 'https://pokemaps.net/maps/sv/paldea/';
+  expect(pokemapsAreaUrl(l, 'southprovinceareatwo')).toBe(`${base}south-province-area-two`);
+  expect(pokemapsAreaUrl(l, 'glaseadomountain')).toBe(`${base}glaseado-mountain`);
+  expect(pokemapsAreaUrl(l, 'areazero')).toBe(`${base}area-zero`);
+  expect(pokemapsAreaUrl(l, 'greatcraterofpaldea')).toBe(`${base}area-zero`);
+  expect(pokemapsEntryUrl('Lechonk')).toBe(`${base}lechonk`);
+  expect(pokemapsEntryUrl('Great Tusk')).toBe(`${base}great-tusk`);
+  expect(pokemapsEntryUrl('Flabébé')).toBe(`${base}flabebe`);
+  expect(pokemapsEntryUrl('Wo-Chien')).toBe(`${base}wo-chien`);
+});
+
+test('inPaldea is true only for Paldea areas', () => {
+  expect(inPaldea(locs, 'asadodesert')).toBe(true);
+  expect(inPaldea(locs, 'applehills')).toBe(false);
+});
 
 test('areasFor returns the areas of one version', () => {
   expect(areasFor(locs, 'pikachu', 'V')).toEqual([a]);

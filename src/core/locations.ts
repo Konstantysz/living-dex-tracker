@@ -36,6 +36,21 @@ export interface Locations {
 export const pokearthUrl = (locs: Locations, slug: string) =>
   `https://www.serebii.net/pokearth/${locs.regions[slug]}/${slug}.shtml`;
 
+const POKEMAPS = 'https://pokemaps.net/maps/sv/paldea/';
+/** "Great Tusk" -> "great-tusk", "Flabébé" -> "flabebe". The slug rule of PokéMaps. */
+const pokemapsSlug = (name: string) =>
+  name.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/\s+/g, '-');
+
+/** PokéMaps page of a Paldea area. `greatcraterofpaldea` has no page of its own: Area Zero. */
+export const pokemapsAreaUrl = (locs: Locations, slug: string) =>
+  POKEMAPS + (slug === 'greatcraterofpaldea' ? 'area-zero' : pokemapsSlug(locs.areas[slug]!));
+
+/** PokéMaps page of a species in Paldea. The page of a species that is not there is empty. */
+export const pokemapsEntryUrl = (speciesName: string) => POKEMAPS + pokemapsSlug(speciesName);
+
+/** True when the area is on the Paldea map (not Kitakami or Blueberry). */
+export const inPaldea = (locs: Locations, slug: string) => locs.regions[slug] === 'paldea';
+
 /**
  * Areas of an entry in one game version, or in all versions when `version` is null (see
  * `gameVersion`). Returns null when there is no data, so the UI never shows an empty list.
