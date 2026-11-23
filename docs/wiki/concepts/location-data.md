@@ -2,7 +2,7 @@
 title: Location data
 type: concept
 sources: [docs/adr/0001-serebii-as-source-of-location-data.md, scripts/serebii.ts, scripts/data-locations.ts, src/core/locations.ts, src/components/DetailsDialog.tsx, src/components/AreaList.tsx, scripts/golden.test.ts, .gitattributes, README.md, conversation:2026-11-22]
-updated: 2026-11-22
+updated: 2026-11-23
 ---
 
 # Location data
@@ -107,3 +107,4 @@ other version. On the data before the Alolan fix
 - [SV game config](../entities/sv-game-config.md)
 - [Generator and PokeAPI data](../entities/generator-and-pokeapi.md)
 - [Project decisions](../analyses/project-decisions.md)
+- [Paldea area map, research and decisions](../analyses/paldea-area-map-research.md)
