@@ -1,11 +1,27 @@
-# Base art is a committed trace of the Serebii map picture
+# 5. The base art is a committed trace of the Serebii map
 
-The Paldea area map (ADR 0003, ADR 0004) needs a base layer. We trace the Serebii map tiles (zoom 3, 8x8 tiles, stitched to 4096 px) to SVG with VectorCraft and commit the SVG files. A trace of a game picture is a copy in vector form. The owner accepts this risk. We chose it over drawing our own art, because the trace looks like the game map and the work is small.
+Status: accepted (2026-11-23). Replaces the rule in ADR 3 that we do not publish the game's map
+picture, and the Serebii and Bulbagarden rules in `docs/research/sources.md`.
 
-Rules:
+## Context
 
-- The source picture stays in the git-ignored cache. Only the traced SVG files are committed. No raster image is committed.
-- Where Serebii has no tile or a blank area, we patch the stitched picture from the Bulbagarden Archives `Paldea.png` (3000 px, scaled by 4096/3000). We patch whole rectangles, never a mix inside one tile. Each patched rectangle (in game units) is recorded in `NOTES.md`.
-- The fine LOD is traced from the picture downscaled to 3000 px, in 3x3 tiles with a 16 px overlap. The tested LPIPS and size numbers come from this setup.
+The area map (ADR 3, ADR 4) needs base art under the area paths. The options were our own drawn art
+or a vector trace of the Serebii map tiles. The owner chose the trace. It looks like the game map,
+and the work is small. The risk is copyright: a trace of a game picture is a copy in vector form.
+The owner accepts this risk.
 
-The trace is hard to remove from git history. A history rewrite is the only way.
+## Decision
+
+- The source picture is the Serebii map tiles at zoom 3, stitched to 4096 px. See
+  `docs/research/sources.md`. An agent traces it to SVG with VectorCraft and we commit the SVG files.
+- The source picture stays in a git-ignored cache. We commit no raster image of the base art.
+- If Serebii has no tile or a blank area, we patch the source picture from the Bulbagarden Archives
+  `Paldea.png`. We patch whole rectangles, never a mix inside one tile. Each patched rectangle (in
+  game units) goes into `NOTES.md`.
+- The fine LOD is traced from the source picture downscaled to 3000 px, in 3x3 tiles with a 16 px
+  overlap. The numbers that were tested for this setup are in
+  `docs/wiki/analyses/lpips-gate-findings.md`.
+
+## Consequences
+
+A trace in git history is hard to remove. Only a history rewrite removes it.

@@ -2,7 +2,9 @@
 
 Status: accepted (2026-11-22). Partly replaced by [ADR 4](0004-area-map-rendered-with-pixijs.md)
 (2026-11-23). ADR 4 replaces the renderer (now PixiJS, not SVG in the DOM), the tracer (a human draws
-the areas) and the file name (`map-base.svg` and `map-areas.svg`, not `map.svg`). The rest stands.
+the areas) and the file name (`map-base.svg` and `map-areas.svg`, not `map.svg`). [ADR 5](0005-traced-game-picture-as-base-art.md)
+(2026-11-23) replaces the rule "We do not publish Serebii's or the game's map picture": the base art
+is a committed trace of the Serebii map. The rest stands.
 
 ## Context
 
