@@ -53,7 +53,7 @@ The user judged the detail 20 and detail 50 renders "gorgeous".
 - A lower trace detail in VectorCraft does not shrink the file below level 20. The anchors of the
   coast and terrain stay. The detail setting is the wrong tool for a coarse level.
 - VectorCraft output uses `M`, `L`, `C` and `Z`. Most segments are `C` curves. The engine prototype
-  reads only `M`, `L` and `Z`. Either a flattening step or an engine that reads `C` is needed. Not
+  reads only `M`, `L` and `Z`. The project needs a flattening step or an engine that reads `C`. Not
   yet decided. Issue #48 (the file contract) may decide it.
 - Serebii map tiles stop at zoom 3. `tile_3-7-7.png` exists. `tile_4-*` and `tile_5-*` return 404.
   The grid is 8 by 8 tiles of 512 px, so the best reference is 4096 px.
