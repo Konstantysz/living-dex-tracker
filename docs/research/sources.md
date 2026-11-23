@@ -52,10 +52,12 @@ PokéMaps (`pokemaps.net`), approved by the owner on 2026-11-23 as a second refe
 
 - **Serebii map tiles:** `https://www.serebii.net/pokearth/paldea/map/tile_{z}-{x}-{y}.png`. Zoom 3 is
   the maximum (8 by 8 tiles of 512 px, 4096 px). Zoom 4 and 5 return 404. The user approved it
-  as an LPIPS reference. The cache is git-ignored (`scripts/cache/serebii/`). We publish nothing
-  from it.
-- **Bulbagarden Archives maps:** look only. Never copy, scrape or trace them into the repo. The user
-  approved one exception on 2026-11-23: a spike of #45 traced a crop of `paldea.png` to test the
-  LPIPS gate. The picture is in `scripts/cache/bulbagarden/` (git-ignored). No result of that trace
-  enters the repo. A new source for the real base art needs the user's approval.
+  as an LPIPS reference. The cache is git-ignored (`scripts/cache/serebii/`). The user approved
+  tracing the stitched tiles to SVG for the base art, and we commit the SVG (ADR 5). We never
+  commit the tiles.
+- **Bulbagarden Archives maps:** look only. Never copy or scrape them. The user approved two
+  exceptions. On 2026-11-23, a spike of #45 traced a crop of `paldea.png` to test the LPIPS gate.
+  Later the same day, the user approved patching gaps in the Serebii picture with `paldea.png`
+  before the trace (ADR 5). The picture is in `scripts/cache/bulbagarden/` (git-ignored). Only the
+  traced SVG enters the repo. A new source for the base art needs the user's approval.
 - **PokéMaps (`pokemaps.net`):** look only. Link to it. Do not embed it. The site blocks embedding.
