@@ -5,6 +5,8 @@
 """Step 1 of #15: download the Serebii Paldea map tiles (zoom 3) and stitch them to 4096 px.
 
 Run: uv run scripts/map-trace/stitch.py
+Source: Serebii Pokéarth map tiles, approved by the owner on 2026-11-23 (ADR 5). Downloaded on
+2026-11-23.
 Output (git-ignored, ADR 5): scripts/cache/serebii/map/tile_3-<x>-<y>.png and
 scripts/cache/serebii/map-source-4096.png
 """

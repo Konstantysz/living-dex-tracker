@@ -62,8 +62,8 @@ describe('map-areas.svg', () => {
 describe('map-base files', () => {
   const files = readdirSync(dir).filter((f) => f.startsWith('map-base'));
 
-  // One test, not it.each: before the base art exists, `files` is empty and it.each fails.
-  it('have a known name, the viewBox and no raster', () => {
+  it('are the 3 coarse files and the 9 fine tiles, with the viewBox and no raster', () => {
+    expect(files).toHaveLength(12);
     for (const f of files) {
       expect(f).toMatch(/^map-base-(2|4|8|1-[0-2]-[0-2])\.svg$/);
       const svg = read(f);

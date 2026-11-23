@@ -63,7 +63,7 @@ equal to `sv-layout-golden.json`. Please decide if any should change.
   2-2 0.0275 / 0.0767. Five tiles pass. Four miss the limit (0-1, 1-2, 2-1 by a small margin, 0-2
   by a lot). Seam strips mean 0.0398, interior strips 0.0511: the seams are no worse. Coarse LODs
   against their own downscale: LOD 8 0.0419 / 0.0700, LOD 4 0.0495 / 0.1294, LOD 2 0.0759 / 0.5253
-  (mean / worst; judged by eye, no limit). Cause of tile 0-2 and the LOD 2 worst window: the game
+  (mean / worst, judged by eye, no limit). Cause of tile 0-2 and the LOD 2 worst window: the game
   paints the deep sea (north-east) and the Area Zero lake with fine diagonal stripes. The trace
   makes them one flat colour, so shape and colour match but LPIPS sees a large error. No patch of
   the source picture was needed.

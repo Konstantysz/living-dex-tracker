@@ -28,7 +28,7 @@ layout = {}
 def save(lod: str, name: str, im: Image.Image, box: tuple[int, int, int, int]):
     (IN / lod).mkdir(parents=True, exist_ok=True)
     im.save(IN / lod / f"{name}.png")
-    layout[f"{lod}/{name}"] = {"box": box, "px": FULL}  # box in FULL units; the file has its own size
+    layout[f"{lod}/{name}"] = {"box": box, "px": FULL}  # box is in FULL units. The file has its own size.
 
 
 for lod, div in (("8", 8), ("4", 4), ("2", 2)):
