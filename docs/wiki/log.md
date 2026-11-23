@@ -60,3 +60,6 @@ Pages touched: analyses/paldea-area-map-research.md, analyses/project-decisions.
 
 ## [2026-11-23] ingest | Seam test for traced fine tiles (#58)
 Pages touched: analyses/lpips-gate-findings.md, index.md. Also fixed ADR 0005 and sources.md. Notes: the Serebii grid is 16 by 16 tiles of 256 px, not 8 by 8 of 512 px. The four-LOD note is now a result of #54. The new fine-LOD gate rests on two scored tile files and one seam. The page marks it, and the four-LOD claim, as unverified.
+
+## [2026-11-23] ingest | PokéMaps links (#50)
+Pages touched: concepts/location-data.md, index.md unchanged. Notes: the slug rule, the Area Zero exception and the hand check of 2026-11-23. About 330 entry slugs are marked unverified.

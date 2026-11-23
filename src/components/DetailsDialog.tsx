@@ -1,5 +1,11 @@
 import { entryLabel, numberText } from '../core/entry';
-import { areasFor, type AreaProgress, type Locations } from '../core/locations';
+import {
+  areasFor,
+  hasPaldeaArea,
+  pokemapsEntryUrl,
+  type AreaProgress,
+  type Locations,
+} from '../core/locations';
 import type { DexEntry, GameConfig, Kind } from '../core/types';
 import { Dialog } from './Dialog';
 
@@ -87,6 +93,13 @@ export function DetailsDialog({
             </a>
             , {locations.scraped}
           </p>
+          {hasPaldeaArea(locations, areas) && (
+            <p>
+              <a href={pokemapsEntryUrl(it.name)} target="_blank" rel="noopener noreferrer">
+                Zobacz na PokéMaps
+              </a>
+            </p>
+          )}
         </section>
       )}
       {crowded && (

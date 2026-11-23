@@ -1,11 +1,17 @@
 import { expect, test } from 'vitest';
+import svLayout from '../games/sv/generated/layout.json';
+import svLocations from '../games/sv/generated/locations.json';
 import type { DexEntry } from './types';
 import {
   areasFor,
   crowdedArea,
+  hasPaldeaArea,
+  inPaldea,
   MANY_MISSING,
   missingByArea,
   pokearthUrl,
+  pokemapsAreaUrl,
+  pokemapsEntryUrl,
   type Locations,
 } from './locations';
 
@@ -21,6 +27,49 @@ const locs: Locations = {
     sprigatito: { page: 'sprigatito' },
   },
 };
+
+test('PokéMaps slugs follow the rule and the Area Zero exception', () => {
+  const l: Locations = {
+    ...locs,
+    areas: {
+      southprovinceareatwo: 'South Province Area Two',
+      glaseadomountain: 'Glaseado Mountain',
+      areazero: 'Area Zero',
+      greatcraterofpaldea: 'Great Crater of Paldea',
+    },
+  };
+  const base = 'https://pokemaps.net/maps/sv/paldea/';
+  expect(pokemapsAreaUrl(l, 'southprovinceareatwo')).toBe(`${base}south-province-area-two`);
+  expect(pokemapsAreaUrl(l, 'glaseadomountain')).toBe(`${base}glaseado-mountain`);
+  expect(pokemapsAreaUrl(l, 'areazero')).toBe(`${base}area-zero`);
+  expect(pokemapsAreaUrl(l, 'greatcraterofpaldea')).toBe(`${base}area-zero`);
+  expect(pokemapsEntryUrl('Lechonk')).toBe(`${base}lechonk`);
+  expect(pokemapsEntryUrl('Great Tusk')).toBe(`${base}great-tusk`);
+  expect(pokemapsEntryUrl('Flabébé')).toBe(`${base}flabebe`);
+  expect(pokemapsEntryUrl('Wo-Chien')).toBe(`${base}wo-chien`);
+});
+
+test('inPaldea and hasPaldeaArea are true only for Paldea areas', () => {
+  expect(inPaldea(locs, 'asadodesert')).toBe(true);
+  expect(inPaldea(locs, 'applehills')).toBe(false);
+  expect(hasPaldeaArea(locs, [a, b])).toBe(true);
+  expect(hasPaldeaArea(locs, [a])).toBe(false);
+  expect(hasPaldeaArea(locs, null)).toBe(false);
+});
+
+// The slug rule has no case for an apostrophe, a period or a gender sign (Farfetch'd, Mr. Mime,
+// Nidoran). No Paldea area or species name has one. Only Kitakami areas have an apostrophe, and
+// they get no PokéMaps link. This test fails when a new name needs a rule.
+test('no Paldea area or species name needs more than the slug rule', () => {
+  const sv = svLocations as Locations;
+  const paldeaAreas = Object.keys(sv.regions).filter((s) => inPaldea(sv, s));
+  const species = svLayout.groups
+    .flatMap((g) => g.items)
+    .filter((e) => hasPaldeaArea(sv, areasFor(sv, e.id, null)));
+  const names = [...paldeaAreas.map((s) => sv.areas[s]!), ...species.map((e) => e.name)];
+  expect(species.length).toBeGreaterThan(300);
+  expect(names.filter((n) => /[^\p{L}\p{M} -]/u.test(n))).toEqual([]);
+});
 
 test('areasFor returns the areas of one version', () => {
   expect(areasFor(locs, 'pikachu', 'V')).toEqual([a]);
