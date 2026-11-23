@@ -47,3 +47,15 @@ PokéMaps (`pokemaps.net`), approved by the owner on 2026-11-23 as a second refe
 - The owner's own sources and statements win over a research report.
 - A form moves or disappears only when two sources agree, or the dex CSV and one source agree.
 - Record each decision in `NOTES.md` with its source. Example of a wrong report: it put Tatsugiri forms in different dexes, but all three spawn at Casseroya Lake and the species has a number only in the Paldea dex.
+
+## Sources for the area map (base art)
+
+- **Serebii map tiles:** `https://www.serebii.net/pokearth/paldea/map/tile_{z}-{x}-{y}.png`. Zoom 3 is
+  the maximum (8 by 8 tiles of 512 px, 4096 px). Zoom 4 and 5 return 404. The user approved it
+  as an LPIPS reference. The cache is git-ignored (`scripts/cache/serebii/`). We publish nothing
+  from it.
+- **Bulbagarden Archives maps:** look only. Never copy, scrape or trace them into the repo. The user
+  approved one exception on 2026-11-23: a spike of #45 traced a crop of `paldea.png` to test the
+  LPIPS gate. The picture is in `scripts/cache/bulbagarden/` (git-ignored). No result of that trace
+  enters the repo. A new source for the real base art needs the user's approval.
+- **PokéMaps (`pokemaps.net`):** look only. Link to it. Do not embed it. The site blocks embedding.

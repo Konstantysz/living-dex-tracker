@@ -33,3 +33,13 @@ have no wild Pokémon in their static HTML. Its spawn points come from JavaScrip
   (`/pokearth/maps/paldea/<n>.jpg`) that may show one area highlighted. If the spike fails, a human
   draws the areas by hand.
 - VectorCraft is "alpha".
+
+## Update (2026-11-23)
+
+Issue #45 tested the risk above on one 1024 px fragment. VectorCraft traced it and LPIPS scored the
+render against the source. At trace detail 20 the mean score was 0.059 (about 8 MB for the full
+map). At detail 50 it was 0.022 (about 19 MB). The JPEG noise floor is 0.020. The user accepted both
+by eye. Serebii tiles stop at zoom 3 (4096 px). VectorCraft writes `C` curves, and the engine
+prototype reads only `M`, `L` and `Z`. Four levels of detail are a proposal, tested in #54. The
+numbers and the method are in the wiki page `docs/wiki/analyses/lpips-gate-findings.md`. This update
+does not change the decision.
