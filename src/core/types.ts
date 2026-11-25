@@ -114,5 +114,14 @@ export interface CollectibleSet {
   /** Links per collectible. `{section}` and `{n}` in `url` are filled in. */
   links: { label: string; url: string }[];
   /** `name` and `area` are in-game names, which exist only in English. */
-  sections: { id: string; name: string; area: string; count: number }[];
+  sections: {
+    id: string;
+    name: string;
+    area: string;
+    count: number;
+    /** Accent color (hex) for map pins and UI cards. */
+    color?: string;
+    /** Optional `[x, y]` coordinates on the 0..5000 Area map, one per item (`1..count`). */
+    coords?: [number, number][];
+  }[];
 }

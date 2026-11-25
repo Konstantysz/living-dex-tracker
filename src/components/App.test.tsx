@@ -259,10 +259,11 @@ test('the guide tracks collectibles in the caught set without counting them', as
   expect(tingLu).toHaveTextContent('1/8');
   expect(screen.getByRole('status')).toHaveTextContent('Zaznaczono Słupek 1 (Ting-Lu)');
   expect(JSON.parse(localStorage.getItem('ldt:sv:caught')!)).toEqual(['stake:ting-lu-1']);
-  expect(within(tingLu).getAllByRole('link', { name: 'mapka' })[2]).toHaveAttribute(
+  expect(within(tingLu).getAllByRole('link', { name: 'zdjęcie' })[2]).toHaveAttribute(
     'href',
-    'https://www.serebii.net/scarletviolet/stakes/map/ting-lu3.jpg',
+    'https://www.serebii.net/scarletviolet/stakes/ting-lu3.jpg',
   );
+  expect(within(tingLu).getAllByRole('button', { name: 'Pokaż na mapie' })).toHaveLength(8);
   await user.click(screen.getByText('Zamknij'));
 
   // Collectibles are not entries: progress, the text export and the import count ignore them.
