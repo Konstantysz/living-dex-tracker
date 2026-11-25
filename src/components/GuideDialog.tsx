@@ -50,6 +50,8 @@ export function GuideDialog({
   onClose: () => void;
 }) {
   const [picked, setTab] = useState(initialTab);
+  const [onlyUncollected, setOnlyUncollected] = useState(false);
+  const [focusPin, setFocusPin] = useState<{ id: string; seq: number }>();
   const all: [GuideTab, string, boolean][] = [
     ['collectibles', 'Znajdźki', sets.length > 0],
     ['badges', 'Odznaki', true],
@@ -82,11 +84,25 @@ export function GuideDialog({
           entries={entries}
           version={version}
           onDetails={onDetails}
+          sets={sets}
+          caught={caught}
+          onToggleCollectible={onToggle}
+          focusPin={focusPin}
         />
       )}
       {(tab === 'collectibles' ? sets : []).map((set) => (
         <section key={set.id}>
-          <h4>{set.name}</h4>
+          <div className="collectibles-head">
+            <h4>{set.name}</h4>
+            <label>
+              <input
+                type="checkbox"
+                checked={onlyUncollected}
+                onChange={(e) => setOnlyUncollected(e.target.checked)}
+              />{' '}
+              Tylko niezdobyte
+            </label>
+          </div>
           <p className="mono-mute">
             {set.intro} Źródło:{' '}
             <a href={set.source.url} target="_blank" rel="noreferrer">
@@ -97,43 +113,92 @@ export function GuideDialog({
           {set.sections.map((sec) => {
             const ns = Array.from({ length: sec.count }, (_, i) => i + 1);
             const done = ns.filter((n) => caught.has(collectibleId(set.id, sec.id, n))).length;
+            const shown = onlyUncollected
+              ? ns.filter((n) => !caught.has(collectibleId(set.id, sec.id, n)))
+              : ns;
             return (
-              <fieldset key={sec.id} className="collectibles">
-                <legend>
-                  {sec.name}{' '}
+              <details
+                key={sec.id}
+                role="group"
+                aria-label={sec.name}
+                className="collectibles"
+                open={done < sec.count}
+                style={
+                  sec.color
+                    ? { borderLeft: `4px solid ${sec.color}`, paddingLeft: '0.6rem' }
+                    : undefined
+                }
+              >
+                <summary>
+                  <strong>{sec.name}</strong>{' '}
                   <span className="mono-mute">
                     {done}/{sec.count}
-                  </span>
-                </legend>
+                  </span>{' '}
+                  <progress value={done} max={sec.count} />
+                </summary>
                 <p className="mono-mute">{sec.area}</p>
-                <ul>
-                  {ns.map((n) => {
-                    const id = collectibleId(set.id, sec.id, n);
-                    return (
-                      <li key={n}>
-                        <label>
-                          <input
-                            type="checkbox"
-                            checked={caught.has(id)}
-                            onChange={() => onToggle(id, `${set.unitLabel} ${n} (${sec.name})`)}
-                          />{' '}
-                          {set.unitLabel} {n}
-                        </label>
-                        {set.links.map((l) => (
-                          <a
-                            key={l.label}
-                            href={fill(l.url, sec.id, n)}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {l.label}
-                          </a>
-                        ))}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </fieldset>
+                {shown.length === 0 ? (
+                  <p className="mono-mute">Wszystkie zdobyte.</p>
+                ) : (
+                  <ul>
+                    {shown.map((n) => {
+                      const id = collectibleId(set.id, sec.id, n);
+                      return (
+                        <li key={n} className="collectible-card">
+                          <div className="collectible-top">
+                            <label>
+                              <input
+                                type="checkbox"
+                                checked={caught.has(id)}
+                                onChange={() => onToggle(id, `${set.unitLabel} ${n} (${sec.name})`)}
+                              />{' '}
+                              {set.unitLabel} {n}
+                            </label>
+                            {sec.coords && map && locations && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setFocusPin((prev) => ({ id, seq: (prev?.seq ?? 0) + 1 }));
+                                  setTab('map');
+                                }}
+                              >
+                                Pokaż na mapie
+                              </button>
+                            )}
+                          </div>
+                          {set.links.map((l) =>
+                            l.label === 'zdjęcie' ? (
+                              <a
+                                key={l.label}
+                                href={fill(l.url, sec.id, n)}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={l.label}
+                              >
+                                <img
+                                  src={fill(l.url, sec.id, n)}
+                                  alt={`${sec.name} — ${set.unitLabel} ${n}`}
+                                  className="collectible-img"
+                                  loading="lazy"
+                                />
+                              </a>
+                            ) : (
+                              <a
+                                key={l.label}
+                                href={fill(l.url, sec.id, n)}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {l.label}
+                              </a>
+                            ),
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </details>
             );
           })}
         </section>

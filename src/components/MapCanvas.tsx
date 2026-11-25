@@ -56,6 +56,15 @@ async function rasterTile(tile: FineTile): Promise<Texture> {
   }
 }
 
+export interface MapPin {
+  id: string;
+  x: number;
+  y: number;
+  color: string;
+  label: string;
+  collected: boolean;
+}
+
 export interface MapCanvasProps {
   shapes: AreaShape[];
   names: Record<string, string>;
@@ -66,10 +75,15 @@ export interface MapCanvasProps {
   selected?: string;
   /** Tap on an Area, or on nothing (undefined). */
   onSelect: (slug: string | undefined) => void;
+  pins?: MapPin[];
+  selectedPin?: string;
+  onSelectPin?: (id: string | undefined) => void;
+  focusPin?: { id: string; seq: number };
 }
 
 interface Handle {
   zoomBy: (f: number) => void;
+  focusAt: (x: number, y: number) => void;
   redraw: () => void;
 }
 
@@ -111,8 +125,9 @@ export function MapCanvas(props: MapCanvasProps) {
         const areaLayer = new Container();
         const selectedLayer = new Graphics();
         const labelLayer = new Container();
+        const pinLayer = new Container();
         world.addChild(baseLayer, fineLayer, areaLayer, selectedLayer);
-        app.stage.addChild(world, labelLayer);
+        app.stage.addChild(world, labelLayer, pinLayer);
 
         const fitScale = () => Math.min(app.screen.width, app.screen.height) / SIZE;
         const cam = { x: 0, y: 0, s: fitScale() };
@@ -239,6 +254,25 @@ export function MapCanvas(props: MapCanvasProps) {
             t.visible = size * cam.s > LABEL_MIN_PX;
             t.position.set(cam.x + cx * cam.s, cam.y + cy * cam.s);
           }
+          pinLayer.removeChildren().forEach((c) => c.destroy({ children: true }));
+          for (const pin of latest.current.pins ?? []) {
+            const c = new Container();
+            c.position.set(cam.x + pin.x * cam.s, cam.y + pin.y * cam.s);
+            c.alpha = pin.collected ? 0.45 : 1;
+            const isSel = pin.id === latest.current.selectedPin;
+            const g = new Graphics();
+            const color = Number.parseInt(pin.color.replace('#', ''), 16);
+            g.circle(0, 0, isSel ? 11 : 9)
+              .fill({ color })
+              .stroke({ width: isSel ? 3 : 2, color: isSel ? 0xfacc15 : 0xffffff });
+            const t = new Text({
+              text: pin.label,
+              style: { fontSize: 10, fontWeight: 'bold', fill: 0xffffff },
+            });
+            t.anchor.set(0.5);
+            c.addChild(g, t);
+            pinLayer.addChild(c);
+          }
           syncBase();
           syncFine();
         };
@@ -291,6 +325,22 @@ export function MapCanvas(props: MapCanvasProps) {
           pinch = 0;
           if (had && e.type === 'pointerup' && moved < TAP_SLOP && pointers.size === 0) {
             const p = point(e);
+            if (import.meta.env.DEV && e.altKey) {
+              const wx = Math.round((p.x - cam.x) / cam.s);
+              const wy = Math.round((p.y - cam.y) / cam.s);
+              const coord = `[${wx}, ${wy}]`;
+              console.log('Map coord:', coord);
+              void navigator.clipboard?.writeText(coord);
+              return;
+            }
+            const hitPin = (latest.current.pins ?? []).find(
+              (pin) => Math.hypot(cam.x + pin.x * cam.s - p.x, cam.y + pin.y * cam.s - p.y) <= 14,
+            );
+            if (hitPin) {
+              latest.current.onSelectPin?.(hitPin.id);
+              return;
+            }
+            latest.current.onSelectPin?.(undefined);
             const slug = hitTest(
               latest.current.shapes,
               (p.x - cam.x) / cam.s,
@@ -314,6 +364,14 @@ export function MapCanvas(props: MapCanvasProps) {
 
         handle.current = {
           zoomBy: (f) => zoomAt(f, app.screen.width / 2, app.screen.height / 2),
+          focusAt: (x, y) => {
+            cam.s = Math.max(cam.s, fitScale() * 2.5);
+            cam.x = app.screen.width / 2 - x * cam.s;
+            cam.y = app.screen.height / 2 - y * cam.s;
+            apply();
+            syncBase();
+            syncFine();
+          },
           redraw: () => {
             draw();
             apply();
@@ -333,10 +391,16 @@ export function MapCanvas(props: MapCanvasProps) {
     };
   }, []);
 
-  // Redraw the Areas when the highlight or the selection changes.
+  // Redraw the Areas when the highlight, selection, or pins change.
   useEffect(() => {
     handle.current?.redraw();
-  }, [props.highlighted, props.selected, props.shapes, props.names]);
+  }, [props.highlighted, props.selected, props.shapes, props.names, props.pins, props.selectedPin]);
+
+  useEffect(() => {
+    if (!props.focusPin) return;
+    const pin = props.pins?.find((p) => p.id === props.focusPin?.id);
+    if (pin) handle.current?.focusAt(pin.x, pin.y);
+  }, [props.focusPin]);
 
   return (
     <div className={s.wrap}>
