@@ -29,8 +29,8 @@ const svMap: GameMap = {
   noPath: NO_PATH,
   base: [
     { url: base8, res: 0.125, minScale: 0 },
-    { url: base4, res: 0.25, minScale: 0.15 },
-    { url: base2, res: 0.5, minScale: 0.3 },
+    { url: base4, res: 0.25, minScale: 0.06 },
+    { url: base2, res: 0.5, minScale: 0.12 },
   ],
   tiles: Object.entries(
     import.meta.glob<string>('./sv/map-base-1-*.svg', {
